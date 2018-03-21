@@ -1,0 +1,69 @@
+Package: flechette
+Type: Package
+Title: What If Speciation Takes Time?
+Version: 0.1
+Author: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
+Maintainer: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
+Description: What if reproduction isolation takes time to establish?
+    This package first simulates a PBD phylogeny, in which reproductive
+    isolation does take time to establish. From those phylogenies, DNA
+    sequences are simulation and analysed using 'BEAST2'. 'BEAST2' 
+    does not assume that reproductive isolation takes time to establish. The
+    analysis of the resulting data is done by the wiritttea package.
+License: GPL-3 | file LICENSE
+LazyData: TRUE
+Requires: 
+    adephylo,
+    ape,
+    dplyr,
+    geiger,
+    PBD,
+    phangorn,
+    testit,
+    tidyr,
+    tools,
+    TreeSim
+Imports:
+    babette,
+    beautier,
+    beastier,
+    geiger,
+    nLTT,
+    PBD,
+    phangorn,
+    phytools,
+    pirouette,
+    ribir,
+    tracerer
+Suggests:
+    ape,
+    coda,
+    dplyr,
+    ggplot2,
+    gridExtra,
+    lintr,
+    lubridate,
+    plyr,
+    reshape2,
+    rmarkdown,
+    stringr,
+    testit,
+    testthat,
+    tidyr,
+    knitr
+Remotes: 
+    jimhester/covr,
+    jimhester/lintr,
+    richelbilderbeek/babette,
+    richelbilderbeek/beautier,
+    richelbilderbeek/beastier,
+    richelbilderbeek/pirouette,
+    richelbilderbeek/tracerer,
+    richelbilderbeek/nLTT,
+    richelbilderbeek/ribir,
+    rsetienne/PBD/PBD,
+    MangoTheCat/goodpractice
+RoxygenNote: 6.0.1
+URL: https://github.com/richelbilderbeek/flechette
+BugReports: https://github.com/richelbilderbeek/flechette/issues
+VignetteBuilder: knitr

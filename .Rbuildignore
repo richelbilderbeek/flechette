@@ -1,0 +1,7 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^pics$
+^doc$
+^scripts$
+^\.travis\.yml$
+^CONTRIBUTING\.md$
