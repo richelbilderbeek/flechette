@@ -8,7 +8,7 @@ test_that("use", {
     mcmc_length = 2000,
     minimal_ess = 0
   )
-  input_filename = input_filenames[1]
+  input_filename <- input_filenames[1]
 
   create_output_file(
     input_filename = input_filename,
