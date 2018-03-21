@@ -5,10 +5,10 @@
 \title{For each input file, calculate the median nLTT statistic.
 Put these, with the parameters in a data frame}
 \usage{
-calc_median_nltts(input_filenames, output_filename)
+calc_median_nltts(folder_name, output_filename)
 }
 \arguments{
-\item{input_filenames}{one or more filenames,
+\item{folder_name}{name of the folder that contains data files,
 as created by \code{\link{create_output_file}}}
 
 \item{output_filename}{name of a comma-seperated file

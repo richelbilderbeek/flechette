@@ -1,15 +1,17 @@
 #' For each input file, calculate the median nLTT statistic.
 #' Put these, with the parameters in a data frame
-#' @param input_filenames one or more filenames,
+#' @param folder_name name of the folder that contains data files,
 #'   as created by \code{\link{create_output_file}}
 #' @param output_filename name of a comma-seperated file
 #'   containing parameters and median nLTTs
 #' @author Richel J.C. Bilderbeek
 #' @export
 calc_median_nltts <- function(
-  input_filenames,
+  folder_name,
   output_filename
 ) {
+  input_filenames <- list.files(folder_name, full.names = TRUE)
+
   # Set up table
   input_filename <- input_filenames[1]
   data <- readRDS(input_filename)
