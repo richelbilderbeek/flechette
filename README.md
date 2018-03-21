@@ -1,9 +1,9 @@
 # flechette
 
-Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![Codecov logo](pics/Codecov.png)](https://www.codecov.io)
+Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)
 ---|---|---
-master|[![Build Status](https://travis-ci.org/richelbilderbeek/flechette.svg?branch=master)](https://travis-ci.org/richelbilderbeek/flechette)|[![codecov.io](https://codecov.io/github/richelbilderbeek/flechette/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/flechette/branch/master)
-develop|[![Build Status](https://travis-ci.org/richelbilderbeek/flechette.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/flechette)|[![codecov.io](https://codecov.io/github/richelbilderbeek/flechette/coverage.svg?branch=develop)](https://codecov.io/github/richelbilderbeek/flechette/branch/develop)
+master|[![Build Status](https://travis-ci.org/richelbilderbeek/flechette.svg?branch=master)](https://travis-ci.org/richelbilderbeek/flechette)
+develop|[![Build Status](https://travis-ci.org/richelbilderbeek/flechette.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/flechette)
 
 `flechette` is an R package that combines:
 

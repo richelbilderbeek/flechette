@@ -7,6 +7,13 @@ Put these, with the parameters in a data frame}
 \usage{
 calc_median_nltts(input_filenames, output_filename)
 }
+\arguments{
+\item{input_filenames}{one or more filenames,
+as created by \code{\link{create_output_file}}}
+
+\item{output_filename}{name of a comma-seperated file
+containing parameters and median nLTTs}
+}
 \description{
 For each input file, calculate the median nLTT statistic.
 Put these, with the parameters in a data frame

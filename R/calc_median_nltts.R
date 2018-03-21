@@ -1,5 +1,9 @@
 #' For each input file, calculate the median nLTT statistic.
 #' Put these, with the parameters in a data frame
+#' @param input_filenames one or more filenames,
+#'   as created by \code{\link{create_output_file}}
+#' @param output_filename name of a comma-seperated file
+#'   containing parameters and median nLTTs
 #' @author Richel J.C. Bilderbeek
 #' @export
 calc_median_nltts <- function(
@@ -25,5 +29,5 @@ calc_median_nltts <- function(
     df[i, length(data$parameters) + 1] <- median(nLTT::nltts_diff(data$species_tree, data$trees))
   }
 
-  write.csv(x = df, file = output_filename)
+  utils::write.csv(x = df, file = output_filename)
 }
