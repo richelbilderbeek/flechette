@@ -18,6 +18,7 @@ test_that("use", {
       beast2_rnd_seed = 42
     )
   )
+  testthat::expect_true("parameters" %in% names(out))
   testthat::expect_true("incipient_tree" %in% names(out))
   testthat::expect_true("species_tree" %in% names(out))
   testthat::expect_true("alignment" %in% names(out))

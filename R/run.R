@@ -49,6 +49,7 @@ run <- function(
     verbose = verbose,
     beast_jar_path = beast_jar_path
   )
+  out$parameters <- parameters
   out$incipient_tree <- pbd_output$igtree.extant
   out$species_tree <- true_phylogeny
   out
