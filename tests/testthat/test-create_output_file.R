@@ -27,3 +27,14 @@ test_that("use", {
   file.remove(input_filenames)
   file.remove(output_filename)
 })
+
+test_that("abuse", {
+
+  testthat::expect_error(
+    create_output_file(
+      input_filename = "abs.ent",
+      output_filename = "irrelevant"
+    ),
+    "'input_filename' must exist"
+  )
+})
