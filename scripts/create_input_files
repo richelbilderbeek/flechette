@@ -6,11 +6,7 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --ntasks=1
 #SBATCH --mem=1G
-#SBATCH --job-name=process_1
-#SBATCH --output=process_1_%j.log
+#SBATCH --job-name=create_input_files
+#SBATCH --output=create_input_files.log
 module load R/3.3.1-foss-2016a
-from=$1
-to=out_$1
-echo $from
-echo $to
-#Rscript -e 'flechette::create_output_file($from,$to)'
+Rscript -e 'flechette::create_input_files()'

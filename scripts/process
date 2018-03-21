@@ -11,4 +11,5 @@
 for filename in `ls *.RDa` 
 do
   echo $filename
+  sbatch ./process_1 $filename 
 done
