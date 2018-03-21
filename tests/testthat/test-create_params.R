@@ -32,8 +32,12 @@ test_that("use", {
     beast2_rnd_seed = beast2_rnd_seed
   )
 
-  testthat::expect_equal(speciation_initiation_rate, parameters$speciation_initiation_rate)
-  testthat::expect_equal(speciation_completion_rate, parameters$speciation_completion_rate)
+  testthat::expect_equal(
+    speciation_initiation_rate, parameters$speciation_initiation_rate
+  )
+  testthat::expect_equal(
+    speciation_completion_rate, parameters$speciation_completion_rate
+  )
   testthat::expect_equal(extinction_rate, parameters$extinction_rate)
   testthat::expect_equal(crown_age, parameters$crown_age)
   testthat::expect_equal(crown_age_sigma, parameters$crown_age_sigma)
