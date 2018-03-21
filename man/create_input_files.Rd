@@ -5,7 +5,12 @@
 \title{Creates the parameter files in the article
 Now every parameter setting has its own seed}
 \usage{
-create_input_files()
+create_input_files(mcmc_length = 1e+06, minimal_ess = 200)
+}
+\arguments{
+\item{mcmc_length}{number of states in the MCMC chain}
+
+\item{minimal_ess}{minimal posterior Effect Sample Size}
 }
 \value{
 The filenames of all parameter files created
