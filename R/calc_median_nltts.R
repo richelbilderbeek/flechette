@@ -26,7 +26,9 @@ calc_median_nltts <- function(
   for (i in seq_along(input_filenames)) {
     data <- readRDS(input_filenames[i])
     df[i, 1:length(data$parameters)] <- data$parameters
-    df[i, length(data$parameters) + 1] <- median(nLTT::nltts_diff(data$species_tree, data$trees))
+    df[i, length(data$parameters) + 1] <- median(
+      nLTT::nltts_diff(data$species_tree, data$trees)
+    )
   }
 
   utils::write.csv(x = df, file = output_filename)

@@ -3,8 +3,7 @@ context("calc_median_nltts")
 test_that("use", {
 
   return()
-  # output_filaneme <- tempfile(fileext = ".csv")
-  output_filename <- "~/test.csv"
+  output_filename <- tempfile(fileext = ".csv")
   testthat::expect_false(file.exists(output_filename))
   calc_median_nltts(
     input_filenames = list.files(
