@@ -7,6 +7,12 @@
 create_output_file(input_filename = input_filename,
   output_filename = output_filename)
 }
+\arguments{
+\item{input_filename}{name of the input file,
+as created by \code{\link{create_input_files}}}
+
+\item{output_filename}{name of the output file}
+}
 \description{
 Process an input file
 }

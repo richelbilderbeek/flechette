@@ -8,13 +8,33 @@ test_that("use", {
     mcmc_length = 2000,
     minimal_ess = 0
   )
-  input_filename = input_filenames[1]
+  input_filename <- input_filenames[1]
 
   create_output_file(
     input_filename = input_filename,
     output_filename = output_filename
   )
   testthat::expect_true(file.exists(output_filename))
+
+  out <- readRDS(output_filename)
+  testthat::expect_true("parameters" %in% names(out))
+  testthat::expect_true("incipient_tree" %in% names(out))
+  testthat::expect_true("species_tree" %in% names(out))
+  testthat::expect_true("alignment" %in% names(out))
+  testthat::expect_true("trees" %in% names(out))
+  testthat::expect_true("estimates" %in% names(out))
+
   file.remove(input_filenames)
   file.remove(output_filename)
+})
+
+test_that("abuse", {
+
+  testthat::expect_error(
+    create_output_file(
+      input_filename = "abs.ent",
+      output_filename = "irrelevant"
+    ),
+    "'input_filename' must exist"
+  )
 })
