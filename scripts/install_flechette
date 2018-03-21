@@ -1,5 +1,6 @@
 #!/bin/bash
-# Script to install flechette on the Peregrine computer cluster 
+# Script to install flechette on the Peregrine computer cluster
+# Peregrine directives:
 #SBATCH --time=1:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
