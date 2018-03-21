@@ -9,8 +9,11 @@ r_packages:
 r_github_packages:
   - jimhester/covr
   - jimhester/lintr
+  - richelbilderbeek/babette
   - richelbilderbeek/beastier
   - richelbilderbeek/beautier
+  - richelbilderbeek/nLTT
+  - richelbilderbeek/pirouette
   - richelbilderbeek/tracerer
   - MangoTheCat/goodpractice
   - KlausVigo/phangorn
