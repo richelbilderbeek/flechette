@@ -10,7 +10,11 @@ calc_median_nltts <- function(
   folder_name,
   output_filename
 ) {
-  input_filenames <- list.files(folder_name, full.names = TRUE)
+  input_filenames <- list.files(
+    folder_name,
+    pattern = "^.*\\.RDa$",
+    full.names = TRUE
+  )
 
   # Set up table
   input_filename <- input_filenames[1]
