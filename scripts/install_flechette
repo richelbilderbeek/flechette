@@ -9,10 +9,10 @@
 #SBATCH --job-name=install_flechette
 #SBATCH --output=install_flechette.log
 module load R/3.3.1-foss-2016a
-Rscript -e 'devtools::install_github("KlausVigo/phangorn")'
-Rscript -e 'devtools::install_github("richelbilderbeek/nLTT")'
-Rscript -e 'devtools::install_github("richelbilderbeek/beautier")'
-Rscript -e 'devtools::install_github("richelbilderbeek/beastier")'
-Rscript -e 'devtools::install_github("richelbilderbeek/tracerer")'
-Rscript -e 'devtools::install_github("richelbilderbeek/babette")'
-Rscript -e 'devtools::install_github("richelbilderbeek/flechette")'
+Rscript -e 'devtools::install_github("KlausVigo/phangorn", ref = "develop")'
+Rscript -e 'devtools::install_github("richelbilderbeek/nLTT", ref = "develop")'
+Rscript -e 'devtools::install_github("richelbilderbeek/beautier", ref = "develop")'
+Rscript -e 'devtools::install_github("richelbilderbeek/beastier", ref = "develop")'
+Rscript -e 'devtools::install_github("richelbilderbeek/tracerer", ref = "develop")'
+Rscript -e 'devtools::install_github("richelbilderbeek/babette", ref = "develop")'
+Rscript -e 'devtools::install_github("richelbilderbeek/flechette", ref = "develop")'
