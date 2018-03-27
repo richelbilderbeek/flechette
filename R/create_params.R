@@ -18,9 +18,6 @@
 #'   number of base pairs
 #' @param mcmc_length length of the MCMC chain,
 #'   number of MCMC states
-#' @param minimal_ess the minimal Effective Sample Size the posterior
-#'   estimate may be. Will stop if the resulting ESS is below this
-#'   value
 #' @param tree_sim_rng_seed RNG seed used in the creation of the true
 #'   phylogenetic tree
 #' @param alignment_rng_seed RNG seed used in the creation of the simulated
@@ -39,7 +36,6 @@ create_params <- function(
   mutation_rate,
   sequence_length,
   mcmc_length,
-  minimal_ess = 200,
   tree_sim_rng_seed,
   alignment_rng_seed,
   beast2_rnd_seed
@@ -56,7 +52,6 @@ create_params <- function(
     mutation_rate = mutation_rate,
     sequence_length = sequence_length,
     mcmc_length = mcmc_length,
-    minimal_ess = minimal_ess,
     tree_sim_rng_seed = tree_sim_rng_seed,
     alignment_rng_seed = alignment_rng_seed,
     beast2_rnd_seed = beast2_rnd_seed

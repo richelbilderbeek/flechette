@@ -7,8 +7,8 @@ Run one point of the experiment}
 \usage{
 create_params(speciation_initiation_rate, speciation_completion_rate,
   extinction_rate, crown_age, crown_age_sigma = 0.01, sampling_method,
-  mutation_rate, sequence_length, mcmc_length, minimal_ess = 200,
-  tree_sim_rng_seed, alignment_rng_seed, beast2_rnd_seed)
+  mutation_rate, sequence_length, mcmc_length, tree_sim_rng_seed,
+  alignment_rng_seed, beast2_rnd_seed)
 }
 \arguments{
 \item{speciation_initiation_rate}{speciation rate
@@ -37,10 +37,6 @@ number of base pairs}
 
 \item{mcmc_length}{length of the MCMC chain,
 number of MCMC states}
-
-\item{minimal_ess}{the minimal Effective Sample Size the posterior
-estimate may be. Will stop if the resulting ESS is below this
-value}
 
 \item{tree_sim_rng_seed}{RNG seed used in the creation of the true
 phylogenetic tree}
