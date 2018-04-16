@@ -9,8 +9,6 @@ create_input_files(mcmc_length = 1e+06)
 }
 \arguments{
 \item{mcmc_length}{number of states in the MCMC chain}
-
-\item{minimal_ess}{minimal posterior Effect Sample Size}
 }
 \value{
 The filenames of all parameter files created

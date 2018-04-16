@@ -1,7 +1,6 @@
 #' Creates the parameter files in the article
 #' Now every parameter setting has its own seed
 #' @param mcmc_length number of states in the MCMC chain
-#' @param minimal_ess minimal posterior Effect Sample Size
 #' @return The filenames of all parameter files created
 #' @export
 #' @author Richel Bilderbeek
@@ -12,7 +11,7 @@ create_input_files <- function(
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   index <- 1
   for (speciation_initiation_rate in c(0.2, 0.4)) {
-    for (speciation_completion_rate in c(0.1, 0.3, 1.0, 1000000)) {
+    for (speciation_completion_rate in c(0.1, 0.3, 1.0, 1000000000)) {
       for (extinction_rate in c(0.0, 0.1, 0.2)) {
         if (extinction_rate > speciation_initiation_rate) next
         sampling_method <- "youngest"

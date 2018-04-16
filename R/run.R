@@ -42,7 +42,7 @@ run <- function(
     phylogeny = true_phylogeny,
     sequence_length = parameters$sequence_length,
     mutation_rate = parameters$mutation_rate,
-    chain_length = parameters$mcmc_length,
+    mcmc = parameters$mcmc,
     mrca_distr = beautier::create_normal_distr(
       mean = beautier::create_mean_param(value = parameters$crown_age),
       sigma = beautier::create_sigma_param(value = 0.01)
