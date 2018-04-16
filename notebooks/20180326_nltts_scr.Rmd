@@ -7,7 +7,7 @@ Speciation long:
 
 ```{r}
 results <- list()
-params_a <- flechette::create_params(
+params_a <- raket::create_params(
   speciation_initiation_rate = 0.2,
   speciation_completion_rate = 5.0,
   extinction_rate = 0.1,
@@ -21,7 +21,7 @@ params_a <- flechette::create_params(
   alignment_rng_seed = 43,
   beast2_rnd_seed = 44
 )
-results$a <- flechette::run(parameters = params_a) 
+results$a <- raket::run(parameters = params_a) 
 ape::plot.phylo(results$a$species_tree)
 results$a$nltts_diff <- nLTT::nltts_diff(tree = results$a$species_tree, results$a$trees)
 tracerer::calc_ess(results$a$estimates$posterior, sample_interval = 1000)
@@ -32,7 +32,7 @@ Short:
 ```{r}
 params_b <- params_a
 params_b$speciation_completion_rate <- 1000000.0
-results$b <- flechette::run(parameters = params_b) 
+results$b <- raket::run(parameters = params_b) 
 ape::plot.phylo(results$b$species_tree)
 results$b$nltts_diff <- nLTT::nltts_diff(tree = results$b$species_tree, results$b$trees)
 tracerer::calc_ess(results$b$estimates$posterior, sample_interval = 1000)

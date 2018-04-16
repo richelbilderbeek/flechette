@@ -1,4 +1,4 @@
 library(testthat)
-library(flechette)
+library(raket)
 
-test_check("flechette")
+test_check("raket")

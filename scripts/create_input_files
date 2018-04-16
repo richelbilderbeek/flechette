@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script to install flechette on the Peregrine computer cluster
+# Create input files
 # Peregrine directives:
 #SBATCH --time=1:00:00
 #SBATCH --nodes=1
@@ -9,4 +9,4 @@
 #SBATCH --job-name=create_input_files
 #SBATCH --output=create_input_files.log
 module load R/3.3.1-foss-2016a
-Rscript -e 'flechette::create_input_files()'
+Rscript -e 'raket::create_input_files()'

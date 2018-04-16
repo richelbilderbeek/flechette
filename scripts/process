@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script to install flechette on the Peregrine computer cluster
+# Process all .RDa files
 # Peregrine directives:
 #SBATCH --time=1:00:00
 #SBATCH --nodes=1
@@ -8,8 +8,8 @@
 #SBATCH --mem=1G
 #SBATCH --job-name=process
 #SBATCH --output=process.log
-for filename in `ls *.RDa` 
+for filename in `ls *.RDa`
 do
   echo $filename
-  sbatch ./process_1 $filename 
+  sbatch ./process_1 $filename
 done

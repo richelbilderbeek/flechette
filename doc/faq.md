@@ -26,10 +26,10 @@ Article is still in preperation.
 
 ## Why the name?
 
-`flechette` is something fast.
+`raket` is something fast.
 
 ## Why no code coverage?
 
-Because `flechette` does not intend to be a fully-fledged
+Because `raket` does not intend to be a fully-fledged
 package. Most things it does are intended to run locally.
 

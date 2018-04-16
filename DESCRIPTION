@@ -1,4 +1,4 @@
-Package: flechette
+Package: raket
 Type: Package
 Title: What If Speciation Takes Time?
 Version: 0.1
@@ -8,8 +8,7 @@ Description: What if reproduction isolation takes time to establish?
     This package first simulates a PBD phylogeny, in which reproductive
     isolation does take time to establish. From those phylogenies, DNA
     sequences are simulation and analysed using 'BEAST2'. 'BEAST2' 
-    does not assume that reproductive isolation takes time to establish. The
-    analysis of the resulting data is done by the wiritttea package.
+    does not assume that reproductive isolation takes time to establish.
 License: GPL-3 | file LICENSE
 LazyData: TRUE
 Requires: 
@@ -64,6 +63,6 @@ Remotes:
     rsetienne/PBD/PBD,
     MangoTheCat/goodpractice
 RoxygenNote: 6.0.1
-URL: https://github.com/richelbilderbeek/flechette
-BugReports: https://github.com/richelbilderbeek/flechette/issues
+URL: https://github.com/richelbilderbeek/raket
+BugReports: https://github.com/richelbilderbeek/raket/issues
 VignetteBuilder: knitr

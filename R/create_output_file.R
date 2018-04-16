@@ -11,6 +11,6 @@ create_output_file <- function(
   if (!file.exists(input_filename)) {
     stop("'input_filename' must exist. File '", input_filename, "' not found")
   }
-  out <- flechette::run(parameters = readRDS(file = input_filename))
+  out <- raket::run(parameters = readRDS(file = input_filename))
   saveRDS(object = out, file = output_filename)
 }

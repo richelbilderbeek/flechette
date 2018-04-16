@@ -1,27 +1,27 @@
 #!/bin/bash
 
-# Push all GitHubs under flechette
+# Push all GitHubs under raket
 
 cd ..
 git add --all :/
-git commit -m "flechette update"
+git commit -m "raket update"
 git push
 cd ..
 
 cd beautier
 git add --all :/
-git commit -m "flechette update"
+git commit -m "raket update"
 git push
 cd ..
 
 cd beastier
 git add --all :/
-git commit -m "flechette update"
+git commit -m "raket update"
 git push
 cd ..
 
 cd tracerer
 git add --all :/
-git commit -m "flechette update"
+git commit -m "raket update"
 git push
 cd ..

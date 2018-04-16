@@ -9,6 +9,6 @@
 module load R/3.3.1-foss-2016a
 folder_name=$1
 output_filename=median_nltts.csv
-cmd="flechette::calc_median_nltts(\""$folder_name"\",\""$output_filename"\")"
+cmd="raket::calc_median_nltts(\""$folder_name"\",\""$output_filename"\")"
 echo $cmd
 Rscript -e $cmd
