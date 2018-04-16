@@ -1,11 +1,11 @@
-# flechette
+# raket
 
 Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)
----|---|---
-master|[![Build Status](https://travis-ci.org/richelbilderbeek/flechette.svg?branch=master)](https://travis-ci.org/richelbilderbeek/flechette)
-develop|[![Build Status](https://travis-ci.org/richelbilderbeek/flechette.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/flechette)
+---|---
+master|[![Build Status](https://travis-ci.org/richelbilderbeek/raket.svg?branch=master)](https://travis-ci.org/richelbilderbeek/raket)
+develop|[![Build Status](https://travis-ci.org/richelbilderbeek/raket.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/raket)
 
-`flechette` is an R package that combines:
+`raket` is an R package that combines:
 
  * [babette](https://github.com/richelbilderbeek/babette)
  * [pirouette](https://github.com/richelbilderbeek/pirouette)
@@ -21,7 +21,7 @@ None yet
 If you use the `devtools` R package, this is easy:
 
 ```
-devtools::install_github("richelbilderbeek/flechette")
+devtools::install_github("richelbilderbeek/raket")
 ```
 
 To install BEAST2, see [how to install BEAST2](https://github.com/richelbilderbeek/beastier/blob/master/install_beast2.md).
