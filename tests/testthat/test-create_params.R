@@ -10,7 +10,7 @@ test_that("use", {
   sampling_method <- "youngest"
   mutation_rate <- 0.1
   sequence_length <- 123
-  mcmc_length <- 12300
+  mcmc <- beautier::create_mcmc(chain_length = 12300)
   tree_sim_rng_seed <- 314
   alignment_rng_seed <- 271
   beast2_rng_seed <- 4242
@@ -24,7 +24,7 @@ test_that("use", {
     sampling_method = sampling_method,
     mutation_rate = mutation_rate,
     sequence_length = sequence_length,
-    mcmc_length = mcmc_length,
+    mcmc = mcmc,
     tree_sim_rng_seed = tree_sim_rng_seed,
     alignment_rng_seed = alignment_rng_seed,
     beast2_rng_seed = beast2_rng_seed
@@ -42,7 +42,7 @@ test_that("use", {
   testthat::expect_equal(sampling_method, parameters$sampling_method)
   testthat::expect_equal(mutation_rate, parameters$mutation_rate)
   testthat::expect_equal(sequence_length, parameters$sequence_length)
-  testthat::expect_equal(mcmc_length, parameters$mcmc_length)
+  testthat::expect_equal(mcmc, parameters$mcmc)
   testthat::expect_equal(tree_sim_rng_seed, parameters$tree_sim_rng_seed)
   testthat::expect_equal(alignment_rng_seed, parameters$alignment_rng_seed)
   testthat::expect_equal(beast2_rng_seed, parameters$beast2_rng_seed)

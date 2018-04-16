@@ -5,10 +5,11 @@
 \title{Creates the parameter files in the article
 Now every parameter setting has its own seed}
 \usage{
-create_input_files(mcmc_length = 1e+06)
+create_input_files(mcmc = beautier::create_mcmc(chain_length = 1e+06,
+  store_every = 1000))
 }
 \arguments{
-\item{mcmc_length}{number of states in the MCMC chain}
+\item{mcmc}{MCMC options, as created by \link[beautier]{create_mcmc}}
 }
 \value{
 The filenames of all parameter files created

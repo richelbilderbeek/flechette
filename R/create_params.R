@@ -16,8 +16,7 @@
 #' @param mutation_rate per-nucleotide probability to mutate per time unit
 #' @param sequence_length length of simulated DNA alignment,
 #'   number of base pairs
-#' @param mcmc_length length of the MCMC chain,
-#'   number of MCMC states
+#' @param mcmc MCMC options, as created by \link[beautier]{create_mcmc}
 #' @param tree_sim_rng_seed RNG seed used in the creation of the true
 #'   phylogenetic tree
 #' @param alignment_rng_seed RNG seed used in the creation of the simulated
@@ -35,7 +34,7 @@ create_params <- function(
   sampling_method,
   mutation_rate,
   sequence_length,
-  mcmc_length,
+  mcmc,
   tree_sim_rng_seed,
   alignment_rng_seed,
   beast2_rng_seed
@@ -51,7 +50,7 @@ create_params <- function(
     sampling_method = sampling_method,
     mutation_rate = mutation_rate,
     sequence_length = sequence_length,
-    mcmc_length = mcmc_length,
+    mcmc = mcmc,
     tree_sim_rng_seed = tree_sim_rng_seed,
     alignment_rng_seed = alignment_rng_seed,
     beast2_rng_seed = beast2_rng_seed

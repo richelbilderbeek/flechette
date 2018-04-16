@@ -11,7 +11,7 @@ test_that("use", {
       sampling_method = "youngest",
       mutation_rate = 0.1,
       sequence_length = 100,
-      mcmc_length = 2000,
+      mcmc = beautier::create_mcmc(chain_length = 2000),
       tree_sim_rng_seed = 42,
       alignment_rng_seed = 42,
       beast2_rng_seed = 42

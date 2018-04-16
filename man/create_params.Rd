@@ -7,8 +7,8 @@ Run one point of the experiment}
 \usage{
 create_params(speciation_initiation_rate, speciation_completion_rate,
   extinction_rate, crown_age, crown_age_sigma = 0.01, sampling_method,
-  mutation_rate, sequence_length, mcmc_length, tree_sim_rng_seed,
-  alignment_rng_seed, beast2_rng_seed)
+  mutation_rate, sequence_length, mcmc, tree_sim_rng_seed, alignment_rng_seed,
+  beast2_rng_seed)
 }
 \arguments{
 \item{speciation_initiation_rate}{speciation rate
@@ -35,8 +35,7 @@ species is picked. Must be 'youngest', 'oldest' or 'random'}
 \item{sequence_length}{length of simulated DNA alignment,
 number of base pairs}
 
-\item{mcmc_length}{length of the MCMC chain,
-number of MCMC states}
+\item{mcmc}{MCMC options, as created by \link[beautier]{create_mcmc}}
 
 \item{tree_sim_rng_seed}{RNG seed used in the creation of the true
 phylogenetic tree}

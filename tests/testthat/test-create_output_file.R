@@ -5,7 +5,7 @@ test_that("use", {
   output_filename <- tempfile()
 
   input_filenames <- create_input_files(
-    mcmc_length = 2000
+    mcmc = beautier::create_mcmc(chain_length = 2000)
   )
   input_filename <- input_filenames[1]
 

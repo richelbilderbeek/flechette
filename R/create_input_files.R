@@ -1,11 +1,11 @@
 #' Creates the parameter files in the article
 #' Now every parameter setting has its own seed
-#' @param mcmc_length number of states in the MCMC chain
+#' @param mcmc MCMC options, as created by \link[beautier]{create_mcmc}
 #' @return The filenames of all parameter files created
 #' @export
 #' @author Richel Bilderbeek
 create_input_files <- function(
-  mcmc_length = 1000000
+  mcmc = beautier::create_mcmc(chain_length = 1000000, store_every = 1000)
 ) {
   filenames <- NULL
   # Must start at one, as the BEAST2 RNG seed must be at least one.
@@ -27,7 +27,7 @@ create_input_files <- function(
           sampling_method = sampling_method,
           mutation_rate = 1000 / 15,
           sequence_length = 15000,
-          mcmc_length = mcmc_length,
+          mcmc = mcmc,
           tree_sim_rng_seed = index,
           alignment_rng_seed = index,
           beast2_rng_seed = index
