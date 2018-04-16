@@ -5,7 +5,7 @@
 \title{Creates the parameter files in the article
 Now every parameter setting has its own seed}
 \usage{
-create_input_files(mcmc_length = 1e+06, minimal_ess = 200)
+create_input_files(mcmc_length = 1e+06)
 }
 \arguments{
 \item{mcmc_length}{number of states in the MCMC chain}

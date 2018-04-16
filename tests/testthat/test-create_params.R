@@ -11,10 +11,9 @@ test_that("use", {
   mutation_rate <- 0.1
   sequence_length <- 123
   mcmc_length <- 12300
-  minimal_ess <- 234
   tree_sim_rng_seed <- 314
   alignment_rng_seed <- 271
-  beast2_rnd_seed <- 4242
+  beast2_rng_seed <- 4242
 
   parameters <- create_params(
     speciation_initiation_rate = speciation_initiation_rate,
@@ -26,10 +25,9 @@ test_that("use", {
     mutation_rate = mutation_rate,
     sequence_length = sequence_length,
     mcmc_length = mcmc_length,
-    minimal_ess = minimal_ess,
     tree_sim_rng_seed = tree_sim_rng_seed,
     alignment_rng_seed = alignment_rng_seed,
-    beast2_rnd_seed = beast2_rnd_seed
+    beast2_rng_seed = beast2_rng_seed
   )
 
   testthat::expect_equal(
@@ -45,9 +43,8 @@ test_that("use", {
   testthat::expect_equal(mutation_rate, parameters$mutation_rate)
   testthat::expect_equal(sequence_length, parameters$sequence_length)
   testthat::expect_equal(mcmc_length, parameters$mcmc_length)
-  testthat::expect_equal(minimal_ess, parameters$minimal_ess)
   testthat::expect_equal(tree_sim_rng_seed, parameters$tree_sim_rng_seed)
   testthat::expect_equal(alignment_rng_seed, parameters$alignment_rng_seed)
-  testthat::expect_equal(beast2_rnd_seed, parameters$beast2_rnd_seed)
+  testthat::expect_equal(beast2_rng_seed, parameters$beast2_rng_seed)
 
 })

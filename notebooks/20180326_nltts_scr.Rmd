@@ -19,7 +19,7 @@ params_a <- raket::create_params(
   mcmc_length = 300000,
   tree_sim_rng_seed = 43,
   alignment_rng_seed = 43,
-  beast2_rnd_seed = 44
+  beast2_rng_seed = 44
 )
 results$a <- raket::run(parameters = params_a) 
 ape::plot.phylo(results$a$species_tree)

@@ -10,6 +10,9 @@ run <- function(
   beast_jar_path = beastier::get_default_beast2_jar_path(),
   verbose = FALSE
 ) {
+  if (!is.na(parameters$beast2_rng_seed) && !(parameters$beast2_rng_seed > 0)) {
+    stop("'parameters$beast2_rng_seed' should be NA or non-zero positive")
+  }
   set.seed(parameters$tree_sim_rng_seed)
   pbd_parameters <- c(
     parameters$speciation_initiation_rate,
@@ -45,7 +48,7 @@ run <- function(
       sigma = beautier::create_sigma_param(value = 0.01)
     ),
     alignment_rng_seed = parameters$alignment_rng_seed,
-    beast2_rng_seed = parameters$beast2_rnd_seed,
+    beast2_rng_seed = parameters$beast2_rng_seed,
     verbose = verbose,
     beast_jar_path = beast_jar_path
   )

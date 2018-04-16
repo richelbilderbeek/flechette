@@ -8,7 +8,7 @@ Run one point of the experiment}
 create_params(speciation_initiation_rate, speciation_completion_rate,
   extinction_rate, crown_age, crown_age_sigma = 0.01, sampling_method,
   mutation_rate, sequence_length, mcmc_length, tree_sim_rng_seed,
-  alignment_rng_seed, beast2_rnd_seed)
+  alignment_rng_seed, beast2_rng_seed)
 }
 \arguments{
 \item{speciation_initiation_rate}{speciation rate
@@ -44,7 +44,7 @@ phylogenetic tree}
 \item{alignment_rng_seed}{RNG seed used in the creation of the simulated
 alignment (from the true phylogenetic tree)}
 
-\item{beast2_rnd_seed}{RNG seed in the creation of the BEAST2 posterior
+\item{beast2_rng_seed}{RNG seed in the creation of the BEAST2 posterior
 (based on the alignment)}
 }
 \description{

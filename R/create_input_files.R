@@ -6,17 +6,17 @@
 #' @export
 #' @author Richel Bilderbeek
 create_input_files <- function(
-  mcmc_length = 1000000,
-  minimal_ess = 200
+  mcmc_length = 1000000
 ) {
   filenames <- NULL
-  index <- 0
+  # Must start at one, as the BEAST2 RNG seed must be at least one.
+  index <- 1
   for (speciation_initiation_rate in c(0.2, 0.4)) {
     for (speciation_completion_rate in c(0.1, 0.3, 1.0, 1000000)) {
       for (extinction_rate in c(0.0, 0.1, 0.2)) {
         if (extinction_rate > speciation_initiation_rate) next
         sampling_method <- "youngest"
-        if (i %% 2 == 1) sampling_method <- "oldest"
+        if (index %% 2 == 1) sampling_method <- "oldest"
 
         filename <- paste0(index, ".RDa")
         params <- create_params(
@@ -29,10 +29,9 @@ create_input_files <- function(
           mutation_rate = 1000 / 15,
           sequence_length = 15000,
           mcmc_length = mcmc_length,
-          minimal_ess = minimal_ess,
           tree_sim_rng_seed = index,
           alignment_rng_seed = index,
-          beast2_rnd_seed = index
+          beast2_rng_seed = index
         )
         saveRDS(object = params, file = filename)
         index <- index + 1

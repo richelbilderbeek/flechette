@@ -22,7 +22,7 @@
 #'   phylogenetic tree
 #' @param alignment_rng_seed RNG seed used in the creation of the simulated
 #'   alignment (from the true phylogenetic tree)
-#' @param beast2_rnd_seed RNG seed in the creation of the BEAST2 posterior
+#' @param beast2_rng_seed RNG seed in the creation of the BEAST2 posterior
 #'   (based on the alignment)
 #' @author Richel J.C. Bilderbeek
 #' @export
@@ -38,7 +38,7 @@ create_params <- function(
   mcmc_length,
   tree_sim_rng_seed,
   alignment_rng_seed,
-  beast2_rnd_seed
+  beast2_rng_seed
 ) {
   # TODO: Error checking
 
@@ -54,6 +54,6 @@ create_params <- function(
     mcmc_length = mcmc_length,
     tree_sim_rng_seed = tree_sim_rng_seed,
     alignment_rng_seed = alignment_rng_seed,
-    beast2_rnd_seed = beast2_rnd_seed
+    beast2_rng_seed = beast2_rng_seed
   )
 }
