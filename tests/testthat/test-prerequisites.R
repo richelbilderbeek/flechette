@@ -60,3 +60,17 @@ test_that("Can convert a data frame to long form, #5", {
   skip("WIP")
 
 })
+
+test_that("Ten percent of burn-in results in 1000 values, #10", {
+
+  testthat::expect_equal(
+    1000,
+    length(
+      tracerer::remove_burn_in(
+        trace = seq(1, 1111), 
+        burn_in_fraction = 0.1
+      )
+    )
+  )
+  
+})
