@@ -78,14 +78,24 @@ test_that("Full workflow, general", {
     csv_filename = csv_filename
   )
   
+  # Reading the .csv
   testthat::expect_true(file.exists(csv_filename))
   df <- read.csv(file = csv_filename)
   testthat::expect_true(nrow(df) == length(input_filenames))
   testthat::expect_true(ncol(df) == n_parameters + n_samples_no_burn_in)
-  
+
+  ##############################################################################
+  # 5. After reading the `.csv` with `read.csv()`, 
+  #    convert data frame to tidy data in the long form
+  ##############################################################################
   n_measurements <- n_samples_no_burn_in * length(input_filenames)
   df_long <- to_long(df)  
   testthat::expect_true(nrow(df_long) == n_measurements)
   testthat::expect_true(ncol(df_long) == n_parameters + 2)
   
+  ##############################################################################
+  # 6. Plot the tidy data in long form as a violin plot, 
+  #    depends on sampling method
+  ##############################################################################
+  testthat::expect_silent(plot(df_long))
 })
