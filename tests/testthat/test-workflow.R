@@ -2,16 +2,11 @@ context("workflow")
 
 test_that("Full workflow, general", {
 
-  chain_length <- 11000
-  sampling_interval <- 1000
-  sequence_length <- 150
+  if (!ribir::is_on_travis()) return()
 
-  if (!ribir::is_on_travis()) {
-    # Shorter on local computer
-    chain_length <- 1100
-    sampling_interval <- 100
-    sequence_length <- 150
-  }
+  chain_length <- 1100
+  sampling_interval <- 100
+  sequence_length <- 150
 
   input_filenames <- create_input_files_general(
     mcmc = beautier::create_mcmc(
