@@ -4,10 +4,16 @@ test_that("Full workflow, general", {
 
   if (!ribir::is_on_travis()) return()
 
-  chain_length <- 1100
-  sampling_interval <- 100
+  n_parameters <- 13 # Just a given
+  chain_length <- 4000
+  sampling_interval <- 1000
   sequence_length <- 150
-
+  testit::assert(sampling_interval >= 1000)
+  n_samples <- 1 + (chain_length / sampling_interval)
+  burn_in_fraction <- 0.40
+  n_samples_to_remove <- burn_in_fraction * n_samples
+  n_samples_no_burn_in <- n_samples - n_samples_to_remove
+  
   ##############################################################################
   # 1.1 Create all `.RDa` input/parameter files to do a general mapping
   ##############################################################################
@@ -19,6 +25,8 @@ test_that("Full workflow, general", {
     sequence_length = sequence_length,
     folder_name = tempdir()
   )
+  
+  testit::assert(n_parameters == length(unlist(readRDS(input_filenames[1]))))
   
   ##############################################################################
   # 2 Run simulation, store all info (such as all posterior phylogenies) as .RDa
@@ -39,6 +47,7 @@ test_that("Full workflow, general", {
       input_filename = input_filenames[i],
       output_filename = output_filenames[i]
     )
+    testit::assert(length(readRDS(output_filenames[i])$trees) == n_samples)
   }
   
   ##############################################################################
@@ -54,10 +63,12 @@ test_that("Full workflow, general", {
   for (i in seq_along(output_filenames)) {
     create_nltt_file(
       input_filename = output_filenames[i],
-      output_filename = nltt_filenames[i]
+      output_filename = nltt_filenames[i],
+      burn_in_fraction = burn_in_fraction
     )
+    testit::assert(length(readRDS(nltt_filenames[i])$nltts) == n_samples_no_burn_in)
   }
-
+  
   ##############################################################################
   # 4. Merge all nLTT values into one `.csv` file
   ##############################################################################
@@ -69,8 +80,8 @@ test_that("Full workflow, general", {
   
   testthat::expect_true(file.exists(csv_filename))
   df <- read.csv(file = csv_filename)
-  testthat::expect_true(nrow(df) == 3)
-  testthat::expect_true(ncol(df) > 14)
+  testthat::expect_true(nrow(df) == length(input_filenames))
+  testthat::expect_true(ncol(df) == n_parameters + n_samples_no_burn_in)
   
   
 })

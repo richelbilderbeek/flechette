@@ -5,7 +5,7 @@ test_that("use", {
   output_filename <- tempfile()
 
   input_filenames <- create_input_files_general(
-    mcmc = beautier::create_mcmc(chain_length = 2000),
+    mcmc = beautier::create_mcmc(chain_length = 3000, store_every = 1000),
     folder_name = tempdir()
   )
   # Only run the first input file
@@ -18,6 +18,8 @@ test_that("use", {
   testthat::expect_true(file.exists(output_filename))
 
   out <- readRDS(output_filename)
+  out$trees
+  
   testthat::expect_true("parameters" %in% names(out))
   testthat::expect_true("incipient_tree" %in% names(out))
   testthat::expect_true("species_tree" %in% names(out))

@@ -28,5 +28,5 @@ nltt_files_to_csv <- function(
     df[i, ] <- unlist(c(file$parameters, file$nltts))
   }
   # Save
-  utils::write.csv(x = df, file = csv_filename)
+  utils::write.csv(x = df, file = csv_filename, row.names = FALSE)
 }
