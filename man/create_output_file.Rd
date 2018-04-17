@@ -5,13 +5,15 @@
 \title{Process an input file}
 \usage{
 create_output_file(input_filename = input_filename,
-  output_filename = output_filename)
+  output_filename = output_filename, verbose = FALSE)
 }
 \arguments{
 \item{input_filename}{name of the input file,
-as created by \code{\link{create_input_files}}}
+as created by \code{\link{create_input_files_general}}}
 
 \item{output_filename}{name of the output file}
+
+\item{verbose}{shows output if TRUE}
 }
 \description{
 Process an input file

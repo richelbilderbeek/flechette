@@ -1,11 +1,14 @@
 #' Creates the parameter files in the article for the general exploration
 #' @param mcmc MCMC options, as created by \link[beautier]{create_mcmc}
+#' @param sequence_length DNA alignment sequence length, 
+#'   in number of nucleotides
 #' @param folder_name name of the folder where all files are created
 #' @return The filenames of all parameter files created
 #' @export
 #' @author Richel Bilderbeek
 create_input_files_general <- function(
   mcmc = beautier::create_mcmc(chain_length = 1000000, store_every = 1000),
+  sequence_length = 15000,
   folder_name = getwd()
 ) {
   filenames <- NULL
@@ -26,7 +29,7 @@ create_input_files_general <- function(
           crown_age_sigma = 0.01,
           sampling_method = sampling_method,
           mutation_rate = 1000 / 15,
-          sequence_length = 15000,
+          sequence_length = sequence_length,
           mcmc = mcmc,
           tree_sim_rng_seed = index,
           alignment_rng_seed = index,
