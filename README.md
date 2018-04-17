@@ -18,6 +18,9 @@ Step|Function|Description
 2|`create_output_file`|Run simulation, store all info (such as all posterior phylogenies) as `.RDa`
 3|`create_nltt_files`|Extract nLTT values from output file, store parameters and nLTTs as `.RDa`
 4|`nltt_files_to_csv`|Merge all nLTT values into one `.csv` file
+5|`to_long`|After reading the `.csv` with `read.csv()`, convert data frame to tidy data in the long form
+6|`plot`|Plot the tidy data in long form as a violin plot, depends on sampling method
+
 
 ## Installation
 
