@@ -4,7 +4,7 @@ test_that("use", {
 
   output_filename <- tempfile()
 
-  input_filenames <- create_input_files(
+  input_filenames <- create_input_files_general(
     mcmc = beautier::create_mcmc(chain_length = 2000)
   )
   # Only run the first input file

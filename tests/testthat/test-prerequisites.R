@@ -27,6 +27,12 @@ test_that("Can create such a big data frame, #9", {
 
   ncols <- 1050
   nrows <- 40000
+  
+  if (!ribir::is_on_travis()) {
+    # Smaller on local computer
+    ncols <- 105
+    nrows <- 4000
+  }
   ncells <- ncols*nrows
   
   testit::assert(ncells < 2^32-1)
