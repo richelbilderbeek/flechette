@@ -2,7 +2,7 @@
 #' @param input_filename input filename, 
 #'    containing the BEAST2 run results, 
 #'    as created by create_output_file
-#' @param outpjut_filename output filename, 
+#' @param output_filename output filename, 
 #'    containing the nLTT values
 #' @export
 create_nltt_file <- function(
@@ -15,7 +15,7 @@ create_nltt_file <- function(
   input <- readRDS(input_filename)
   output <- list(
     parameters = input$parameters,
-    nltts = nLTT::nltts_diff(tree = data$species_tree, trees = data$trees)
+    nltts = nLTT::nltts_diff(tree = input$species_tree, trees = input$trees)
   )
   saveRDS(object = output, file = output_filename)
 }

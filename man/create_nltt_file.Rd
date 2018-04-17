@@ -11,7 +11,7 @@ create_nltt_file(input_filename, output_filename)
 containing the BEAST2 run results, 
 as created by create_output_file}
 
-\item{outpjut_filename}{output filename, 
+\item{output_filename}{output filename, 
 containing the nLTT values}
 }
 \description{

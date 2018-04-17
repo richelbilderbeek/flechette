@@ -57,22 +57,20 @@ test_that("Full workflow, general", {
       output_filename = nltt_filenames[i]
     )
   }
-  skip("WIP")
-  
-  
+
   ##############################################################################
   # 4. Merge all nLTT values into one `.csv` file
   ##############################################################################
   csv_filename <- tempfile()
   nltt_files_to_csv(
-    input_filename = nltt_filenames,
-    output_filename = csv_filename
+    nltt_filenames = nltt_filenames,
+    csv_filename = csv_filename
   )
   
   testthat::expect_true(file.exists(csv_filename))
   df <- read.csv(file = csv_filename)
   testthat::expect_true(nrow(df) == 3)
-  testthat::expect_true(ncol(df) > 1000)
+  testthat::expect_true(ncol(df) > 14)
   
   
 })
