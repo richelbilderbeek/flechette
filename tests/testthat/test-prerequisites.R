@@ -51,6 +51,8 @@ test_that("Can create such a big data frame, #9", {
   testthat::expect_true(all.equal(df2, df, tolerance = 0.1))
   rm(df)
   rm(df2)
+  # Manually call garbage collection, we need that memory directly
+  gc()
 })
 
 test_that("Can convert a data frame to long form, #5", {
