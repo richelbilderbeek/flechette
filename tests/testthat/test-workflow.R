@@ -83,5 +83,9 @@ test_that("Full workflow, general", {
   testthat::expect_true(nrow(df) == length(input_filenames))
   testthat::expect_true(ncol(df) == n_parameters + n_samples_no_burn_in)
   
+  n_measurements <- n_samples_no_burn_in * length(input_filenames)
+  df_long <- to_long(df)  
+  testthat::expect_true(nrow(df_long) == n_measurements)
+  testthat::expect_true(ncol(df_long) == n_parameters + 2)
   
 })
