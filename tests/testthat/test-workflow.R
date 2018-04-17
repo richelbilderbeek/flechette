@@ -51,13 +51,13 @@ test_that("Full workflow, general", {
   )
   # Create the output files
   testit::assert(length(output_filenames) == length(nltt_filenames))
-  skip("WIP")
   for (i in seq_along(output_filenames)) {
-    create_nltt_files(
+    create_nltt_file(
       input_filename = output_filenames[i],
       output_filename = nltt_filenames[i]
     )
   }
+  skip("WIP")
   
   
   ##############################################################################
