@@ -13,28 +13,28 @@ test_that("Full workflow, general", {
   burn_in_fraction <- 0.40
   n_samples_to_remove <- burn_in_fraction * n_samples
   n_samples_no_burn_in <- n_samples - n_samples_to_remove
-  
+
   ##############################################################################
   # 1.1 Create all `.RDa` input/parameter files to do a general mapping
   ##############################################################################
   input_filenames <- create_input_files_general(
     mcmc = beautier::create_mcmc(
-      chain_length = chain_length, 
+      chain_length = chain_length,
       store_every = sampling_interval
     ),
     sequence_length = sequence_length,
     folder_name = tempdir()
   )
-  
+
   testit::assert(n_parameters == length(unlist(readRDS(input_filenames[1]))))
-  
+
   ##############################################################################
   # 2 Run simulation, store all info (such as all posterior phylogenies) as .RDa
   ##############################################################################
   # Only run the first three input file
   set.seed(42)
   input_filenames <- sample(input_filenames, size = 3, replace = FALSE)
-  
+
   # Name the output files
   output_filenames <- sub(
     x = input_filenames, 
@@ -49,7 +49,7 @@ test_that("Full workflow, general", {
     )
     testit::assert(length(readRDS(output_filenames[i])$trees) == n_samples)
   }
-  
+
   ##############################################################################
   # 3. Extract nLTT values from output file, store parameters and nLTTs as .RDa
   ##############################################################################
@@ -68,7 +68,7 @@ test_that("Full workflow, general", {
     )
     testit::assert(length(readRDS(nltt_filenames[i])$nltts) == n_samples_no_burn_in)
   }
-  
+
   ##############################################################################
   # 4. Merge all nLTT values into one `.csv` file
   ##############################################################################
@@ -77,13 +77,13 @@ test_that("Full workflow, general", {
     nltt_filenames = nltt_filenames,
     csv_filename = csv_filename
   )
-  
+
   # Reading the .csv
   testthat::expect_true(file.exists(csv_filename))
   df <- read.csv(file = csv_filename)
   testthat::expect_true(nrow(df) == length(input_filenames))
   testthat::expect_true(ncol(df) == n_parameters + n_samples_no_burn_in)
-
+  
   ##############################################################################
   # 5. After reading the `.csv` with `read.csv()`, 
   #    convert data frame to tidy data in the long form
@@ -92,7 +92,7 @@ test_that("Full workflow, general", {
   df_long <- to_long(df)  
   testthat::expect_true(nrow(df_long) == n_measurements)
   testthat::expect_true(ncol(df_long) == n_parameters + 2)
-  
+
   ##############################################################################
   # 6. Plot the tidy data in long form as a violin plot, 
   #    depends on sampling method

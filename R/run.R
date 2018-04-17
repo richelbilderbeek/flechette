@@ -21,7 +21,7 @@ run <- function(
   if (!file.exists(beast_jar_path)) {
     stop("'beast_jar_path' is invalid path to BEAST2")
   }
-  
+
   set.seed(parameters$tree_sim_rng_seed)
   pbd_parameters <- c(
     parameters$speciation_initiation_rate,

@@ -2,7 +2,7 @@ context("to_long")
 
 test_that("use", {
 
-  n_files <- 3  
+  n_files <- 3
   n_nltts <- 3 # Called X, X.1 and X.2
   df <- data.frame(
     speciation_initiation_rate = stats::runif(n = n_files),
@@ -24,6 +24,6 @@ test_that("use", {
   )
   df_long <- to_long(df)
   testthat::expect_equal(nrow(df_long), 9)
-  testthat::expect_equal(ncol(df_long), 15) # 13 params + 1 index + 1 measurement 
-  
+  # 13 params + 1 index + 1 measurement 
+  testthat::expect_equal(ncol(df_long), 15) 
 })

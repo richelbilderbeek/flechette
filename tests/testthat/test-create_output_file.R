@@ -18,8 +18,7 @@ test_that("use", {
   testthat::expect_true(file.exists(output_filename))
 
   out <- readRDS(output_filename)
-  out$trees
-  
+
   testthat::expect_true("parameters" %in% names(out))
   testthat::expect_true("incipient_tree" %in% names(out))
   testthat::expect_true("species_tree" %in% names(out))

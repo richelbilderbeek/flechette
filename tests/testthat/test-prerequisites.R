@@ -28,7 +28,7 @@ test_that("Can create such a big data frame, #9", {
   # Ideal
   ncols <- 1050
   nrows <- 40000
-  
+
   if (!ribir::is_on_travis()) {
     # Smaller on local computer
     ncols <- 105
@@ -39,16 +39,16 @@ test_that("Can create such a big data frame, #9", {
     nrows <- 20000 # Half, as data frame must be in memory twice
   }
   ncells <- ncols * nrows
-  
-  testit::assert(ncells < 2^32-1)
+
+  testit::assert(ncells < 2 ^ 32 - 1)
   mem_use <- ncells * object.size(3.14)
   format(mem_use, units = "Mb")
   
   # Computer will freeze if you ignore this warning ..
-  testit::assert(mem_use < ((2 ^ 32) - 1))
-  
+  testit::assert(mem_use < 2 ^ 32 - 1)
+
   df <- data.frame(matrix(nrow = nrows, ncol = ncols, data = seq(1, ncells)))
-  
+
   # Save and load should work
   filename <- tempfile()
   utils::write.csv(x = df, file = filename, row.names = FALSE)
@@ -72,10 +72,9 @@ test_that("Ten percent of burn-in results in 1000 values, #10", {
     1000,
     length(
       tracerer::remove_burn_in(
-        trace = seq(1, 1111), 
+        trace = seq(1, 1111),
         burn_in_fraction = 0.1
       )
     )
   )
-  
 })
