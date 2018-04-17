@@ -49,7 +49,8 @@ test_that("Can create such a big data frame, #9", {
   utils::write.csv(x = df, file = filename, row.names = FALSE)
   df2 <- read.csv(file = filename)
   testthat::expect_true(all.equal(df2, df, tolerance = 0.1))
-
+  rm(df)
+  rm(df2)
 })
 
 test_that("Can convert a data frame to long form, #5", {
