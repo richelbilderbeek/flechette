@@ -25,6 +25,7 @@ test_that("PBD with Inf as speciation completion rate, #4", {
 
 test_that("Can create such a big data frame, #9", {
 
+  # Ideal
   ncols <- 1050
   nrows <- 40000
   
@@ -32,6 +33,10 @@ test_that("Can create such a big data frame, #9", {
     # Smaller on local computer
     ncols <- 105
     nrows <- 4000
+  } else {
+    # Also Travis has its limits
+    ncols <- 1050
+    nrows <- 20000 # Half, as data frame must be in memory twice
   }
   ncells <- ncols*nrows
   
