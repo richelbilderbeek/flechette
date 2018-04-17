@@ -22,3 +22,9 @@ test_that("PBD with Inf as speciation completion rate, #4", {
   )
 
 })
+
+test_that("Can convert a data frame to long form, #5", {
+
+  skip("WIP")
+
+})
