@@ -37,7 +37,7 @@ test_that("Full workflow, general", {
 
   # Name the output files
   output_filenames <- sub(
-    x = input_filenames, 
+    x = input_filenames,
     pattern = ".RDa", replacement = "_out.RDa"
   )
   # Create the output files
@@ -55,7 +55,7 @@ test_that("Full workflow, general", {
   ##############################################################################
   # Name the nLTT files
   nltt_filenames <- sub(
-    x = input_filenames, 
+    x = input_filenames,
     pattern = ".RDa", replacement = "_nltt.RDa"
   )
   # Create the output files
@@ -66,7 +66,9 @@ test_that("Full workflow, general", {
       output_filename = nltt_filenames[i],
       burn_in_fraction = burn_in_fraction
     )
-    testit::assert(length(readRDS(nltt_filenames[i])$nltts) == n_samples_no_burn_in)
+    testit::assert(
+      length(readRDS(nltt_filenames[i])$nltts) == n_samples_no_burn_in
+    )
   }
 
   ##############################################################################
@@ -83,18 +85,18 @@ test_that("Full workflow, general", {
   df <- read.csv(file = csv_filename)
   testthat::expect_true(nrow(df) == length(input_filenames))
   testthat::expect_true(ncol(df) == n_parameters + n_samples_no_burn_in)
-  
+
   ##############################################################################
-  # 5. After reading the `.csv` with `read.csv()`, 
+  # 5. After reading the `.csv` with `read.csv()`,
   #    convert data frame to tidy data in the long form
   ##############################################################################
   n_measurements <- n_samples_no_burn_in * length(input_filenames)
-  df_long <- to_long(df)  
+  df_long <- to_long(df)
   testthat::expect_true(nrow(df_long) == n_measurements)
   testthat::expect_true(ncol(df_long) == n_parameters + 2)
 
   ##############################################################################
-  # 6. Plot the tidy data in long form as a violin plot, 
+  # 6. Plot the tidy data in long form as a violin plot,
   #    depends on sampling method
   ##############################################################################
   testthat::expect_silent(plot(df_long))

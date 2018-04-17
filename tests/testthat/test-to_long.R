@@ -16,7 +16,7 @@ test_that("use", {
     mcmc.chain_length = 4000,
     mcmc.store_every = 1000,
     tree_sim_rng_seed = seq(1, n_files),
-    alignment_rng_seed = seq(1, n_files), 
+    alignment_rng_seed = seq(1, n_files),
     beast2_rng_seed = seq(1, n_files),
     X = stats::runif(n = n_files),
     X.1 = stats::runif(n = n_files),
@@ -24,6 +24,6 @@ test_that("use", {
   )
   df_long <- to_long(df)
   testthat::expect_equal(nrow(df_long), 9)
-  # 13 params + 1 index + 1 measurement 
-  testthat::expect_equal(ncol(df_long), 15) 
+  # 13 params + 1 index + 1 measurement
+  testthat::expect_equal(ncol(df_long), 15)
 })

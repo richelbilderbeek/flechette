@@ -43,7 +43,7 @@ test_that("Can create such a big data frame, #9", {
   testit::assert(ncells < 2 ^ 32 - 1)
   mem_use <- ncells * object.size(3.14)
   format(mem_use, units = "Mb")
-  
+
   # Computer will freeze if you ignore this warning ..
   testit::assert(mem_use < 2 ^ 32 - 1)
 
