@@ -1,10 +1,12 @@
 #' Creates the parameter files in the article for the general exploration
 #' @param mcmc MCMC options, as created by \link[beautier]{create_mcmc}
+#' @param folder_name name of the folder where all files are created
 #' @return The filenames of all parameter files created
 #' @export
 #' @author Richel Bilderbeek
 create_input_files_general <- function(
-  mcmc = beautier::create_mcmc(chain_length = 1000000, store_every = 1000)
+  mcmc = beautier::create_mcmc(chain_length = 1000000, store_every = 1000),
+  folder_name = getwd()
 ) {
   filenames <- NULL
   # Must start at one, as the BEAST2 RNG seed must be at least one.
@@ -15,8 +17,7 @@ create_input_files_general <- function(
         if (extinction_rate > speciation_initiation_rate) next
         sampling_method <- "youngest"
         if (index %% 2 == 1) sampling_method <- "oldest"
-
-        filename <- paste0(index, ".RDa")
+        filename <- file.path(folder_name, paste0(index, ".RDa"))
         params <- create_params(
           speciation_initiation_rate = speciation_initiation_rate,
           speciation_completion_rate = speciation_completion_rate,

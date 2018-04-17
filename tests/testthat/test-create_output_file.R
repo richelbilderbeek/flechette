@@ -5,7 +5,8 @@ test_that("use", {
   output_filename <- tempfile()
 
   input_filenames <- create_input_files_general(
-    mcmc = beautier::create_mcmc(chain_length = 2000)
+    mcmc = beautier::create_mcmc(chain_length = 2000),
+    folder_name = tempdir()
   )
   # Only run the first input file
   input_filename <- input_filenames[1]
