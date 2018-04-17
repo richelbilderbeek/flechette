@@ -7,6 +7,7 @@ test_that("use", {
   input_filenames <- create_input_files(
     mcmc = beautier::create_mcmc(chain_length = 2000)
   )
+  # Only run the first input file
   input_filename <- input_filenames[1]
 
   create_output_file(

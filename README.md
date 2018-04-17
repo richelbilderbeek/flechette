@@ -10,11 +10,14 @@ develop|[![Build Status](https://travis-ci.org/richelbilderbeek/raket.svg?branch
  * [babette](https://github.com/richelbilderbeek/babette)
  * [pirouette](https://github.com/richelbilderbeek/pirouette)
 
-## Examples
+## Pipeline
 
-```
-None yet
-```
+Step|Function|Description
+1.1|`create_input_files_general`|Create all `.RDa` input files to do a general mapping
+1.2|`create_input_files_sampling`|Create all `.RDa` input files to investigate the effect of sampling
+2|`create_output_file`|Run simulation, store all info (such as all posterior phylogenies) as `.RDa`
+3|`create_nltt_files`|Extract nLTT values from output file, store parameters and nLTTs as `.RDa`
+4|`nltt_files_to_csv`|Merge all nLTT values into one `.csv` file
 
 ## Installation
 

@@ -41,3 +41,4 @@ vignettes/*.fas
 vignettes/article_cache/
 vignettes/article_files/
 tests/testthat/*.RDa
+*.RDa

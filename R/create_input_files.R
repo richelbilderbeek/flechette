@@ -1,10 +1,9 @@
-#' Creates the parameter files in the article
-#' Now every parameter setting has its own seed
+#' Creates the parameter files in the article for the general exploration
 #' @param mcmc MCMC options, as created by \link[beautier]{create_mcmc}
 #' @return The filenames of all parameter files created
 #' @export
 #' @author Richel Bilderbeek
-create_input_files <- function(
+create_input_files_general <- function(
   mcmc = beautier::create_mcmc(chain_length = 1000000, store_every = 1000)
 ) {
   filenames <- NULL
