@@ -1,8 +1,8 @@
 #' Measure the nLTT statistics from a BEAST2 run
-#' @param input_filename input filename, 
-#'    containing the BEAST2 run results, 
+#' @param input_filename input filename,
+#'    containing the BEAST2 run results,
 #'    as created by create_output_file
-#' @param output_filename output filename, 
+#' @param output_filename output filename,
 #'    containing the nLTT values
 #' @param burn_in_fraction the proportion of values being removed,
 #'   see \link[tracerer]{remove_burn_in}

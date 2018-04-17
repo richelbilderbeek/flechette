@@ -38,14 +38,14 @@ test_that("Can create such a big data frame, #9", {
     ncols <- 1050
     nrows <- 20000 # Half, as data frame must be in memory twice
   }
-  ncells <- ncols*nrows
+  ncells <- ncols * nrows
   
   testit::assert(ncells < 2^32-1)
   mem_use <- ncells * object.size(3.14)
   format(mem_use, units = "Mb")
   
   # Computer will freeze if you ignore this warning ..
-  testit::assert(mem_use < ((2^32)-1))
+  testit::assert(mem_use < ((2 ^ 32) - 1))
   
   df <- data.frame(matrix(nrow = nrows, ncol = ncols, data = seq(1, ncells)))
   

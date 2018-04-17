@@ -14,7 +14,9 @@ run <- function(
     stop("'parameters$beast2_rng_seed' must be NA or non-zero positive")
   }
   if (!beautier:::is_mcmc(parameters$mcmc)) {
-    stop("'parameters$mcmc' must be an MCMC as created by beautier::create_mcmc")
+    stop(
+      "'parameters$mcmc' must be an MCMC as created by beautier::create_mcmc"
+    )
   }
   if (!file.exists(beast_jar_path)) {
     stop("'beast_jar_path' is invalid path to BEAST2")

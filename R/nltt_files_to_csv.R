@@ -13,15 +13,12 @@ nltt_files_to_csv <- function(
     stop("'nltt_filenames' must have at least one filename")
   }
   # First row
-  df <- NULL
-  {
-    first_file <- readRDS(nltt_filenames[1])
-    first_list <- c(first_file$parameters, first_file$nltts)
-    first_vector <- unlist(first_list)
-    ncols <- length(first_vector)
-    df <- data.frame(matrix(nrow = nrows, ncol = ncols))
-    colnames(df) <- names(first_vector)
-  }
+  first_file <- readRDS(nltt_filenames[1])
+  first_list <- c(first_file$parameters, first_file$nltts)
+  first_vector <- unlist(first_list)
+  ncols <- length(first_vector)
+  df <- data.frame(matrix(nrow = nrows, ncol = ncols))
+  colnames(df) <- names(first_vector)
   # Read data
   for (i in seq_along(nltt_filenames)) {
     file <- readRDS(nltt_filenames[i])
