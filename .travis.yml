@@ -15,6 +15,7 @@ r_github_packages:
   - richelbilderbeek/nLTT
   - richelbilderbeek/pirouette
   - richelbilderbeek/tracerer
+  - richelbilderbeek/ribir
   - MangoTheCat/goodpractice
   - KlausVigo/phangorn
 
