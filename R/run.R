@@ -28,12 +28,12 @@ run <- function(
   scr <- parameters$speciation_completion_rate
   # SIR: Speciation Initation Rate (for Incipient or Good species)
   # Assume SIR = SIRG = SIRI
-  sirg <- parameters$speciation_initiation_rate 
-  siri <- parameters$speciation_initiation_rate 
+  sirg <- parameters$speciation_initiation_rate
+  siri <- parameters$speciation_initiation_rate
   # ER: Extinction Rate (for Incipient or Good species)
   # Assume ER = ERG = ERI
-  erg <- parameters$extinction_rate 
-  eri <- parameters$extinction_rate 
+  erg <- parameters$extinction_rate
+  eri <- parameters$extinction_rate
   pbd_parameters <- c(
     sirg,
     scr,
