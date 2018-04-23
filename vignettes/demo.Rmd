@@ -1,0 +1,144 @@
+---
+title: "raket demo"
+author: "Richel J.C. Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{raket demo}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This vignette shows the full pipeline of one single experiment, starting 
+from its parameters to plotting the final distribution of nLTT statistics.
+
+As these experiments are intended to run on a computer cluster, each
+step saves its result to a file. This is a bit cumbersome for a vignette,
+but the best that can be done.
+
+First we load the libraries we'll need:
+
+```{r}
+library(raket)
+library(ggplot2)
+```
+
+The research produces two data sets:
+
+ * a general balanced data set
+ * a data set conditioned on sampling having an effect
+
+This vignette will run one experiment for the general data set.
+
+For this data set, we will create all parameter files, after which we
+will keep only one file to actually run. Additionally, we will create
+parameters that are shorter to run.
+
+```{r}
+set.seed(42)
+folder_name <- tempdir()
+all_input_filenames <- raket::create_input_files_general(
+  mcmc = beautier::create_mcmc(chain_length = 10000, store_every = 1000),
+  sequence_length = 150,
+  folder_name = folder_name
+)
+input_filename <- sample(all_input_filenames, size = 1)
+dummy <- file.remove(all_input_filenames[ all_input_filenames != input_filename] )
+testit::assert(file.exists(input_filename))
+```
+
+The input file only contains parameters:
+
+```{r}
+print(readRDS(input_filename))
+```
+
+The input file is then run, its results save to an output file:
+
+```{r}
+output_filename <- tempfile("out.RDa")
+raket::create_output_file(
+  input_filename = input_filename,
+  output_filename = output_filename
+)
+```
+
+The output file contains many things, including the parameters used:
+
+```{r}
+print(readRDS(output_filename))
+```
+
+From this raw data, the nLTTs can be measured:
+
+```{r}
+nltts_filename <- tempfile("nltt.RDa")
+raket::create_nltt_file(
+  input_filename = output_filename,
+  output_filename = nltts_filename,
+  burn_in_fraction = 0.1
+)
+```
+
+The resulting file only contains the parameters and nLTT statistics:
+
+```{r}
+print(names(readRDS(nltts_filename)))
+```
+
+We can already plot the nLTT statistics. Here I show a raw histogram
+and the density plot. The latter will be used in the final result as
+well. For few nLTT statistics (that is, short MCMC chain lengths), 
+this picture will look clumsy:
+
+```{r fig.width=7, fig.height=7}
+ggplot(
+  data = data.frame(nltts = readRDS(nltts_filename)$nltts),
+  aes(x = nltts)
+) + geom_histogram(binwidth = 0.01) + geom_density()
+```
+
+The next step in the experiment is to convert all nLTT files to one 
+comma seperated file. As we only run one experiment, there is only one
+nLTT file to supply:
+
+```{r}
+csv_filename <- tempfile("nltts.csv")
+raket::nltt_files_to_csv(
+  nltt_filenames = nltts_filename, 
+  csv_filename = csv_filename
+)
+```
+
+The comma-seperated file contains as many rows as there are experiments run.
+In this case, it will have only one row, looking like this:
+
+```{r}
+knitr::kable(read.csv(file = csv_filename))
+```
+
+For Tidy Data, the comma-seperated file needs to be read and converted to the 
+long form.
+
+```{r}
+df <- raket::to_long(df = read.csv(csv_filename))
+```
+
+In this long form, each row contains one measurement (that is, 
+one nLTT statistic):
+
+```{r}
+knitr::kable(df)
+```
+
+Finally, we plot all (in this case, one) experiments:
+```{r fig.width=7, fig.height=7}
+raket::plot(df_long = df)
+```
