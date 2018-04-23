@@ -7,11 +7,11 @@
 create_nltt_file(input_filename, output_filename, burn_in_fraction = 0.1)
 }
 \arguments{
-\item{input_filename}{input filename, 
-containing the BEAST2 run results, 
+\item{input_filename}{input filename,
+containing the BEAST2 run results,
 as created by create_output_file}
 
-\item{output_filename}{output filename, 
+\item{output_filename}{output filename,
 containing the nLTT values}
 
 \item{burn_in_fraction}{the proportion of values being removed,

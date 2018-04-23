@@ -23,12 +23,23 @@ run <- function(
   }
 
   set.seed(parameters$tree_sim_rng_seed)
+
+  # SCR: Specition Completion rate
+  scr <- parameters$speciation_completion_rate
+  # SIR: Speciation Initation Rate (for Incipient or Good species)
+  # Assume SIR = SIRG = SIRI
+  sirg <- parameters$speciation_initiation_rate 
+  siri <- parameters$speciation_initiation_rate 
+  # ER: Extinction Rate (for Incipient or Good species)
+  # Assume ER = ERG = ERI
+  erg <- parameters$extinction_rate 
+  eri <- parameters$extinction_rate 
   pbd_parameters <- c(
-    parameters$speciation_initiation_rate,
-    parameters$speciation_completion_rate,
-    parameters$speciation_initiation_rate,
-    parameters$extinction_rate,
-    parameters$extinction_rate
+    sirg,
+    scr,
+    siri,
+    erg,
+    eri
   )
 
   # Note: if speciation rates are zero, PBD::pbd_sim will last forever

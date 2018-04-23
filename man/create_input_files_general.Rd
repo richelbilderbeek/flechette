@@ -10,7 +10,7 @@ create_input_files_general(mcmc = beautier::create_mcmc(chain_length = 1e+06,
 \arguments{
 \item{mcmc}{MCMC options, as created by \link[beautier]{create_mcmc}}
 
-\item{sequence_length}{DNA alignment sequence length, 
+\item{sequence_length}{DNA alignment sequence length,
 in number of nucleotides}
 
 \item{folder_name}{name of the folder where all files are created}
