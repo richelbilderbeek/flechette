@@ -10,6 +10,12 @@ develop|[![Build Status](https://travis-ci.org/richelbilderbeek/raket.svg?branch
  * [babette](https://github.com/richelbilderbeek/babette)
  * [pirouette](https://github.com/richelbilderbeek/pirouette)
 
+## Download raket locally
+
+```
+git clone https://github.com/richelbilderbeek/raket
+```
+
 ## Pipeline
 
 Step|Function|Description
