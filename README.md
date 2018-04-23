@@ -19,6 +19,7 @@ git clone https://github.com/richelbilderbeek/raket
 ## Pipeline
 
 Step|Function|Description
+---|---|---
 1.1|`create_input_files_general`|Create all `.RDa` input/parameter files to do a general mapping
 1.2|`create_input_files_sampling`|Create all `.RDa` input/parameter files to investigate the effect of sampling
 2|`create_output_file`|Run simulation, store all info (such as all posterior phylogenies) as `.RDa`
