@@ -9,7 +9,7 @@ This GitHub follows the [Contributor Covenant Code of Conduct](doc/code_of_condu
 
 ## Which package to contribute to?
 
-`babette` consists out of three packages.
+`raket` consists out of multiple packages:
 
 If you want to contribute to the creation of BEAST2 XML input file,
 go to [beautier](https://github.com/richelbilderbeek/beautier/blob/master/CONTRIBUTING.md).
@@ -19,6 +19,12 @@ go to [beastier](https://github.com/richelbilderbeek/beastier/blob/master/CONTRI
 
 If you want to contribute to how BEAST2 output is parsed,
 go to [tracerer](https://github.com/richelbilderbeek/tracerer/blob/master/CONTRIBUTING.md)
+
+If you want to contribute to the full BEAST2 pipeline,
+go to [babette](https://github.com/richelbilderbeek/babette/blob/master/CONTRIBUTING.md)
+
+If you want to contribute to the conversion of initial phylogeny to alignment,
+go to [pirouette](https://github.com/richelbilderbeek/pirouette/blob/master/CONTRIBUTING.md)
 
 If you want to contribute with an overarching idea, you are at the right spot :-) 
 
@@ -52,15 +58,15 @@ Pull Requests should follow the same guidelines as 'Submitting code'.
 
 ## git usage
 
-To get started working on `babette` do:
+To get started working on `raket` do:
 
 ```
-git clone https://github.com/richelbilderbeek/babette
+git clone https://github.com/richelbilderbeek/raket
 ```
 
 Development is done on the `develop` branch. 
 To download and checkout the `develop` branch, 
-first go into the `beautier` folder (`cd babette`), then do:
+first go into the `raket` folder (`cd raket`), then do:
 
 ```
 git checkout -b develop origin/develop

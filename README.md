@@ -44,8 +44,7 @@ devtools::install_github("richelbilderbeek/raket")
 `raket` assumes that BEAST2 is installed. To install BEAST2, from R do:
 
 ```{r}
-library(beastier)
-install_beast2()
+beastier::install_beast2()
 ```
 
 This will download and extract BEAST2 to:
