@@ -15,7 +15,7 @@ create_input_files_general <- function(
 ) {
   filenames <- NULL
   # Must start at one, as the BEAST2 RNG seed must be at least one.
-  index = 1
+  index <- 1
   for (i in seq(1, n_replicates)) {
     for (speciation_initiation_rate in c(0.1, 0.5, 1.0)) {
       for (speciation_completion_rate in c(0.1, 0.3, 1.0, 1000000000)) {
