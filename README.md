@@ -5,10 +5,14 @@ Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![AppVeyor
 master|[![Build Status](https://travis-ci.org/richelbilderbeek/raket.svg?branch=master)](https://travis-ci.org/richelbilderbeek/raket)|[![Build status](https://ci.appveyor.com/api/projects/status/pm0injx1acgrj6gp/branch/master?svg=true)](https://ci.appveyor.com/project/richelbilderbeek/raket/branch/master)|[![codecov.io](https://codecov.io/github/richelbilderbeek/raket/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/raket/branch/master)
 develop|[![Build Status](https://travis-ci.org/richelbilderbeek/raket.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/raket)|[![Build status](https://ci.appveyor.com/api/projects/status/pm0injx1acgrj6gp/branch/develop?svg=true)](https://ci.appveyor.com/project/richelbilderbeek/raket/branch/develop)|[![codecov.io](https://codecov.io/github/richelbilderbeek/raket/coverage.svg?branch=develop)](https://codecov.io/github/richelbilderbeek/raket/branch/develop)
 
-`raket` is an R package that combines:
+`raket` provides for all code used by [1].
 
- * [babette](https://github.com/richelbilderbeek/babette)
- * [pirouette](https://github.com/richelbilderbeek/pirouette)
+`raket` is an R package that uses
+
+ * [PBD](https://github.com/rsetienne/PBD): to generate incipient species trees and sample a species tree 
+ * [pirouette](https://github.com/richelbilderbeek/pirouette): to convert a species phylogeny to a posterior 
+ * [nLTT](https://github.com/richelbilderbeek/nLTT): to compare a species tree to all species trees in the posterior
+
 
 ## Download raket locally
 
@@ -88,6 +92,4 @@ Package|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![Codecov
 
 ## References
 
-```
-None yet
-```
+ * [1] Bilderbeek, Richel JC, and Rampal S. Etienne. "The error when inferring phylogenies with incipient species by a birth-death model." in preparation for registration at the [Open Source Framework](https://osf.io/)
