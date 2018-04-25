@@ -13,7 +13,9 @@ nltt_files_to_csv <- function(
     stop("'nltt_filenames' must have at least one filename")
   }
   # First row
-  first_file <- readRDS(nltt_filenames[1])
+  first_filename <- nltt_filenames[1]
+  testit::assert(file.exists(first_filename))
+  first_file <- readRDS(first_filename)
   first_list <- c(first_file$parameters, first_file$nltts)
   first_vector <- unlist(first_list)
   ncols <- length(first_vector)
@@ -21,7 +23,9 @@ nltt_files_to_csv <- function(
   colnames(df) <- names(first_vector)
   # Read data
   for (i in seq_along(nltt_filenames)) {
-    file <- readRDS(nltt_filenames[i])
+    filename <- nltt_filenames[i]
+    testit::assert(file.exists(filename))
+    file <- readRDS(filename)
     df[i, ] <- unlist(c(file$parameters, file$nltts))
   }
   # Save
