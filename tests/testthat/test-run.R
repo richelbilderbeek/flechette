@@ -5,9 +5,9 @@ test_that("use", {
   for (sampling_method in c("youngest", "oldest", "random")) {
     out <- run(
       parameters = create_params(
-        speciation_initiation_rate = 0.1,
-        speciation_completion_rate = 0.2,
-        extinction_rate = 0.01,
+        speciation_initiation_rate = 0.01,
+        speciation_completion_rate = 0.02,
+        extinction_rate = 0.001,
         crown_age = 15,
         sampling_method = sampling_method,
         mutation_rate = 0.1,
