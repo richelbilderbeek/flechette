@@ -87,7 +87,7 @@ Package|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![Codecov
  * [BEAST2 GitHub](https://github.com/CompEvol/beast2)
 
 ## References
-This is a test line.
+
 ```
 None yet
 ```
