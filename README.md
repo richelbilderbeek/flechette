@@ -92,5 +92,4 @@ Package|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![Codecov
 None yet
 ```
 
-Testing
-Another test!
+This is Richel's test!
