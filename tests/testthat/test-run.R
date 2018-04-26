@@ -2,6 +2,7 @@ context("run")
 
 test_that("use", {
 
+  set.seed(42)
   for (sampling_method in c("youngest", "oldest", "random")) {
     out <- run(
       parameters = create_params(
