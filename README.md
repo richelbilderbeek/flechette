@@ -91,7 +91,3 @@ Package|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![Codecov
 ```
 None yet
 ```
-
-Ha, ha, I was first!
-No, I was first!
-And I was last!
