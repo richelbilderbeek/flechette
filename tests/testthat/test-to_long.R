@@ -24,6 +24,6 @@ test_that("use", {
   )
   df_long <- to_long(df)
   testthat::expect_equal(nrow(df_long), 9)
-  # 13 params + 1 index + 1 measurement
-  testthat::expect_equal(ncol(df_long), 15)
+  # 15 params + 1 index + 1 measurement
+  testthat::expect_equal(ncol(df_long), 17)
 })

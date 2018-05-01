@@ -4,7 +4,7 @@ test_that("Full workflow, general", {
 
   if (!ribir::is_on_travis()) return()
 
-  n_parameters <- 13 # Just a given
+  n_parameters <- 15 # Just a given
   chain_length <- 4000
   sampling_interval <- 1000
   sequence_length <- 15
@@ -31,9 +31,18 @@ test_that("Full workflow, general", {
   ##############################################################################
   # 2 Run simulation, store all info (such as all posterior phylogenies) as .RDa
   ##############################################################################
-  # Only run the first three input file
+  # Only run the first three input file, pick three easy ones
   set.seed(42)
-  input_filenames <- sample(input_filenames, size = 3, replace = FALSE)
+  while (1) {
+    input_filenames <- sample(input_filenames, size = 3, replace = FALSE)
+    if (readRDS(input_filenames[1])$sirg > 0.1) next
+    if (readRDS(input_filenames[1])$siri > 0.1) next
+    if (readRDS(input_filenames[2])$sirg > 0.1) next
+    if (readRDS(input_filenames[2])$siri > 0.1) next
+    if (readRDS(input_filenames[3])$sirg > 0.1) next
+    if (readRDS(input_filenames[3])$siri > 0.1) next
+    break
+  }
 
   # Name the output files
   output_filenames <- sub(
