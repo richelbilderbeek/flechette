@@ -2,6 +2,7 @@ context("workflow")
 
 test_that("Full workflow, general", {
 
+  skip("Takes too long")
   if (!ribir::is_on_travis()) return()
 
   n_parameters <- 13 # Just a given
