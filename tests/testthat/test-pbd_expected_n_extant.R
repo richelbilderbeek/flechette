@@ -1,7 +1,7 @@
 context("pbd_expected_n_extant")
 
 test_that("minimal use", {
-  
+
   testthat::expect_silent(
     pbd_expected_n_extant(
       crown_age = 1.0,

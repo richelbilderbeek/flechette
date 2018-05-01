@@ -18,11 +18,13 @@ test_that("Full workflow, general", {
   # 1.1 Create all `.RDa` input/parameter files to do a general mapping
   ##############################################################################
   input_filenames <- create_input_files_general(
-    mcmc = beautier::create_mcmc(
-      chain_length = chain_length,
-      store_every = sampling_interval
+    general_params_set = create_general_params_set(
+      mcmc = beautier::create_mcmc(
+        chain_length = chain_length,
+        store_every = sampling_interval
+      ),
+      sequence_length = sequence_length
     ),
-    sequence_length = sequence_length,
     folder_name = tempdir()
   )
 
