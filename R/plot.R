@@ -5,11 +5,11 @@ plot <- function(
   df_long
 ) {
   # Satsfy R CMD check
-  speciation_completion_rate <- NULL
-  sampling_method <- NULL
-  extinction_rate <- NULL
-  speciation_initiation_rate <- NULL
-  nltt <- NULL
+  scr <- NULL; rm(scr) # nolint, fixes warning: no visible binding for global variable
+  sampling_method <- NULL; rm(sampling_method) # nolint, fixes warning: no visible binding for global variable
+  erg <- NULL; rm(erg) # nolint, fixes warning: no visible binding for global variable
+  sirg <- NULL; rm(sirg) # nolint, fixes warning: no visible binding for global variable
+  nltt <- NULL; rm(nltt) # nolint, fixes warning: no visible binding for global variable
   
   ggplot2::ggplot(
     data = df_long,

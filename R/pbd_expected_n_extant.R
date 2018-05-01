@@ -10,14 +10,14 @@
 #' @export
 #' @author Richel J.C. Bilderbeek
 pbd_expected_n_extant <- function(
-  crown_age, 
-  scr, 
-  sirg, 
-  siri, 
-  erg, 
+  crown_age,
+  scr,
+  sirg,
+  siri,
+  erg,
   eri,
   n_sims = 10
-) { 
+) {
   # Add more stops later, hopefully by students :-)
   if (crown_age <= 0.0) {
     stop("'crown age' must be non-zero and positive")
@@ -28,10 +28,14 @@ pbd_expected_n_extant <- function(
   testit::assert(erg >= 0.0)
   testit::assert(eri >= 0.0)
   testit::assert(n_sims >= 1)
-  
+
   n_lineages <- rep(NA, n_sims)
   for (i in seq(1, n_sims)) {
-    out <- PBD::pbd_sim(pars = c(sirg, scr, siri, erg, eri), age = crown_age, soc = 2)
+    out <- PBD::pbd_sim(
+      pars = c(sirg, scr, siri, erg, eri), 
+      age = crown_age, 
+      soc = 2
+    )
     n_lineages[i] <- length(out$stree_random$tip.label)
   }
   stats::median(n_lineages)
