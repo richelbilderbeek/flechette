@@ -6,10 +6,16 @@ test_that("use", {
 
   input_filenames <- create_input_files_general(
     mcmc = beautier::create_mcmc(chain_length = 3000, store_every = 1000),
+    sequence_length = 10,
     folder_name = tempdir()
   )
-  # Only run the first input file
-  input_filename <- input_filenames[1]
+  
+  while (1) {
+    # Only run an input file with low speciation rate
+    input_filename <- sample(x = input_filenames, size = 1)
+    testit::assert("speciation_initiation_rate" %in% names(readRDS(input_filename)))
+    if (readRDS(input_filename)$speciation_initiation_rate == 0.1) break
+  }
 
   create_output_file(
     input_filename = input_filename,
