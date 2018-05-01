@@ -1,8 +1,7 @@
 context("run")
 
 test_that("use", {
-  skip("Too long on Travis?")
-  tic <- proc.time()[3]
+
   for (sampling_method in c("youngest", "oldest", "random")) {
     out <- run(
       parameters = create_params(
@@ -26,8 +25,6 @@ test_that("use", {
     testthat::expect_true("trees" %in% names(out))
     testthat::expect_true("estimates" %in% names(out))
   }
-  toc <- proc.time()[3] - tic
-  toc
 })
 
 test_that("abuse", {
