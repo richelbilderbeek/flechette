@@ -8,14 +8,10 @@ create_input_files_general(general_params_set = create_general_params_set(),
   folder_name = getwd())
 }
 \arguments{
+\item{general_params_set}{the set of parameters, 
+as created by \code{\link{create_general_params_set}}}
+
 \item{folder_name}{name of the folder where all files are created}
-
-\item{mcmc}{MCMC options, as created by \link[beautier]{create_mcmc}}
-
-\item{sequence_length}{DNA alignment sequence length,
-in number of nucleotides}
-
-\item{n_replicates}{number of replicates per biological parameter set}
 }
 \value{
 The filenames of all parameter files created

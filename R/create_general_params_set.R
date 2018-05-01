@@ -3,7 +3,6 @@
 #' @param sequence_length DNA alignment sequence length,
 #'   in number of nucleotides
 #' @param n_replicates number of replicates per biological parameter set
-#' @param folder_name name of the folder where all files are created
 #' @return The filenames of all parameter files created
 #' @export
 #' @author Richel Bilderbeek

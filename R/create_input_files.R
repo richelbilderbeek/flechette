@@ -1,8 +1,6 @@
 #' Creates the parameter files in the article for the general exploration
-#' @param mcmc MCMC options, as created by \link[beautier]{create_mcmc}
-#' @param sequence_length DNA alignment sequence length,
-#'   in number of nucleotides
-#' @param n_replicates number of replicates per biological parameter set
+#' @param general_params_set the set of parameters, 
+#'   as created by \code{\link{create_general_params_set}}
 #' @param folder_name name of the folder where all files are created
 #' @return The filenames of all parameter files created
 #' @export

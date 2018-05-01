@@ -14,8 +14,6 @@ create_general_params_set(mcmc = beautier::create_mcmc(chain_length = 1111000,
 in number of nucleotides}
 
 \item{n_replicates}{number of replicates per biological parameter set}
-
-\item{folder_name}{name of the folder where all files are created}
 }
 \value{
 The filenames of all parameter files created
