@@ -1,7 +1,7 @@
 context("run")
 
 test_that("use", {
-  skip("Too long on Travis")
+  skip("Too long on Travis?")
   tic <- proc.time()[3]
   for (sampling_method in c("youngest", "oldest", "random")) {
     out <- run(
@@ -33,7 +33,7 @@ test_that("use", {
 test_that("abuse", {
 
   testthat::expect_error(
-    run(
+    raket::run(
       parameters = create_params(
         speciation_initiation_rate = 0.1,
         speciation_completion_rate = 0.2,
@@ -52,7 +52,7 @@ test_that("abuse", {
   )
 
   testthat::expect_error(
-    run(
+    raket::run(
       parameters = create_params(
         speciation_initiation_rate = 0.1,
         speciation_completion_rate = 0.2,
@@ -71,7 +71,7 @@ test_that("abuse", {
   )
 
   testthat::expect_error(
-    run(
+    raket::run(
       parameters = create_params(
         speciation_initiation_rate = 0.1,
         speciation_completion_rate = 0.2,
