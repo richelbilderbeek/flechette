@@ -16,8 +16,10 @@ set.seed(42)
 
 ## ------------------------------------------------------------------------
 all_input_filenames <- raket::create_input_files_general(
-  mcmc = beautier::create_mcmc(chain_length = 4000, store_every = 1000),
-  sequence_length = 15,
+  general_params_set = create_general_params_set(
+    mcmc = beautier::create_mcmc(chain_length = 4000, store_every = 1000),
+    sequence_length = 15
+  ),
   folder_name = folder_name
 )
 
