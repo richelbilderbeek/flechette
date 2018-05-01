@@ -8,7 +8,7 @@ create_input_files_general(general_params_set = create_general_params_set(),
   folder_name = getwd())
 }
 \arguments{
-\item{general_params_set}{the set of parameters, 
+\item{general_params_set}{the set of parameters,
 as created by \code{\link{create_general_params_set}}}
 
 \item{folder_name}{name of the folder where all files are created}

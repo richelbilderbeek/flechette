@@ -1,5 +1,5 @@
 #' Creates the parameter files in the article for the general exploration
-#' @param general_params_set the set of parameters, 
+#' @param general_params_set the set of parameters,
 #'   as created by \code{\link{create_general_params_set}}
 #' @param folder_name name of the folder where all files are created
 #' @return The filenames of all parameter files created

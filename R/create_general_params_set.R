@@ -38,7 +38,7 @@ create_general_params_set <- function(
                   n_sims = 10
                 ) > 1000) next
               }
-                
+
               params <- create_params(
                 sirg = sirg,
                 siri = siri,
