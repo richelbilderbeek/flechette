@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_params.R
 \name{create_params}
 \alias{create_params}
-\title{Create the parameters
+\title{Create the parameters for one experiment.
 Run one point of the experiment}
 \usage{
 create_params(sirg, siri, scr, erg, eri, crown_age, crown_age_sigma = 0.01,
@@ -51,7 +51,7 @@ alignment (from the true phylogenetic tree)}
 (based on the alignment)}
 }
 \description{
-Create the parameters
+Create the parameters for one experiment.
 Run one point of the experiment
 }
 \author{

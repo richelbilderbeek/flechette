@@ -9,7 +9,7 @@ test_that("use", {
     sequence_length = 10,
     folder_name = tempdir()
   )
-  
+
   while (1) {
     # Only run an input file with low speciation rate
     input_filename <- sample(x = input_filenames, size = 1)

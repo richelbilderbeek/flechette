@@ -1,4 +1,4 @@
-#' Create the parameters
+#' Create the parameters for one experiment.
 #' Run one point of the experiment
 #' @param sirg speciation rate of a good species,
 #'   per lineage probability per time unit
@@ -44,7 +44,16 @@ create_params <- function(
   alignment_rng_seed,
   beast2_rng_seed
 ) {
-  # TODO: Error checking
+  # TODO: Error checking with stop
+  testit::assert(sirg >= 0.0)
+  testit::assert(siri >= 0.0)
+  testit::assert(scr >= 0.0)
+  testit::assert(erg >= 0.0)
+  testit::assert(eri >= 0.0)
+  testit::assert(crown_age > 0.0)
+  testit::assert(crown_age_sigma > 0.0)
+  testit::assert(mutation_rate >= 0.0)
+  testit::assert(sequence_length >= 0.0)
 
   list(
     sirg = sirg,

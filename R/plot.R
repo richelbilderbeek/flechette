@@ -10,7 +10,7 @@ plot <- function(
   erg <- NULL; rm(erg) # nolint, fixes warning: no visible binding for global variable
   sirg <- NULL; rm(sirg) # nolint, fixes warning: no visible binding for global variable
   nltt <- NULL; rm(nltt) # nolint, fixes warning: no visible binding for global variable
-  
+
   ggplot2::ggplot(
     data = df_long,
     ggplot2::aes(

@@ -39,26 +39,26 @@ test_that("bigger crown age results in more lineages", {
     erg = erg,
     eri = eri
   )
-  testthat::expect_lt(n_lineages_young,n_lineages_old)
+  testthat::expect_lt(n_lineages_young, n_lineages_old)
 
 })
 
 test_that("less extinction results in more lineages", {
 
   # For students?
-  
+
 })
 
 test_that("more speciation initiation results in more lineages", {
 
   # For students?
-  
+
 })
 
 test_that("more speciation completion results in more lineages", {
 
   # For students?
-  
+
 })
 
 test_that("abuse", {
@@ -76,5 +76,5 @@ test_that("abuse", {
   )
 
   # More error checking for students?
-  
+
 })

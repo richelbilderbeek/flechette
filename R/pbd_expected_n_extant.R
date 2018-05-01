@@ -32,8 +32,8 @@ pbd_expected_n_extant <- function(
   n_lineages <- rep(NA, n_sims)
   for (i in seq(1, n_sims)) {
     out <- PBD::pbd_sim(
-      pars = c(sirg, scr, siri, erg, eri), 
-      age = crown_age, 
+      pars = c(sirg, scr, siri, erg, eri),
+      age = crown_age,
       soc = 2
     )
     n_lineages[i] <- length(out$stree_random$tip.label)

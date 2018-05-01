@@ -2,7 +2,7 @@ context("plot")
 
 test_that("use", {
 
-  # Create a fake data frame  
+  # Create a fake data frame
   n_rows <- 10
   df_long <- data.frame(
     extinction_rate = rep(0.1, n_rows),
