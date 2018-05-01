@@ -2,5 +2,5 @@
 #' @param df a data frame
 #' @export
 to_long <- function(df) {
-  tidyr::gather(df, "i", "nltt", 14:ncol(df))
+  tidyr::gather(df, "i", "nltt", 16:ncol(df))
 }
