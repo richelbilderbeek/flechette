@@ -1,12 +1,15 @@
-#' Create the parameters
+#' Create the parameters for one experiment.
 #' Run one point of the experiment
-#' @param speciation_initiation_rate speciation rate
-#'   of good and incipient species,
+#' @param sirg speciation rate of a good species,
 #'   per lineage probability per time unit
-#' @param speciation_completion_rate speciation completion rate (of
+#' @param siri speciation rate of an incipient species,
+#'   per lineage probability per time unit
+#' @param scr speciation completion rate (of
 #'   incipient species),
 #'   per lineage probability per time unit
-#' @param extinction_rate extinction rate of good and incipient species,
+#' @param erg extinction rate of a good species,
+#'   per lineage probability per time unit
+#' @param eri extinction rate of an incipient species,
 #'   per lineage probability per time unit
 #' @param crown_age crown age, in time units
 #' @param crown_age_sigma the standard deviation of MRCA prior's
@@ -26,9 +29,11 @@
 #' @author Richel J.C. Bilderbeek
 #' @export
 create_params <- function(
-  speciation_initiation_rate,
-  speciation_completion_rate,
-  extinction_rate,
+  sirg,
+  siri,
+  scr,
+  erg,
+  eri,
   crown_age,
   crown_age_sigma = 0.01,
   sampling_method,
@@ -39,12 +44,23 @@ create_params <- function(
   alignment_rng_seed,
   beast2_rng_seed
 ) {
-  # TODO: Error checking
+  # TODO: Error checking with stop
+  testit::assert(sirg >= 0.0)
+  testit::assert(siri >= 0.0)
+  testit::assert(scr >= 0.0)
+  testit::assert(erg >= 0.0)
+  testit::assert(eri >= 0.0)
+  testit::assert(crown_age > 0.0)
+  testit::assert(crown_age_sigma > 0.0)
+  testit::assert(mutation_rate >= 0.0)
+  testit::assert(sequence_length >= 0.0)
 
   list(
-    speciation_initiation_rate = speciation_initiation_rate,
-    speciation_completion_rate = speciation_completion_rate,
-    extinction_rate = extinction_rate,
+    sirg = sirg,
+    siri = siri,
+    scr = scr,
+    erg = erg,
+    eri = eri,
     crown_age = crown_age,
     crown_age_sigma = crown_age_sigma,
     sampling_method = sampling_method,

@@ -41,16 +41,47 @@ For this data set, we will create all parameter files, after which we
 will keep only one file to actually run. Additionally, we will create
 parameters that are shorter to run.
 
+First, we'll specify the folder in which the files are created. By default,
+this is a temporary folder, but this can be changed for those that
+want to see the files:
+
+```{r}
+folder_name <- tempdir()
+```
+
+To make this vignette as reproducible as possible,
+a random number generator seed is specified:
+
 ```{r}
 set.seed(42)
-folder_name <- tempdir()
+```
+
+Create all parameter files:
+
+```{r}
 all_input_filenames <- raket::create_input_files_general(
-  mcmc = beautier::create_mcmc(chain_length = 10000, store_every = 1000),
-  sequence_length = 150,
+  general_params_set = create_general_params_set(
+    mcmc = beautier::create_mcmc(chain_length = 4000, store_every = 1000),
+    sequence_length = 15
+  ),
   folder_name = folder_name
 )
-input_filename <- sample(all_input_filenames, size = 1)
-dummy <- file.remove(all_input_filenames[ all_input_filenames != input_filename] )
+```
+
+Note that the created files have some simplified parameters, 
+so the simulations are faster to run.
+
+Remove all parameter files, except for a randomly sampled one
+with speciation initiation rate of 0.1:
+
+```{r}
+while (1) {
+  input_filename <- sample(all_input_filenames, size = 1)
+  if (readRDS(input_filename)$sirg > 0.1) next
+  if (readRDS(input_filename)$siri > 0.1) next
+  break
+}
+file.remove(all_input_filenames[ all_input_filenames != input_filename] )
 testit::assert(file.exists(input_filename))
 ```
 
@@ -83,7 +114,7 @@ nltts_filename <- tempfile("nltt.RDa")
 raket::create_nltt_file(
   input_filename = output_filename,
   output_filename = nltts_filename,
-  burn_in_fraction = 0.1
+  burn_in_fraction = 0.4
 )
 ```
 
@@ -139,6 +170,7 @@ knitr::kable(df)
 ```
 
 Finally, we plot all (in this case, one) experiments:
+
 ```{r fig.width=7, fig.height=7}
 raket::plot(df_long = df)
 ```

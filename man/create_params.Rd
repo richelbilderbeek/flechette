@@ -2,24 +2,28 @@
 % Please edit documentation in R/create_params.R
 \name{create_params}
 \alias{create_params}
-\title{Create the parameters
+\title{Create the parameters for one experiment.
 Run one point of the experiment}
 \usage{
-create_params(speciation_initiation_rate, speciation_completion_rate,
-  extinction_rate, crown_age, crown_age_sigma = 0.01, sampling_method,
-  mutation_rate, sequence_length, mcmc, tree_sim_rng_seed, alignment_rng_seed,
-  beast2_rng_seed)
+create_params(sirg, siri, scr, erg, eri, crown_age, crown_age_sigma = 0.01,
+  sampling_method, mutation_rate, sequence_length, mcmc, tree_sim_rng_seed,
+  alignment_rng_seed, beast2_rng_seed)
 }
 \arguments{
-\item{speciation_initiation_rate}{speciation rate
-of good and incipient species,
+\item{sirg}{speciation rate of a good species,
 per lineage probability per time unit}
 
-\item{speciation_completion_rate}{speciation completion rate (of
+\item{siri}{speciation rate of an incipient species,
+per lineage probability per time unit}
+
+\item{scr}{speciation completion rate (of
 incipient species),
 per lineage probability per time unit}
 
-\item{extinction_rate}{extinction rate of good and incipient species,
+\item{erg}{extinction rate of a good species,
+per lineage probability per time unit}
+
+\item{eri}{extinction rate of an incipient species,
 per lineage probability per time unit}
 
 \item{crown_age}{crown age, in time units}
@@ -47,7 +51,7 @@ alignment (from the true phylogenetic tree)}
 (based on the alignment)}
 }
 \description{
-Create the parameters
+Create the parameters for one experiment.
 Run one point of the experiment
 }
 \author{

@@ -25,15 +25,13 @@ run <- function(
   set.seed(parameters$tree_sim_rng_seed)
 
   # SCR: Specition Completion rate
-  scr <- parameters$speciation_completion_rate
+  scr <- parameters$scr
   # SIR: Speciation Initation Rate (for Incipient or Good species)
-  # Assume SIR = SIRG = SIRI
-  sirg <- parameters$speciation_initiation_rate
-  siri <- parameters$speciation_initiation_rate
+  sirg <- parameters$sirg
+  siri <- parameters$siri
   # ER: Extinction Rate (for Incipient or Good species)
-  # Assume ER = ERG = ERI
-  erg <- parameters$extinction_rate
-  eri <- parameters$extinction_rate
+  erg <- parameters$erg
+  eri <- parameters$eri
   pbd_parameters <- c(
     sirg,
     scr,
