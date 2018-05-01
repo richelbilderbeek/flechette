@@ -69,7 +69,7 @@ To download and checkout the `develop` branch,
 first go into the `raket` folder (`cd raket`), then do:
 
 ```
-git checkout -b develop origin/develop
+git checkout -t origin/develop
 ```
 
 Then the workflow is the common `git` workflow:
