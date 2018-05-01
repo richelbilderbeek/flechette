@@ -2,13 +2,12 @@ context("workflow")
 
 test_that("Full workflow, general", {
 
-  skip("Takes too long")
   if (!ribir::is_on_travis()) return()
 
   n_parameters <- 13 # Just a given
   chain_length <- 4000
   sampling_interval <- 1000
-  sequence_length <- 150
+  sequence_length <- 15
   testit::assert(sampling_interval >= 1000)
   n_samples <- 1 + (chain_length / sampling_interval)
   burn_in_fraction <- 0.40
