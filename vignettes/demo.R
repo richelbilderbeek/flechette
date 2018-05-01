@@ -24,7 +24,9 @@ all_input_filenames <- raket::create_input_files_general(
 ## ------------------------------------------------------------------------
 while (1) {
   input_filename <- sample(all_input_filenames, size = 1)
-  if (readRDS(input_filename)$speciation_initiation_rate <= 0.1) break
+  if (readRDS(input_filename)$sirg > 0.1) next
+  if (readRDS(input_filename)$siri > 0.1) next
+  break
 }
 file.remove(all_input_filenames[ all_input_filenames != input_filename] )
 testit::assert(file.exists(input_filename))
