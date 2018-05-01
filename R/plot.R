@@ -4,6 +4,13 @@
 plot <- function(
   df_long
 ) {
+  # Satsfy R CMD check
+  speciation_completion_rate <- NULL
+  sampling_method <- NULL
+  extinction_rate <- NULL
+  speciation_initiation_rate <- NULL
+  nltt <- NULL
+  
   ggplot2::ggplot(
     data = df_long,
     ggplot2::aes(

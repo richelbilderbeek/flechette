@@ -34,5 +34,5 @@ pbd_expected_n_extant <- function(
     out <- PBD::pbd_sim(pars = c(sirg, scr, siri, erg, eri), age = crown_age, soc = 2)
     n_lineages[i] <- length(out$stree_random$tip.label)
   }
-  median(n_lineages)
+  stats::median(n_lineages)
 }
