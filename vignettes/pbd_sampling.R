@@ -8,7 +8,19 @@ knitr::opts_chunk$set(
 library(PBD)
 
 ## ------------------------------------------------------------------------
+# Plot the results of PBD::pbd_sim
+# '@param out the results of PBD::pbd_sim
 plot <- function(out) {
+  # Check input
+  testit::assert("igtree.extant" %in% names(out))
+  testit::assert("stree_youngest" %in% names(out))
+  testit::assert("stree_oldest" %in% names(out))
+  testit::assert("stree_random" %in% names(out))
+  testit::assert(class(out$igtree.extant) == c("simmap", "phylo"))
+  testit::assert(class(out$stree_youngest) == "phylo")
+  testit::assert(class(out$stree_oldest) == "phylo")
+  testit::assert(class(out$stree_random) == "phylo")
+
   graphics::par(mfrow = c(1, 4))
   cols <- stats::setNames(c("gray", "black"), c("i", "g"))
   phytools::plotSimmap(out$igtree.extant, colors = cols)
@@ -17,10 +29,6 @@ plot <- function(out) {
   sum_oldest <- sum(out$stree_oldest$edge.length)
   sum_random <- sum(out$stree_random$edge.length)
 
-  ape::plot.phylo(out$stree_oldest, edge.width = 2, font = 1,
-    label.offset = 0.1, cex = 1, 
-    main = paste("\n", "oldest", format(round(sum_oldest, 2), nsmall = 2)))
-  ape::add.scale.bar()
   ape::plot.phylo(out$stree_youngest, edge.width = 2, font = 1,
     label.offset = 0.1, cex = 1, 
     main = paste("\n", "youngest", format(round(sum_youngest, 2), nsmall = 2)))
@@ -28,6 +36,10 @@ plot <- function(out) {
   ape::plot.phylo(out$stree_random, edge.width = 2, font = 1,
     label.offset = 0.1, cex = 1, 
     main = paste("\n", "random", format(round(sum_random, 2), nsmall = 2)))
+  ape::add.scale.bar()
+  ape::plot.phylo(out$stree_oldest, edge.width = 2, font = 1,
+    label.offset = 0.1, cex = 1, 
+    main = paste("\n", "oldest", format(round(sum_oldest, 2), nsmall = 2)))
   ape::add.scale.bar()
   graphics::par(mfrow = c(1, 1))
 }
@@ -56,7 +68,20 @@ create_example <- function(
   max_n_subspecies = 10000,
   rng_seed = 42
 ) {
+  # Check input
+  testit::assert(scr >= 0.0)
+  testit::assert(sirg >= 0.0)
+  testit::assert(siri >= 0.0)
   testit::assert(sampling %in% c("expected", "ylto", "rsty", "rlto"))
+  testit::assert(erg >= 0.0)
+  testit::assert(eri >= 0.0)
+  testit::assert(crown_age >= 0.0)
+  testit::assert(min_n_species >= 1)
+  testit::assert(max_n_species >= 1)
+  testit::assert(min_n_species <= max_n_species)
+  testit::assert(min_n_subspecies >= 1)
+  testit::assert(max_n_subspecies >= 1)
+  testit::assert(min_n_subspecies <= max_n_subspecies)
   
   set.seed(rng_seed)
   pbd_params <- c(sirg, scr, siri, erg, eri)
@@ -78,7 +103,7 @@ create_example <- function(
     sum_oldest <- sum(out$stree_oldest$edge.length)
     sum_random <- sum(out$stree_random$edge.length)
 
-    # Only measure when they are different
+    # Only measure when sampling does give different branch lengths
     if (sum_youngest == sum_oldest) next
     
     if (sampling == "expected") {
@@ -123,6 +148,15 @@ out <- create_example(
 plot(out)
 
 ## ----fig.width=7, fig.height=5-------------------------------------------
+out <- create_example(
+  scr = 0.1, sirg = 2, siri = 2, sampling = "expected", 
+  rng_seed = 44, 
+  min_n_subspecies = 4,
+  max_n_subspecies = 4
+)
+plot(out)
+
+## ----fig.width=7, fig.height=5-------------------------------------------
 out <- create_example(scr = 0.5, sirg = 1, siri = 2, sampling = "expected",
   rng_seed = 51, 
   min_n_subspecies = 5, 
@@ -133,27 +167,27 @@ plot(out)
 
 ## ----fig.width=7, fig.height=5-------------------------------------------
 out <- create_example(scr = 0.5, sirg = 1, siri = 2, sampling = "ylto",
-  rng_seed = 51, 
-  min_n_subspecies = 5, 
-  max_n_subspecies = 10,
+  rng_seed = 54, 
+  min_n_subspecies = 4, 
+  max_n_subspecies = 4,
   min_n_species = 3
 )
 plot(out)
 
 ## ----fig.width=7, fig.height=5-------------------------------------------
 out <- create_example(scr = 0.5, sirg = 1, siri = 2, sampling = "rsty",
-  rng_seed = 51, 
-  min_n_subspecies = 5, 
-  max_n_subspecies = 10,
+  rng_seed = 55, 
+  min_n_subspecies = 4, 
+  max_n_subspecies = 7,
   min_n_species = 3
 )
 plot(out)
 
 ## ----fig.width=7, fig.height=5-------------------------------------------
 out <- create_example(scr = 0.5, sirg = 1, siri = 2, sampling = "rlto",
-  rng_seed = 51, 
-  min_n_subspecies = 5, 
-  max_n_subspecies = 10,
+  rng_seed = 57, 
+  min_n_subspecies = 4, 
+  max_n_subspecies = 7,
   min_n_species = 3
 )
 plot(out)
