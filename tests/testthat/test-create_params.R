@@ -2,9 +2,11 @@ context("create_params")
 
 test_that("use", {
 
-  speciation_initiation_rate <- 0.1
-  speciation_completion_rate <- 0.2
-  extinction_rate <- 0.01
+  sirg <- 0.1
+  siri <- 0.1
+  scr <- 0.2
+  erg <- 0.01
+  eri <- 0.01
   crown_age <- 15
   crown_age_sigma <- 0.01
   sampling_method <- "youngest"
@@ -16,9 +18,11 @@ test_that("use", {
   beast2_rng_seed <- 4242
 
   parameters <- create_params(
-    speciation_initiation_rate = speciation_initiation_rate,
-    speciation_completion_rate = speciation_completion_rate,
-    extinction_rate = extinction_rate,
+    sirg = sirg,
+    siri = siri,
+    scr = scr,
+    erg = erg,
+    eri = eri,
     crown_age = crown_age,
     crown_age_sigma = crown_age_sigma,
     sampling_method = sampling_method,
@@ -30,13 +34,11 @@ test_that("use", {
     beast2_rng_seed = beast2_rng_seed
   )
 
-  testthat::expect_equal(
-    speciation_initiation_rate, parameters$speciation_initiation_rate
-  )
-  testthat::expect_equal(
-    speciation_completion_rate, parameters$speciation_completion_rate
-  )
-  testthat::expect_equal(extinction_rate, parameters$extinction_rate)
+  testthat::expect_equal(siri, parameters$siri)
+  testthat::expect_equal(siri, parameters$siri)
+  testthat::expect_equal(scr, parameters$scr)
+  testthat::expect_equal(erg, parameters$erg)
+  testthat::expect_equal(eri, parameters$eri)
   testthat::expect_equal(crown_age, parameters$crown_age)
   testthat::expect_equal(crown_age_sigma, parameters$crown_age_sigma)
   testthat::expect_equal(sampling_method, parameters$sampling_method)

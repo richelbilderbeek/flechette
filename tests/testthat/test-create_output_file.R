@@ -13,8 +13,11 @@ test_that("use", {
   while (1) {
     # Only run an input file with low speciation rate
     input_filename <- sample(x = input_filenames, size = 1)
-    testit::assert("speciation_initiation_rate" %in% names(readRDS(input_filename)))
-    if (readRDS(input_filename)$speciation_initiation_rate == 0.1) break
+    testit::assert("sirg" %in% names(readRDS(input_filename)))
+    testit::assert("siri" %in% names(readRDS(input_filename)))
+    if (readRDS(input_filename)$sirg > 0.1) next
+    if (readRDS(input_filename)$siri > 0.1) next
+    break
   }
 
   create_output_file(

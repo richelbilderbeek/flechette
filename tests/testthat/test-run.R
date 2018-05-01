@@ -35,9 +35,11 @@ test_that("abuse", {
   testthat::expect_error(
     raket::run(
       parameters = create_params(
-        speciation_initiation_rate = 0.1,
-        speciation_completion_rate = 0.2,
-        extinction_rate = 0.01,
+        sirg = 0.1,
+        siri = 0.1,
+        scr = 0.2,
+        erg = 0.01,
+        eri = 0.01,
         crown_age = 15,
         sampling_method = "random",
         mutation_rate = 0.1,
@@ -54,9 +56,11 @@ test_that("abuse", {
   testthat::expect_error(
     raket::run(
       parameters = create_params(
-        speciation_initiation_rate = 0.1,
-        speciation_completion_rate = 0.2,
-        extinction_rate = 0.01,
+        sirg = 0.1,
+        siri = 0.1,
+        scr = 0.2,
+        erg = 0.01,
+        eri = 0.01,
         crown_age = 15,
         sampling_method = "random",
         mutation_rate = 0.1,
@@ -73,9 +77,11 @@ test_that("abuse", {
   testthat::expect_error(
     raket::run(
       parameters = create_params(
-        speciation_initiation_rate = 0.1,
-        speciation_completion_rate = 0.2,
-        extinction_rate = 0.01,
+        sirg = 0.1,
+        siri = 0.1,
+        scr = 0.2,
+        erg = 0.01,
+        eri = 0.01,
         crown_age = 15,
         sampling_method = "random",
         mutation_rate = 0.1,
