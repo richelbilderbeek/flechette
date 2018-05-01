@@ -2,7 +2,7 @@ context("workflow")
 
 test_that("Full workflow, general", {
 
-  if (!ribir::is_on_travis()) return()
+  skip("Too long, also on Travis")
 
   n_parameters <- 15 # Just a given
   chain_length <- 4000
