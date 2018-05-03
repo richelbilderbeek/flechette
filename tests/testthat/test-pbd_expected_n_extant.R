@@ -49,7 +49,7 @@ test_that("less extinction results in more lineages", {
   scr <- 1.0
   sirg <- 1.0
   siri <- 1.0
-  
+
   n_lineages_more <- pbd_expected_n_extant(
     crown_age = crown_age,
     scr = scr,
@@ -58,7 +58,7 @@ test_that("less extinction results in more lineages", {
     erg = 3.0,
     eri = 3.0
   )
-  
+
   n_lineages_less <- pbd_expected_n_extant(
     crown_age = crown_age,
     scr = scr,
@@ -67,7 +67,7 @@ test_that("less extinction results in more lineages", {
     erg = 1.0,
     eri = 1.0
   )
-  
+
   testthat::expect_more_than(n_lineages_less, n_lineages_more)
 
 })
@@ -78,7 +78,7 @@ test_that("more speciation initiation results in more lineages", {
   scr <- 1.0
   erg <- 0.0
   eri <- 0.0
-  
+
   n_lineages_more <- pbd_expected_n_extant(
     crown_age = crown_age,
     scr = scr,
@@ -87,7 +87,7 @@ test_that("more speciation initiation results in more lineages", {
     erg = erg,
     eri = eri
   )
-  
+
   n_lineages_less <- pbd_expected_n_extant(
     crown_age = crown_age,
     scr = scr,
@@ -96,6 +96,7 @@ test_that("more speciation initiation results in more lineages", {
     erg = erg,
     eri = eri
   )
+
   testthat::expect_lt(n_lineages_less, n_lineages_more)
 
 })
@@ -107,7 +108,7 @@ test_that("more speciation completion results in more lineages", {
   siri <- 1.0
   erg <- 0.0
   eri <- 0.0
-  
+
   n_lineages_less <- pbd_expected_n_extant(
     crown_age = crown_age,
     scr = 1.0,
@@ -116,7 +117,7 @@ test_that("more speciation completion results in more lineages", {
     erg = erg,
     eri = eri
   )
-  
+
   n_lineages_more <- pbd_expected_n_extant(
     crown_age = crown_age,
     scr = 3.0,
@@ -125,6 +126,7 @@ test_that("more speciation completion results in more lineages", {
     erg = erg,
     eri = eri
   )
+
   testthat::expect_lt(n_lineages_less, n_lineages_more)
 
 })
