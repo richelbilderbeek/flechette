@@ -104,7 +104,7 @@ test_that("more speciation initiation results in more lineages", {
 test_that("more speciation completion results in more lineages", {
 
   skip("Joris should be able to fix this broken test :-)")
-  
+
   crown_age <- 1.0
   sirg <- 1.0
   siri <- 1.0
