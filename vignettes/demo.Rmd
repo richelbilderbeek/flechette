@@ -172,5 +172,5 @@ knitr::kable(df)
 Finally, we plot all (in this case, one) experiments:
 
 ```{r fig.width=7, fig.height=7}
-raket::plot(df_long = df)
+raket::rkt_plot(df_long = df)
 ```

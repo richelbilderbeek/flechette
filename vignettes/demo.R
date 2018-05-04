@@ -80,5 +80,5 @@ df <- raket::to_long(df = read.csv(csv_filename))
 knitr::kable(df)
 
 ## ----fig.width=7, fig.height=7-------------------------------------------
-raket::plot(df_long = df)
+raket::rkt_plot(df_long = df)
 
