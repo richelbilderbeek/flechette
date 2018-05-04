@@ -5,7 +5,7 @@
 #' @param verbose set to TRUE for more (debug) output
 #' @author Richel J.C. Bilderbeek
 #' @export
-run <- function(
+rkt_run <- function(
   parameters,
   beast_jar_path = beastier::get_default_beast2_jar_path(),
   verbose = FALSE
@@ -56,7 +56,7 @@ run <- function(
     testit::assert(parameters$sampling_method == "random")
     true_phylogeny <- pbd_output$stree_random
   }
-  out <- pirouette::run(
+  out <- pirouette::pir_run(
     phylogeny = true_phylogeny,
     sequence_length = parameters$sequence_length,
     mutation_rate = parameters$mutation_rate,

@@ -1,9 +1,9 @@
-context("run")
+context("rkt_run")
 
 test_that("use", {
 
   for (sampling_method in c("youngest", "oldest", "random")) {
-    out <- run(
+    out <- rkt_run(
       parameters = create_params(
         sirg = 1.0,
         siri = 1.0,
@@ -32,7 +32,7 @@ test_that("use", {
 test_that("abuse", {
 
   testthat::expect_error(
-    raket::run(
+    raket::rkt_run(
       parameters = create_params(
         sirg = 0.1,
         siri = 0.1,
@@ -53,7 +53,7 @@ test_that("abuse", {
   )
 
   testthat::expect_error(
-    raket::run(
+    raket::rkt_run(
       parameters = create_params(
         sirg = 0.1,
         siri = 0.1,
@@ -74,7 +74,7 @@ test_that("abuse", {
   )
 
   testthat::expect_error(
-    raket::run(
+    raket::rkt_run(
       parameters = create_params(
         sirg = 0.1,
         siri = 0.1,

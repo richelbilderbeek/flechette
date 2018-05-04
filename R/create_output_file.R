@@ -13,7 +13,7 @@ create_output_file <- function(
   if (!file.exists(input_filename)) {
     stop("'input_filename' must exist. File '", input_filename, "' not found")
   }
-  out <- raket::run(
+  out <- raket::rkt_run(
     parameters = readRDS(file = input_filename),
     verbose = verbose
   )
