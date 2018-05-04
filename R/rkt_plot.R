@@ -1,7 +1,7 @@
 #' Plot violin plot
 #' @param df_long data frame in the long form
 #' @export
-plot <- function(
+rkt_plot <- function(
   df_long
 ) {
   # Satsfy R CMD check
