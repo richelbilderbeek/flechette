@@ -34,7 +34,7 @@ test_that("use", {
     beast2_rng_seed = beast2_rng_seed
   )
 
-  testthat::expect_equal(siri, parameters$siri)
+  testthat::expect_equal(sirg, parameters$sirg)
   testthat::expect_equal(siri, parameters$siri)
   testthat::expect_equal(scr, parameters$scr)
   testthat::expect_equal(erg, parameters$erg)
