@@ -1,5 +1,5 @@
 context("pbd_expected_n_extant")
-
+library(testthat)
 test_that("minimal use", {
 
   testthat::expect_silent(
@@ -106,8 +106,8 @@ test_that("more speciation completion results in more lineages", {
   crown_age <- 1.0
   sirg <- 1.0
   siri <- 1.0
-  erg <- 0.0
-  eri <- 0.0
+  erg <- 1.0
+  eri <- 1.0
 
   n_lineages_less_completion <- pbd_expected_n_extant(
     crown_age = crown_age,
@@ -145,6 +145,64 @@ test_that("abuse", {
     "'crown age' must be non-zero and positive"
   )
 
-  # More error checking for students?
+  testthat::expect_error(
+    pbd_expected_n_extant(
+      crown_age = 1.0, 
+      scr = -1.0, # Error
+      sirg = 1.0,
+      siri = 1.0,
+      erg = 0.0,
+      eri = 0.0
+    ),
+    "scr >= 0 is not TRUE"
+  )
+
+  testthat::expect_error(
+    pbd_expected_n_extant(
+      crown_age = 1.0, 
+      scr = 1.0,
+      sirg = -1.0,
+      siri = 1.0,
+      erg = 0.0,
+      eri = 0.0
+    ),
+    "sirg >= 0 is not TRUE"
+  ) 
+
+  testthat::expect_error(
+    pbd_expected_n_extant(
+      crown_age = 1.0, 
+      scr = 1.0,
+      sirg = 1.0,
+      siri = -1.0,
+      erg = 0.0,
+      eri = 0.0
+    ),
+    "siri >= 0 is not TRUE"
+  )
+
+  testthat::expect_error(
+    pbd_expected_n_extant(
+      crown_age = 1.0, 
+      scr = 1.0,
+      sirg = 1.0,
+      siri = 1.0,
+      erg = -1.0,
+      eri = 0.0
+    ),
+    "erg >= 0 is not TRUE"
+  )
+
+  testthat::expect_error(
+    pbd_expected_n_extant(
+      crown_age = 1.0, 
+      scr = 1.0,
+      sirg = 1.0,
+      siri = 1.0,
+      erg = 0.0,
+      eri = -1.0
+    ),
+    "eri >= 0 is not TRUE"
+  )
 
 })
