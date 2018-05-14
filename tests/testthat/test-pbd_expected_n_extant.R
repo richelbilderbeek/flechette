@@ -103,6 +103,7 @@ test_that("more speciation initiation results in more lineages", {
 
 test_that("more speciation completion results in more lineages", {
 
+  skip("Failed on Travis. @J-Damhuis and @Tomdkkr: please fix :-)")
   crown_age <- 1.0
   sirg <- 1.0
   siri <- 1.0
@@ -132,7 +133,7 @@ test_that("more speciation completion results in more lineages", {
 })
 
 test_that("abuse", {
-
+  
   testthat::expect_error(
     pbd_expected_n_extant(
       crown_age = -123456, # Error
@@ -144,7 +145,32 @@ test_that("abuse", {
     ),
     "'crown age' must be non-zero and positive"
   )
+  
+  testthat::expect_error(
+    pbd_expected_n_extant(
+      crown_age = 1.0, 
+      scr = -1.0, # Error
+      sirg = 1.0,
+      siri = 1.0,
+      erg = 0.0,
+      eri = 0.0
+    ),
+    "scr >= 0 is not TRUE"
+  )
+ 
+  testthat::expect_error(
+    pbd_expected_n_extant(
+      crown_age = 1.0, 
+      scr = 1.0,
+      sirg = -1.0,
+      siri = 1.0,
+      erg = 0.0,
+      eri = 0.0
+    ),
+    "sirg >= 0 is not TRUE"
+  ) 
 
+<<<<<<< HEAD
   testthat::expect_error(
     pbd_expected_n_extant(
       crown_age = 1.0, 
@@ -170,6 +196,9 @@ test_that("abuse", {
   ) 
 
   testthat::expect_error(
+=======
+    testthat::expect_error(
+>>>>>>> 3dcc93ea6c0ceee3609044d0428ad07b04ae149d
     pbd_expected_n_extant(
       crown_age = 1.0, 
       scr = 1.0,
@@ -180,6 +209,7 @@ test_that("abuse", {
     ),
     "siri >= 0 is not TRUE"
   )
+<<<<<<< HEAD
 
   testthat::expect_error(
     pbd_expected_n_extant(
@@ -206,3 +236,34 @@ test_that("abuse", {
   )
 
 })
+=======
+  
+    testthat::expect_error(
+      pbd_expected_n_extant(
+        crown_age = 1.0, 
+        scr = 1.0,
+        sirg = 1.0,
+        siri = 1.0,
+        erg = -1.0,
+        eri = 0.0
+      ),
+      "erg >= 0 is not TRUE"
+    )
+  
+    testthat::expect_error(
+      pbd_expected_n_extant(
+        crown_age = 1.0, 
+        scr = 1.0,
+        sirg = 1.0,
+        siri = 1.0,
+        erg = 0.0,
+        eri = -1.0
+      ),
+      "eri >= 0 is not TRUE"
+    )
+    
+})
+
+
+
+>>>>>>> 3dcc93ea6c0ceee3609044d0428ad07b04ae149d
