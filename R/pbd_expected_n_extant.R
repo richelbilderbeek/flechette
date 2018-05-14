@@ -22,12 +22,24 @@ pbd_expected_n_extant <- function(
   if (crown_age <= 0.0) {
     stop("'crown age' must be non-zero and positive")
   }
-  testit::assert(scr >= 0.0)
-  testit::assert(sirg >= 0.0)
-  testit::assert(siri >= 0.0)
-  testit::assert(erg >= 0.0)
-  testit::assert(eri >= 0.0)
-  testit::assert(n_sims >= 1)
+  if (scr < 0.0) {
+    stop("'scr' must be zero or positive")
+  }
+  if (sirg < 0.0) {
+    stop("'sirg' must be zero or positive")
+  }
+  if (siri < 0.0) {
+    stop("'siri' must be zero or positive")
+  }
+  if (erg < 0.0) {
+    stop("'erg' must be zero or positive")
+  }
+  if (eri < 0.0) {
+    stop("'eri' must be zero or positive")
+  }
+  if (n_sims < 1) {
+    stop("'n_sims' must be equal or greater than 1")
+  }
 
   n_lineages <- rep(NA, n_sims)
   for (i in seq(1, n_sims)) {

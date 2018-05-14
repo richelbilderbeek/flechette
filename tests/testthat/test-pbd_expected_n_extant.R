@@ -154,43 +154,19 @@ test_that("abuse", {
       erg = 0.0,
       eri = 0.0
     ),
-    "scr >= 0 is not TRUE"
+    "'scr' must be zero or positive"
   )
 
   testthat::expect_error(
     pbd_expected_n_extant(
       crown_age = 1.0,
       scr = 1.0,
-      sirg = -1.0,
+      sirg = -1.0, # Error
       siri = 1.0,
       erg = 0.0,
       eri = 0.0
     ),
-    "sirg >= 0 is not TRUE"
-  )
-
-  testthat::expect_error(
-    pbd_expected_n_extant(
-      crown_age = 1.0,
-      scr = -1.0, # Error
-      sirg = 1.0,
-      siri = 1.0,
-      erg = 0.0,
-      eri = 0.0
-    ),
-    "scr >= 0 is not TRUE"
-  )
-
-  testthat::expect_error(
-    pbd_expected_n_extant(
-      crown_age = 1.0,
-      scr = 1.0,
-      sirg = -1.0,
-      siri = 1.0,
-      erg = 0.0,
-      eri = 0.0
-    ),
-    "sirg >= 0 is not TRUE"
+    "'sirg' must be zero or positive"
   )
 
   testthat::expect_error(
@@ -198,11 +174,11 @@ test_that("abuse", {
       crown_age = 1.0,
       scr = 1.0,
       sirg = 1.0,
-      siri = -1.0,
+      siri = -1.0, # Error
       erg = 0.0,
       eri = 0.0
     ),
-    "siri >= 0 is not TRUE"
+    "'siri' must be zero or positive"
   )
 
   testthat::expect_error(
@@ -214,7 +190,7 @@ test_that("abuse", {
       erg = -1.0,
       eri = 0.0
     ),
-    "erg >= 0 is not TRUE"
+    "'erg' must be zero or positive"
   )
 
   testthat::expect_error(
@@ -226,31 +202,7 @@ test_that("abuse", {
       erg = 0.0,
       eri = -1.0
     ),
-    "eri >= 0 is not TRUE"
-  )
-
-  testthat::expect_error(
-    pbd_expected_n_extant(
-      crown_age = 1.0,
-      scr = 1.0,
-      sirg = 1.0,
-      siri = 1.0,
-      erg = -1.0,
-      eri = 0.0
-    ),
-    "erg >= 0 is not TRUE"
-  )
-
-  testthat::expect_error(
-    pbd_expected_n_extant(
-      crown_age = 1.0,
-      scr = 1.0,
-      sirg = 1.0,
-      siri = 1.0,
-      erg = 0.0,
-      eri = -1.0
-    ),
-    "eri >= 0 is not TRUE"
+    "'eri' must be zero or positive"
   )
 
 })
