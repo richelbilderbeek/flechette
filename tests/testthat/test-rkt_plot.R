@@ -15,7 +15,7 @@ test_that("use", {
   testit::assert(rkt_get_n_params() + 1 + n_nltts <= rkt_get_max_n_cols())
 
   for (experiment_type in rkt_get_experiment_types()) {
-    experiment_type <- "sampling"
+
     # Create a fake data frame
     df <- rkt_create_data_frame(
       n_files = n_files,
