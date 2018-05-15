@@ -3,7 +3,7 @@ context("workflow")
 test_that("Full workflow, general", {
 
   if (!ribir::is_on_travis()) return()
-  
+
   n_parameters <- rkt_get_n_params()
   chain_length <- 4000
   sampling_interval <- 1000
@@ -28,7 +28,9 @@ test_that("Full workflow, general", {
     folder_name = tempdir()
   )
 
-  testit::assert(n_parameters == length(unlist(readRDS(input_filenames_all[1]))))
+  testit::assert(n_parameters ==
+    length(unlist(readRDS(input_filenames_all[1])))
+  )
 
   ##############################################################################
   # 2 Run simulation, store all info (such as all posterior phylogenies) as .RDa

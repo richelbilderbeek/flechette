@@ -2,9 +2,9 @@ context("rkt_plot")
 
 test_that("use", {
 
-  n_files <- rkt_get_max_n_rows()
+  n_files <- rkt_get_n_replicates() * rkt_get_n_param_combos()
   n_nltts <- 1000
-  testit::assert(n_files <= rkt_get_max_n_rows()())
+  testit::assert(n_files <= rkt_get_max_n_rows())
   testit::assert(rkt_get_n_params() + 1 + n_nltts <= rkt_get_max_n_cols())
 
   # Create a fake data frame
@@ -13,10 +13,10 @@ test_that("use", {
     n_nltts = n_nltts
   )
   df_long <- to_long(df)
-  
+
   rm(df)
   gc()
-  
+
   testthat::expect_silent(
     rkt_plot(df_long)
   )

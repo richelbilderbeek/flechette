@@ -6,16 +6,13 @@ rkt_create_data_frame <- function(
   n_files,
   n_nltts
 ) {
-  #n_repeats <- rkt_get_max_n_rows() / 144
-  length(create_general_params_set())
-  
-  df <- 
+
   df_params <- data.frame(
-    sirg = stats::runif(n = n_files),
-    siri = stats::runif(n = n_files),
-    scr = stats::runif(n = n_files),
-    erg = stats::runif(n = n_files),
-    eri = stats::runif(n = n_files),
+    sirg = sample(rkt_get_spec_init_rates(), size = n_files, replace = TRUE),
+    siri = sample(rkt_get_spec_init_rates(), size = n_files, replace = TRUE),
+    scr = sample(rkt_get_spec_compl_rates(), size = n_files, replace = TRUE),
+    erg = sample(rkt_get_ext_rates(), size = n_files, replace = TRUE),
+    eri = sample(rkt_get_ext_rates(), size = n_files, replace = TRUE),
     crown_age = rep(15, n_files),
     crown_age_sigma = rep(0.01, n_files),
     sampling_method = rep(

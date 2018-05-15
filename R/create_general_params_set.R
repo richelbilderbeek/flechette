@@ -14,14 +14,12 @@ create_general_params_set <- function(
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   params_set <- list()
   index <- 1
-  speciation_initiation_rates <- c(0.1, 0.5, 1.0)
-  extinction_rates <- c(0.0, 0.1, 0.2, 0.4)
   for (i in seq(1, n_replicates)) {
-    for (sirg in speciation_initiation_rates) {
-      for (siri in speciation_initiation_rates) {
-        for (scr in c(0.1, 0.3, 1.0, 1000000000)) {
-          for (erg in extinction_rates) {
-            for (eri in extinction_rates) {
+    for (sirg in rkt_get_spec_init_rates()) {
+      for (siri in rkt_get_spec_init_rates()) {
+        for (scr in rkt_get_spec_compl_rates()) {
+          for (erg in rkt_get_ext_rates()) {
+            for (eri in rkt_get_ext_rates()) {
               if (erg >= sirg) next
               if (eri >= siri) next
               if (siri - eri >= 0.8) next
