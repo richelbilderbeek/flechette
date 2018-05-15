@@ -23,39 +23,6 @@ test_that("PBD with Inf as speciation completion rate, #4", {
 
 })
 
-test_that("Can create such a big data frame, #9", {
-
-  # Ideal
-  ncols <- 1050
-  nrows <- 20000 # Half, as data frame must be in memory twice
-
-  if (!ribir::is_on_travis()) {
-    # Smaller on local computer
-    ncols <- 105
-    nrows <- 4000
-  }
-  ncells <- ncols * nrows
-
-  testit::assert(ncells < 2 ^ 32 - 1)
-  mem_use <- ncells * object.size(3.14)
-  format(mem_use, units = "Mb")
-
-  # Computer will freeze if you ignore this warning ..
-  testit::assert(mem_use < 2 ^ 32 - 1)
-
-  df <- data.frame(matrix(nrow = nrows, ncol = ncols, data = seq(1, ncells)))
-
-  # Save and load should work
-  filename <- tempfile()
-  utils::write.csv(x = df, file = filename, row.names = FALSE)
-  df2 <- read.csv(file = filename)
-  testthat::expect_true(all.equal(df2, df, tolerance = 0.1))
-  rm(df)
-  rm(df2)
-  # Manually call garbage collection, we need that memory directly
-  gc()
-})
-
 test_that("Can convert a data frame to long form, #5", {
 
   skip("WIP")
