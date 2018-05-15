@@ -35,7 +35,7 @@ create_general_params_set <- function(
                 crown_age = crown_age,
                 crown_age_sigma = 0.0005,
                 sampling_method = "random",
-                mutation_rate = 1 / 15,
+                mutation_rate = 1.0 / 15.0,
                 sequence_length = sequence_length,
                 mcmc = mcmc,
                 tree_sim_rng_seed = index,
