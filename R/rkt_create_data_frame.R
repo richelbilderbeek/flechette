@@ -6,6 +6,10 @@ rkt_create_data_frame <- function(
   n_files,
   n_nltts
 ) {
+  #n_repeats <- rkt_get_max_n_rows() / 144
+  length(create_general_params_set())
+  
+  df <- 
   df_params <- data.frame(
     sirg = stats::runif(n = n_files),
     siri = stats::runif(n = n_files),
