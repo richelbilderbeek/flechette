@@ -34,7 +34,7 @@ test_that("Can convert a data frame to long form, #5", {
 
   n_files <- rkt_get_max_n_rows()
   n_nltts <- 1000
-  
+
   if (!ribir::is_on_travis()) {
     # Smaller on local computer
     n_files <- n_files / 10
@@ -49,7 +49,10 @@ test_that("Can convert a data frame to long form, #5", {
     eri = stats::runif(n = n_files),
     crown_age = rep(15, n_files),
     crown_age_sigma = rep(0.01, n_files),
-    sampling_method = rep(c("shortest", "longest", "random"), length.out = n_files),
+    sampling_method = rep(
+      c("shortest", "longest", "random"),
+      length.out = n_files
+    ),
     mutation_rate = rep(66, n_files),
     sequence_length = rep(150, n_files),
     mcmc.chain_length = rep(4000, n_files),
@@ -60,8 +63,8 @@ test_that("Can convert a data frame to long form, #5", {
   )
   df_nltts <- data.frame(
     matrix(
-      data = stats::runif(n = n_files * n_nltts), 
-      nrow = n_files, 
+      data = stats::runif(n = n_files * n_nltts),
+      nrow = n_files,
       ncol = n_nltts
     )
   )
