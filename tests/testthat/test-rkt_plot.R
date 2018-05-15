@@ -17,7 +17,8 @@ test_that("use", {
   # Create a fake data frame
   df <- rkt_create_data_frame(
     n_files = n_files,
-    n_nltts = n_nltts
+    n_nltts = n_nltts,
+    experiment_type = "general"
   )
   df_long <- to_long(df)
   filename <- tempfile(fileext = ".pdf")

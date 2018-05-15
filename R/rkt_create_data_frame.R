@@ -1,11 +1,20 @@
 #' Create a skeleton data frame for each data set
 #' @param n_files number of parameter files
 #' @param n_nltts number of nLTT statistics per file
+#' @param experiment_type type of experiment,
+#'   must be either 'general' or 'sampling' 
 #' @export
 rkt_create_data_frame <- function(
   n_files,
-  n_nltts
+  n_nltts,
+  experiment_type
 ) {
+  testit::assert(experiment_type %in% c("general", "sampling"))
+
+  sampling_options <- c("random")
+  if (experiment_type == "sampling") {
+    sampling_options <- c("shortest", "longest")
+  }
 
   df_params <- data.frame(
     sirg = sample(rkt_get_spec_init_rates(), size = n_files, replace = TRUE),
@@ -16,7 +25,7 @@ rkt_create_data_frame <- function(
     crown_age = rep(15, n_files),
     crown_age_sigma = rep(0.01, n_files),
     sampling_method = rep(
-      c("shortest", "longest", "random"),
+      sampling_options,
       length.out = n_files
     ),
     mutation_rate = rep(66, n_files),

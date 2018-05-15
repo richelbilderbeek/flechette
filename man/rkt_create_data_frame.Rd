@@ -4,12 +4,15 @@
 \alias{rkt_create_data_frame}
 \title{Create a skeleton data frame for each data set}
 \usage{
-rkt_create_data_frame(n_files, n_nltts)
+rkt_create_data_frame(n_files, n_nltts, experiment_type)
 }
 \arguments{
 \item{n_files}{number of parameter files}
 
 \item{n_nltts}{number of nLTT statistics per file}
+
+\item{experiment_type}{type of experiment,
+must be either 'general' or 'sampling'}
 }
 \description{
 Create a skeleton data frame for each data set
