@@ -1,7 +1,7 @@
 #' Create a skeleton data frame for each data set
 #' @param n_files number of parameter files
 #' @param n_nltts number of nLTT statistics per file
-#' @export 
+#' @export
 rkt_create_data_frame <- function(
   n_files,
   n_nltts
