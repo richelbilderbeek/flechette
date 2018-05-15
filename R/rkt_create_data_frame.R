@@ -9,7 +9,7 @@ rkt_create_data_frame <- function(
   n_nltts,
   experiment_type
 ) {
-  testit::assert(experiment_type %in% c("general", "sampling"))
+  testit::assert(experiment_type %in% rkt_get_experiment_types())
 
   sampling_options <- c("random")
   if (experiment_type == "sampling") {

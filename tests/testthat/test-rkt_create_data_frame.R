@@ -3,8 +3,7 @@ context("rkt_create_data_frame")
 test_that("use", {
   n_files <- 3
   n_nltts <- 5
-  experiment_types <- c("general", "sampling")
-  for (experiment_type in experiment_types) {
+  for (experiment_type in rkt_get_experiment_types()) {
     df <- rkt_create_data_frame(
       n_files = n_files,
       n_nltts = n_nltts,

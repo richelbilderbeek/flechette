@@ -5,7 +5,7 @@ test_that("use", {
   n_files <- 3
   n_nltts <- 3 # Called X, X.1 and X.2
 
-  for (experiment_type in c("general", "sampling")) {
+  for (experiment_type in rkt_get_experiment_types()) {
     df <- rkt_create_data_frame(
       n_files = n_files,
       n_nltts = n_nltts,
@@ -29,7 +29,7 @@ test_that("Can convert a data frame to long form, #5", {
     n_nltts <- n_nltts / 10
   }
 
-  for (experiment_type in c("general", "sampling")) {
+  for (experiment_type in rkt_get_experiment_types()) {
 
     df <- rkt_create_data_frame(
       n_files = n_files,
