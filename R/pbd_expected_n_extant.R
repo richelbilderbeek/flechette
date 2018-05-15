@@ -18,7 +18,6 @@ pbd_expected_n_extant <- function(
   eri,
   n_sims = 10
 ) {
-  # Add more stops later, hopefully by students :-)
   if (crown_age <= 0.0) {
     stop("'crown age' must be non-zero and positive")
   }
@@ -43,10 +42,15 @@ pbd_expected_n_extant <- function(
 
   n_lineages <- rep(NA, n_sims)
   for (i in seq(1, n_sims)) {
-    out <- PBD::pbd_sim(
-      pars = c(sirg, scr, siri, erg, eri),
-      age = crown_age,
-      soc = 2
+    out <- pbd_sim_checked(
+      erg = erg,
+      eri = eri,
+      scr = scr,
+      sirg = sirg,
+      siri = siri,
+      stem_age = NULL,
+      crown_age = crown_age,
+      max_n_taxa = 10000
     )
     n_lineages[i] <- length(out$stree_random$tip.label)
   }

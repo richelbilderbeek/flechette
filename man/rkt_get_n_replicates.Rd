@@ -2,10 +2,12 @@
 % Please edit documentation in R/rkt_get_n_replicates.R
 \name{rkt_get_n_replicates}
 \alias{rkt_get_n_replicates}
-\title{Get the number of replicates per parameter combination.}
+\title{Get the number of replicates per parameter combination.
+This number is limited by multiple factors}
 \usage{
 rkt_get_n_replicates()
 }
 \description{
 Get the number of replicates per parameter combination.
+This number is limited by multiple factors
 }

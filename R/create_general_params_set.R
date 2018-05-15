@@ -22,20 +22,18 @@ create_general_params_set <- function(
             for (eri in rkt_get_ext_rates()) {
               if (erg >= sirg) next
               if (eri >= siri) next
-              if (siri - eri >= 0.8) next
-              if (sirg - erg >= 0.8) next
+              if (siri - eri >= 0.4) next
+              if (sirg - erg >= 0.4) next
               crown_age <- 15
-              if (1 == 2) {
-                if (pbd_expected_n_extant(
-                  crown_age = crown_age,
-                  scr = scr,
-                  sirg = sirg,
-                  siri = siri,
-                  erg = erg,
-                  eri = eri,
-                  n_sims = 10
-                ) > 1000) next
-              }
+              if (pbd_expected_n_extant(
+                crown_age = crown_age,
+                scr = scr,
+                sirg = sirg,
+                siri = siri,
+                erg = erg,
+                eri = eri,
+                n_sims = 10
+              ) > 1000) next
 
               params <- create_params(
                 sirg = sirg,
