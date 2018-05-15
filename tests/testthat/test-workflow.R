@@ -2,8 +2,8 @@ context("workflow")
 
 test_that("Full workflow, general", {
 
-  skip("Too long, also on Travis")
-
+  if (!ribir::is_on_travis()) return()
+  
   n_parameters <- rkt_get_n_params()
   chain_length <- 4000
   sampling_interval <- 1000
@@ -17,7 +17,7 @@ test_that("Full workflow, general", {
   ##############################################################################
   # 1.1 Create all `.RDa` input/parameter files to do a general mapping
   ##############################################################################
-  input_filenames <- create_input_files_general(
+  input_filenames_all <- create_input_files_general(
     general_params_set = create_general_params_set(
       mcmc = beautier::create_mcmc(
         chain_length = chain_length,
@@ -28,7 +28,7 @@ test_that("Full workflow, general", {
     folder_name = tempdir()
   )
 
-  testit::assert(n_parameters == length(unlist(readRDS(input_filenames[1]))))
+  testit::assert(n_parameters == length(unlist(readRDS(input_filenames_all[1]))))
 
   ##############################################################################
   # 2 Run simulation, store all info (such as all posterior phylogenies) as .RDa
@@ -36,7 +36,7 @@ test_that("Full workflow, general", {
   # Only run the first three input file, pick three easy ones
   set.seed(42)
   while (1) {
-    input_filenames <- sample(input_filenames, size = 3, replace = FALSE)
+    input_filenames <- sample(input_filenames_all, size = 3, replace = FALSE)
     if (readRDS(input_filenames[1])$sirg > 0.1) next
     if (readRDS(input_filenames[1])$siri > 0.1) next
     if (readRDS(input_filenames[2])$sirg > 0.1) next
