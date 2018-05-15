@@ -2,12 +2,19 @@ context("create_sampling_params_set")
 
 test_that("use", {
 
-  skip("WIP")
   params_set <- create_sampling_params_set()
   testthat::expect_true(
     length(params_set) > 20
   )
+})
 
+test_that("no high SRCs", {
+
+  for (params in create_sampling_params_set()) {
+    testthat::expect_true(
+      params$scr < 1000.0
+    )
+  }
 })
 
 test_that("sampling matters", {

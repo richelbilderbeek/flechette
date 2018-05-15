@@ -8,11 +8,19 @@ create_sampling_params_set <- function(
   n_replicates = 1
 ) {
   # Start from the general parameters set
-  params_set <- create_general_params_set(
+  general_params_set <- create_general_params_set(
     mcmc = mcmc,
     sequence_length = sequence_length,
     n_replicates = n_replicates
   )
   # Remove all SCR == Inf
+  params_set <- list()
+  index <- 1
+  for (params in general_params_set) {
+    if (params$scr < 1000.0) {
+      params_set[[index]] <- params
+      index <- index + 1
+    }
+  }
   params_set
 }
