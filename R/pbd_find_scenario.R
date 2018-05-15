@@ -47,9 +47,15 @@ pbd_find_scenario <- function(
   testit::assert(min_n_subspecies <= max_n_subspecies)
 
   set.seed(rng_seed)
-  pbd_params <- c(sirg, scr, siri, erg, eri)
   while (TRUE) {
-    out <- PBD::pbd_sim(pars = pbd_params, age = crown_age, soc = 2)
+    out <- pbd_sim_checked(
+      erg = erg,
+      eri = eri,
+      scr = scr,
+      sirg = sirg,
+      siri = siri,
+      crown_age = crown_age
+    )
 
     # Count subspecies
     n_subspecies <- length(out$igtree.extant$tip.label)
