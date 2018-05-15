@@ -4,7 +4,7 @@ test_that("Full workflow, general", {
 
   skip("Too long, also on Travis")
 
-  n_parameters <- 15 # Just a given
+  n_parameters <- rkt_get_n_params()
   chain_length <- 4000
   sampling_interval <- 1000
   sequence_length <- 15

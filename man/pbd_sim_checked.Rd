@@ -22,7 +22,7 @@ pbd_sim_checked(erg, eri, scr, sirg, siri, stem_age = NULL,
 
 \item{crown_age}{crown age. Set either the stem age or the crown age.}
 
-\item{max_n_taxa}{maximum number of taxa. If this value is exceeded, 
+\item{max_n_taxa}{maximum number of taxa. If this value is exceeded,
 the simulation is aborted and removed.}
 }
 \description{
