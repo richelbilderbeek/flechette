@@ -23,12 +23,6 @@ test_that("PBD with Inf as speciation completion rate, #4", {
 
 })
 
-test_that("Can convert a data frame to long form, #5", {
-
-  skip("WIP")
-
-})
-
 test_that("Ten percent of burn-in results in 1000 values, #10", {
 
   testthat::expect_equal(
