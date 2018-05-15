@@ -41,5 +41,9 @@ test_that("use", {
     gc()
 
     testthat::expect_true(file.exists(filename))
+    file.copy(
+      filename, 
+      paste0("~/", experiment_type, ".pdf")
+    )
   }
 })
