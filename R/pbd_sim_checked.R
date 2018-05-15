@@ -37,7 +37,10 @@ pbd_sim_checked <- function(
   }
   if (is.null(crown_age)) {
     if (is.null(stem_age)) {
-      stop("At least one of 'crown_age' or 'stem_age' must be non-zero and positive")
+      stop(
+        "At least one of 'crown_age' or 'stem_age' ",
+        "must be non-zero and positive"
+      )
     } else if (stem_age <= 0.0) {
       stop("'stem_age' must be non-zero and positive")
     }
