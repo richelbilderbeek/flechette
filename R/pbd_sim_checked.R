@@ -8,6 +8,7 @@
 #' @param crown_age crown age. Set either the stem age or the crown age.
 #' @param max_n_taxa maximum number of taxa. If this value is exceeded,
 #'   the simulation is aborted and removed.
+#' @export
 pbd_sim_checked <- function(
   erg,
   eri,

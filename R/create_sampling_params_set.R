@@ -13,14 +13,39 @@ create_sampling_params_set <- function(
     sequence_length = sequence_length,
     n_replicates = n_replicates
   )
-  # Remove all SCR == Inf
-  params_set <- list()
+
+  sampling_params_set <- list()
   index <- 1
+  # Each tree will have a unique RNG seed
+  tree_sim_rng_seed <- 1
   for (params in general_params_set) {
-    if (params$scr < 1000.0) {
-      params_set[[index]] <- params
-      index <- index + 1
+    # Remove all SCR == Inf
+    if (params$scr >= 1000.0) next
+    while (1) {
+      tree_sim_rng_seed <- tree_sim_rng_seed + 1
+      set.seed(tree_sim_rng_seed)
+      out <- pbd_sim_checked(
+        erg = params$erg,
+        eri = params$eri,
+        scr = params$scr,
+        sirg = params$sirg,
+        siri = params$siri,
+        crown_age = params$crown_age
+      )
+      sum_youngest <- sum(out$stree_youngest$edge.length)
+      sum_oldest <- sum(out$stree_oldest$edge.length)
+      if (sum_youngest != sum_oldest) {
+        # Found one!
+        sampling_params_set[[index]] <- params
+        sampling_params_set[[index + 1]] <- params
+        sampling_params_set[[index]]$tree_sim_rng_seed <- tree_sim_rng_seed
+        sampling_params_set[[index + 1]]$tree_sim_rng_seed <- tree_sim_rng_seed
+        sampling_params_set[[index]]$sampling <- "youngest"
+        sampling_params_set[[index + 1]]$sampling <- "oldest"
+        index <- index + 2
+        break ()
+      }
     }
   }
-  params_set
+  sampling_params_set
 }

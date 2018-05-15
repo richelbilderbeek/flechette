@@ -2,6 +2,8 @@ context("create_sampling_params_set")
 
 test_that("use", {
 
+  if (!ribir::is_on_travis()) return()
+
   params_set <- create_sampling_params_set()
   testthat::expect_true(
     length(params_set) > 20
@@ -9,6 +11,8 @@ test_that("use", {
 })
 
 test_that("no high SRCs", {
+
+  if (!ribir::is_on_travis()) return()
 
   for (params in create_sampling_params_set()) {
     testthat::expect_true(
@@ -19,21 +23,21 @@ test_that("no high SRCs", {
 
 test_that("sampling matters", {
 
-  skip("WIP")
   if (!ribir::is_on_travis()) return()
 
   params_set <- create_sampling_params_set()
   for (params in params_set) {
-    testit::assert(
-      pbd_expected_n_extant(
-        crown_age = params$crown_age,
-        scr = params$scr,
-        sirg = params$sirg,
-        siri = params$siri,
-        erg = params$erg,
-        eri = params$eri,
-        n_sims = 10
-      ) < 1000
+    set.seed(params$tree_sim_rng_seed)
+    out <- pbd_sim_checked(
+      erg = params$erg,
+      eri = params$eri,
+      scr = params$scr,
+      sirg = params$sirg,
+      siri = params$siri,
+      crown_age = params$crown_age
     )
+    sum_youngest <- sum(out$stree_youngest$edge.length)
+    sum_oldest <- sum(out$stree_oldest$edge.length)
+    testthat::expect_true(sum_youngest != sum_oldest)
   }
 })
