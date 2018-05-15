@@ -4,6 +4,13 @@ test_that("use", {
 
   n_files <- rkt_get_n_replicates() * rkt_get_n_param_combos()
   n_nltts <- 1000
+
+  if (!ribir::is_on_travis()) {
+    # Smaller on local computer
+    n_files <- 1 * rkt_get_n_param_combos()
+    n_nltts <- 10
+  }
+
   testit::assert(n_files <= rkt_get_max_n_rows())
   testit::assert(rkt_get_n_params() + 1 + n_nltts <= rkt_get_max_n_cols())
 
@@ -13,14 +20,14 @@ test_that("use", {
     n_nltts = n_nltts
   )
   df_long <- to_long(df)
-
-  rm(df)
-  gc()
-
-  testthat::expect_silent(
-    rkt_plot(df_long)
+  filename <- tempfile(fileext = ".pdf")
+  ggplot2::ggsave(
+    filename = filename,
+    plot = rkt_plot(df_long),
+    device = "pdf",
+    width = 21,
+    height = 29.7,
+    units = "cm"
   )
-
-  rm(df_long)
-  gc()
+  testthat::expect_true(file.exists(filename))
 })
