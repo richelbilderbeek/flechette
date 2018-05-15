@@ -25,15 +25,6 @@ create_general_params_set <- function(
               if (siri - eri >= 0.4) next
               if (sirg - erg >= 0.4) next
               crown_age <- 15
-              if (pbd_expected_n_extant(
-                crown_age = crown_age,
-                scr = scr,
-                sirg = sirg,
-                siri = siri,
-                erg = erg,
-                eri = eri,
-                n_sims = 10
-              ) > 1000) next
 
               params <- create_params(
                 sirg = sirg,
