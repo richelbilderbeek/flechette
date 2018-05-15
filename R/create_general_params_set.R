@@ -24,6 +24,12 @@ create_general_params_set <- function(
               if (eri >= siri) next
               if (siri - eri >= 0.4) next
               if (sirg - erg >= 0.4) next
+              testit::assert(
+                rkt_is_viable(
+                  erg = erg, eri = eri,
+                  sirg = sirg, siri = siri
+                )
+              )
               crown_age <- 15
 
               params <- create_params(

@@ -26,7 +26,7 @@ test_that("use", {
 
     rm(df)
     gc()
-    
+
     filename <- tempfile(fileext = ".pdf")
     ggplot2::ggsave(
       filename = filename,
@@ -41,9 +41,5 @@ test_that("use", {
     gc()
 
     testthat::expect_true(file.exists(filename))
-    file.copy(
-      filename, 
-      paste0("~/", experiment_type, ".pdf")
-    )
   }
 })
