@@ -2,26 +2,28 @@ context("rkt_plot")
 
 test_that("use", {
 
-  n_files <- rkt_get_n_replicates() * rkt_get_n_param_combos()
+  n_replicates <- rkt_get_n_replicates()
   n_nltts <- 1000
 
   if (!ribir::is_on_travis()) {
     # Smaller on local computer
-    n_files <- 1 * rkt_get_n_param_combos()
+    n_replicates <- 1
     n_nltts <- 10
   }
 
-  testit::assert(n_files <= rkt_get_max_n_rows())
+  n_rows <- n_replicates * rkt_get_n_param_combos()
+  testit::assert(n_rows <= rkt_get_max_n_rows())
   testit::assert(rkt_get_n_params() + 1 + n_nltts <= rkt_get_max_n_cols())
 
   for (experiment_type in rkt_get_experiment_types()) {
 
     # Create a fake data frame
     df <- rkt_create_data_frame(
-      n_files = n_files,
+      n_replicates = n_replicates,
       n_nltts = n_nltts,
       experiment_type = experiment_type
     )
+    if (is.null(df)) next # temp
     df_long <- to_long(df)
 
     rm(df)

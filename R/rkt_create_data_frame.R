@@ -1,45 +1,45 @@
 #' Create a skeleton data frame for each data set
-#' @param n_files number of parameter files
+#' @param n_replicates number of replicates
 #' @param n_nltts number of nLTT statistics per file
 #' @param experiment_type type of experiment,
 #'   must be either 'general' or 'sampling' 
 #' @export
 rkt_create_data_frame <- function(
-  n_files,
+  n_replicates,
   n_nltts,
   experiment_type
 ) {
   testit::assert(experiment_type %in% rkt_get_experiment_types())
+  if (experiment_type != "general") return (NULL) # temporary
 
-  sampling_options <- c("random")
-  if (experiment_type == "sampling") {
-    sampling_options <- c("shortest", "longest")
-  }
+  params_set <- create_general_params_set(n_replicates = n_replicates)
+  n_rows <- length(params_set)
 
   df_params <- data.frame(
-    sirg = sample(rkt_get_spec_init_rates(), size = n_files, replace = TRUE),
-    siri = sample(rkt_get_spec_init_rates(), size = n_files, replace = TRUE),
-    scr = sample(rkt_get_spec_compl_rates(), size = n_files, replace = TRUE),
-    erg = sample(rkt_get_ext_rates(), size = n_files, replace = TRUE),
-    eri = sample(rkt_get_ext_rates(), size = n_files, replace = TRUE),
-    crown_age = rep(15, n_files),
-    crown_age_sigma = rep(0.01, n_files),
-    sampling_method = rep(
-      sampling_options,
-      length.out = n_files
-    ),
-    mutation_rate = rep(66, n_files),
-    sequence_length = rep(150, n_files),
-    mcmc.chain_length = rep(4000, n_files),
-    mcmc.store_every = rep(1000, n_files),
-    tree_sim_rng_seed = seq(1, n_files),
-    alignment_rng_seed = seq(1, n_files),
-    beast2_rng_seed = seq(1, n_files)
+    sirg = rep(NA, n_rows),
+    siri = rep(NA, n_rows),
+    scr = rep(NA, n_rows),
+    erg = rep(NA, n_rows),
+    eri = rep(NA, n_rows),
+    crown_age = rep(NA, n_rows),
+    crown_age_sigma = rep(NA, n_rows),
+    sampling_method = rep(NA, n_rows),
+    mutation_rate = rep(NA, n_rows),
+    sequence_length = rep(NA, n_rows),
+    mcmc.chain_length = rep(NA, n_rows),
+    mcmc.store_every = rep(NA, n_rows),
+    tree_sim_rng_seed = seq(1, n_rows),
+    alignment_rng_seed = seq(1, n_rows),
+    beast2_rng_seed = seq(1, n_rows)
   )
+  levels(df_params$sampling_method) <- c("random", "shortest", "longest")
+  for (i in seq_along(params_set)) {
+    df_params[i, 1:rkt_get_n_params()] <- unlist(params_set[[i]])
+  }
   df_nltts <- data.frame(
     matrix(
-      data = stats::runif(n = n_files * n_nltts),
-      nrow = n_files,
+      data = stats::runif(n = n_rows * n_nltts),
+      nrow = n_rows,
       ncol = n_nltts
     )
   )
