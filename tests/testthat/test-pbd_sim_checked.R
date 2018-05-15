@@ -2,11 +2,14 @@ context("pbd_sim_checked")
 
 test_that("use", {
 
-  skip("TODO for @J-Damhuis and @Tomdkkr")
-
   expect_silent(
     pbd_sim_checked(
-      ... # TODO
+      erg = 0.0,
+      eri = 0.0,
+      scr = 1.0,
+      sirg = 1.0,
+      siri = 1.0,
+      crown_age = 1.0
     )
   )
 })
@@ -20,61 +23,90 @@ test_that("PBD::pbd_sim and pbd_sim_checked must give same results", {
 
   expect_equal(
     pbd_sim_checked(
-      ... # TODO
+      erg = 0.0,
+      eri = 0.0,
+      scr = 1.0,
+      sirg = 1.0,
+      siri = 1.0,
+      crown_age = 1.0
     ),
     PBD::pbd_sim(
-      ... # TODO
+      pars = c(1.0, 1.0, 1.0, 0.0, 0.0),
+      age = 1.0,
+      soc = 2
     )
   )
 })
 
 test_that("abuse", {
 
-  skip("TODO for @J-Damhuis and @Tomdkkr")
-
   expect_error(
     pbd_sim_checked(
-      ..., # TODO
-      erg = -123
+      erg = -123, # Error
+      eri = 0.0,
+      scr = 1.0,
+      sirg = 1.0,
+      siri = 1.0,
+      crown_age = 1.0
     ),
     "'erg' must be positive"
   )
 
   expect_error(
     pbd_sim_checked(
-      ..., # TODO
-      eri = -123
+      erg = 0.0,
+      eri = -123, # Error
+      scr = 1.0,
+      sirg = 1.0,
+      siri = 1.0,
+      crown_age = 1.0
     ),
     "'eri' must be positive"
   )
 
   expect_error(
     pbd_sim_checked(
-      ..., # TODO
-      scr = -123
+      erg = 0.0,
+      eri = 0.0,
+      scr = -123, # Error
+      sirg = 1.0,
+      siri = 1.0,
+      crown_age = 1.0
     ),
     "'scr' must be positive"
   )
 
   expect_error(
     pbd_sim_checked(
-      ..., # TODO
-      sirg = -123
+      erg = 0.0,
+      eri = 0.0,
+      scr = 1.0,
+      sirg = -123, # Error
+      siri = 1.0,
+      crown_age = 1.0
     ),
-    "'sirg' must be non-zero and positive"
+    "'sirg' must be positive"
   )
 
   expect_error(
     pbd_sim_checked(
-      ..., # TODO
-      siri = -123
+      erg = 0.0,
+      eri = 0.0,
+      scr = 1.0,
+      sirg = 1.0,
+      siri = -123, #Error
+      crown_age = 1.0
     ),
-    "'siri' must be non-zero and positive"
+    "'siri' must be positive"
   )
 
   expect_error(
     pbd_sim_checked(
-      ..., # TODO
+      erg = 0.0,
+      eri = 0.0,
+      scr = 1.0,
+      sirg = 1.0,
+      siri = 1.0,
       crown_age = NULL,
       stem_age = NULL
     ),
@@ -83,7 +115,11 @@ test_that("abuse", {
 
   expect_error(
     pbd_sim_checked(
-      ..., # TODO
+      erg = 0.0,
+      eri = 0.0,
+      scr = 1.0,
+      sirg = 1.0,
+      siri = 1.0,
       crown_age = -123,
       stem_age = NULL
     ),
@@ -92,7 +128,11 @@ test_that("abuse", {
 
   expect_error(
     pbd_sim_checked(
-      ..., # TODO
+      erg = 0.0,
+      eri = 0.0,
+      scr = 1.0,
+      sirg = 1.0,
+      siri = 1.0,
       crown_age = NULL,
       stem_age = -123
     ),
@@ -101,7 +141,11 @@ test_that("abuse", {
 
   expect_error(
     pbd_sim_checked(
-      ..., # TODO
+      erg = 0.0,
+      eri = 0.0,
+      scr = 1.0,
+      sirg = 1.0,
+      siri = 1.0,
       crown_age = 123,
       stem_age = 234
     ),

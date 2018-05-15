@@ -20,13 +20,37 @@ pbd_sim_checked <- function(
   max_n_taxa = Inf
 ) {
   # TODO: use if and stop
-  testit::assert(erg >= 0.0)
-  testit::assert(eri >= 0.0)
-  testit::assert(sirg >= 0.0)
-  testit::assert(siri >= 0.0)
-  testit::assert(scr >= 0.0)
-  testit::assert(xor(is.null(crown_age), is.null(stem_age)))
-  testit::assert(max_n_taxa >= 0.0)
+  if (erg < 0.0) {
+    stop("'erg' must be positive")
+  }
+  if (eri < 0.0) {
+    stop("'eri' must be positive")
+  }
+  if (sirg < 0.0) {
+    stop("'sirg' must be positive")
+  }
+  if (siri < 0.0) {
+    stop("'siri' must be positive")
+  }
+  if (scr < 0.0) {
+    stop("'scr' must be positive")
+  }
+  if (is.null(crown_age)) {
+    if (is.null(stem_age)) {
+      stop("At least one of 'crown_age' or 'stem_age' must be non-zero and positive")
+    } else if (stem_age <= 0.0) {
+      stop("'stem_age' must be non-zero and positive")
+    }
+  } else if (crown_age <= 0.0) {
+    stop("'crown_age' must be non-zero and positive")
+  } else if (crown_age > 0.0) {
+    if (!is.null(stem_age)) {
+      stop("Must set either 'crown_age' or 'stem_age'")
+    }
+  }
+  if (max_n_taxa < 0.0) {
+    stop("'max_n_taxa' must be positive")
+  }
 
   # age
   age <- stem_age
