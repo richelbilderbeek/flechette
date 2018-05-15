@@ -1,5 +1,5 @@
 context("pbd_expected_n_extant")
-library(testthat)
+
 test_that("minimal use", {
 
   testthat::expect_silent(
