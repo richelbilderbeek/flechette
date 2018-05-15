@@ -23,6 +23,10 @@ test_that("use", {
       experiment_type = experiment_type
     )
     df_long <- to_long(df)
+
+    rm(df)
+    gc()
+    
     filename <- tempfile(fileext = ".pdf")
     ggplot2::ggsave(
       filename = filename,
@@ -32,6 +36,10 @@ test_that("use", {
       height = 29.7,
       units = "cm"
     )
+
+    rm(df_long)
+    gc()
+
     testthat::expect_true(file.exists(filename))
   }
 })
