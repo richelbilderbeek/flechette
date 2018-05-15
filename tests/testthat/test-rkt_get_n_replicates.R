@@ -1,8 +1,8 @@
 context("rkt_get_n_replicates")
 
-test_that("use", {
-  expect_equal(
-    rkt_get_n_replicates(), 138
+test_that("must at least have 1 replicate", {
+  testthat::expect_gte(
+    rkt_get_n_replicates(), 1
   )
 })
 
