@@ -8,15 +8,13 @@ create_general_params_set(mcmc = beautier::create_mcmc(chain_length = 1111000,
   store_every = 1000), sequence_length = 15000, n_replicates = 1)
 }
 \arguments{
-\item{mcmc}{MCMC options, as created by \link[beautier]{create_mcmc}}
+\item{mcmc}{MCMC options, 
+as created by \link[beautier]{create_mcmc}}
 
 \item{sequence_length}{DNA alignment sequence length,
 in number of nucleotides}
 
 \item{n_replicates}{number of replicates per biological parameter set}
-}
-\value{
-The filenames of all parameter files created
 }
 \description{
 Creates the parameter set for the general exploration

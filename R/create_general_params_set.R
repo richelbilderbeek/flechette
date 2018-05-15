@@ -1,9 +1,5 @@
 #' Creates the parameter set for the general exploration
-#' @param mcmc MCMC options, as created by \link[beautier]{create_mcmc}
-#' @param sequence_length DNA alignment sequence length,
-#'   in number of nucleotides
-#' @param n_replicates number of replicates per biological parameter set
-#' @return The filenames of all parameter files created
+#' @inheritParams create_params_set
 #' @export
 #' @author Richel Bilderbeek
 create_general_params_set <- function(
