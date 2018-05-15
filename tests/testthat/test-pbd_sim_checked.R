@@ -110,7 +110,10 @@ test_that("abuse", {
       crown_age = NULL,
       stem_age = NULL
     ),
-    "At least one of 'crown_age' or 'stem_age' must be non-zero and positive"
+    paste0(
+      "At least one of 'crown_age' or 'stem_age' ",
+      "must be non-zero and positive"
+    )
   )
 
   expect_error(
