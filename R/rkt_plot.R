@@ -10,17 +10,36 @@ rkt_plot <- function(
   erg <- NULL; rm(erg) # nolint, fixes warning: no visible binding for global variable
   sirg <- NULL; rm(sirg) # nolint, fixes warning: no visible binding for global variable
   nltt <- NULL; rm(nltt) # nolint, fixes warning: no visible binding for global variable
-
-  ggplot2::ggplot(
-    data = df_long,
-    ggplot2::aes(
-      x = as.factor(scr),
-      y = nltt,
-      fill = sampling_method
-    )
-  ) + ggplot2::geom_violin() +
-    ggplot2::facet_grid(
-      erg ~ sirg,
-      drop = FALSE
-    )
+  if (all(df_long$sampling_method == "random")) {
+    # The general dataset
+    ggplot2::ggplot(
+      data = df_long,
+      ggplot2::aes(
+        x = as.factor(scr),
+        y = nltt
+      )
+    ) + 
+      ggplot2::geom_violin() +
+      ggplot2::facet_grid(
+        erg ~ sirg,
+        drop = FALSE
+      ) + 
+      ggplot2::ggtitle("The general data set")
+  } else {
+    # Measure the effect of sampling
+    ggplot2::ggplot(
+      data = df_long,
+      ggplot2::aes(
+        x = as.factor(scr),
+        y = nltt,
+        fill = sampling_method
+      )
+    ) + 
+      ggplot2::geom_violin() +
+      ggplot2::facet_grid(
+        erg ~ sirg,
+        drop = FALSE
+      ) +
+      ggplot2::ggtitle("The effect of sampling")
+  }
 }

@@ -14,21 +14,24 @@ test_that("use", {
   testit::assert(n_files <= rkt_get_max_n_rows())
   testit::assert(rkt_get_n_params() + 1 + n_nltts <= rkt_get_max_n_cols())
 
-  # Create a fake data frame
-  df <- rkt_create_data_frame(
-    n_files = n_files,
-    n_nltts = n_nltts,
-    experiment_type = "general"
-  )
-  df_long <- to_long(df)
-  filename <- tempfile(fileext = ".pdf")
-  ggplot2::ggsave(
-    filename = filename,
-    plot = rkt_plot(df_long),
-    device = "pdf",
-    width = 21,
-    height = 29.7,
-    units = "cm"
-  )
-  testthat::expect_true(file.exists(filename))
+  for (experiment_type in rkt_get_experiment_types()) {
+    experiment_type <- "sampling"
+    # Create a fake data frame
+    df <- rkt_create_data_frame(
+      n_files = n_files,
+      n_nltts = n_nltts,
+      experiment_type = experiment_type
+    )
+    df_long <- to_long(df)
+    filename <- tempfile(fileext = ".pdf")
+    ggplot2::ggsave(
+      filename = filename,
+      plot = rkt_plot(df_long),
+      device = "pdf",
+      width = 21,
+      height = 29.7,
+      units = "cm"
+    )
+    testthat::expect_true(file.exists(filename))
+  }
 })
