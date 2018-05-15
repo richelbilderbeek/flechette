@@ -5,8 +5,7 @@ knitr::opts_chunk$set(
 )
 
 ## ------------------------------------------------------------------------
-library(raket)
-library(ggplot2)
+# Nothing
 
 ## ------------------------------------------------------------------------
 folder_name <- tempdir()
@@ -16,7 +15,7 @@ set.seed(42)
 
 ## ------------------------------------------------------------------------
 all_input_filenames <- raket::create_input_files_general(
-  general_params_set = create_general_params_set(
+  general_params_set = raket::create_general_params_set(
     mcmc = beautier::create_mcmc(chain_length = 4000, store_every = 1000),
     sequence_length = 15
   ),
@@ -58,10 +57,12 @@ raket::create_nltt_file(
 print(names(readRDS(nltts_filename)))
 
 ## ----fig.width=7, fig.height=7-------------------------------------------
-ggplot(
+ggplot2::ggplot(
   data = data.frame(nltts = readRDS(nltts_filename)$nltts),
-  aes(x = nltts)
-) + geom_histogram(binwidth = 0.01) + geom_density()
+  ggplot2::aes(x = nltts)
+) + 
+  ggplot2::geom_histogram(binwidth = 0.01) + 
+  ggplot2::geom_density()
 
 ## ------------------------------------------------------------------------
 csv_filename <- tempfile("nltts.csv")
