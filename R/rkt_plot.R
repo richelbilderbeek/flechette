@@ -18,12 +18,12 @@ rkt_plot <- function(
         x = as.factor(scr),
         y = nltt
       )
-    ) + 
+    ) +
       ggplot2::geom_violin() +
       ggplot2::facet_grid(
         erg ~ sirg,
         drop = FALSE
-      ) + 
+      ) +
       ggplot2::ggtitle("The general data set")
   } else {
     # Measure the effect of sampling
@@ -34,7 +34,7 @@ rkt_plot <- function(
         y = nltt,
         fill = sampling_method
       )
-    ) + 
+    ) +
       ggplot2::geom_violin() +
       ggplot2::facet_grid(
         erg ~ sirg,
