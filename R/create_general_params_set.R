@@ -20,16 +20,12 @@ create_general_params_set <- function(
         for (scr in rkt_get_spec_compl_rates()) {
           for (erg in rkt_get_ext_rates()) {
             for (eri in rkt_get_ext_rates()) {
-              if (erg >= sirg) next
-              if (eri >= siri) next
-              if (siri - eri >= 0.4) next
-              if (sirg - erg >= 0.4) next
-              testit::assert(
-                rkt_is_viable(
+              if (!rkt_is_viable(
                   erg = erg, eri = eri,
                   sirg = sirg, siri = siri
                 )
-              )
+              ) next
+
               crown_age <- 15
 
               params <- create_params(
