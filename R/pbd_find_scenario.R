@@ -2,12 +2,20 @@
 #' @param scr Speciation Completion Rate
 #' @param sirg Speciation Initiation Rate of Good Species 
 #' @param siri Speciation Initiation Rate of Incipient Species
-#' @param sampling sampling method, can be 
+#' @param scenario scenario to look for, can be 
 #'  'equal' (branch length of youngest equals oldest equals random)
 #'  'expected', 
 #'  'ylto' (youngest longer than oldest)
 #'  'rsty' (random shorter than youngest)
 #'  'rlto' (random longer than oldest)
+#' @param erg Extinction Rate of Good Species 
+#' @param eri Extinction Rate of Incipient Species
+#' @param crown_age crown age of the phylogeny
+#' @param min_n_species minimal number of good species
+#' @param max_n_species maximal number of good species,
+#' @param min_n_subspecies minimal number of subspecies
+#' @param max_n_subspecies maximal number of subspecies
+#' @param rng_seed Random Number Generator seed
 #' @export
 pbd_find_scenario <- function(
   scr,

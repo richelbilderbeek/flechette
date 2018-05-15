@@ -15,12 +15,28 @@ pbd_find_scenario(scr, sirg, siri, scenario, erg = 0, eri = 0,
 
 \item{siri}{Speciation Initiation Rate of Incipient Species}
 
-\item{sampling}{sampling method, can be 
+\item{scenario}{scenario to look for, can be 
 'equal' (branch length of youngest equals oldest equals random)
 'expected', 
 'ylto' (youngest longer than oldest)
 'rsty' (random shorter than youngest)
 'rlto' (random longer than oldest)}
+
+\item{erg}{Extinction Rate of Good Species}
+
+\item{eri}{Extinction Rate of Incipient Species}
+
+\item{crown_age}{crown age of the phylogeny}
+
+\item{min_n_species}{minimal number of good species}
+
+\item{max_n_species}{maximal number of good species,}
+
+\item{min_n_subspecies}{minimal number of subspecies}
+
+\item{max_n_subspecies}{maximal number of subspecies}
+
+\item{rng_seed}{Random Number Generator seed}
 }
 \description{
 Create an example scenario
