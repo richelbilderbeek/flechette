@@ -2,7 +2,12 @@ context("lintr")
 
 test_that("must have a clean lint", {
 
-  # If this fails, only run devtools::lint()
-  problems <- devtools::lint()
-  testthat::expect_true(length(problems) == 0)
+  # From https://github.com/jimhester/lintr#testthat
+  if (requireNamespace("lintr", quietly = TRUE)) {
+    context("lints")
+    test_that("Package Style", {
+      lintr::expect_lint_free()
+    })
+  }
+
 })
