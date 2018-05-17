@@ -1,11 +1,11 @@
-#' Get the expected number of good and incipient lineages from a protracted 
+#' Get the expected number of good and incipient lineages from a protracted
 #' pure birth model
 #' @param sirg The speciation initiation rate from a good species
 #' @param scr The speciation completion rate
 #' @param siri The speciation initiation rate from an incipient species
 #' @param age The age
-#' @param Ng The number of good species at t=0
-#' @param Ni The number of incipient species at t=0
+#' @param ng The number of good species at t=0
+#' @param ni The number of incipient species at t=0
 #' @export
 #' @author Joris Damhuis
 pbd_get_exp_n_lineages_pb <- function(
@@ -13,8 +13,8 @@ pbd_get_exp_n_lineages_pb <- function(
   scr,
   siri,
   age,
-  Ng,
-  Ni
+  ng,
+  ni
 ) {
   if (sirg <= 0.0) {
     stop("'sirg' must be non-zero and positive")
@@ -28,32 +28,37 @@ pbd_get_exp_n_lineages_pb <- function(
   if (age <= 0.0) {
     stop("'age' must be non-zero and positive")
   }
-  if (Ng < 0.0) {
-    stop("'Ng' must be zero or positive")
-  } else if (Ng == 0.0) {
-    if (Ni < 0.0) {
-      stop("'Ni' must be zero or positive")
-    } else if (Ni == 0.0) {
-      stop("One of 'Ng' and 'Ni' must be non-zero")
+  if (ng < 0.0) {
+    stop("'ng' must be zero or positive")
+  } else if (ng == 0.0) {
+    if (ni < 0.0) {
+      stop("'ni' must be zero or positive")
+    } else if (ni == 0.0) {
+      stop("One of 'ng' and 'ni' must be non-zero")
     }
   } else {
-    if (Ni < 0.0) {
-      stop("'Ni' must be zero or positive")
-    } else if (Ni > 0.0) {
-      stop("Only one of 'Ng' and 'Ni' can be non-zero")
+    if (ni < 0.0) {
+      stop("'ni' must be zero or positive")
+    } else if (ni > 0.0) {
+      stop("Only one of 'ng' and 'ni' can be non-zero")
     }
   }
-  
-  A <- sqrt(((1-(siri/scr))^2)+(4*(sirg/scr)))
-  
-  if (Ng > 0.0) {
-    exp_Ng <- (Ng/(2*A))*((A+1-(siri/scr))*exp(0.5*(siri+(A-1)*scr)*age)+(A-1+(siri/scr))*exp(0.5*(siri-(A+1)*scr)*age))
-    exp_Ni <- (Ng/A)*(sirg/scr)*(exp(0.5*(siri+(A-1)*scr)*age)-exp(0.5*(siri-(A+1)*scr)*age))
+
+  a <- sqrt( ( (1 - (siri / scr)) ^ 2) + (4 * (sirg / scr)))
+
+  if (ng > 0.0) {
+    exp_ng <- (ng / (2 * a)) * ( (a + 1 - (siri / scr)) * exp(0.5 * (siri +
+              (a - 1) * scr) * age) + (a - 1 + (siri / scr)) * exp(0.5 *
+              (siri - (a + 1) * scr) * age))
+    exp_ni <- (ng / a) * (sirg / scr) * (exp(0.5 * (siri + (a - 1) * scr) *
+              age) - exp(0.5 * (siri - (a + 1) * scr) * age))
   } else {
-    exp_Ng <- (Ni/(1+(sirg/scr)))*(exp(sirg*age)-exp(-scr*age))
-    exp_Ni <- (Ni/(1+(scr/sirg)))*exp(sirg*age)+(Ni/(1+(sirg/scr)))*exp(-scr*age)
+    exp_ng <- (ni / (1 + (sirg / scr))) * (exp(sirg * age) - exp(- scr * age))
+    exp_ni <- (ni / (1 + (scr / sirg))) * exp(sirg * age) +
+              (ni / (1 + (sirg / scr))) * exp(- scr * age)
   }
-  
-  cat("Expected number of good lineages:", exp_Ng, "|||", "Expected number of incipient lineages:", exp_Ni)
-  
+
+  cat("Expected number of good lineages:", exp_ng, "|||",
+      "Expected number of incipient lineages:", exp_ni)
+
 }
