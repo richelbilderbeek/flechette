@@ -44,14 +44,16 @@ pbd_get_exp_n_lineages_pb <- function(
     }
   }
 
-  a <- sqrt( ( (1 - (siri / scr)) ^ 2) + (4 * (sirg / scr)))
-
   if (ng > 0.0) {
-    exp_ng <- (ng / (2 * a)) * ( (a + 1 - (siri / scr)) * exp(0.5 * (siri +
-              (a - 1) * scr) * age) + (a - 1 + (siri / scr)) * exp(0.5 *
-              (siri - (a + 1) * scr) * age))
-    exp_ni <- (ng / a) * (sirg / scr) * (exp(0.5 * (siri + (a - 1) * scr) *
-              age) - exp(0.5 * (siri - (a + 1) * scr) * age))
+    temp_a1 <- 1 - (siri / scr)
+    temp_a2 <- temp_a1 ^ 2 + (4 * (sirg / scr))
+    temp_a <- sqrt(temp_a2)
+    temp_b <- temp_a + 1 - (siri / scr)
+    temp_c <- exp(0.5 * (siri + (temp_a - 1) * scr) * age)
+    temp_d <- exp(0.5 * (siri - (temp_a + 1) * scr) * age)
+    exp_ng <- (ng / (2 * temp_a)) * (temp_b * temp_c + (temp_a - 1 +
+              (siri / scr)) * temp_d)
+    exp_ni <- (ng / temp_a) * (sirg / scr) * (temp_c - temp_d)
   } else {
     exp_ng <- (ni / (1 + (sirg / scr))) * (exp(sirg * age) - exp(- scr * age))
     exp_ni <- (ni / (1 + (scr / sirg))) * exp(sirg * age) +
