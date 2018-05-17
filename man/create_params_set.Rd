@@ -12,7 +12,7 @@ create_params_set(experiment_type, mcmc = beautier::create_mcmc(chain_length =
 \item{experiment_type}{type of experiment,
 must be either 'general' or 'sampling'}
 
-\item{mcmc}{MCMC options, 
+\item{mcmc}{MCMC options,
 as created by \link[beautier]{create_mcmc}}
 
 \item{sequence_length}{DNA alignment sequence length,

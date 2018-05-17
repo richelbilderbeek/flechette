@@ -2,10 +2,10 @@
 % Please edit documentation in R/pbd_get_exp_n_lineages_pb.R
 \name{pbd_get_exp_n_lineages_pb}
 \alias{pbd_get_exp_n_lineages_pb}
-\title{Get the expected number of good and incipient lineages from a protracted 
+\title{Get the expected number of good and incipient lineages from a protracted
 pure birth model}
 \usage{
-pbd_get_exp_n_lineages_pb(sirg, scr, siri, age, Ng, Ni)
+pbd_get_exp_n_lineages_pb(sirg, scr, siri, age, ng, ni)
 }
 \arguments{
 \item{sirg}{The speciation initiation rate from a good species}
@@ -16,12 +16,12 @@ pbd_get_exp_n_lineages_pb(sirg, scr, siri, age, Ng, Ni)
 
 \item{age}{The age}
 
-\item{Ng}{The number of good species at t=0}
+\item{ng}{The number of good species at t=0}
 
-\item{Ni}{The number of incipient species at t=0}
+\item{ni}{The number of incipient species at t=0}
 }
 \description{
-Get the expected number of good and incipient lineages from a protracted 
+Get the expected number of good and incipient lineages from a protracted
 pure birth model
 }
 \author{
