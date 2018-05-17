@@ -1,14 +1,14 @@
 #' Create an example scenario
 #' @param scr Speciation Completion Rate
-#' @param sirg Speciation Initiation Rate of Good Species 
+#' @param sirg Speciation Initiation Rate of Good Species
 #' @param siri Speciation Initiation Rate of Incipient Species
-#' @param scenario scenario to look for, can be 
+#' @param scenario scenario to look for, can be
 #'  'equal' (branch length of youngest equals oldest equals random)
-#'  'expected', 
+#'  'expected',
 #'  'ylto' (youngest longer than oldest)
 #'  'rsty' (random shorter than youngest)
 #'  'rlto' (random longer than oldest)
-#' @param erg Extinction Rate of Good Species 
+#' @param erg Extinction Rate of Good Species
 #' @param eri Extinction Rate of Incipient Species
 #' @param crown_age crown age of the phylogeny
 #' @param min_n_species minimal number of good species

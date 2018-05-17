@@ -2,17 +2,19 @@
 #' @param n_replicates number of replicates
 #' @param n_nltts number of nLTT statistics per file
 #' @param experiment_type type of experiment,
-#'   must be either 'general' or 'sampling' 
+#'   must be either 'general' or 'sampling'
 #' @export
 rkt_create_data_frame <- function(
   n_replicates,
   n_nltts,
   experiment_type
 ) {
-  testit::assert(experiment_type %in% rkt_get_experiment_types())
-  if (experiment_type != "general") return (NULL) # temporary
+  testit::assert(experiment_type %in%
+    raket::rkt_get_experiment_types()
+  )
+  if (experiment_type != "general") return(NULL) # temporary
 
-  params_set <- create_general_params_set(n_replicates = n_replicates)
+  params_set <- raket::create_general_params_set(n_replicates = n_replicates)
   n_rows <- length(params_set)
 
   df_params <- data.frame(
@@ -34,7 +36,7 @@ rkt_create_data_frame <- function(
   )
   levels(df_params$sampling_method) <- c("random", "shortest", "longest")
   for (i in seq_along(params_set)) {
-    df_params[i, 1:rkt_get_n_params()] <- unlist(params_set[[i]])
+    df_params[i, 1:raket::rkt_get_n_params()] <- unlist(params_set[[i]])
   }
   df_nltts <- data.frame(
     matrix(

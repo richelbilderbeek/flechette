@@ -1,7 +1,7 @@
 #' Create the set of parameters to use, for each of the
 #' two experiment types
 #' @param experiment_type type of experiment,
-#'   must be either 'general' or 'sampling' 
+#'   must be either 'general' or 'sampling'
 #' @param mcmc MCMC options, 
 #'   as created by \link[beautier]{create_mcmc}
 #' @param sequence_length DNA alignment sequence length,
@@ -15,7 +15,9 @@ create_params_set <- function(
   sequence_length = 15000,
   n_replicates = 1
 ) {
-  testit::assert(experiment_type %in% rkt_get_experiment_types())
+  testit::assert(experiment_type %in%
+    raket::rkt_get_experiment_types()
+  )
   if (experiment_type == "general") {
     create_general_params_set(
       mcmc = mcmc,

@@ -15,9 +15,9 @@ pbd_find_scenario(scr, sirg, siri, scenario, erg = 0, eri = 0,
 
 \item{siri}{Speciation Initiation Rate of Incipient Species}
 
-\item{scenario}{scenario to look for, can be 
+\item{scenario}{scenario to look for, can be
 'equal' (branch length of youngest equals oldest equals random)
-'expected', 
+'expected',
 'ylto' (youngest longer than oldest)
 'rsty' (random shorter than youngest)
 'rlto' (random longer than oldest)}
