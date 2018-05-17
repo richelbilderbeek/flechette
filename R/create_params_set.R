@@ -2,7 +2,7 @@
 #' two experiment types
 #' @param experiment_type type of experiment,
 #'   must be either 'general' or 'sampling'
-#' @param mcmc MCMC options, 
+#' @param mcmc MCMC options,
 #'   as created by \link[beautier]{create_mcmc}
 #' @param sequence_length DNA alignment sequence length,
 #'   in number of nucleotides
