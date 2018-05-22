@@ -16,11 +16,11 @@ test_that("use", {
 
 test_that("PBD::pbd_sim and pbd_sim_checked must give same results", {
 
-  skip("TODO for @J-Damhuis and @Tomdkkr")
-
-  # This will be harder!
-  # You will have to duck to compare elements of lists
-
+  skip("Issue #17")
+  
+  # Hint: run both pbd_sim_checked and PBD::pbd_sim
+  # with the same random number
+  
   expect_equal(
     pbd_sim_checked(
       erg = 0.0,
