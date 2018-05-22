@@ -8,7 +8,8 @@
 #SBATCH --mem=1G
 #SBATCH --job-name=create_input_files
 #SBATCH --output=create_input_files.log
-module load R/3.3.1-foss-2016a
+#module load R/3.3.1-foss-2016a
 module load GCCcore/4.9.3 
 module load XZ/5.2.2-foss-2016a
+module load R
 Rscript -e 'raket::create_input_files_general()'
