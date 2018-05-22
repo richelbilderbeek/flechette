@@ -26,7 +26,7 @@ but the best that can be done.
 First we load the libraries we'll need:
 
 ```{r}
-# Nothing
+library(raket)
 ```
 
 The research produces two data sets:
@@ -173,7 +173,5 @@ knitr::kable(df)
 Finally, we plot all (in this case, one) experiments:
 
 ```{r fig.width=7, fig.height=7}
-if (1 == 2) {
-  raket::rkt_plot(df_long = df)
-}
+raket::rkt_plot(df_long = df)
 ```

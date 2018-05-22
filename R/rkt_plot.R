@@ -14,7 +14,7 @@ rkt_plot <- function(
   nltt <- NULL; rm(nltt) # nolint, fixes warning: no visible binding for global variable
   if (all(df_long$sampling_method == "random")) {
     # The general dataset
-    ggplot2::ggplot(
+    plot <- ggplot2::ggplot(
       data = df_long,
       ggplot2::aes(
         x = as.factor(scr),
@@ -29,7 +29,7 @@ rkt_plot <- function(
       ggplot2::ggtitle("The general data set")
   } else {
     # Measure the effect of sampling
-    ggplot2::ggplot(
+    plot <- ggplot2::ggplot(
       data = df_long,
       ggplot2::aes(
         x = as.factor(scr),
@@ -46,9 +46,11 @@ rkt_plot <- function(
   }
   ggplot2::ggsave(
     filename = pdf_filename,
+    plot = plot,
     device = "pdf",
     width = 21,
     height = 29.7,
     units = "cm"
   )
+  plot
 }
