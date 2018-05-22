@@ -7,11 +7,21 @@ First install `raket`, its dependencies, and BEAST2:
 sbatch install_raket
 ```
 
-This works, except downloading and installing BEAST2. Do:
+This will fail with error `no permission to install to directory apps/haswell/software/R`.
+To fix this, do:
 
 ```
-# On local computer
-scp -r /home/richel/.local/share/beast/ p230198@peregrine.hpc.rug.nl:/home/p230198/.local/share
+# On Peregrine
+module load R
+R
+install.packages("stringr")
+# Say yes, yes, pick mirror
+q()
+```
+
+```
+# On Peregrine
+sbatch install_raket
 ```
 
 When this is done, create the parameter files:
