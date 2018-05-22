@@ -29,7 +29,7 @@ When this is done, create the parameter files:
 ```
 # Use one of these two:
 sbatch create_input_files_general
-sbatch create_input_files_sampling
+sbatch create_input_files_sampling # Does not work yet
 ```
 
 The parameter files will be created locally and have names `1.RDa` to approx `9999.RDa`.

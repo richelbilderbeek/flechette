@@ -8,7 +8,8 @@
 #SBATCH --mem=20G
 #SBATCH --job-name=create_output_file
 #SBATCH --output=create_output_file_%j.log
-module load R/3.3.1-foss-2016a
+#module load R/3.3.1-foss-2016a
+module load R
 from=$1
 to=out_$1
 cmd="raket::create_output_file(\""$from"\",\""$to"\")"
