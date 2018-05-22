@@ -19,7 +19,6 @@ pbd_sim_checked <- function(
   crown_age = NULL,
   max_n_taxa = Inf
 ) {
-  # TODO: use if and stop
   if (erg < 0.0) {
     stop("'erg' must be positive")
   }
