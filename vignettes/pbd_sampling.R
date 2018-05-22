@@ -4,10 +4,10 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-## ------------------------------------------------------------------------
-# Nothing
+## ----load_library--------------------------------------------------------
+library(raket)
 
-## ------------------------------------------------------------------------
+## ----define_plot---------------------------------------------------------
 # Plot the results of PBD::pbd_sim
 # '@param out the results of PBD::pbd_sim
 plot <- function(out) {
@@ -44,55 +44,67 @@ plot <- function(out) {
   graphics::par(mfrow = c(1, 1))
 }
 
-## ----fig.width=7, fig.height=5-------------------------------------------
-out <- raket::pbd_find_scenario(
-  scr = 0.1, sirg = 2, siri = 2, scenario = "expected", 
-  rng_seed = 42, max_n_subspecies = 3
-)
-plot(out)
+## ----find_expected_simplest, fig.width=7, fig.height=5-------------------
+if (1 == 2) { # TODO: @J-Damhuis
+  out <- raket::pbd_find_scenario(
+    scr = 0.1, sirg = 2, siri = 2, scenario = "expected", 
+    rng_seed = 42, max_n_subspecies = 3
+  )
+  plot(out)
+}
+
+## ----find_expected_simpler, fig.width=7, fig.height=5--------------------
+if (1 == 2) { # TODO: @J-Damhuis
+  out <- raket::pbd_find_scenario(
+    scr = 0.1, sirg = 2, siri = 2, scenario = "expected", 
+    rng_seed = 44, 
+    min_n_subspecies = 4,
+    max_n_subspecies = 4
+  )
+  plot(out)
+}
+
+## ----find_expected_simple, fig.width=7, fig.height=5---------------------
+if (1 == 2) { # TODO: @J-Damhuis
+  out <- raket::pbd_find_scenario(scr = 0.5, sirg = 1, siri = 2, scenario = "expected",
+    rng_seed = 51, 
+    min_n_subspecies = 5, 
+    max_n_subspecies = 10,
+    min_n_species = 3
+  )
+  plot(out)
+}
 
 ## ----fig.width=7, fig.height=5-------------------------------------------
-out <- raket::pbd_find_scenario(
-  scr = 0.1, sirg = 2, siri = 2, scenario = "expected", 
-  rng_seed = 44, 
-  min_n_subspecies = 4,
-  max_n_subspecies = 4
-)
-plot(out)
+if (1 == 2) { # TODO: @J-Damhuis
+  out <- raket::pbd_find_scenario(scr = 0.5, sirg = 1, siri = 2, scenario = "ylto",
+    rng_seed = 54, 
+    min_n_subspecies = 4, 
+    max_n_subspecies = 4,
+    min_n_species = 3
+  )
+  plot(out)
+}
 
 ## ----fig.width=7, fig.height=5-------------------------------------------
-out <- raket::pbd_find_scenario(scr = 0.5, sirg = 1, siri = 2, scenario = "expected",
-  rng_seed = 51, 
-  min_n_subspecies = 5, 
-  max_n_subspecies = 10,
-  min_n_species = 3
-)
-plot(out)
+if (1 == 2) { # TODO: @J-Damhuis
+  out <- raket::pbd_find_scenario(scr = 0.5, sirg = 1, siri = 2, scenario = "rsty",
+    rng_seed = 55, 
+    min_n_subspecies = 4, 
+    max_n_subspecies = 7,
+    min_n_species = 3
+  )
+  plot(out)
+}
 
 ## ----fig.width=7, fig.height=5-------------------------------------------
-out <- raket::pbd_find_scenario(scr = 0.5, sirg = 1, siri = 2, scenario = "ylto",
-  rng_seed = 54, 
-  min_n_subspecies = 4, 
-  max_n_subspecies = 4,
-  min_n_species = 3
-)
-plot(out)
-
-## ----fig.width=7, fig.height=5-------------------------------------------
-out <- raket::pbd_find_scenario(scr = 0.5, sirg = 1, siri = 2, scenario = "rsty",
-  rng_seed = 55, 
-  min_n_subspecies = 4, 
-  max_n_subspecies = 7,
-  min_n_species = 3
-)
-plot(out)
-
-## ----fig.width=7, fig.height=5-------------------------------------------
-out <- raket::pbd_find_scenario(scr = 0.5, sirg = 1, siri = 2, scenario = "rlto",
-  rng_seed = 57, 
-  min_n_subspecies = 4, 
-  max_n_subspecies = 7,
-  min_n_species = 3
-)
-plot(out)
+if (1 == 2) { # TODO: @J-Damhuis
+  out <- raket::pbd_find_scenario(scr = 0.5, sirg = 1, siri = 2, scenario = "rlto",
+    rng_seed = 57, 
+    min_n_subspecies = 4, 
+    max_n_subspecies = 7,
+    min_n_species = 3
+  )
+  plot(out)
+}
 

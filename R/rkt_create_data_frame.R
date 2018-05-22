@@ -12,9 +12,13 @@ rkt_create_data_frame <- function(
   testit::assert(experiment_type %in%
     raket::rkt_get_experiment_types()
   )
-  if (experiment_type != "general") return(NULL) # temporary
-
-  params_set <- raket::create_general_params_set(n_replicates = n_replicates)
+  params_set <- NULL
+  if (experiment_type == "general") {
+    params_set <- raket::create_general_params_set(n_replicates = n_replicates)
+  } else {
+    testit::assert(experiment_type == "sampling")
+    params_set <- raket::create_sampling_params_set(n_replicates = n_replicates)
+  }
   n_rows <- length(params_set)
 
   df_params <- data.frame(
@@ -34,7 +38,9 @@ rkt_create_data_frame <- function(
     alignment_rng_seed = seq(1, n_rows),
     beast2_rng_seed = seq(1, n_rows)
   )
-  levels(df_params$sampling_method) <- c("random", "shortest", "longest")
+  levels(df_params$sampling_method) <- c(
+    "random", "shortest", "longest", "oldest", "youngest"
+  )
   for (i in seq_along(params_set)) {
     df_params[i, 1:raket::rkt_get_n_params()] <- unlist(params_set[[i]])
   }

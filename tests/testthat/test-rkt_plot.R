@@ -7,7 +7,7 @@ test_that("use", {
 
   if (!ribir::is_on_travis()) {
     # Smaller on local computer
-    n_replicates <- 1
+    n_replicates <- 4
     n_nltts <- 10
   }
 
@@ -41,6 +41,7 @@ test_that("use", {
 
     rm(df_long)
     gc()
+    file.copy(filename, paste0("~/", experiment_type, ".pdf"))
 
     testthat::expect_true(file.exists(filename))
   }
