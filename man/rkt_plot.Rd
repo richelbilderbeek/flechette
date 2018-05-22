@@ -9,6 +9,8 @@ rkt_plot(df_long = utils::read.csv("result_long.csv"),
 }
 \arguments{
 \item{df_long}{data frame in the long form}
+
+\item{pdf_filename}{name of the PDF with the plot}
 }
 \description{
 Plot violin plot
