@@ -17,4 +17,6 @@ Rscript -e 'devtools::install_github("richelbilderbeek/beautier", ref = "develop
 Rscript -e 'devtools::install_github("richelbilderbeek/beastier", ref = "develop")'
 Rscript -e 'devtools::install_github("richelbilderbeek/tracerer", ref = "develop")'
 Rscript -e 'devtools::install_github("richelbilderbeek/babette", ref = "develop")'
+Rscript -e 'devtools::install_github("richelbilderbeek/piroette", ref = "develop")'
 Rscript -e 'devtools::install_github("richelbilderbeek/raket", ref = "develop")'
+Rscript -e 'beastier::install_beast2()'
