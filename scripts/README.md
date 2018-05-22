@@ -58,7 +58,17 @@ sbatch nltt_files_to_csv
 
 This will result in a file named `result.csv`
 
+```
+sbatch to_long
+```
 
+This will result in a file named `result_long.csv`
+
+```
+sbatch rkt_plot
+```
+
+This will result in a file named `result.pdf`
 
 ## Overview
 
