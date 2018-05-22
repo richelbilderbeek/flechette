@@ -6,9 +6,10 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --ntasks=1
 #SBATCH --mem=1G
-#SBATCH --job-name=nltt_files_to_csv
-#SBATCH --output=nltt_files_to_csv.log
+#SBATCH --job-name=to_long
+#SBATCH --output=to_long.log
 module load GCCcore/4.9.3 
 module load XZ/5.2.2-foss-2016a
 module load R
-Rscript -e 'raket::nltt_files_to_csv()'
+Rscript -e 'utils::write.csv(x = raket::to_long(), file = "result_long.csv", row.names = FALSE)'
+

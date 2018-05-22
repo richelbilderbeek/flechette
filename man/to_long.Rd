@@ -4,7 +4,7 @@
 \alias{to_long}
 \title{Convert a data frame from short to long form}
 \usage{
-to_long(df)
+to_long(df = read.csv("results.csv"))
 }
 \arguments{
 \item{df}{a data frame}

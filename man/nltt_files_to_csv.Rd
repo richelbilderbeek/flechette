@@ -4,7 +4,8 @@
 \alias{nltt_files_to_csv}
 \title{Collect all nLTT values from \code{_nltts.RDa} files}
 \usage{
-nltt_files_to_csv(nltt_filenames = Sys.glob("nltt_*.RDa"), csv_filename)
+nltt_files_to_csv(nltt_filenames = Sys.glob("nltt_*.RDa"),
+  csv_filename = "result.csv")
 }
 \arguments{
 \item{nltt_filenames}{names of the \code{_nltts.RDa} files,

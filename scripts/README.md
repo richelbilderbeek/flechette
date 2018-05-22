@@ -50,6 +50,14 @@ sbatch create_nltt_files
 
 The output files will be created locally and have names `nltt_1.RDa` to approx `nltt_9999.RDa`.
 
+To convert all nLTT files to comma-seperated files:
+
+```
+sbatch nltt_files_to_csv
+```
+
+This will result in a file named `result.csv`
+
 
 
 ## Overview

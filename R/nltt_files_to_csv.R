@@ -6,7 +6,7 @@
 #' @author Richel J.C. Bilderbeek
 nltt_files_to_csv <- function(
   nltt_filenames = Sys.glob("nltt_*.RDa"),
-  csv_filename
+  csv_filename = "result.csv"
 ) {
   nrows <- length(nltt_filenames)
   if (nrows < 1) {
