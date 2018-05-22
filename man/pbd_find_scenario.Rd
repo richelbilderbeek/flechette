@@ -22,7 +22,8 @@ pbd_find_scenario(scr, sirg, siri, scenario, erg = 0, eri = 0,
 'rsty' (random shorter than youngest)
 'rlto' (random longer than oldest)
 'rsts' (random shorter than shortest)
-'rltl' (random longer than longest)}
+'rltl' (random longer than longest)
+'sltl' (shortest longer than longest)}
 
 \item{erg}{Extinction Rate of Good Species}
 
