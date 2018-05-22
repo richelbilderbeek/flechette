@@ -35,7 +35,7 @@ create_input_files_sampling <- function(
 #' Creates the parameter files in the article for the general exploration
 #' @param params_set the set of parameters,
 #'   as created by \code{\link{create_general_params_set}}
-#'   or \code{\link{create_sampling_params_set}}  
+#'   or \code{\link{create_sampling_params_set}}
 #' @param folder_name name of the folder where all files are created
 #' @return The filenames of all parameter files created
 #' @author Richel Bilderbeek
