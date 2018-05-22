@@ -12,6 +12,11 @@ rkt_create_data_frame <- function(
   testit::assert(experiment_type %in%
     raket::rkt_get_experiment_types()
   )
+  if (1 == 2) {
+    gps <- raket::create_general_params_set()
+    sps <- raket::create_sampling_params_set()
+    testit::assert(length(gps[[1]]) == length(sps[[1]]))
+  }
   params_set <- NULL
   if (experiment_type == "general") {
     params_set <- raket::create_general_params_set(n_replicates = n_replicates)
@@ -54,6 +59,7 @@ rkt_create_data_frame <- function(
   colnames(df_nltts) <- paste0("X.", seq(0, n_nltts - 1))
   colnames(df_nltts)[1] <- "X"
   df <- cbind(df_params, df_nltts)
+  #df$sampling_method <- as.factor(df$sampling_method)
 
   # Deallocate memory, these data frames can be very big
   rm(df_params)

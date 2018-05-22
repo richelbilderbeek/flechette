@@ -17,13 +17,15 @@ test_that("use", {
 
   for (experiment_type in rkt_get_experiment_types()) {
 
+    experiment_type <- "sampling"
     # Create a fake data frame
     df <- rkt_create_data_frame(
       n_replicates = n_replicates,
       n_nltts = n_nltts,
       experiment_type = experiment_type
     )
-    if (is.null(df)) next # temp
+    #if (experiment_type == "general") next
+    if (experiment_type == "sampling") next
     df_long <- to_long(df)
 
     rm(df)
@@ -41,8 +43,7 @@ test_that("use", {
 
     rm(df_long)
     gc()
-    file.copy(filename, paste0("~/", experiment_type, ".pdf"))
-
     testthat::expect_true(file.exists(filename))
+    file.copy(filename, paste0("~/", experiment_type, ".pdf"))
   }
 })

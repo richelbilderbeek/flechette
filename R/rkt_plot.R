@@ -34,7 +34,7 @@ rkt_plot <- function(
       ggplot2::aes(
         x = as.factor(scr),
         y = nltt,
-        fill = sampling_method
+        fill = as.factor(sampling_method)
       )
     ) +
       ggplot2::geom_violin() +
