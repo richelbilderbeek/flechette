@@ -1,0 +1,15 @@
+#!/bin/bash
+# Process all .RDa files
+# Peregrine directives:
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks=1
+#SBATCH --mem=1G
+#SBATCH --job-name=create_nltt_files
+#SBATCH --output=create_nltt_files.log
+for filename in `ls *.RDa`
+do
+  echo $filename
+  sbatch ./create_nltt_file $filename
+done

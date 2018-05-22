@@ -1,9 +1,10 @@
 # raket pipeline
 
+All these command must be done when logged in on Peregrine.
+
 First install `raket`, its dependencies, and BEAST2:
 
 ```
-# On Peregrine
 sbatch install_raket
 ```
 
@@ -11,7 +12,6 @@ This will fail with error `no permission to install to directory apps/haswell/so
 To fix this, do:
 
 ```
-# On Peregrine
 module load R
 R
 install.packages("stringr")
@@ -20,7 +20,6 @@ q()
 ```
 
 ```
-# On Peregrine
 sbatch install_raket
 ```
 
@@ -33,11 +32,15 @@ sbatch create_input_files_sampling # Does not work yet
 ```
 
 The parameter files will be created locally and have names `1.RDa` to approx `9999.RDa`.
-For doing only a subset of the experiment, delete irrelevant parameter files. 
+For doing only a subset of the experiment, delete irrelevant parameter files.
+
+To start the main experiment (and most time consuming step):
 
 ```
 sbatch create_output_files
 ```
+
+The output files will be created locally and have names `out_1.RDa` to approx `out_9999.RDa`.
 
 
 ## Overview
@@ -48,7 +51,7 @@ Step|Function|Description
 1.1|`create_input_files_general`|Create all `.RDa` input/parameter files to do a general mapping
 1.2|`create_input_files_sampling`|Create all `.RDa` input/parameter files to investigate the effect of sampling
 2|`create_output_files`|Run all simulations
-2|`create_output_file`|Run one simulation, store all info (such as all posterior phylogenies) as `.RDa`
+2.1|`create_output_file`|Run one simulation, store all info (such as all posterior phylogenies) as `.RDa`
 3|`create_nltt_files`|Extract nLTT values from output file, store parameters and nLTTs as `.RDa`
 4|`nltt_files_to_csv`|Merge all nLTT values into one `.csv` file
 5|`to_long`|After reading the `.csv` with `read.csv()`, convert data frame to tidy data in the long form
