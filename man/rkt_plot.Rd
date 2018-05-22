@@ -4,7 +4,8 @@
 \alias{rkt_plot}
 \title{Plot violin plot}
 \usage{
-rkt_plot(df_long)
+rkt_plot(df_long = read.csv("result_long.csv"),
+  pdf_filename = tempfile(fileext = ".pdf"))
 }
 \arguments{
 \item{df_long}{data frame in the long form}

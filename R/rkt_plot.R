@@ -2,7 +2,8 @@
 #' @param df_long data frame in the long form
 #' @export
 rkt_plot <- function(
-  df_long
+  df_long = read.csv("result_long.csv"),
+  pdf_filename = tempfile(fileext = ".pdf")
 ) {
   # Satsfy R CMD check
   scr <- NULL; rm(scr) # nolint, fixes warning: no visible binding for global variable
@@ -42,4 +43,11 @@ rkt_plot <- function(
       ) +
       ggplot2::ggtitle("The effect of sampling")
   }
+  ggplot2::ggsave(
+    filename = pdf_filename,
+    device = "pdf",
+    width = 21,
+    height = 29.7,
+    units = "cm"
+  )
 }
