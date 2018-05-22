@@ -3,7 +3,15 @@
 First install `raket`, its dependencies, and BEAST2:
 
 ```
+# On Peregrine
 sbatch install_raket
+```
+
+This works, except downloading and installing BEAST2. Do:
+
+```
+# On local computer
+scp -r /home/richel/.local/share/beast/ p230198@peregrine.hpc.rug.nl:/home/p230198/.local/share
 ```
 
 When this is done, create the parameter files:
