@@ -21,13 +21,15 @@ plot <- function(out) {
   testit::assert(class(out$stree_oldest) == "phylo")
   testit::assert(class(out$stree_random) == "phylo")
 
-  graphics::par(mfrow = c(1, 4), mar = c(5, 4, 6, 2) + 0.3)
+  graphics::par(mfrow = c(1, 6), mar = c(5, 4, 6, 2) + 0.3)
   cols <- stats::setNames(c("gray", "black"), c("i", "g"))
   phytools::plotSimmap(out$igtree.extant, colors = cols, fsize = 2)
 
   sum_youngest <- sum(out$stree_youngest$edge.length)
   sum_oldest <- sum(out$stree_oldest$edge.length)
   sum_random <- sum(out$stree_random$edge.length)
+  sum_shortest <- sum(out$stree_shortest$edge.length)
+  sum_longest <- sum(out$stree_longest$edge.length)
 
   ape::plot.phylo(out$stree_youngest, edge.width = 2, font = 1,
     label.offset = 0.1, cex = 2, cex.main = 0.75,
@@ -40,6 +42,14 @@ plot <- function(out) {
   ape::plot.phylo(out$stree_oldest, edge.width = 2, font = 1,
     label.offset = 0.1, cex = 2, cex.main = 0.75,
     main = paste("\n\n", "oldest", format(round(sum_oldest, 2), nsmall = 2), "\n\n"))
+  ape::add.scale.bar()
+  ape::plot.phylo(out$stree_shortest, edge.width = 2, font = 1,
+    label.offset = 0.1, cex = 2, cex.main = 0.75,
+    main = paste("\n\n", "shortest", format(round(sum_shortest, 2), nsmall = 2), "\n\n"))
+  ape::add.scale.bar()
+  ape::plot.phylo(out$stree_longest, edge.width = 2, font = 1,
+    label.offset = 0.1, cex = 2, cex.main = 0.75,
+    main = paste("\n\n", "longest", format(round(sum_longest, 2), nsmall = 2), "\n\n"))
   ape::add.scale.bar()
   graphics::par(mfrow = c(1, 1))
 }
