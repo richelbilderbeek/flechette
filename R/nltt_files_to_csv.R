@@ -5,7 +5,7 @@
 #' @export
 #' @author Richel J.C. Bilderbeek
 nltt_files_to_csv <- function(
-  nltt_filenames,
+  nltt_filenames = Sys.glob("nltt_*.RDa"),
   csv_filename
 ) {
   nrows <- length(nltt_filenames)

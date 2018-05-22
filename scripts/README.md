@@ -42,6 +42,15 @@ sbatch create_output_files
 
 The output files will be created locally and have names `out_1.RDa` to approx `out_9999.RDa`.
 
+To extract the nLTT statistics:
+
+```
+sbatch create_nltt_files
+```
+
+The output files will be created locally and have names `nltt_1.RDa` to approx `nltt_9999.RDa`.
+
+
 
 ## Overview
 
@@ -52,7 +61,8 @@ Step|Function|Description
 1.2|`create_input_files_sampling`|Create all `.RDa` input/parameter files to investigate the effect of sampling
 2|`create_output_files`|Run all simulations
 2.1|`create_output_file`|Run one simulation, store all info (such as all posterior phylogenies) as `.RDa`
-3|`create_nltt_files`|Extract nLTT values from output file, store parameters and nLTTs as `.RDa`
+3|`create_nltt_files`|Extract nLTT values from all output files
+3.1|`create_nltt_file`|Extract nLTT values from one output file, store parameters and nLTTs as `.RDa`
 4|`nltt_files_to_csv`|Merge all nLTT values into one `.csv` file
 5|`to_long`|After reading the `.csv` with `read.csv()`, convert data frame to tidy data in the long form
 6|`rkt_plot`|Plot the tidy data in long form as a violin plot, depends on sampling method
