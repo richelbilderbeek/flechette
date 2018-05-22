@@ -6,11 +6,22 @@ knitr::opts_chunk$set(
 
 ## ------------------------------------------------------------------------
 library(babette)
-
-## ------------------------------------------------------------------------
 n_states <- 10
 n_trees <- n_states * 0.8
-out <- bbt_run(
+
+## ------------------------------------------------------------------------
+out_hard <- bbt_run(
+  fasta_filenames = get_babette_path("anthus_aco.fas"),
+  # fasta_filenames = get_babette_path("anthus_aco_sub.fas"),
+  clock_models = create_strict_clock_model(),
+  mcmc = create_mcmc(
+    chain_length = n_states * 1000, 
+    store_every = 1000
+  )
+)
+
+## ------------------------------------------------------------------------
+out_hard <- bbt_run(
   fasta_filenames = get_babette_path("anthus_aco.fas"),
   # fasta_filenames = get_babette_path("anthus_aco_sub.fas"),
   clock_models = create_strict_clock_model(
@@ -33,7 +44,4 @@ out <- bbt_run(
     store_every = 1000
   )
 )
-
-## ----fig.width=7, fig.height=7-------------------------------------------
-plot_densitree(out$anthus_aco_trees[n_states-n_trees:n_trees], width = 5)
 
