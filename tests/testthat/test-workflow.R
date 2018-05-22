@@ -95,7 +95,7 @@ test_that("Full workflow, general", {
 
   # Reading the .csv
   testthat::expect_true(file.exists(csv_filename))
-  df <- read.csv(file = csv_filename)
+  df <- utils::read.csv(file = csv_filename)
   testthat::expect_true(nrow(df) == length(input_filenames))
   testthat::expect_true(ncol(df) == n_parameters + n_samples_no_burn_in)
 

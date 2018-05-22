@@ -4,7 +4,7 @@
 \alias{rkt_plot}
 \title{Plot violin plot}
 \usage{
-rkt_plot(df_long = read.csv("result_long.csv"),
+rkt_plot(df_long = utils::read.csv("result_long.csv"),
   pdf_filename = tempfile(fileext = ".pdf"))
 }
 \arguments{

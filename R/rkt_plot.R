@@ -2,7 +2,7 @@
 #' @param df_long data frame in the long form
 #' @export
 rkt_plot <- function(
-  df_long = read.csv("result_long.csv"),
+  df_long = utils::read.csv("result_long.csv"),
   pdf_filename = tempfile(fileext = ".pdf")
 ) {
   # Satsfy R CMD check

@@ -25,7 +25,7 @@ test_that("Can create such a big data frame, #9", {
   # Save and load should work
   filename <- tempfile()
   utils::write.csv(x = df, file = filename, row.names = FALSE)
-  df2 <- read.csv(file = filename)
+  df2 <- utils::read.csv(file = filename)
   testthat::expect_true(all.equal(df2, df, tolerance = 0.1))
   rm(df)
   rm(df2)
