@@ -11,7 +11,7 @@
 for filename in `ls out_*.RDa`
 do
   from=$filename
-  to=`out_$2 | sed 's/out_/nltt_/'`
+  to=`echo $from | sed 's/out_/nltt_/'`
   echo $from
   echo $to
   #sbatch ./create_nltt_file $from $to
