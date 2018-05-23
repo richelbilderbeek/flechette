@@ -34,6 +34,10 @@ test_that("Can convert a data frame to long form, #5", {
     # Smaller on local computer
     n_replicates <- n_replicates / 10
     n_nltts <- n_nltts / 10
+  } else {
+    # Must dumb down, otherwise test takes too long
+    n_replicates <- n_replicates / 10
+    n_nltts <- n_nltts / 10
   }
 
   for (experiment_type in rkt_get_experiment_types()) {
