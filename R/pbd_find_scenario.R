@@ -133,7 +133,7 @@ pbd_find_scenario <- function(
       if (sum_random <= sum_shortest) next
       if (sum_random <= sum_longest) next
       testit::assert(sum_shortest < sum_longest)
-      testit::assert(sum_random > sum_youngest)
+      testit::assert(sum_random > sum_shortest)
       testit::assert(sum_random > sum_longest)
     } else if (scenario == "sltl") {
       if (sum_shortest < sum_longest) next
