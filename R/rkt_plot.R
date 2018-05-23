@@ -6,7 +6,7 @@ rkt_plot <- function(
   df_long = utils::read.csv("result_long.csv"),
   pdf_filename = tempfile(fileext = ".pdf")
 ) {
-  # Satsfy R CMD check
+  # Satisfy R CMD check
   scr <- NULL; rm(scr) # nolint, fixes warning: no visible binding for global variable
   sampling_method <- NULL; rm(sampling_method) # nolint, fixes warning: no visible binding for global variable
   erg <- NULL; rm(erg) # nolint, fixes warning: no visible binding for global variable

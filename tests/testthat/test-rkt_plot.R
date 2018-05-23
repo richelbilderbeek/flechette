@@ -32,7 +32,8 @@ test_that("use", {
     rm(df)
     gc()
 
-    filename <- tempfile(fileext = ".pdf")
+    #filename <- tempfile(fileext = ".pdf")
+    filename <- paste0("~/", experiment_type, ".pdf")
     ggplot2::ggsave(
       filename = filename,
       plot = rkt_plot(df_long),
