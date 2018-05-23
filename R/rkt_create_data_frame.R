@@ -38,13 +38,13 @@ rkt_create_data_frame <- function(
     alignment_rng_seed = seq(1, n_rows),
     beast2_rng_seed = seq(1, n_rows)
   )
+  for (i in seq_along(params_set)) {
+    df_params[i, 1:raket::rkt_get_n_params()] <- unlist(params_set[[i]])
+  }
   levels(df_params$sampling_method) <- c(
     "random", "shortest", "longest", "oldest", "youngest"
   )
   df_params$sampling_method <- as.factor(df_params$sampling_method)
-  for (i in seq_along(params_set)) {
-    df_params[i, 1:raket::rkt_get_n_params()] <- unlist(params_set[[i]])
-  }
   df_nltts <- data.frame(
     matrix(
       data = stats::runif(n = n_rows * n_nltts),
