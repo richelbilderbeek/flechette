@@ -49,4 +49,5 @@ test_that("use", {
   testthat::expect_equal(alignment_rng_seed, parameters$alignment_rng_seed)
   testthat::expect_equal(beast2_rng_seed, parameters$beast2_rng_seed)
 
+  testthat::expect_equal(rkt_get_n_params(), length(unlist(parameters)))
 })
