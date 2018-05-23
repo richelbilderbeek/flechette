@@ -12,7 +12,7 @@ rkt_is_viable <- function(
 ) {
   if (erg >= sirg) return(FALSE)
   if (eri >= siri) return(FALSE)
-  if (siri - eri >= 0.5) return(FALSE)
-  if (sirg - erg >= 0.5) return(FALSE)
+  if (siri - eri >= 0.4) return(FALSE)
+  if (sirg - erg >= 0.4) return(FALSE)
   TRUE
 }
