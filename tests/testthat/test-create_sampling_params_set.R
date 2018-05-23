@@ -1,12 +1,24 @@
 context("create_sampling_params_set")
 
-test_that("use", {
+test_that("must be a collection of multiple parameters", {
 
   if (!ribir::is_on_travis()) return()
 
   params_set <- create_sampling_params_set()
   testthat::expect_true(
     length(params_set) > 20
+  )
+})
+
+test_that("each parameter must have the right number of elements", {
+  
+  if (!ribir::is_on_travis()) return()
+  # Issue 18
+
+  params_set <- create_sampling_params_set()
+  params <- params_set[[1]]
+  testthat::expect_equal(
+    rkt_get_n_params(), length(unlist(params))
   )
 })
 

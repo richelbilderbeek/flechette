@@ -13,11 +13,3 @@ test_that("abuse", {
     "'experiment_type' must be 'general' or 'sampling'"
   )
 })
-
-
-test_that("each params_set element must be the same", {
-  skip("WIP @richelbilderbeek Issue 18")
-  gps <- raket::create_general_params_set()
-  sps <- raket::create_sampling_params_set()
-  testit::assert(length(gps[[1]]) == length(sps[[1]]))
-})
