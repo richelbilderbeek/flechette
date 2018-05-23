@@ -7,7 +7,7 @@ test_that("use", {
 
   if (!ribir::is_on_travis()) {
     # Smaller on local computer
-    n_replicates <- 4
+    n_replicates <- 2
     n_nltts <- 10
   } else {
     # Must dumb down, otherwise test takes too long
@@ -27,13 +27,13 @@ test_that("use", {
       n_nltts = n_nltts,
       experiment_type = experiment_type
     )
+
     df_long <- to_long(df)
 
     rm(df)
     gc()
 
-    #filename <- tempfile(fileext = ".pdf")
-    filename <- paste0("~/", experiment_type, ".pdf")
+    filename <- tempfile(fileext = ".pdf")
     ggplot2::ggsave(
       filename = filename,
       plot = rkt_plot(df_long),

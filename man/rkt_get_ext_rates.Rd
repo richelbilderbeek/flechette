@@ -2,10 +2,12 @@
 % Please edit documentation in R/rkt_get_extinction_rates.R
 \name{rkt_get_ext_rates}
 \alias{rkt_get_ext_rates}
-\title{Get the extinction rates used in this research}
+\title{Get the extinction rates used in this research
+Old values: { 0.0, 0.1, 0.2, 0.4 }}
 \usage{
 rkt_get_ext_rates()
 }
 \description{
 Get the extinction rates used in this research
+Old values: { 0.0, 0.1, 0.2, 0.4 }
 }

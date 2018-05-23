@@ -26,7 +26,13 @@ rkt_plot <- function(
         erg ~ sirg,
         drop = FALSE
       ) +
-      ggplot2::ggtitle("The general data set")
+      ggplot2::ggtitle(
+        paste0(
+          "The general data set.\n",
+          "columns: speciation initiation rates\n",
+          "rows: extinction rates"
+        )
+      )
   } else {
     # Measure the effect of sampling
     plot <- ggplot2::ggplot(
@@ -42,7 +48,13 @@ rkt_plot <- function(
         erg ~ sirg,
         drop = FALSE
       ) +
-      ggplot2::ggtitle("The effect of sampling")
+      ggplot2::ggtitle(
+        paste0(
+          "The effect of sampling.\n",
+          "columns: speciation initiation rates\n",
+          "rows: extinction rates"
+        )
+      )
   }
   ggplot2::ggsave(
     filename = pdf_filename,
