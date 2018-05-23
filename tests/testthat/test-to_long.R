@@ -13,7 +13,6 @@ test_that("use", {
       n_nltts = n_nltts,
       experiment_type = experiment_type
     )
-    if (is.null(df)) next # temp
     df_long <- to_long(df)
     testthat::expect_equal(
       nrow(df_long),
@@ -43,8 +42,6 @@ test_that("Can convert a data frame to long form, #5", {
       n_nltts = n_nltts,
       experiment_type = experiment_type
     )
-    if (is.null(df)) next # temp
-
     df_long <- to_long(df)
     testthat::expect_equal(
       nrow(df_long),

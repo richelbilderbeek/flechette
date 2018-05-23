@@ -12,11 +12,6 @@ rkt_create_data_frame <- function(
   testit::assert(experiment_type %in%
     raket::rkt_get_experiment_types()
   )
-  if (1 == 2) {
-    gps <- raket::create_general_params_set()
-    sps <- raket::create_sampling_params_set()
-    testit::assert(length(gps[[1]]) == length(sps[[1]]))
-  }
   params_set <- NULL
   if (experiment_type == "general") {
     params_set <- raket::create_general_params_set(n_replicates = n_replicates)
