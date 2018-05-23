@@ -9,6 +9,10 @@ test_that("use", {
     # Smaller on local computer
     n_replicates <- 4
     n_nltts <- 10
+  } else {
+    # Must dumb down, otherwise test takes too long
+    n_replicates <- n_replicates / 10
+    n_nltts <- n_nltts / 10
   }
 
   n_rows <- n_replicates * rkt_get_n_param_combos()
