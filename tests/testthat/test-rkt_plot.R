@@ -2,7 +2,6 @@ context("rkt_plot")
 
 test_that("use", {
 
-  skip("WIP richelbilderbeek")
   n_replicates <- rkt_get_n_replicates()
   n_nltts <- 1000
 
@@ -18,15 +17,12 @@ test_that("use", {
 
   for (experiment_type in rkt_get_experiment_types()) {
 
-    experiment_type <- "sampling"
     # Create a fake data frame
     df <- rkt_create_data_frame(
       n_replicates = n_replicates,
       n_nltts = n_nltts,
       experiment_type = experiment_type
     )
-    #if (experiment_type == "general") next # nolint WIP
-    if (experiment_type == "sampling") next # nolint WIP
     df_long <- to_long(df)
 
     rm(df)
@@ -45,6 +41,5 @@ test_that("use", {
     rm(df_long)
     gc()
     testthat::expect_true(file.exists(filename))
-    # file.copy(filename, paste0("~/", experiment_type, ".pdf")) # nolint WIP
   }
 })
