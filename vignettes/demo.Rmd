@@ -25,7 +25,7 @@ but the best that can be done.
 
 First we load the libraries we'll need:
 
-```{r}
+```{r load_library}
 library(raket)
 ```
 
@@ -44,14 +44,14 @@ First, we'll specify the folder in which the files are created. By default,
 this is a temporary folder, but this can be changed for those that
 want to see the files:
 
-```{r}
+```{r set_folder_name}
 folder_name <- tempdir()
 ```
 
 To make this vignette as reproducible as possible,
 a random number generator seed is specified:
 
-```{r}
+```{r set_seed}
 set.seed(42)
 ```
 
