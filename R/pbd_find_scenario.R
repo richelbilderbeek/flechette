@@ -38,8 +38,8 @@ pbd_find_scenario <- function(
   testit::assert(scr >= 0.0)
   testit::assert(sirg >= 0.0)
   testit::assert(siri >= 0.0)
-  testit::assert(scenario %in% c("equal", "expected", "ylto", "rsty", "rlto",
-                                 "rsts", "rltl", "sltl"))
+  sl <- c("equal", "expected", "ylto", "rsty", "rlto", "rsts", "rltl", "sltl")
+  testit::assert(scenario %in% sl)
   testit::assert(erg >= 0.0)
   testit::assert(eri >= 0.0)
   testit::assert(crown_age >= 0.0)
