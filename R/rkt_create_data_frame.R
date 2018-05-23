@@ -46,6 +46,7 @@ rkt_create_data_frame <- function(
   levels(df_params$sampling_method) <- c(
     "random", "shortest", "longest", "oldest", "youngest"
   )
+  df_params$sampling_method <- as.factor(df_params$sampling_method)
   for (i in seq_along(params_set)) {
     df_params[i, 1:raket::rkt_get_n_params()] <- unlist(params_set[[i]])
   }
@@ -59,7 +60,7 @@ rkt_create_data_frame <- function(
   colnames(df_nltts) <- paste0("X.", seq(0, n_nltts - 1))
   colnames(df_nltts)[1] <- "X"
   df <- cbind(df_params, df_nltts)
-  #df$sampling_method <- as.factor(df$sampling_method)
+  testit::assert(is.factor(df$sampling_method))
 
   # Deallocate memory, these data frames can be very big
   rm(df_params)

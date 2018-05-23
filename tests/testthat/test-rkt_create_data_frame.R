@@ -1,6 +1,7 @@
 context("rkt_create_data_frame")
 
 test_that("use", {
+  skip("TODO richelbilderbeek")
   n_replicates <- 1
   n_nltts <- 5
   for (experiment_type in rkt_get_experiment_types()) {
