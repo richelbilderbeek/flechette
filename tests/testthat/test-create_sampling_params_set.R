@@ -13,7 +13,6 @@ test_that("must be a collection of multiple parameters", {
 test_that("each parameter must have the right number of elements", {
 
   if (!ribir::is_on_travis()) return()
-  # Issue 18
 
   params_set <- create_sampling_params_set()
   params <- params_set[[1]]

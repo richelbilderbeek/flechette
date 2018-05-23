@@ -40,8 +40,8 @@ create_sampling_params_set <- function(
         sampling_params_set[[index + 1]] <- params
         sampling_params_set[[index]]$tree_sim_rng_seed <- tree_sim_rng_seed
         sampling_params_set[[index + 1]]$tree_sim_rng_seed <- tree_sim_rng_seed
-        sampling_params_set[[index]]$sampling <- "youngest"
-        sampling_params_set[[index + 1]]$sampling <- "oldest"
+        sampling_params_set[[index]]$sampling_method <- "youngest"
+        sampling_params_set[[index + 1]]$sampling_method <- "oldest"
         index <- index + 2
         break ()
       }
