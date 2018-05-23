@@ -2,8 +2,6 @@ context("to_long")
 
 test_that("use", {
 
-  skip("WIP richelbilderbeek")
-
   n_replicates <- 2
   n_nltts <- 3 # Called X, X.1 and X.2
 
@@ -14,10 +12,14 @@ test_that("use", {
       experiment_type = experiment_type
     )
     df_long <- to_long(df)
-    testthat::expect_equal(
-      nrow(df_long),
-      n_replicates * rkt_get_n_param_combos() * n_nltts
-    )
+    if (experiment_type == "general") {
+      testthat::expect_equal(
+        nrow(df_long),
+        n_replicates * rkt_get_n_param_combos() * n_nltts
+      )
+    } else {
+      testthat::expect_gte(nrow(df_long), 20)
+    }
     # 15 params + 1 index + 1 measurement
     testthat::expect_equal(ncol(df_long), rkt_get_n_params() + 1 + 1)
   }
@@ -25,7 +27,6 @@ test_that("use", {
 
 test_that("Can convert a data frame to long form, #5", {
 
-  skip("WIP richelbilderbeek")
   n_replicates <- rkt_get_n_replicates()
   n_nltts <- 1000
 
@@ -43,10 +44,16 @@ test_that("Can convert a data frame to long form, #5", {
       experiment_type = experiment_type
     )
     df_long <- to_long(df)
-    testthat::expect_equal(
-      nrow(df_long),
-      n_replicates * rkt_get_n_param_combos() * n_nltts
-    )
+
+    if (experiment_type == "general") {
+      testthat::expect_equal(
+        nrow(df_long),
+        n_replicates * rkt_get_n_param_combos() * n_nltts
+      )
+    } else {
+      testthat::expect_gte(nrow(df_long), 20)
+    }
+
     # 15 params + 1 index + 1 measurement
     testthat::expect_equal(ncol(df_long), rkt_get_n_params() + 1 + 1)
 
