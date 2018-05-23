@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include = FALSE}
+```{setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -25,7 +25,7 @@ This vignette demonstrates
     * `random` gives longer branches than `oldest`
  * A solution to that problem
  
-```{r load_library}
+```{load_library}
 library(raket)
 ```
  
@@ -34,7 +34,7 @@ library(raket)
 
 Define a plotting function:
 
-```{r define_plot}
+```{define_plot}
 # Plot the results of PBD::pbd_sim
 # '@param out the results of PBD::pbd_sim
 plot <- function(out) {
@@ -84,7 +84,7 @@ Here are some examples in which this is the case.
 
 First, the simplest phylogeny possible:
 
-```{r find_expected_simplest, fig.width=7, fig.height=5}
+```{find_expected_simplest, fig.width=7, fig.height=5}
 out <- raket::pbd_find_scenario(
   scr = 0.1, sirg = 2, siri = 2, scenario = "expected", 
   rng_seed = 42, max_n_subspecies = 3
@@ -94,7 +94,7 @@ plot(out)
 
 For a phylogeny that is one bit more complex, sampling also works as expected:
 
-```{r find_expected_simpler, fig.width=7, fig.height=5}
+```{find_expected_simpler, fig.width=7, fig.height=5}
 out <- raket::pbd_find_scenario(
   scr = 0.1, sirg = 2, siri = 2, scenario = "expected", 
   rng_seed = 44, 
@@ -106,7 +106,7 @@ plot(out)
 
 For an even bigger phylogeny, sampling also works as expected:
 
-```{r find_expected_simple, fig.width=7, fig.height=5}
+```{find_expected_simple, fig.width=7, fig.height=5}
 out <- raket::pbd_find_scenario(scr = 0.5, sirg = 1, siri = 2, scenario = "expected",
   rng_seed = 51, 
   min_n_subspecies = 5, 
@@ -121,7 +121,7 @@ plot(out)
 
 ### 1. `youngest` gives longer branches than `oldest`
 
-```{r fig.width=7, fig.height=5}
+```{fig.width=7, fig.height=5}
 out <- raket::pbd_find_scenario(scr = 0.5, sirg = 1, siri = 2, scenario = "ylto",
   rng_seed = 54, 
   min_n_subspecies = 4, 
@@ -133,7 +133,7 @@ plot(out)
 
 ### 2. `random` gives shortest branches than `youngest`
 
-```{r fig.width=7, fig.height=5}
+```{fig.width=7, fig.height=5}
 out <- raket::pbd_find_scenario(scr = 0.5, sirg = 1, siri = 2, scenario = "rsty",
   rng_seed = 55, 
   min_n_subspecies = 4, 
@@ -145,7 +145,7 @@ plot(out)
 
 ### 3. `random` gives longer branches than `oldest`
 
-```{r fig.width=7, fig.height=5}
+```{fig.width=7, fig.height=5}
 out <- raket::pbd_find_scenario(scr = 0.5, sirg = 1, siri = 2, scenario = "rlto",
   rng_seed = 57, 
   min_n_subspecies = 4, 
