@@ -32,11 +32,11 @@ test_that("Can convert a data frame to long form, #5", {
 
   if (!ribir::is_on_travis()) {
     # Smaller on local computer
-    n_replicates <- n_replicates / 10
+    n_replicates <- 1
     n_nltts <- n_nltts / 10
   } else {
     # Must dumb down, otherwise test takes too long
-    n_replicates <- n_replicates / 10
+    n_replicates <- 1
     n_nltts <- n_nltts / 10
   }
 
