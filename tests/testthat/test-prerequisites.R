@@ -39,8 +39,8 @@ test_that("Ten percent of burn-in results in 1000 values, #10", {
 test_that("Sequential RNG seeds are independent", {
 
   # Yes, they are
-  return()  
-  
+  return()
+
   # If a random number if drawn with one seed,
   # how long until it is drawn by differerently seeded
   # RNG?
@@ -50,6 +50,6 @@ test_that("Sequential RNG seeds are independent", {
   i <- 0
   while (value != runif(n = 1)) {
     i <- i + 1
-  }  
+  }
   print(i)
 })
