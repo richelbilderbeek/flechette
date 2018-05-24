@@ -11,7 +11,7 @@ test_that("use", {
     n_nltts <- 10
   } else {
     # Must dumb down, otherwise test takes too long
-    n_replicates <- n_replicates / 10
+    n_replicates <- 2
     n_nltts <- n_nltts / 10
   }
 
