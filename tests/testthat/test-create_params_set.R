@@ -2,8 +2,10 @@ context("create_params_set")
 
 test_that("use", {
   testthat::expect_silent(create_params_set("general"))
+})
 
-  if (!ribir::is_on_travis()) return()
+test_that("use, sampling", {
+  skip("Dont create a sampling data set")
   testthat::expect_silent(create_params_set("sampling"))
 })
 

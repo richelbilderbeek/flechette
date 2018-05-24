@@ -12,7 +12,7 @@ test_that("use", {
   } else {
     # Must dumb down, otherwise test takes too long
     n_replicates <- 2
-    n_nltts <- n_nltts / 10
+    n_nltts <- 10
   }
 
   n_rows <- n_replicates * rkt_get_n_param_combos()

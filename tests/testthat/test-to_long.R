@@ -3,7 +3,7 @@ context("to_long")
 test_that("use", {
 
   skip("No rkt_create_data_frame")
-  
+
   n_replicates <- 2
   n_nltts <- 3 # Called X, X.1 and X.2
 
@@ -40,7 +40,7 @@ test_that("Can convert a data frame to long form, #5", {
     n_nltts <- n_nltts / 10
   } else {
     # Must dumb down, otherwise test takes too long
-    n_replicates <- 2
+    n_replicates <- 1
     n_nltts <- n_nltts / 10
   }
 
