@@ -50,6 +50,12 @@ pbd_find_scenario <- function(
   testit::assert(max_n_subspecies >= 1)
   testit::assert(min_n_subspecies <= max_n_subspecies)
 
+  if (scenario %in% c("rsts", "rltl", "sltl")) {
+    add_shortest_and_longest <- TRUE
+  } else {
+    add_shortest_and_longest <- FALSE
+  }
+
   set.seed(rng_seed)
   while (TRUE) {
     out <- pbd_sim_checked(
@@ -58,7 +64,8 @@ pbd_find_scenario <- function(
       scr = scr,
       sirg = sirg,
       siri = siri,
-      crown_age = crown_age
+      crown_age = crown_age,
+      add_shortest_and_longest = add_shortest_and_longest
     )
 
     # Count subspecies

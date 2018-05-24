@@ -17,7 +17,8 @@ pbd_sim_checked <- function(
   siri,
   stem_age = NULL,
   crown_age = NULL,
-  max_n_taxa = Inf
+  max_n_taxa = Inf,
+  add_shortest_and_longest = FALSE
 ) {
   if (erg < 0.0) {
     stop("'erg' must be positive")
@@ -71,6 +72,7 @@ pbd_sim_checked <- function(
     age = age,
     soc = soc,
     plotit = FALSE,
-    limitsize = max_n_taxa
+    limitsize = max_n_taxa,
+    add_shortest_and_longest = add_shortest_and_longest
   )
 }
