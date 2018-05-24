@@ -76,8 +76,9 @@ with speciation initiation rate of 0.1:
 ```{r}
 while (1) {
   input_filename <- sample(all_input_filenames, size = 1)
-  if (readRDS(input_filename)$sirg > 0.1) next
-  if (readRDS(input_filename)$siri > 0.1) next
+  lowest_sir <- min(rkt_get_spec_init_rates())
+  if (readRDS(input_filename)$sirg > lowest_sir) next
+  if (readRDS(input_filename)$siri > lowest_sir) next
   break
 }
 file.remove(all_input_filenames[ all_input_filenames != input_filename] )

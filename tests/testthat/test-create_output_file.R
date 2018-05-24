@@ -17,8 +17,9 @@ test_that("use", {
     input_filename <- sample(x = input_filenames, size = 1)
     testit::assert("sirg" %in% names(readRDS(input_filename)))
     testit::assert("siri" %in% names(readRDS(input_filename)))
-    if (readRDS(input_filename)$sirg > 0.1) next
-    if (readRDS(input_filename)$siri > 0.1) next
+    lowest_sir <- min(rkt_get_spec_init_rates())
+    if (readRDS(input_filename)$sirg > lowest_sir) next
+    if (readRDS(input_filename)$siri > lowest_sir) next
     break
   }
 

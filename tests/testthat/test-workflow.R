@@ -39,12 +39,13 @@ test_that("Full workflow, general", {
   set.seed(42)
   while (1) {
     input_filenames <- sample(input_filenames_all, size = 3, replace = FALSE)
-    if (readRDS(input_filenames[1])$sirg > 0.1) next
-    if (readRDS(input_filenames[1])$siri > 0.1) next
-    if (readRDS(input_filenames[2])$sirg > 0.1) next
-    if (readRDS(input_filenames[2])$siri > 0.1) next
-    if (readRDS(input_filenames[3])$sirg > 0.1) next
-    if (readRDS(input_filenames[3])$siri > 0.1) next
+    lowest_sir <- min(rkt_get_spec_init_rates())
+    if (readRDS(input_filenames[1])$sirg > lowest_sir) next
+    if (readRDS(input_filenames[1])$siri > lowest_sir) next
+    if (readRDS(input_filenames[2])$sirg > lowest_sir) next
+    if (readRDS(input_filenames[2])$siri > lowest_sir) next
+    if (readRDS(input_filenames[3])$sirg > lowest_sir) next
+    if (readRDS(input_filenames[3])$siri > lowest_sir) next
     break
   }
 

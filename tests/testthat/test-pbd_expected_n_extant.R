@@ -45,6 +45,8 @@ test_that("bigger crown age results in more lineages", {
 
 test_that("less extinction results in more lineages", {
 
+  # Weak test, should use the average of multiple runs
+  set.seed(42)
   crown_age <- 1.0
   scr <- 1.0
   sirg <- 1.0
@@ -103,6 +105,8 @@ test_that("more speciation initiation results in more lineages", {
 
 test_that("more speciation completion results in more lineages", {
 
+  # Weak test, should use the average of multiple runs
+  set.seed(41)
   crown_age <- 1.0
   sirg <- 1.0
   siri <- 1.0

@@ -6,7 +6,7 @@ rkt_plot <- function(
   df_long = utils::read.csv("result_long.csv"),
   pdf_filename = tempfile(fileext = ".pdf")
 ) {
-  # Satsfy R CMD check
+  # Satisfy R CMD check
   scr <- NULL; rm(scr) # nolint, fixes warning: no visible binding for global variable
   sampling_method <- NULL; rm(sampling_method) # nolint, fixes warning: no visible binding for global variable
   erg <- NULL; rm(erg) # nolint, fixes warning: no visible binding for global variable
@@ -26,7 +26,13 @@ rkt_plot <- function(
         erg ~ sirg,
         drop = FALSE
       ) +
-      ggplot2::ggtitle("The general data set")
+      ggplot2::ggtitle(
+        paste0(
+          "The general data set.\n",
+          "columns: speciation initiation rates\n",
+          "rows: extinction rates"
+        )
+      )
   } else {
     # Measure the effect of sampling
     plot <- ggplot2::ggplot(
@@ -42,7 +48,13 @@ rkt_plot <- function(
         erg ~ sirg,
         drop = FALSE
       ) +
-      ggplot2::ggtitle("The effect of sampling")
+      ggplot2::ggtitle(
+        paste0(
+          "The effect of sampling.\n",
+          "columns: speciation initiation rates\n",
+          "rows: extinction rates"
+        )
+      )
   }
   ggplot2::ggsave(
     filename = pdf_filename,
