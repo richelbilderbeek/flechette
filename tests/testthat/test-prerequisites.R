@@ -38,6 +38,7 @@ test_that("Ten percent of burn-in results in 1000 values, #10", {
 
 test_that("Sequential RNG seeds are independent", {
 
+  skip("Skip all tests")
   # Yes, they are
   return()
 

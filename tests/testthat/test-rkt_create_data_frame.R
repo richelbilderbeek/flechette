@@ -1,6 +1,7 @@
 context("rkt_create_data_frame")
 
 test_that("use, general", {
+  skip("Skip all tests")
   n_replicates <- 1
   n_nltts <- 5
   df <- rkt_create_data_frame(
@@ -13,6 +14,7 @@ test_that("use, general", {
 })
 
 test_that("use, sampling", {
+  skip("Skip all tests")
   n_nltts <- 5
   df <- rkt_create_data_frame(
     n_replicates = 1,

@@ -2,6 +2,7 @@ context("rkt_run")
 
 test_that("use", {
 
+  skip("Skip all tests")
   for (sampling_method in c("youngest", "oldest", "random")) {
     out <- rkt_run(
       parameters = create_params(
