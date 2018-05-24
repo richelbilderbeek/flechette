@@ -8,6 +8,8 @@
 #' @param crown_age crown age. Set either the stem age or the crown age.
 #' @param max_n_taxa maximum number of taxa. If this value is exceeded,
 #'   the simulation is aborted and removed.
+#' @param add_shortest_and_longest Gives the output of the new samplemethods
+#'   'shortest' and 'longest'. 
 #' @export
 pbd_sim_checked <- function(
   erg,
