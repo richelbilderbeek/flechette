@@ -16,26 +16,25 @@ test_that("use", {
 
 test_that("PBD::pbd_sim and pbd_sim_checked must give same results", {
 
-  skip("Issue #17")
-
-  # Hint: run both pbd_sim_checked and PBD::pbd_sim
-  # with the same random number
-
-  expect_equal(
-    pbd_sim_checked(
-      erg = 0.0,
-      eri = 0.0,
-      scr = 1.0,
-      sirg = 1.0,
-      siri = 1.0,
-      crown_age = 1.0
-    ),
-    PBD::pbd_sim(
-      pars = c(1.0, 1.0, 1.0, 0.0, 0.0),
-      age = 1.0,
-      soc = 2
-    )
+  set.seed(42)
+  checked <- pbd_sim_checked(
+    erg = 0.0,
+    eri = 0.0,
+    scr = 1.0,
+    sirg = 1.0,
+    siri = 1.0,
+    crown_age = 1.0
   )
+
+  set.seed(42)
+  normal <- PBD::pbd_sim(
+    pars = c(1.0, 1.0, 1.0, 0.0, 0.0),
+    age = 1.0,
+    soc = 2
+  )
+
+  expect_equal(checked, normal)
+
 })
 
 test_that("abuse", {
