@@ -9,6 +9,7 @@ test_that("use", {
     # Smaller on local computer
     n_replicates <- 2
     n_nltts <- 10
+    max_n_params <- 2
   } else {
     # Must dumb down, otherwise test takes too long
     n_replicates <- 2
@@ -25,7 +26,8 @@ test_that("use", {
     df <- rkt_create_data_frame(
       n_replicates = n_replicates,
       n_nltts = n_nltts,
-      experiment_type = experiment_type
+      experiment_type = experiment_type,
+      max_n_params = max_n_params
     )
 
     df_long <- to_long(df)

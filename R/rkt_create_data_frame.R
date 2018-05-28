@@ -3,21 +3,30 @@
 #' @param n_nltts number of nLTT statistics per file
 #' @param experiment_type type of experiment,
 #'   must be either 'general' or 'sampling'
+#' @param max_n_params the maximum number of parameters created. Set to a lower
+#'   value in debugging 
 #' @export
 rkt_create_data_frame <- function(
   n_replicates,
   n_nltts,
-  experiment_type
+  experiment_type,
+  max_n_params = Inf
 ) {
   testit::assert(experiment_type %in%
     raket::rkt_get_experiment_types()
   )
   params_set <- NULL
   if (experiment_type == "general") {
-    params_set <- raket::create_general_params_set(n_replicates = n_replicates)
+    params_set <- raket::create_general_params_set(
+      n_replicates = n_replicates,
+      max_n_params = max_n_params
+    )
   } else {
     testit::assert(experiment_type == "sampling")
-    params_set <- raket::create_sampling_params_set(n_replicates = n_replicates)
+    params_set <- raket::create_sampling_params_set(
+      n_replicates = n_replicates,
+      max_n_params = max_n_params
+    )
   }
   n_rows <- length(params_set)
 

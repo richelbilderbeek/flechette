@@ -4,7 +4,8 @@
 \alias{rkt_create_data_frame}
 \title{Create a skeleton data frame for each data set}
 \usage{
-rkt_create_data_frame(n_replicates, n_nltts, experiment_type)
+rkt_create_data_frame(n_replicates, n_nltts, experiment_type,
+  max_n_params = Inf)
 }
 \arguments{
 \item{n_replicates}{number of replicates}
@@ -13,6 +14,9 @@ rkt_create_data_frame(n_replicates, n_nltts, experiment_type)
 
 \item{experiment_type}{type of experiment,
 must be either 'general' or 'sampling'}
+
+\item{max_n_params}{the maximum number of parameters created. Set to a lower
+value in debugging}
 }
 \description{
 Create a skeleton data frame for each data set
