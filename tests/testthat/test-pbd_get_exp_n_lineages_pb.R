@@ -2,7 +2,6 @@ context("pbd_get_exp_n_lineages_pb")
 
 test_that("use", {
 
-  skip("Skip all tests")
   expect_output(
     pbd_get_exp_n_lineages_pb(
       sirg = 1.0,

@@ -5,8 +5,9 @@ test_that("use", {
 })
 
 test_that("use, sampling", {
-  skip("Dont create a sampling data set")
-  testthat::expect_silent(create_params_set("sampling"))
+  testthat::expect_silent(
+    create_params_set("sampling", max_n_params = 2)
+  )
 })
 
 test_that("abuse", {
