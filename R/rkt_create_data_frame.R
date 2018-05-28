@@ -55,8 +55,8 @@ rkt_create_data_frame <- function(
   levels(df_params$sampling_method) <- c(
     "random", "shortest", "longest", "oldest", "youngest"
   )
-  levels(df_params$site_model) <- rkt_get_site_models()
-  levels(df_params$clock_model) <- rkt_get_clock_models()
+  levels(df_params$site_model) <- raket::rkt_get_site_models()
+  levels(df_params$clock_model) <- raket::rkt_get_clock_models()
   df_params$sampling_method <- as.factor(df_params$sampling_method)
   df_params$site_model <- as.factor(df_params$site_model)
   df_params$clock_model <- as.factor(df_params$clock_model)

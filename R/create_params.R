@@ -57,8 +57,8 @@ create_params <- function(
   testit::assert(crown_age_sigma > 0.0)
   testit::assert(mutation_rate >= 0.0)
   testit::assert(sequence_length >= 0.0)
-  testit::assert(site_model %in% rkt_get_site_models())
-  testit::assert(clock_model %in% rkt_get_clock_models())
+  testit::assert(site_model %in% raket::rkt_get_site_models())
+  testit::assert(clock_model %in% raket::rkt_get_clock_models())
 
   list(
     sirg = sirg,
