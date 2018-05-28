@@ -1,7 +1,6 @@
 context("create_general_params_set")
 
 test_that("must be a collection of multiple parameters", {
-  skip("Skip all tests")
   params_set <- create_general_params_set()
   testthat::expect_true(
     length(params_set) > 20
@@ -9,7 +8,6 @@ test_that("must be a collection of multiple parameters", {
 })
 
 test_that("each parameter must have the right number of elements", {
-  skip("Skip all tests")
   params_set <- create_general_params_set()
   params <- params_set[[1]]
   testthat::expect_equal(
@@ -18,7 +16,6 @@ test_that("each parameter must have the right number of elements", {
 })
 
 test_that("all less than 1000 taxa", {
-  skip("Skip all tests")
   if (!ribir::is_on_travis()) return()
   params_set <- create_general_params_set()
   for (params in params_set) {
