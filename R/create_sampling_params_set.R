@@ -5,7 +5,8 @@
 create_sampling_params_set <- function(
   mcmc = beautier::create_mcmc(chain_length = 1111000, store_every = 1000),
   sequence_length = 15000,
-  n_replicates = 1
+  n_replicates = 1,
+  max_n_params = Inf
 ) {
   # Start from the general parameters set
   general_params_set <- raket::create_general_params_set(
@@ -21,7 +22,7 @@ create_sampling_params_set <- function(
   for (params in general_params_set) {
     # Remove all SCR == Inf
     if (params$scr >= 1000.0) next
-    while (1) {
+    while (index < max_n_params) {
       tree_sim_rng_seed <- tree_sim_rng_seed + 1
       set.seed(tree_sim_rng_seed)
       out <- pbd_sim_checked(

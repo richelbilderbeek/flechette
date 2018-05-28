@@ -5,7 +5,7 @@ test_that("must be a collection of multiple parameters", {
   skip("No sampling")
   if (!ribir::is_on_travis()) return()
 
-  params_set <- create_sampling_params_set()
+  params_set <- create_sampling_params_set(max_n_params = 2)
   testthat::expect_true(
     length(params_set) > 20
   )

@@ -5,7 +5,8 @@
 create_general_params_set <- function(
   mcmc = beautier::create_mcmc(chain_length = 1111000, store_every = 1000),
   sequence_length = 15000,
-  n_replicates = 1
+  n_replicates = 1,
+  max_n_params = Inf
 ) {
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   params_set <- list()
@@ -16,6 +17,7 @@ create_general_params_set <- function(
         for (scr in rkt_get_spec_compl_rates()) {
           for (erg in rkt_get_ext_rates()) {
             for (eri in rkt_get_ext_rates()) {
+              if (index >= max_n_params) next
               if (!rkt_is_viable(
                   erg = erg, eri = eri,
                   sirg = sirg, siri = siri
