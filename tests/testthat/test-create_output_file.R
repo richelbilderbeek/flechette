@@ -2,7 +2,6 @@ context("create_output_file")
 
 test_that("use", {
 
-  skip("Skip all tests")
   output_filename <- tempfile()
 
   input_filenames <- create_input_files_general(
