@@ -18,9 +18,11 @@ create_params_set <- function(
   n_replicates = 1,
   max_n_params = Inf
 ) {
-  testit::assert(experiment_type %in%
+  if(!experiment_type %in%
     raket::rkt_get_experiment_types()
-  )
+  ) {
+    stop("'experiment_type' must be 'general' or 'sampling'")
+  }
   if (experiment_type == "general") {
     create_general_params_set(
       mcmc = mcmc,
