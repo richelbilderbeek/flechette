@@ -28,10 +28,7 @@ test_that("each parameter must have the right number of elements", {
 
 test_that("no high SRCs", {
 
-  skip("No sampling yet")
-  if (!ribir::is_on_travis()) return()
-
-  for (params in create_sampling_params_set()) {
+  for (params in create_sampling_params_set(max_n_params = 2)) {
     testthat::expect_true(
       params$scr < 1000.0
     )
@@ -40,10 +37,7 @@ test_that("no high SRCs", {
 
 test_that("sampling matters", {
 
-  skip("No sampling")
-  if (!ribir::is_on_travis()) return()
-
-  params_set <- create_sampling_params_set()
+  params_set <- create_sampling_params_set(max_n_params = 2)
   for (params in params_set) {
     set.seed(params$tree_sim_rng_seed)
     out <- pbd_sim_checked(
