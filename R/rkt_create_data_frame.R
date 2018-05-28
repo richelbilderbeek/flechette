@@ -45,7 +45,9 @@ rkt_create_data_frame <- function(
     mcmc.store_every = rep(NA, n_rows),
     tree_sim_rng_seed = seq(1, n_rows),
     alignment_rng_seed = seq(1, n_rows),
-    beast2_rng_seed = seq(1, n_rows)
+    beast2_rng_seed = seq(1, n_rows),
+    site_model = rep(NA, n_rows),
+    clock_model = rep(NA, n_rows)
   )
   for (i in seq_along(params_set)) {
     df_params[i, 1:raket::rkt_get_n_params()] <- unlist(params_set[[i]])
@@ -53,7 +55,11 @@ rkt_create_data_frame <- function(
   levels(df_params$sampling_method) <- c(
     "random", "shortest", "longest", "oldest", "youngest"
   )
+  levels(df_params$site_model) <- rkt_get_site_models()
+  levels(df_params$clock_model) <- rkt_get_clock_models()
   df_params$sampling_method <- as.factor(df_params$sampling_method)
+  df_params$site_model <- as.factor(df_params$site_model)
+  df_params$clock_model <- as.factor(df_params$clock_model)
   df_nltts <- data.frame(
     matrix(
       data = stats::runif(n = n_rows * n_nltts),
@@ -65,6 +71,8 @@ rkt_create_data_frame <- function(
   colnames(df_nltts)[1] <- "X"
   df <- cbind(df_params, df_nltts)
   testit::assert(is.factor(df$sampling_method))
+  testit::assert(is.factor(df$site_model))
+  testit::assert(is.factor(df$clock_model))
 
   # Deallocate memory, these data frames can be very big
   rm(df_params)

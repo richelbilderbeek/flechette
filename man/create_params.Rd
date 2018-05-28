@@ -7,7 +7,8 @@ Run one point of the experiment}
 \usage{
 create_params(sirg, siri, scr, erg, eri, crown_age, crown_age_sigma = 0.01,
   sampling_method, mutation_rate, sequence_length, mcmc, tree_sim_rng_seed,
-  alignment_rng_seed, beast2_rng_seed)
+  alignment_rng_seed, beast2_rng_seed, site_model = "JC69",
+  clock_model = "strict")
 }
 \arguments{
 \item{sirg}{speciation rate of a good species,
@@ -49,6 +50,10 @@ alignment (from the true phylogenetic tree)}
 
 \item{beast2_rng_seed}{RNG seed in the creation of the BEAST2 posterior
 (based on the alignment)}
+
+\item{site_model}{site model assumed in the BEAST2 inference}
+
+\item{clock_model}{clock model assumed in the BEAST2 inference}
 }
 \description{
 Create the parameters for one experiment.

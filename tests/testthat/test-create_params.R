@@ -16,6 +16,8 @@ test_that("use", {
   tree_sim_rng_seed <- 314
   alignment_rng_seed <- 271
   beast2_rng_seed <- 4242
+  site_model <- "GTR"
+  clock_model <- "relaxed"
 
   parameters <- create_params(
     sirg = sirg,
@@ -31,7 +33,9 @@ test_that("use", {
     mcmc = mcmc,
     tree_sim_rng_seed = tree_sim_rng_seed,
     alignment_rng_seed = alignment_rng_seed,
-    beast2_rng_seed = beast2_rng_seed
+    beast2_rng_seed = beast2_rng_seed,
+    site_model = site_model,
+    clock_model = clock_model
   )
 
   testthat::expect_equal(sirg, parameters$sirg)
@@ -48,6 +52,8 @@ test_that("use", {
   testthat::expect_equal(tree_sim_rng_seed, parameters$tree_sim_rng_seed)
   testthat::expect_equal(alignment_rng_seed, parameters$alignment_rng_seed)
   testthat::expect_equal(beast2_rng_seed, parameters$beast2_rng_seed)
+  testthat::expect_equal(site_model, parameters$site_model)
+  testthat::expect_equal(clock_model, parameters$clock_model)
 
   testthat::expect_equal(rkt_get_n_params(), length(unlist(parameters)))
 })

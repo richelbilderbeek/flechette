@@ -26,6 +26,8 @@
 #'   alignment (from the true phylogenetic tree)
 #' @param beast2_rng_seed RNG seed in the creation of the BEAST2 posterior
 #'   (based on the alignment)
+#' @param site_model site model assumed in the BEAST2 inference
+#' @param clock_model clock model assumed in the BEAST2 inference
 #' @author Richel J.C. Bilderbeek
 #' @export
 create_params <- function(
@@ -42,9 +44,10 @@ create_params <- function(
   mcmc,
   tree_sim_rng_seed,
   alignment_rng_seed,
-  beast2_rng_seed
+  beast2_rng_seed,
+  site_model = "JC69",
+  clock_model = "strict"
 ) {
-  # TODO: Error checking with stop
   testit::assert(sirg >= 0.0)
   testit::assert(siri >= 0.0)
   testit::assert(scr >= 0.0)
@@ -54,6 +57,8 @@ create_params <- function(
   testit::assert(crown_age_sigma > 0.0)
   testit::assert(mutation_rate >= 0.0)
   testit::assert(sequence_length >= 0.0)
+  testit::assert(site_model %in% rkt_get_site_models())
+  testit::assert(clock_model %in% rkt_get_clock_models())
 
   list(
     sirg = sirg,
@@ -69,6 +74,8 @@ create_params <- function(
     mcmc = mcmc,
     tree_sim_rng_seed = tree_sim_rng_seed,
     alignment_rng_seed = alignment_rng_seed,
-    beast2_rng_seed = beast2_rng_seed
+    beast2_rng_seed = beast2_rng_seed,
+    site_model = site_model,
+    clock_model = clock_model
   )
 }

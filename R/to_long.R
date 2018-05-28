@@ -2,5 +2,6 @@
 #' @param df a data frame
 #' @export
 to_long <- function(df = utils::read.csv("result.csv")) {
-  tidyr::gather(df, "i", "nltt", 16:ncol(df))
+  start_col <- rkt_get_n_params() + 1
+  tidyr::gather(df, "i", "nltt", start_col:ncol(df))
 }
