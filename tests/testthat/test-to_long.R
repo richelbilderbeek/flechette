@@ -2,8 +2,6 @@ context("to_long")
 
 test_that("use", {
 
-  skip("No rkt_create_data_frame")
-
   n_replicates <- 2
   n_nltts <- 3 # Called X, X.1 and X.2
 
@@ -28,8 +26,6 @@ test_that("use", {
 })
 
 test_that("Can convert a data frame to long form, #5", {
-
-  skip("No rkt_create_data_frame")
 
   n_replicates <- rkt_get_n_replicates()
   n_nltts <- 1000
