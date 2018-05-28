@@ -2,21 +2,24 @@ context("create_sampling_params_set")
 
 test_that("must be a collection of multiple parameters", {
 
-  skip("No sampling")
-  if (!ribir::is_on_travis()) return()
-
-  params_set <- create_sampling_params_set(max_n_params = 2)
-  testthat::expect_true(
-    length(params_set) > 20
+  # Need an odd number here, as params come in pairs
+  # (due to two sampling methods)
+  max_n_params <- 2
+  params_set <- create_sampling_params_set(
+    max_n_params = max_n_params
+  )
+  testthat::expect_equal(
+    max_n_params,
+    length(params_set)
   )
 })
 
 test_that("each parameter must have the right number of elements", {
 
-  skip("No sampling")
-  if (!ribir::is_on_travis()) return()
-
-  params_set <- create_sampling_params_set()
+  max_n_params <- 2
+  params_set <- create_sampling_params_set(
+    max_n_params = max_n_params
+  )
   params <- params_set[[1]]
   testthat::expect_equal(
     rkt_get_n_params(), length(unlist(params))
@@ -25,7 +28,7 @@ test_that("each parameter must have the right number of elements", {
 
 test_that("no high SRCs", {
 
-  skip("No sampling")
+  skip("No sampling yet")
   if (!ribir::is_on_travis()) return()
 
   for (params in create_sampling_params_set()) {
