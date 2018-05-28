@@ -2,7 +2,6 @@ context("rkt_is_viable")
 
 test_that("use", {
 
-  
   testthat::expect_true(
     rkt_is_viable(
       erg = 0.0,
@@ -54,6 +53,6 @@ test_that("use pbd_numspec_quantile", {
   #'   age = 10, soc = 2, quantile = 0.95
   #'  )
   PBD::pbd_numspec_quantile(
-    pars = c(sir, erg, scr, eri)  
+    pars = c(sir, erg, scr, eri)
   )
 })

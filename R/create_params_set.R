@@ -8,7 +8,7 @@
 #'   in number of nucleotides
 #' @param n_replicates number of replicates per biological parameter set
 #' @param max_n_params the maximum number of parameters created. Set to a lower
-#'   value in debugging 
+#'   value in debugging
 #' @return a list of parameters
 #' @export
 create_params_set <- function(

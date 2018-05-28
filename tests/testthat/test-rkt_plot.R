@@ -5,7 +5,7 @@ test_that("use", {
   n_replicates <- rkt_get_n_replicates()
   n_nltts <- 1000
   max_n_params <- Inf
-  
+
   if (!ribir::is_on_travis()) {
     # Smaller on local computer
     n_replicates <- 2

@@ -4,7 +4,7 @@
 #' @param experiment_type type of experiment,
 #'   must be either 'general' or 'sampling'
 #' @param max_n_params the maximum number of parameters created. Set to a lower
-#'   value in debugging 
+#'   value in debugging
 #' @export
 rkt_create_data_frame <- function(
   n_replicates,
