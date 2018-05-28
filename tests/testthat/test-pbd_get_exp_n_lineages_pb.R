@@ -141,12 +141,25 @@ test_that("abuse", {
 # Expected number of inicipien lineages: 43.38422
 
 # Now using pbd_get_exp_n_lineages_pb yields:
-pbd_get_exp_n_lineages_pb(sirg = 2, scr = 0.5, siri = 2, age = 2,ng = 1, ni = 0)
-
+pbd_get_exp_n_lineages_pb(
+  sirg = 2,
+  scr = 0.5,
+  siri = 2,
+  age = 2,
+  ng = 1,
+  ni = 0
+)
 
 # Excel calculation for parameters sirg=3,scr=0.4,siri=4,age=3,ng=0,ni=1 yields:
 # Expected number of good lineages: 953.2686
 # Expected number of inicipien lineages: 7149,815
 
 # Now using pbd_get_exp_n_lineages_pb yields:
-pbd_get_exp_n_lineages_pb(sirg = 3, scr = 0.4, siri = 4, age = 3, ng = 0, ni = 1)
+pbd_get_exp_n_lineages_pb(
+  sirg = 3,
+  scr = 0.4,
+  siri = 4,
+  age = 3,
+  ng = 0,
+  ni = 1
+)
