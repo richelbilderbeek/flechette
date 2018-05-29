@@ -13,7 +13,7 @@
 #' @param quantile the quantile, a value from, and including, zero to one
 #' @param scr speciation completion rate
 #' @param sequence_length a DNA sequence length, in base pairs
-#' @param sir speciation initiation rate of both 
+#' @param sir speciation initiation rate of both
 #'   a good species and an incipient species
 #' @param sirg speciation initiation rate of a good species
 #' @param siri speciation initiation rate of an incipient species
