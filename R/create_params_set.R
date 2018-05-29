@@ -1,14 +1,6 @@
 #' Create the set of parameters to use, for each of the
 #' two experiment types
-#' @param experiment_type type of experiment,
-#'   must be either 'general' or 'sampling'
-#' @param mcmc MCMC options,
-#'   as created by \link[beautier]{create_mcmc}
-#' @param sequence_length DNA alignment sequence length,
-#'   in number of nucleotides
-#' @param n_replicates number of replicates per biological parameter set
-#' @param max_n_params the maximum number of parameters created. Set to a lower
-#'   value in debugging
+#' @inheritParams default_params_doc
 #' @return a list of parameters
 #' @export
 create_params_set <- function(

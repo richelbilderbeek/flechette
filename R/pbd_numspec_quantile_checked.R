@@ -59,7 +59,7 @@ pbd_numspec_quantile_checked <- function(
   if (!is.null(crown_age)) soc <- 2
   testit::assert(!is.null(soc))
   testit::assert(soc == 1 || soc == 2)
-  
+
   PBD::pbd_numspec_quantile(
     pars = c(sir, erg, scr, eri),
     age = age,

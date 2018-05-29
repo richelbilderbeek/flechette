@@ -10,11 +10,10 @@ create_sampling_params_set(mcmc = beautier::create_mcmc(chain_length =
   max_n_params = Inf)
 }
 \arguments{
-\item{mcmc}{MCMC options,
-as created by \link[beautier]{create_mcmc}}
+\item{mcmc}{one mcmc object,
+as returned by \code{\link[beautier]{create_mcmc}}}
 
-\item{sequence_length}{DNA alignment sequence length,
-in number of nucleotides}
+\item{sequence_length}{a DNA sequence length, in base pairs}
 
 \item{n_replicates}{number of replicates per biological parameter set}
 

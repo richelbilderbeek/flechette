@@ -19,7 +19,7 @@ test_that("plot pbd_numspec_quantile", {
       quantile = df$q
     )
   }
-  ggplot2::ggplot(df, 
+  ggplot2::ggplot(df,
     ggplot2::aes(x = q, y = n)
   ) + ggplot2::geom_line()
 })
@@ -33,7 +33,7 @@ test_that("use", {
   age <- 5
   quantile <- 0.6
 
-  testthat::expect_equal(  
+  testthat::expect_equal(
     PBD::pbd_numspec_quantile(
       pars = c(sir, erg, scr, eri),
       age = age,
@@ -41,13 +41,13 @@ test_that("use", {
       quantile = quantile
     ),
     raket::pbd_numspec_quantile_checked(
-      sir = sir, 
-      erg = erg, 
-      scr = scr, 
+      sir = sir,
+      erg = erg,
+      scr = scr,
       eri = eri,
       crown_age = age,
       quantile = quantile
     )
-  )      
+  )
 
 })

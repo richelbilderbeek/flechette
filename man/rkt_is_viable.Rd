@@ -4,16 +4,22 @@
 \alias{rkt_is_viable}
 \title{Is this a viable parameter combination?}
 \usage{
-rkt_is_viable(erg, eri, sirg, siri)
+rkt_is_viable(crown_age, erg, eri, scr, sirg, siri, quantile = 0.95)
 }
 \arguments{
+\item{crown_age}{crown age}
+
 \item{erg}{extinction rate of a good species}
 
 \item{eri}{extinction rate of an incipient species}
 
+\item{scr}{speciation completion rate}
+
 \item{sirg}{speciation initiation rate of a good species}
 
 \item{siri}{speciation initiation rate of an incipient species}
+
+\item{quantile}{the quantile, a value from, and including, zero to one}
 }
 \description{
 Is this a viable parameter combination?

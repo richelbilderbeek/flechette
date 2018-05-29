@@ -4,21 +4,22 @@
 \alias{create_general_params_set}
 \title{Creates the parameter set for the general exploration}
 \usage{
-create_general_params_set(mcmc = beautier::create_mcmc(chain_length = 1111000,
-  store_every = 1000), sequence_length = 15000, n_replicates = 1,
-  max_n_params = Inf)
+create_general_params_set(crown_age = 15, max_n_params = Inf,
+  mcmc = beautier::create_mcmc(chain_length = 1111000, store_every = 1000),
+  n_replicates = 1, sequence_length = 15000)
 }
 \arguments{
-\item{mcmc}{MCMC options,
-as created by \link[beautier]{create_mcmc}}
-
-\item{sequence_length}{DNA alignment sequence length,
-in number of nucleotides}
-
-\item{n_replicates}{number of replicates per biological parameter set}
+\item{crown_age}{the crown age of the phylogeny}
 
 \item{max_n_params}{the maximum number of parameters created. Set to a lower
 value in debugging}
+
+\item{mcmc}{one mcmc object,
+as returned by \code{\link[beautier]{create_mcmc}}}
+
+\item{n_replicates}{number of replicates per biological parameter set}
+
+\item{sequence_length}{a DNA sequence length, in base pairs}
 }
 \description{
 Creates the parameter set for the general exploration

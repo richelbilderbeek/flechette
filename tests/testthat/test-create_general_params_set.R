@@ -16,40 +16,19 @@ test_that("each parameter must have the right number of elements", {
 })
 
 test_that("all less than 1000 taxa with 95% certainty", {
-  if (!ribir::is_on_travis()) return()
+
   params_set <- create_general_params_set()
   for (params in params_set) {
     sir <- max(params$sirg, params$siri)
-    testit::assert(
-      PBD::pbd_numspec_quantile(
-        pars = c(sir, 
-      pbd_expected_n_extant(
-        crown_age = params$crown_age,
-        scr = params$scr,
-        sirg = params$sirg,
-        siri = params$siri,
-        erg = params$erg,
-        eri = params$eri,
-        n_sims = 10
-      ) < 1000
+    n <- raket::pbd_numspec_quantile_checked(
+      sir = sir,
+      scr = params$scr,
+      erg = params$erg,
+      eri = params$eri,
+      crown_age = params$crown_age,
+      quantile = 0.95
     )
-  }
-})
-
-test_that("all less than 1000 taxa, pragmatic approach", {
-  if (!ribir::is_on_travis()) return()
-  params_set <- create_general_params_set()
-  for (params in params_set) {
-    testit::assert(
-      pbd_expected_n_extant(
-        crown_age = params$crown_age,
-        scr = params$scr,
-        sirg = params$sirg,
-        siri = params$siri,
-        erg = params$erg,
-        eri = params$eri,
-        n_sims = 10
-      ) < 1000
-    )
+    if (n >= 1000) print(paste(n, sir))
+    testthat::expect_true(n < 1000)
   }
 })

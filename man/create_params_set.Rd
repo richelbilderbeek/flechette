@@ -11,13 +11,12 @@ create_params_set(experiment_type, mcmc = beautier::create_mcmc(chain_length =
 }
 \arguments{
 \item{experiment_type}{type of experiment,
-must be either 'general' or 'sampling'}
+must a member of \code{\link{rkt_get_experiment_types}}}
 
-\item{mcmc}{MCMC options,
-as created by \link[beautier]{create_mcmc}}
+\item{mcmc}{one mcmc object,
+as returned by \code{\link[beautier]{create_mcmc}}}
 
-\item{sequence_length}{DNA alignment sequence length,
-in number of nucleotides}
+\item{sequence_length}{a DNA sequence length, in base pairs}
 
 \item{n_replicates}{number of replicates per biological parameter set}
 
