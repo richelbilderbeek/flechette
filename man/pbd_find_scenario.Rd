@@ -21,6 +21,10 @@ pbd_find_scenario(scr, sirg, siri, scenario, erg = 0, eri = 0,
 'ylto' (youngest longer than oldest)
 'rsty' (random shorter than youngest)
 'rlto' (random longer than oldest)
+'expsl' (expected, but also includes shortest and longest)
+'yltosl' (ylto, but also includes shortest and longest)
+'rstysl' (rsty, but also includes shortest and longest)
+'rltosl' (rlto, but also includes shortest and longest)
 'rsts' (random shorter than shortest)
 'rltl' (random longer than longest)
 'sltl' (shortest longer than longest)}
