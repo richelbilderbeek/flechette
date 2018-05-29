@@ -1,11 +1,5 @@
 #' Checked and safer version of PBD::pbd_numspec_quantile
-#' @param erg extinction rate of a good species
-#' @param eri extinction rate of an incipient species
-#' @param scr speciation completion rate
-#' @param sir speciation initiation rate of both 
-#'   a good species and an incipient species
-#' @param stem_age stem age. Set either the stem age or the crown age.
-#' @param crown_age crown age. Set either the stem age or the crown age.
+#' @inheritParams default_params_doc
 #' @export
 pbd_numspec_quantile_checked <- function(
   erg,

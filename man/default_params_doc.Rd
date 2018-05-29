@@ -5,11 +5,16 @@
 \title{This function does nothing. It is intended to inherit is parameters'
 documentation.}
 \usage{
-default_params_doc(crown_age, experiment_type, max_n_params, mcmc, n_replicates,
-  sequence_length, verbose)
+default_params_doc(crown_age, erg, eri, experiment_type, max_n_params, mcmc,
+  n_replicates, quantile, scr, sequence_length, sir, sirg, siri, stem_age,
+  verbose)
 }
 \arguments{
 \item{crown_age}{the crown age of the phylogeny}
+
+\item{erg}{extinction rate of a good species}
+
+\item{eri}{extinction rate of an incipient species}
 
 \item{experiment_type}{type of experiment,
 must a member of \code{\link{rkt_get_experiment_types}}}
@@ -22,7 +27,20 @@ as returned by \code{\link[beautier]{create_mcmc}}}
 
 \item{n_replicates}{number of replicates per biological parameter set}
 
+\item{quantile}{the quantile, a value from, and including, zero to one}
+
+\item{scr}{speciation completion rate}
+
 \item{sequence_length}{a DNA sequence length, in base pairs}
+
+\item{sir}{speciation initiation rate of both 
+a good species and an incipient species}
+
+\item{sirg}{speciation initiation rate of a good species}
+
+\item{siri}{speciation initiation rate of an incipient species}
+
+\item{stem_age}{stem age. Set either the stem age or the crown age.}
 
 \item{verbose}{if TRUE, additional information is displayed, that
 is potentially useful in debugging}

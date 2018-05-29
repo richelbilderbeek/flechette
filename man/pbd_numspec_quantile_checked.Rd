@@ -19,7 +19,9 @@ a good species and an incipient species}
 
 \item{stem_age}{stem age. Set either the stem age or the crown age.}
 
-\item{crown_age}{crown age. Set either the stem age or the crown age.}
+\item{crown_age}{the crown age of the phylogeny}
+
+\item{quantile}{the quantile, a value from, and including, zero to one}
 }
 \description{
 Checked and safer version of PBD::pbd_numspec_quantile

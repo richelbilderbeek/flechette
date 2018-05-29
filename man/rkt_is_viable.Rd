@@ -7,7 +7,7 @@
 rkt_is_viable(crown_age, erg, eri, scr, sirg, siri, quantile = 0.95)
 }
 \arguments{
-\item{crown_age}{crown age}
+\item{crown_age}{the crown age of the phylogeny}
 
 \item{erg}{extinction rate of a good species}
 
