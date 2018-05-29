@@ -2,7 +2,7 @@ context("pbd_get_exp_n_lineages_pb")
 
 test_that("use", {
 
-  expect_output(
+  testthat::expect_silent(
     pbd_get_exp_n_lineages_pb(
       sirg = 1.0,
       scr = 1.0,
@@ -13,7 +13,7 @@ test_that("use", {
     )
   )
 
-  expect_output(
+  expect_silent(
     pbd_get_exp_n_lineages_pb(
       sirg = 1.0,
       scr = 1.0,
@@ -136,30 +136,39 @@ test_that("abuse", {
    )
 })
 
-# Excel calculation for parameters sirg=2,scr=0.5,siri=2,age=2,ng=1,ni=0 yields:
-# Expected number of good lineages: 11.21393
-# Expected number of inicipien lineages: 43.38422
+test_that("pbd_get_exp_n_lineages gives right number of lineages", {
 
-# Now using pbd_get_exp_n_lineages_pb yields:
-pbd_get_exp_n_lineages_pb(
-  sirg = 2,
-  scr = 0.5,
-  siri = 2,
-  age = 2,
-  ng = 1,
-  ni = 0
-)
+  # Excel calculation for sirg=2,scr=0.5,siri=2,age=2,ng=1,ni=0 yields:
+  # Expected number of good lineages: 11.21393
+  # Expected number of inicipien lineages: 43.38422
+  exp_out <- list(exp_ng = 11.21393, exp_ni = 43.38422)
 
-# Excel calculation for parameters sirg=3,scr=0.4,siri=4,age=3,ng=0,ni=1 yields:
-# Expected number of good lineages: 953.2686
-# Expected number of inicipien lineages: 7149,815
+  # Now using pbd_get_exp_n_lineages_pb yields:
+  out <- pbd_get_exp_n_lineages_pb(
+    sirg = 2,
+    scr = 0.5,
+    siri = 2,
+    age = 2,
+    ng = 1,
+    ni = 0
+  )
 
-# Now using pbd_get_exp_n_lineages_pb yields:
-pbd_get_exp_n_lineages_pb(
-  sirg = 3,
-  scr = 0.4,
-  siri = 4,
-  age = 3,
-  ng = 0,
-  ni = 1
-)
+  testthat::expect_equal(exp_out, out, tolerance = 0.00001)
+
+  # Excel calculation for sirg=3,scr=0.4,siri=4,age=3,ng=0,ni=1 yields:
+  # Expected number of good lineages: 953.2686
+  # Expected number of inicipien lineages: 7149,815
+  exp_out <- list(exp_ng = 953.2686, exp_ni = 7149.815)
+
+  # Now using pbd_get_exp_n_lineages_pb yields:
+ out <- pbd_get_exp_n_lineages_pb(
+    sirg = 3,
+    scr = 0.4,
+    siri = 4,
+    age = 3,
+    ng = 0,
+    ni = 1
+  )
+
+ testthat::expect_equal(exp_out, out, tolerance = 0.00001)
+})
