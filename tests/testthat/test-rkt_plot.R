@@ -15,6 +15,7 @@ test_that("use", {
     # Must dumb down, otherwise test takes too long
     n_replicates <- 2
     n_nltts <- 10
+    max_n_params <- 2
   }
 
   n_rows <- n_replicates * rkt_get_n_param_combos()

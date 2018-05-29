@@ -2,7 +2,7 @@
 % Please edit documentation in R/pbd_numspec_quantile_checked.R
 \name{pbd_numspec_quantile_checked}
 \alias{pbd_numspec_quantile_checked}
-\title{Checked and safer version of PBD::pbd_numspec_quantile}
+\title{Checked version of \code{\link[PBD]{pbd_numspec_quantile}}}
 \usage{
 pbd_numspec_quantile_checked(erg, eri, scr, sir, stem_age = NULL,
   crown_age = NULL, quantile)
@@ -24,5 +24,11 @@ a good species and an incipient species}
 \item{quantile}{the quantile, a value from, and including, zero to one}
 }
 \description{
-Checked and safer version of PBD::pbd_numspec_quantile
+Checked version of \code{\link[PBD]{pbd_numspec_quantile}}
+}
+\note{
+uses equation 6 from \insertCite{etienne2014;textual}{raket}
+}
+\references{
+\insertAllCited{}
 }

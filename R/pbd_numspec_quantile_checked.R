@@ -1,5 +1,7 @@
-#' Checked and safer version of PBD::pbd_numspec_quantile
+#' Checked version of \code{\link[PBD]{pbd_numspec_quantile}}
+#' @note uses equation 6 from \insertCite{etienne2014;textual}{raket}
 #' @inheritParams default_params_doc
+#' @references \insertAllCited{}
 #' @export
 pbd_numspec_quantile_checked <- function(
   erg,
