@@ -60,7 +60,7 @@ pbd_get_exp_n_lineages_pb <- function(
               (ni / (1 + (sirg / scr))) * exp(- scr * age)
   }
 
-  cat("Expected number of good lineages:", exp_ng, "|||",
-      "Expected number of incipient lineages:", exp_ni)
+  out <- list(exp_ng = exp_ng, exp_ni = exp_ni)
+  return(out)
 
 }
