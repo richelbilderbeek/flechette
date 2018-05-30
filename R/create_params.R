@@ -15,7 +15,7 @@
 #' @param crown_age_sigma the standard deviation of MRCA prior's
 #'   distribution, in time units
 #' @param sampling_method method how the incipient species representing a
-#'   species is picked. Must be in \link{rkt_get_sampling_methods}. 
+#'   species is picked. Must be in \link{rkt_get_sampling_methods}.
 #' @param mutation_rate per-nucleotide probability to mutate per time unit
 #' @param sequence_length length of simulated DNA alignment,
 #'   number of base pairs
