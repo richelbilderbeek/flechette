@@ -6,8 +6,7 @@ test_that("Full workflow, general", {
   if (!ribir::is_on_travis()) return()
 
   n_parameters <- rkt_get_n_params()
-  chain_length <- 4000
-  sampling_interval <- 1000
+  mcmc_chain_length <- 16000
   sequence_length <- 15
   testit::assert(sampling_interval >= 1000)
   n_samples <- 1 + (chain_length / sampling_interval)
@@ -20,10 +19,7 @@ test_that("Full workflow, general", {
   ##############################################################################
   input_filenames_all <- create_input_files_general(
     general_params_set = create_general_params_set(
-      mcmc = beautier::create_mcmc(
-        chain_length = chain_length,
-        store_every = sampling_interval
-      ),
+      mcmc_chain_length = chain_length,
       sequence_length = sequence_length
     ),
     folder_name = tempdir()

@@ -5,7 +5,7 @@
 create_general_params_set <- function(
   crown_age = 15,
   max_n_params = Inf,
-  mcmc = beautier::create_mcmc(chain_length = 1111000, store_every = 1000),
+  mcmc_chain_length = 1111000,
   n_replicates = 1,
   sequence_length = 15000
 ) {
@@ -30,6 +30,10 @@ create_general_params_set <- function(
               for (clock_model in rkt_get_clock_models()) {
                 for (site_model in rkt_get_site_models()) {
                   if (index >= max_n_params) next
+                  sample_interval <- 1000
+                  if (scr == 1.0) sample_interval <- sample_interval * 2
+                  if (sirg == 0.5) sample_interval <- sample_interval * 2
+                  if (siri == 0.5) sample_interval <- sample_interval * 2
                   params <- create_params(
                     sirg = sirg,
                     siri = siri,
@@ -41,7 +45,10 @@ create_general_params_set <- function(
                     sampling_method = "random",
                     mutation_rate = 1.0 / crown_age,
                     sequence_length = sequence_length,
-                    mcmc = mcmc,
+                    mcmc = beautier::create_mcmc(
+                      chain_length = mcmc_chain_length,
+                      store_every = sample_interval
+                    ),
                     tree_sim_rng_seed = index,
                     alignment_rng_seed = index,
                     beast2_rng_seed = index,

@@ -5,8 +5,7 @@
 \title{Creates the parameter set for the general exploration}
 \usage{
 create_general_params_set(crown_age = 15, max_n_params = Inf,
-  mcmc = beautier::create_mcmc(chain_length = 1111000, store_every = 1000),
-  n_replicates = 1, sequence_length = 15000)
+  mcmc_chain_length = 1111000, n_replicates = 1, sequence_length = 15000)
 }
 \arguments{
 \item{crown_age}{the crown age of the phylogeny}
@@ -14,8 +13,8 @@ create_general_params_set(crown_age = 15, max_n_params = Inf,
 \item{max_n_params}{the maximum number of parameters created. Set to a lower
 value in debugging}
 
-\item{mcmc}{one mcmc object,
-as returned by \code{\link[beautier]{create_mcmc}}}
+\item{mcmc_chain_length}{length of the MCMC chain, in
+number of states}
 
 \item{n_replicates}{number of replicates per biological parameter set}
 

@@ -6,8 +6,8 @@
 documentation.}
 \usage{
 default_params_doc(crown_age, erg, eri, experiment_type, max_n_params, mcmc,
-  n_replicates, quantile, scr, sequence_length, sir, sirg, siri, stem_age,
-  verbose)
+  mcmc_chain_length, n_replicates, quantile, scr, sequence_length, sir, sirg,
+  siri, stem_age, verbose)
 }
 \arguments{
 \item{crown_age}{the crown age of the phylogeny}
@@ -24,6 +24,9 @@ value in debugging}
 
 \item{mcmc}{one mcmc object,
 as returned by \code{\link[beautier]{create_mcmc}}}
+
+\item{mcmc_chain_length}{length of the MCMC chain, in
+number of states}
 
 \item{n_replicates}{number of replicates per biological parameter set}
 

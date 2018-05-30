@@ -16,7 +16,7 @@ set.seed(42)
 ## ------------------------------------------------------------------------
 all_input_filenames <- create_input_files_general(
   general_params_set = create_general_params_set(
-    mcmc = beautier::create_mcmc(chain_length = 4000, store_every = 1000),
+    mcmc_chain_length = 16000,
     sequence_length = 15
   ),
   folder_name = folder_name

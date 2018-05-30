@@ -9,6 +9,8 @@
 #'   value in debugging
 #' @param mcmc one mcmc object,
 #'   as returned by \code{\link[beautier]{create_mcmc}}
+#' @param mcmc_chain_length length of the MCMC chain, in
+#'   number of states
 #' @param n_replicates number of replicates per biological parameter set
 #' @param quantile the quantile, a value from, and including, zero to one
 #' @param scr speciation completion rate
@@ -31,6 +33,7 @@ default_params_doc <- function(
   experiment_type,
   max_n_params,
   mcmc,
+  mcmc_chain_length,
   n_replicates,
   quantile,
   scr,

@@ -6,7 +6,7 @@ test_that("use", {
 
   input_filenames <- create_input_files_general(
     general_params_set = create_general_params_set(
-      mcmc = beautier::create_mcmc(chain_length = 3000, store_every = 1000),
+      mcmc_chain_length = 16000,
       sequence_length = 10
     ),
     folder_name = tempdir()
@@ -37,9 +37,6 @@ test_that("use", {
   testthat::expect_true("alignment" %in% names(out))
   testthat::expect_true("trees" %in% names(out))
   testthat::expect_true("estimates" %in% names(out))
-
-  file.remove(input_filenames)
-  file.remove(output_filename)
 })
 
 test_that("abuse", {

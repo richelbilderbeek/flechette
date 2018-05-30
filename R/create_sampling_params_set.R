@@ -3,14 +3,14 @@
 #' @inheritParams create_params_set
 #' @export
 create_sampling_params_set <- function(
-  mcmc = beautier::create_mcmc(chain_length = 1111000, store_every = 1000),
+  mcmc_chain_length = 1111000,
   sequence_length = 15000,
   n_replicates = 1,
   max_n_params = Inf
 ) {
   # Start from the general parameters set
   general_params_set <- raket::create_general_params_set(
-    mcmc = mcmc,
+    mcmc_chain_length = mcmc_chain_length,
     sequence_length = sequence_length,
     n_replicates = n_replicates,
     max_n_params = max_n_params
