@@ -15,7 +15,7 @@
 #' @param crown_age_sigma the standard deviation of MRCA prior's
 #'   distribution, in time units
 #' @param sampling_method method how the incipient species representing a
-#'   species is picked. Must be 'youngest', 'oldest' or 'random'
+#'   species is picked. Must be in \link{rkt_get_sampling_methods}. 
 #' @param mutation_rate per-nucleotide probability to mutate per time unit
 #' @param sequence_length length of simulated DNA alignment,
 #'   number of base pairs
@@ -57,6 +57,7 @@ create_params <- function(
   testit::assert(crown_age_sigma > 0.0)
   testit::assert(mutation_rate >= 0.0)
   testit::assert(sequence_length >= 0.0)
+  testit::assert(sampling_method %in% raket::rkt_get_sampling_methods())
   testit::assert(site_model %in% raket::rkt_get_site_models())
   testit::assert(clock_model %in% raket::rkt_get_clock_models())
 

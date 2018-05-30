@@ -35,14 +35,10 @@ rkt_run <- function(
     add_shortest_and_longest = TRUE
   )
   true_phylogeny <- NA
-  if (parameters$sampling_method == "youngest") {
-    true_phylogeny <- pbd_output$stree_youngest
-  } else if (parameters$sampling_method == "shortest") {
+  if (parameters$sampling_method == "shortest") {
     true_phylogeny <- pbd_output$stree_shortest
   } else if (parameters$sampling_method == "longest") {
     true_phylogeny <- pbd_output$stree_longest
-  } else if (parameters$sampling_method == "oldest") {
-    true_phylogeny <- pbd_output$stree_oldest
   } else {
     testit::assert(parameters$sampling_method == "random")
     true_phylogeny <- pbd_output$stree_random

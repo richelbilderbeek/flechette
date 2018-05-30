@@ -2,7 +2,7 @@ context("rkt_run")
 
 test_that("use", {
 
-  for (sampling_method in c("youngest", "oldest", "random")) {
+  for (sampling_method in rkt_get_sampling_methods()) {
     out <- rkt_run(
       parameters = create_params(
         sirg = 1.0,

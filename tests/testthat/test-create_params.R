@@ -9,7 +9,7 @@ test_that("use", {
   eri <- 0.01
   crown_age <- 15
   crown_age_sigma <- 0.01
-  sampling_method <- "youngest"
+  sampling_method <- "shortest"
   mutation_rate <- 0.1
   sequence_length <- 123
   mcmc <- beautier::create_mcmc(chain_length = 12300)

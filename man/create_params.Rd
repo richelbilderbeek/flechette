@@ -33,7 +33,7 @@ per lineage probability per time unit}
 distribution, in time units}
 
 \item{sampling_method}{method how the incipient species representing a
-species is picked. Must be 'youngest', 'oldest' or 'random'}
+species is picked. Must be in \link{rkt_get_sampling_methods}.}
 
 \item{mutation_rate}{per-nucleotide probability to mutate per time unit}
 
