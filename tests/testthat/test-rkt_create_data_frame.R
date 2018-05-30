@@ -14,11 +14,14 @@ test_that("use, general", {
 
 test_that("use, sampling", {
   n_nltts <- 5
+  max_n_params <- 2
+  testit::assert(max_n_params %% 2 == 0)
   df <- rkt_create_data_frame(
     n_replicates = 1,
     n_nltts = n_nltts,
-    experiment_type = "sampling"
+    experiment_type = "sampling",
+    max_n_params = 2
   )
-  testthat::expect_gte(nrow(df), 20)
+  testthat::expect_equal(nrow(df), max_n_params)
   testthat::expect_equal(ncol(df), rkt_get_n_params() + n_nltts)
 })

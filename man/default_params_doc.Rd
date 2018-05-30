@@ -33,7 +33,7 @@ as returned by \code{\link[beautier]{create_mcmc}}}
 
 \item{sequence_length}{a DNA sequence length, in base pairs}
 
-\item{sir}{speciation initiation rate of both 
+\item{sir}{speciation initiation rate of both
 a good species and an incipient species}
 
 \item{sirg}{speciation initiation rate of a good species}

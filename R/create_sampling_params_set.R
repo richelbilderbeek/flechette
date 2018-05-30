@@ -12,7 +12,8 @@ create_sampling_params_set <- function(
   general_params_set <- raket::create_general_params_set(
     mcmc = mcmc,
     sequence_length = sequence_length,
-    n_replicates = n_replicates
+    n_replicates = n_replicates,
+    max_n_params = max_n_params
   )
 
   sampling_params_set <- list()

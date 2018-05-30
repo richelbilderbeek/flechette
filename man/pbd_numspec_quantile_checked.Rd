@@ -14,7 +14,7 @@ pbd_numspec_quantile_checked(erg, eri, scr, sir, stem_age = NULL,
 
 \item{scr}{speciation completion rate}
 
-\item{sir}{speciation initiation rate of both 
+\item{sir}{speciation initiation rate of both
 a good species and an incipient species}
 
 \item{stem_age}{stem age. Set either the stem age or the crown age.}
