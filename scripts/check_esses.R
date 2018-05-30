@@ -1,10 +1,27 @@
+
 filenames <- list.files(pattern = "out_.*\\.RDa")
 
-print(paste("filename", "ess", "ok", sep = ","))
+df <- data.frame(
+  filename = rep(NA, length(filenames)),
+  ess = rep(NA, length(filenames)),
+  ok = rep(NA, length(filenames))
+)  
+
+row_index <- 1
 
 for (filename in filenames) {
-  df <- readRDS(filename)
-  ess <- tracerer::calc_ess(trace = df$estimates$posterior, sample_interval = 1000)
+  file <- readRDS(filename)
+  ess <- tracerer::calc_ess(
+    trace = file$estimates$posterior, 
+    sample_interval = 1000
+  )
   ok <- ess > 200
-  print(paste(filename, ess, ok, sep = ","))
+  df$filename[row_index] <- filename
+  df$ess[row_index] <- ess
+  df$ok[row_index] <- ok
+  row_index <- row_index + 1
 }
+
+print(df)
+# sum(!df$ok)
+# ggplot(df, aes(ess, fill = ok)) + geom_histogram(binwidth = 10) + geom_vline(xintercept = 200) + ggtitle("ESSes of sampling parameter set")
