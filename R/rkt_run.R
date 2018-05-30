@@ -24,32 +24,23 @@ rkt_run <- function(
 
   set.seed(parameters$tree_sim_rng_seed)
 
-  # SCR: Specition Completion rate
-  scr <- parameters$scr
-  # SIR: Speciation Initation Rate (for Incipient or Good species)
-  sirg <- parameters$sirg
-  siri <- parameters$siri
-  # ER: Extinction Rate (for Incipient or Good species)
-  erg <- parameters$erg
-  eri <- parameters$eri
-  pbd_parameters <- c(
-    sirg,
-    scr,
-    siri,
-    erg,
-    eri
-  )
-
   # Note: if speciation rates are zero, PBD::pbd_sim will last forever
-  pbd_output <- PBD::pbd_sim(
-    pbd_parameters,
-    age = parameters$crown_age,
-    soc = 2, # crown
-    plotit = FALSE
+  pbd_output <- PBD::pbd_sim_checked(
+    erg = parameters$erg,
+    eri = parameters$eri,
+    scr = parameters$scr,
+    sirg = parameters$sirg,
+    siri = parameters$siri,
+    crown_age = parameters$crown_age,
+    add_shortest_and_longest = TRUE
   )
   true_phylogeny <- NA
   if (parameters$sampling_method == "youngest") {
     true_phylogeny <- pbd_output$stree_youngest
+  } else if (parameters$sampling_method == "shortest") {
+    true_phylogeny <- pbd_output$stree_shortest
+  } else if (parameters$sampling_method == "longest") {
+    true_phylogeny <- pbd_output$stree_longest
   } else if (parameters$sampling_method == "oldest") {
     true_phylogeny <- pbd_output$stree_oldest
   } else {
