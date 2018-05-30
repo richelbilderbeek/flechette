@@ -1,3 +1,4 @@
+# setwd("~/data/20180530")
 filenames <- list.files(pattern = "out_.*\\.RDa")
 
 df <- data.frame(
