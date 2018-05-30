@@ -14,8 +14,8 @@ folder_name <- tempdir()
 set.seed(42)
 
 ## ------------------------------------------------------------------------
-all_input_filenames <- raket::create_input_files_general(
-  general_params_set = raket::create_general_params_set(
+all_input_filenames <- create_input_files_general(
+  general_params_set = create_general_params_set(
     mcmc = beautier::create_mcmc(chain_length = 4000, store_every = 1000),
     sequence_length = 15
   ),
