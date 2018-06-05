@@ -18,7 +18,7 @@ test_that("each parameter must have the right number of elements", {
 test_that("all less than 1000 taxa with 95% certainty", {
 
   params_set <- create_general_params_set()
-  
+
   for (params in params_set) {
     sir <- max(params$sirg, params$siri)
     n <- raket::pbd_numspec_quantile_checked(

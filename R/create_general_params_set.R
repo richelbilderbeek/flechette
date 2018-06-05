@@ -30,9 +30,8 @@ create_general_params_set <- function(
               for (clock_model in rkt_get_clock_models()) {
                 for (site_model in rkt_get_site_models()) {
                   if (index >= max_n_params) next
-                  sample_interval <- 1000
                   increase_factor <- 1
-                  if (scr == 1.0) { 
+                  if (scr == 1.0) {
                     increase_factor <- increase_factor * 2
                   }
                   if (sirg == 0.5) {
