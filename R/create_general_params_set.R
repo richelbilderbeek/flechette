@@ -31,9 +31,18 @@ create_general_params_set <- function(
                 for (site_model in rkt_get_site_models()) {
                   if (index >= max_n_params) next
                   sample_interval <- 1000
-                  if (scr == 1.0) sample_interval <- sample_interval * 2
-                  if (sirg == 0.5) sample_interval <- sample_interval * 2
-                  if (siri == 0.5) sample_interval <- sample_interval * 2
+                  if (scr == 1.0) { 
+                    sample_interval <- sample_interval * 2
+                    mcmc_chain_length <- mcmc_chain_length * 2
+                  }
+                  if (sirg == 0.5) {
+                    sample_interval <- sample_interval * 2
+                    mcmc_chain_length <- mcmc_chain_length * 2
+                  }
+                  if (siri == 0.5) {
+                    sample_interval <- sample_interval * 2
+                    mcmc_chain_length <- mcmc_chain_length * 2
+                  }
                   params <- create_params(
                     sirg = sirg,
                     siri = siri,
