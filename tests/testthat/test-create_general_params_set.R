@@ -18,6 +18,7 @@ test_that("each parameter must have the right number of elements", {
 test_that("all less than 1000 taxa with 95% certainty", {
 
   params_set <- create_general_params_set()
+  
   for (params in params_set) {
     sir <- max(params$sirg, params$siri)
     n <- raket::pbd_numspec_quantile_checked(
@@ -28,7 +29,8 @@ test_that("all less than 1000 taxa with 95% certainty", {
       crown_age = params$crown_age,
       quantile = 0.95
     )
-    if (n >= 1000) print(paste(n, sir))
     testthat::expect_true(n < 1000)
+    testthat::expect_true(params$mcmc$chain_length
+      %in% c(1111000, 2222000, 4444000, 8888000))
   }
 })

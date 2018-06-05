@@ -31,17 +31,15 @@ create_general_params_set <- function(
                 for (site_model in rkt_get_site_models()) {
                   if (index >= max_n_params) next
                   sample_interval <- 1000
+                  increase_factor <- 1
                   if (scr == 1.0) { 
-                    sample_interval <- sample_interval * 2
-                    mcmc_chain_length <- mcmc_chain_length * 2
+                    increase_factor <- increase_factor * 2
                   }
                   if (sirg == 0.5) {
-                    sample_interval <- sample_interval * 2
-                    mcmc_chain_length <- mcmc_chain_length * 2
+                    increase_factor <- increase_factor * 2
                   }
                   if (siri == 0.5) {
-                    sample_interval <- sample_interval * 2
-                    mcmc_chain_length <- mcmc_chain_length * 2
+                    increase_factor <- increase_factor * 2
                   }
                   params <- create_params(
                     sirg = sirg,
@@ -55,8 +53,8 @@ create_general_params_set <- function(
                     mutation_rate = 1.0 / crown_age,
                     sequence_length = sequence_length,
                     mcmc = beautier::create_mcmc(
-                      chain_length = mcmc_chain_length,
-                      store_every = sample_interval
+                      chain_length = mcmc_chain_length * increase_factor,
+                      store_every = 1000 * increase_factor
                     ),
                     tree_sim_rng_seed = index,
                     alignment_rng_seed = index,
