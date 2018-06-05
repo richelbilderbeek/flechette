@@ -34,6 +34,7 @@ rkt_run <- function(
     crown_age = parameters$crown_age,
     add_shortest_and_longest = TRUE
   )
+
   true_phylogeny <- NA
   if (parameters$sampling_method == "shortest") {
     true_phylogeny <- pbd_output$stree_shortest
@@ -43,10 +44,31 @@ rkt_run <- function(
     testit::assert(parameters$sampling_method == "random")
     true_phylogeny <- pbd_output$stree_random
   }
+
+  site_model <- NA
+  if (parameters$site_model == "JC69") {
+    site_model <- beautier::create_jc69_site_model()
+  } else {
+    testit::assert(parameters$site_model == "GTR")
+    site_model <- beautier::create_gtr_site_model()
+  }
+  testit::assert(beautier:::is_site_model(site_model))
+
+  clock_model <- NA
+  if (parameters$clock_model == "strict") {
+    clock_model <- beautier::create_strict_clock_model()
+  } else {
+    testit::assert(parameters$clock_model == "RLN")
+    clock_model <- beautier::create_rln_clock_model()
+  }
+  testit::assert(beautier:::is_clock_model(clock_model))
+
   out <- pirouette::pir_run(
     phylogeny = true_phylogeny,
     sequence_length = parameters$sequence_length,
     mutation_rate = parameters$mutation_rate,
+    site_models = site_model,
+    clock_models = clock_model,
     mcmc = parameters$mcmc,
     mrca_distr = beautier::create_normal_distr(
       mean = beautier::create_mean_param(value = parameters$crown_age),

@@ -17,7 +17,7 @@ test_that("use", {
   alignment_rng_seed <- 271
   beast2_rng_seed <- 4242
   site_model <- "GTR"
-  clock_model <- "relaxed"
+  clock_model <- "RLN"
 
   parameters <- create_params(
     sirg = sirg,
