@@ -19,7 +19,7 @@ create_sampling_params_set <- function(
   sampling_params_set <- list()
   index <- 1
   # Each tree will have a unique RNG seed
-  tree_sim_rng_seed <- 1
+  tree_sim_rng_seed <- 3481
   for (params in general_params_set) {
     # Remove all SCR == Inf
     if (params$scr >= 1000.0) next
