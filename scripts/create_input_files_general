@@ -11,4 +11,4 @@
 module load GCCcore/4.9.3 
 module load XZ/5.2.2-foss-2016a
 module load R
-Rscript -e 'raket::create_input_files_general(n_replicates = 10)'
+Rscript -e 'raket::create_input_files_general(general_params_set = create_general_params_set(n_replicates = 10))'
