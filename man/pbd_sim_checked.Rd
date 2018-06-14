@@ -25,8 +25,8 @@ pbd_sim_checked(erg, eri, scr, sirg, siri, stem_age = NULL,
 \item{max_n_taxa}{maximum number of taxa. If this value is exceeded,
 the simulation is aborted and removed.}
 
-\item{add_shortest_and_longest}{Gives the output of the new samplemethods
-'shortest' and 'longest'.}
+\item{add_shortest_and_longest}{Gives the output of the new sampling
+methods 'shortest' and 'longest'.}
 }
 \description{
 Checked and safer version of PBD::pbd_sim
