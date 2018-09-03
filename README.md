@@ -89,3 +89,4 @@ Package|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![Codecov
 
  * [1] Bilderbeek, Richel JC, and Rampal S. Etienne. "The error when inferring phylogenies with incipient species by a birth-death model." in preparation for registration at the [Open Source Framework](https://osf.io/)
 
+![First registration of the article](pics/osf_registration_1.png)
