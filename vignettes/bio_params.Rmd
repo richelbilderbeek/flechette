@@ -25,16 +25,26 @@ initiation and speciation completion rate, we start from:
 
  * the expected mean number of species must be 50, 100 and 200
  * the extinction rates are 0.3 and 0.5
- 
+ * the speciation completion rates are 0.1, 0.3, 1.0 and Infinite
 
 ```{r}
-df <- data.frame(
-  er = rep(c(0.3, 0.5), each = 3),
-  n = rep(c(50, 100, 200), times = 2)
-)
-df$sir <- "?"
-df$scr <- "?"
-knitr::kable(df)
+ers <- c(0.3, 0.5)
+ns <- c(50, 100, 200)
+scrs <- c(0.1, 0.3, 1.0, 1e9)
+```
+
+Resulting in this table to fill:
+
+```{r}
+df_goal <- expand.grid(er = ers, n = ns, scr = scrs)
+df_goal$sir <- "?"
+knitr::kable(df_goal)
+```
+
+Following Etienne & Rosindell, we use this crown age:
+
+```{r}
+crown_age <- 15
 ```
 
 ## Setup
@@ -44,50 +54,32 @@ Some libraries we need:
 ```{r}
 library(ggplot2)
 ```
-To limit the computational time, we pick relatively small numbers of species:
-
-```{r}
-ns <- c(50, 100, 200)
-```
-
-Following Etienne & Rosindell, we use these extinction rates:
-
-```{r}
-ers <- c(0.3, 0.5)
-```
-
-Following Etienne & Rosindell, we use this crown age:
-
-```{r}
-crown_age <- 15
-```
 
 ## Find the speciation rate in the BD model
 
 In the BD model, the speciation completion rate is close to infinite:
 
 ```{r}
-scr <- 10e9 # close to infinite
+scr <- max(df_goal$scr)
 ```
 
 To get an idea, plot the number of species for the speciation and extinction rates:
 
 ```{r fig.width=7}
 n_points <- 11
-df <- data.frame(
+df_grid <- data.frame(
   sir = rep(seq(0.4, 0.8, length.out = n_points), each = n_points),  
   er = rep(seq(0.2, 0.6, length.out = n_points), times = n_points)
 )
-df$n <- PBD::pbd_numspec_mean_checked(
-  ergs = df$er, 
-  eris = df$er, 
-  scr = rep(scr, nrow(df)), 
-  sirs = df$sir, 
-  crown_ages = rep(crown_age, nrow(df))
+df_grid$n <- PBD::pbd_numspec_mean_checked(
+  ergs = df_grid$er, 
+  eris = df_grid$er, 
+  scr = rep(scr, nrow(df_grid)), 
+  sirs = df_grid$sir, 
+  crown_ages = rep(crown_age, nrow(df_grid))
 )
-plot_bd <- ggplot(df, aes(sir, er, z = n)) + 
+plot_bd <- ggplot(df_grid, aes(sir, er, z = n)) + 
   geom_raster(aes(fill = n)) + 
-  scale_fill_gradientn(colours=c("white","blue")) +
   geom_contour(breaks = ns, color = "green") +
   geom_hline(yintercept = ers, color = "red")
 plot_bd
@@ -97,10 +89,7 @@ The points where the red and green lines cross are the speciation rates
 we are looking for. We'd like to fill this data frame:
 
 ```{r}
-df_bd <- data.frame(
-  er = rep(ers, each = 3),
-  n = rep(ns, times = 2)
-)
+df_bd <- df_goal[ df_goal$scr == 1e9, ]
 df_bd$sir <- rep("?", nrow(df_bd))
 knitr::kable(df_bd)
 ```
@@ -123,6 +112,7 @@ sir_error <- function(sir, known_er, known_scr, known_crown_age, n_desired) {
 for (row in seq_along(df_bd$sir)) {
   er <- df_bd$er[row]
   n <- df_bd$n[row]
+  scr <- df_bd$scr[row]
   f <- functional::Curry(
     sir_error,
     known_er = er, 
@@ -139,6 +129,68 @@ Verify if we correctlt calculated the speciation initiation rates in the plot:
 
 ```{r fig.width=7}
 plot_bd + geom_point(data = df_bd, aes(x = as.numeric(sir), y = as.numeric(er)))
-````
+```
+
 We just found the speciation initiation rates we need for a BD model.
 
+## PBD
+
+For the PBD model, it takes three parameters to calculate the expected number of species.
+
+Following 
+
+```{r}
+for (row in seq_along(df_goal$sir)) {
+  er <- df_goal$er[row]
+  n <- df_goal$n[row]
+  scr <- df_goal$scr[row]
+  f <- functional::Curry(
+    sir_error,
+    known_er = er, 
+    known_scr = scr, 
+    known_crown_age = crown_age,
+    n_desired = n
+  )
+  df_goal$sir[row] <- uniroot(f, interval = c(0.1, 2.0))$root
+}
+knitr::kable(df_goal)
+```
+
+Verify the correctness of these SIRs:
+
+```{r fig.width=7}
+plot <- function(scr, df_goal) {
+  n_points <- 11
+  min_sir <- min(df_goal$sir)
+  max_sir <- max(df_goal$sir)
+  min_er <- min(df_goal$er)
+  max_er <- max(df_goal$er)
+  df_grid <- data.frame(
+    sir = rep(seq(min_sir, max_sir, length.out = n_points), each = n_points),  
+    er = rep(seq(min_er, max_er, length.out = n_points), times = n_points)
+  )
+  df_grid$n <- PBD::pbd_numspec_mean_checked(
+    ergs = df_grid$er, 
+    eris = df_grid$er, 
+    scr = rep(scr, nrow(df_grid)), 
+    sirs = df_grid$sir, 
+    crown_ages = rep(crown_age, nrow(df_grid))
+  )
+  df_goal_this_scr <- df_goal[ df_goal$scr == scr, ]
+  plot_bd <- ggplot(df_grid, aes(sir, er, z = n)) + 
+    geom_raster(aes(fill = n)) + 
+    geom_contour(breaks = ns, color = "green") +
+    geom_hline(yintercept = ers, color = "red") +
+    geom_point(
+      data = df_goal_this_scr, 
+      x = as.numeric(df_goal_this_scr$sir),
+      y = as.numeric(df_goal_this_scr$er)
+    ) +
+    ggtitle(paste("SCR:", scr))
+  plot_bd
+}
+plot(scrs[1], df_goal)
+plot(scrs[2], df_goal)
+plot(scrs[3], df_goal)
+plot(scrs[4], df_goal)
+```
