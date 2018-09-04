@@ -4,7 +4,8 @@
 \alias{create_input_files_general}
 \title{Creates the parameter files in the article for the general exploration}
 \usage{
-create_input_files_general(general_params_set = create_general_params_set(),
+
+  create_input_files_general(general_params_set = create_general_params_set(),
   folder_name = getwd())
 }
 \arguments{

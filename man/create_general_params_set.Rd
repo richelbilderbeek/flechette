@@ -5,7 +5,8 @@
 \title{Creates the parameter set for the general exploration}
 \usage{
 create_general_params_set(crown_age = 15, max_n_params = Inf,
-  mcmc_chain_length = 1111000, n_replicates = 1, sequence_length = 15000)
+  mcmc_chain_length = 1111000, n_replicates = 1,
+  sequence_length = 15000)
 }
 \arguments{
 \item{crown_age}{the crown age of the phylogeny}

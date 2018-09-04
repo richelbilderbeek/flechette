@@ -5,10 +5,10 @@
 \title{Create the parameters for one experiment.
 Run one point of the experiment}
 \usage{
-create_params(sirg, siri, scr, erg, eri, crown_age, crown_age_sigma = 0.01,
-  sampling_method, mutation_rate, sequence_length, mcmc, tree_sim_rng_seed,
-  alignment_rng_seed, beast2_rng_seed, site_model = "JC69",
-  clock_model = "strict")
+create_params(sirg, siri, scr, erg, eri, crown_age,
+  crown_age_sigma = 0.01, sampling_method, mutation_rate,
+  sequence_length, mcmc, tree_sim_rng_seed, alignment_rng_seed,
+  beast2_rng_seed, site_model = "JC69", clock_model = "strict")
 }
 \arguments{
 \item{sirg}{speciation rate of a good species,
