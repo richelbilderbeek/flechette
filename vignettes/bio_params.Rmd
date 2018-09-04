@@ -2,7 +2,7 @@
 title: "Choosing The Biological Parameters"
 author: "Richel J.C. Bilderbeel"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: rmarkdown::pdf_document
 vignette: >
   %\VignetteIndexEntry{Choosing The Biological Parameters}
   %\VignetteEngine{knitr::rmarkdown}
@@ -125,7 +125,7 @@ for (row in seq_along(df_bd$sir)) {
 knitr::kable(df_bd)
 ```
 
-Verify if we correctlt calculated the speciation initiation rates in the plot:
+Verify if we correctly calculated the speciation initiation rates in the plot:
 
 ```{r fig.width=7}
 plot_bd + geom_point(data = df_bd, aes(x = as.numeric(sir), y = as.numeric(er)))
