@@ -50,8 +50,23 @@ rkt_create_data_frame <- function(
     clock_model = rep(NA, n_rows)
   )
   for (i in seq_along(params_set)) {
+    # Conversion to string here
     df_params[i, 1:raket::rkt_get_n_params()] <- unlist(params_set[[i]])
   }
+  df_params$sirg <- as.numeric(df_params$sirg)
+  df_params$siri <- as.numeric(df_params$siri)
+  df_params$scr <- as.numeric(df_params$scr)
+  df_params$erg <- as.numeric(df_params$erg)
+  df_params$eri <- as.numeric(df_params$eri)
+  df_params$crown_age <- as.numeric(df_params$crown_age)
+  df_params$crown_age_sigma <- as.numeric(df_params$crown_age_sigma)
+  df_params$mutation_rate <- as.numeric(df_params$mutation_rate)
+  df_params$sequence_length <- as.numeric(df_params$sequence_length)
+  df_params$mcmc.chain_length <- as.numeric(df_params$mcmc.chain_length)
+  df_params$mcmc.store_every <- as.numeric(df_params$mcmc.store_every)
+  df_params$tree_sim_rng_seed <- as.numeric(df_params$tree_sim_rng_seed)
+  df_params$alignment_rng_seed <- as.numeric(df_params$alignment_rng_seed)
+  df_params$beast2_rng_seed <- as.numeric(df_params$beast2_rng_seed)
   levels(df_params$sampling_method) <- c(
     "random", "shortest", "longest", "oldest", "youngest"
   )

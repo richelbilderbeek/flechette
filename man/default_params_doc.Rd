@@ -5,9 +5,9 @@
 \title{This function does nothing. It is intended to inherit is parameters'
 documentation.}
 \usage{
-default_params_doc(crown_age, erg, eri, experiment_type, max_n_params, mcmc,
-  mcmc_chain_length, n_replicates, quantile, scr, sequence_length, sir, sirg,
-  siri, stem_age, verbose)
+default_params_doc(crown_age, erg, eri, experiment_type, max_n_params,
+  mcmc, mcmc_chain_length, n_replicates, quantile, scr, sequence_length,
+  sir, sirg, siri, stem_age, verbose)
 }
 \arguments{
 \item{crown_age}{the crown age of the phylogeny}
