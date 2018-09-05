@@ -16,32 +16,97 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Goal
+
+Measure the Bayes Factor between JC69 and GTR
+
+## Methods
+
+Adapted from [code of R.S.Etienne](https://github.com/richelbilderbeek/raket_article/issues/10).
+
+```{r}
+log_filenames <- c("a.log", "b.log")
+traces <- list()
+n <- 100
+traces[[1]] <- data.frame(likelihood = log(runif(n = n, min = 0.0, max = 1.000)))
+traces[[2]] <- data.frame(likelihood = log(runif(n = n, min = 0.0, max = 0.500)))
+traces[[3]] <- data.frame(likelihood = log(runif(n = n, min = 0.0, max = 0.250)))
+traces[[4]] <- data.frame(likelihood = log(runif(n = n, min = 0.0, max = 0.125)))
+```
+
+View the traces:
+
+```{r}
+n_traces <- length(traces)
+
+df_traces <- data.frame(a = traces[[1]]$likelihood)
+df_traces$b <- traces[[2]]$likelihood
+df_traces$c <- traces[[3]]$likelihood
+df_traces$d <- traces[[4]]$likelihood
+testit::assert(ncol(df_traces) == n_traces)
+knitr::kable(head(df_traces))
+```
+
+Measure the Bayes factor:
+
+```{r}
+mean_log_lik <- rep(0, n_traces)
+harm_mean_log_lik <- rep(0, n_traces)
+for(i in 1:n_traces)
+{
+   trace <- traces[[i]]
+   n_values <- nrow(trace)
+   likelihoods <- as.numeric(trace$likelihood)
+   lowest_likelihood <- min(likelihoods)
+   harm_mean_log_lik[i] <- log(n_values) + lowest_likelihood - sum(exp(-(likelihoods - lowest_likelihood)))
+   mean_log_lik[i] <- mean(likelihoods)
+}
+BF <- rep(0,n_traces)
+for(i in 1:(n_traces/2))
+{
+   print(i)
+   BF[i] <- harm_mean_log_lik[i] - harm_mean_log_lik[n_traces/2 + i]
+}
+for(i in (n_traces/2 + 1):n_traces)
+{
+   print(i)
+   BF[i] <- harm_mean_log_lik[i] - harm_mean_log_lik[-n_traces/2 + i]
+}
+summarytable <- data.frame(
+  #namei,
+  mean_log_lik,
+  harm_mean_log_lik,
+  BF
+)
+knitr::kable(summarytable)
+```
+
 ```
 # Original code from R.S.Etienne
 # Also at https://github.com/richelbilderbeek/raket_article/issues/10
-load('d:/data/ms/microsnail_BEAST2_results_log_files.RData')
-listname <- microsnail_BEAST2_results_log_files
-lengthlist <- length(microsnail_BEAST2_results_log_files)
-namei <- rep(0,lengthlist)
-meanll <- rep(0,lengthlist)
-harmmeanll <- rep(0,lengthlist)
-for(i in 1:lengthlist)
-{
-   ll <- as.numeric(listname[[i]]$likelihood)
-   minll <- min(ll)
-   harmmeanll[i] <- log(length(ll)) + minll - sum(exp(-(ll - minll)))
-   meanll[i] <- mean(ll)
-   namei[i] <- names(listname)[i]
-   namei[i] <- substr(namei[i],1,nchar(namei[i])-4)
-}
-BF <- rep(0,lengthlist)
-for(i in 1:(lengthlist/2))
-{
-   BF[i] <- harmmeanll[i] - harmmeanll[lengthlist/2 + i]
-}
-for(i in (lengthlist/2 + 1):lengthlist)
-{
-   BF[i] <- harmmeanll[i] - harmmeanll[-lengthlist/2 + i]
-}
-summarytable <- data.frame(namei,meanll,harmmeanll,BF)
+# load('d:/data/ms/microsnail_BEAST2_results_log_files.RData')
+# listname <- microsnail_BEAST2_results_log_files
+# lengthlist <- length(microsnail_BEAST2_results_log_files)
+# namei <- rep(0,lengthlist)
+# meanll <- rep(0,lengthlist)
+# harmmeanll <- rep(0,lengthlist)
+# for(i in 1:lengthlist)
+# {
+#    ll <- as.numeric(listname[[i]]$likelihood)
+#    minll <- min(ll)
+#    harmmeanll[i] <- log(length(ll)) + minll - sum(exp(-(ll - minll)))
+#    meanll[i] <- mean(ll)
+#    namei[i] <- names(listname)[i]
+#    namei[i] <- substr(namei[i],1,nchar(namei[i])-4)
+# }
+# BF <- rep(0,lengthlist)
+# for(i in 1:(lengthlist/2))
+# {
+#    BF[i] <- harmmeanll[i] - harmmeanll[lengthlist/2 + i]
+# }
+# for(i in (lengthlist/2 + 1):lengthlist)
+# {
+#    BF[i] <- harmmeanll[i] - harmmeanll[-lengthlist/2 + i]
+# }
+# summarytable <- data.frame(namei,meanll,harmmeanll,BF)
 ```
