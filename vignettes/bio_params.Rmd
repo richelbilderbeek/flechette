@@ -28,7 +28,7 @@ initiation and speciation completion rate, we start from:
  * the speciation completion rates are 0.1, 0.3, 1.0 and Infinite
 
 ```{r}
-ers <- c(0.3, 0.5)
+ers <- c(0.0, 0.1, 0.2)
 ns <- c(50, 100, 200)
 scrs <- c(0.1, 0.3, 1.0, 1e9)
 ```
@@ -67,9 +67,13 @@ To get an idea, plot the number of species for the speciation and extinction rat
 
 ```{r fig.width=7}
 n_points <- 11
+min_sir <- 0.1
+max_sir <- 0.7
+min_er <- min(df_goal$er)
+max_er <- max(df_goal$er)
 df_grid <- data.frame(
-  sir = rep(seq(0.4, 0.8, length.out = n_points), each = n_points),  
-  er = rep(seq(0.2, 0.6, length.out = n_points), times = n_points)
+  sir = rep(seq(min_sir, max_sir, length.out = n_points), each = n_points),  
+  er = rep(seq(min_er, max_er, length.out = n_points), times = n_points)
 )
 df_grid$n <- PBD::pbd_numspec_mean_checked(
   ergs = df_grid$er, 
@@ -120,7 +124,7 @@ for (row in seq_along(df_bd$sir)) {
     known_crown_age = crown_age,
     n_desired = n
   )
-  df_bd$sir[row] <- uniroot(f, interval = c(0.4, 0.8))$root
+  df_bd$sir[row] <- uniroot(f, interval = c(0.2, 1.6))$root
 }
 knitr::kable(df_bd)
 ```
@@ -153,6 +157,7 @@ for (row in seq_along(df_goal$sir)) {
   )
   df_goal$sir[row] <- uniroot(f, interval = c(0.1, 2.0))$root
 }
+write.csv(df_goal, "raket_parameters.csv")
 knitr::kable(df_goal)
 ```
 
