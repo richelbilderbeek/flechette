@@ -43,3 +43,5 @@ vignettes/article_files/
 tests/testthat/*.RDa
 *.RDa
 tests/testthat/pirouette_*
+vignettes/*.log
+vignettes/*.trees

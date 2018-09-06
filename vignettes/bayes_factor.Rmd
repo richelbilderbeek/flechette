@@ -18,95 +18,165 @@ knitr::opts_chunk$set(
 
 ## Goal
 
-Measure the Bayes Factor between JC69 and GTR
+Measure the Bayes factor between JC69 and GTR.
+
+Set a random seed:
+
+```{r}
+set.seed(314)
+```
+
+
+## Prepare
+
+For those started from a clean slate, run these statements:
+
+```
+# Install babette
+devtools::install_github("richelbilderbeek/babette")
+
+# Install BEAST2 to a default location
+beastier::install_beast2()
+
+# Install raket
+devtools::install_github("richelbilderbeek/raket")
+```
+
+Obtain the crown age of a phylogeny:
+
+```{r}
+get_phylogeny_crown_age <- function(phylogeny) {
+  n_taxa <- length(phylogeny$tip.label)
+  ape::dist.nodes(phylogeny)[n_taxa + 1][1]
+}
+testit::assert(
+  get_phylogeny_crown_age(ape::read.tree(text = "((A:1, B:1):1, C:2);")) == 2
+)
+testit::assert(
+  get_phylogeny_crown_age(ape::read.tree(text = "((A:2, B:2):1, C:3);")) == 3
+)
+testit::assert(
+  get_phylogeny_crown_age(ape::read.tree(text = "((A:2, B:2):2, C:4);")) == 4
+)
+```
+Interpretation of the Bayes factor [2]:
+
+```{r}
+interpret_bayes_factor <- function(bayes_factor) {
+  if (bayes_factor < 10^0.0) {
+    "in favor of other model"
+  } else if (bayes_factor < 10^0.5) {
+    "barely worth mentioning"
+  } else if (bayes_factor < 10^1.0) {
+    "substantial"
+  } else if (bayes_factor < 10^1.5) {
+    "strong"
+  } else if (bayes_factor < 10^2.0) {
+    "very strong"
+  } else {
+    "decisive"
+  }
+}
+testit::assert(interpret_bayes_factor(0.5) == "in favor of other model")
+testit::assert(interpret_bayes_factor(1.5) == "barely worth mentioning")
+testit::assert(interpret_bayes_factor(8.5) == "substantial")
+testit::assert(interpret_bayes_factor(12.5) == "strong")
+testit::assert(interpret_bayes_factor(85.0) == "very strong")
+testit::assert(interpret_bayes_factor(123.0) == "decisive")
+```
+
+## Overview
+
+ * Create a data set that *is* JC69
+ * Create a Bayesian posterior assuming JC69
+ * Create a Bayesian posterior assuming GTR
+ * Compare these posteriors using the Bayes factor
+ * Interpret the Bayes factor
 
 ## Methods
 
-Adapted from [code of R.S.Etienne](https://github.com/richelbilderbeek/raket_article/issues/10).
-
-```{r}
-log_filenames <- c("a.log", "b.log")
-traces <- list()
-n <- 100
-traces[[1]] <- data.frame(likelihood = log(runif(n = n, min = 0.0, max = 1.000)))
-traces[[2]] <- data.frame(likelihood = log(runif(n = n, min = 0.0, max = 0.500)))
-traces[[3]] <- data.frame(likelihood = log(runif(n = n, min = 0.0, max = 0.250)))
-traces[[4]] <- data.frame(likelihood = log(runif(n = n, min = 0.0, max = 0.125)))
+Create an articifical PBD phylogeny with a long time to speciate. That is,
+a tree with all speciation event observed early in time (close to the root):
+ 
+```{r fig.width=7}
+phylogeny <- ape::read.tree(text = "((((A:12, B:12):1,C:13):1,D:14):1, E:15);")
+crown_age <- get_phylogeny_crown_age(phylogeny)
+ape::plot.phylo(phylogeny)
 ```
 
-View the traces:
+Create JC69 alignment and save it to a FASTA file:
 
-```{r}
-n_traces <- length(traces)
+```{r fig.width=7}
+sequence_length <- 1000
 
-df_traces <- data.frame(a = traces[[1]]$likelihood)
-df_traces$b <- traces[[2]]$likelihood
-df_traces$c <- traces[[3]]$likelihood
-df_traces$d <- traces[[4]]$likelihood
-testit::assert(ncol(df_traces) == n_traces)
-knitr::kable(head(df_traces))
-```
-
-Measure the Bayes factor:
-
-```{r}
-mean_log_lik <- rep(0, n_traces)
-harm_mean_log_lik <- rep(0, n_traces)
-for(i in 1:n_traces)
-{
-   trace <- traces[[i]]
-   n_values <- nrow(trace)
-   likelihoods <- as.numeric(trace$likelihood)
-   lowest_likelihood <- min(likelihoods)
-   harm_mean_log_lik[i] <- log(n_values) + lowest_likelihood - sum(exp(-(likelihoods - lowest_likelihood)))
-   mean_log_lik[i] <- mean(likelihoods)
-}
-BF <- rep(0,n_traces)
-for(i in 1:(n_traces/2))
-{
-   print(i)
-   BF[i] <- harm_mean_log_lik[i] - harm_mean_log_lik[n_traces/2 + i]
-}
-for(i in (n_traces/2 + 1):n_traces)
-{
-   print(i)
-   BF[i] <- harm_mean_log_lik[i] - harm_mean_log_lik[-n_traces/2 + i]
-}
-summarytable <- data.frame(
-  #namei,
-  mean_log_lik,
-  harm_mean_log_lik,
-  BF
+alignment_phydat <- phangorn::simSeq(
+  phylogeny,
+  l = sequence_length,
+  rate = 1.0 / crown_age,
+  rootseq = rep(c('a', 'c', 'g', 't'), each = sequence_length / 4)
 )
-knitr::kable(summarytable)
+testit::assert(class(alignment_phydat) == "phyDat")
+alignment_dnabin <- ape::as.DNAbin(alignment_phydat)
+
+fasta_filename <- tempfile(pattern = "bayes_factor_", fileext = ".fasta")
+phangorn::write.phyDat(
+  alignment_dnabin,
+  file = fasta_filename,
+  format = "fasta"
+)
+image(alignment_dnabin)
 ```
 
+From that alignment, create two posteriors, each assuming their own site model:
+
+```{r}
+mcmc <- beautier::create_mcmc(chain_length = 50000)
+burn_in_fraction <- 0.2
+
+pos_jc69 <- tracerer::remove_burn_ins(
+  babette::bbt_run(
+    fasta_filename, 
+    site_models = beautier::create_jc69_site_model(),
+    mcmc = mcmc
+  )$estimates,
+  burn_in_fraction = burn_in_fraction
+)
+knitr::kable(head(pos_jc69))
 ```
-# Original code from R.S.Etienne
-# Also at https://github.com/richelbilderbeek/raket_article/issues/10
-# load('d:/data/ms/microsnail_BEAST2_results_log_files.RData')
-# listname <- microsnail_BEAST2_results_log_files
-# lengthlist <- length(microsnail_BEAST2_results_log_files)
-# namei <- rep(0,lengthlist)
-# meanll <- rep(0,lengthlist)
-# harmmeanll <- rep(0,lengthlist)
-# for(i in 1:lengthlist)
-# {
-#    ll <- as.numeric(listname[[i]]$likelihood)
-#    minll <- min(ll)
-#    harmmeanll[i] <- log(length(ll)) + minll - sum(exp(-(ll - minll)))
-#    meanll[i] <- mean(ll)
-#    namei[i] <- names(listname)[i]
-#    namei[i] <- substr(namei[i],1,nchar(namei[i])-4)
-# }
-# BF <- rep(0,lengthlist)
-# for(i in 1:(lengthlist/2))
-# {
-#    BF[i] <- harmmeanll[i] - harmmeanll[lengthlist/2 + i]
-# }
-# for(i in (lengthlist/2 + 1):lengthlist)
-# {
-#    BF[i] <- harmmeanll[i] - harmmeanll[-lengthlist/2 + i]
-# }
-# summarytable <- data.frame(namei,meanll,harmmeanll,BF)
+
+```{r}
+pos_gtr <- tracerer::remove_burn_ins(
+  babette::bbt_run(
+    fasta_filename, 
+    site_models = beautier::create_gtr_site_model(),
+    mcmc = mcmc
+  )$estimates,
+  burn_in_fraction = burn_in_fraction
+)
+knitr::kable(head(pos_gtr))
 ```
+
+Calculate the Bayes factor (usually denoted as K). 
+The Bayes factor equals the likelihood odds iff both models are equally likely.
+From an MCMC run, we can simply take the average likelihood [1]:
+
+```{r}
+bayes_factor <- mean(pos_jc69$likelihood) / mean(pos_gtr$likelihood)
+print(bayes_factor)
+```
+
+Interpreting our results:
+
+```{r}
+print(paste("in favor of model JC69:", interpret_bayes_factor(bayes_factor)))
+print(paste("in favor of model GTR:", interpret_bayes_factor(1.0 / bayes_factor)))
+```
+
+## Conclusion
+
+Whatever I (RJCB) have tried, the Bayes factor barely deviated from 1.0.
+
+## References
+
+* [1] Stack Exchange: https://stats.stackexchange.com/a/204724
+* [2] H. Jeffreys (1961). The Theory of Probability (3rd ed.). Oxford. p. 432
