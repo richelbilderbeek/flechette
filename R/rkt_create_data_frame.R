@@ -62,8 +62,8 @@ rkt_create_data_frame <- function(
   df_params$crown_age_sigma <- as.numeric(df_params$crown_age_sigma)
   df_params$mutation_rate <- as.numeric(df_params$mutation_rate)
   df_params$sequence_length <- as.numeric(df_params$sequence_length)
-  df_params$mcmc.chain_length <- as.numeric(df_params$mcmc.chain_length)
-  df_params$mcmc.store_every <- as.numeric(df_params$mcmc.store_every)
+  df_params$mcmc.chain_length <- as.numeric(df_params$mcmc.chain_length) # nolint mcmc is a structure, unlist creates the names from that
+  df_params$mcmc.store_every <- as.numeric(df_params$mcmc.store_every) # nolint mcmc is a structure, unlist creates the names from that
   df_params$tree_sim_rng_seed <- as.numeric(df_params$tree_sim_rng_seed)
   df_params$alignment_rng_seed <- as.numeric(df_params$alignment_rng_seed)
   df_params$beast2_rng_seed <- as.numeric(df_params$beast2_rng_seed)
