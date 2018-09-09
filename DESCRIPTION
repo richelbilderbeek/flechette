@@ -15,6 +15,7 @@ Requires:
     adephylo,
     ape,
     dplyr,
+    functional,
     geiger,
     PBD,
     phangorn,
