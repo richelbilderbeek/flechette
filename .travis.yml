@@ -3,6 +3,7 @@ cache: packages
 
 r_packages:
   - devtools
+  - functional
   - ggplot2
   - xml2
 
