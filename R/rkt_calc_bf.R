@@ -16,17 +16,38 @@ rkt_calc_bf <- function(log_likelihoods_a, log_likelihoods_b) {
 }
 
 #' Calculate the Bayes factor from model A's point of view,
+#' using the BayesFactor package
+#' @param log_likelihoods_a log-likelihoods of model A
+#' @param log_likelihoods_b log-likelihoods of model B
+#' @return the Bayes factor from model A's point of view
+#' @author Richel J.C. Bilderbeek
+#' @references
+#'    * [1] Drummond, Alexei J., and Remco R. Bouckaert. Bayesian evolutionary analysis with BEAST. Cambridge University Press, 2015. \cr
+#'    * [2] Newton, Michael A., and Adrian E. Raftery. "Approximate Bayesian inference with the weighted likelihood bootstrap." Journal of the Royal Statistical Society. Series B (Methodological) (1994): 3-48. \cr 
+rkt_calc_bf_bf <- function(log_likelihoods_a, log_likelihoods_b) {
+  results <- BayesFactor::ttestBF(
+    x = log_likelihoods_a, 
+    y = log_likelihoods_b, 
+    paired = TRUE
+  )
+  exp(results@bayesFactor$bf)
+  #BayesFactor::compare(log_likelihoods_a, log_likelihoods_b)
+}
+
+#' Calculate the Bayes factor from model A's point of view,
 #' @param log_likelihoods_a log-likelihoods of model A
 #' @param log_likelihoods_b log-likelihoods of model B
 #' @return the Bayes factor from model A's point of view
 #' @author Rampal S. Etienne, modified by Richel J.C. Bilderbeek
 #' @export
 rkt_calc_bf_rse <- function(log_likelihoods_a, log_likelihoods_b) {
+  # Transform data
   microsnail_BEAST2_results_log_files <- list()
   microsnail_BEAST2_results_log_files[[1]] <- data.frame(likelihood = log_likelihoods_a)
   microsnail_BEAST2_results_log_files[[2]] <- data.frame(likelihood = log_likelihoods_b)
+  names(microsnail_BEAST2_results_log_files) <- c("AAAAA", "BBBBB")
+  # Original code by RSE
   listname <- microsnail_BEAST2_results_log_files
-  names(listname) <- c("AAAAA", "BBBBB")
   lengthlist <- length(microsnail_BEAST2_results_log_files)
   namei <- rep(0,lengthlist)
   meanll <- rep(0,lengthlist)
@@ -49,5 +70,8 @@ rkt_calc_bf_rse <- function(log_likelihoods_a, log_likelihoods_b) {
   {
     BF[i] <- harmmeanll[i] - harmmeanll[-lengthlist/2 + i]
   }
-  data.frame(namei,meanll,harmmeanll,BF)
+  # RSE returns a data frame
+  # data.frame(namei,meanll,harmmeanll,BF)
+  # RJCB is only interested in the (non-logarithmic) Bayes factor focussed on model A
+  exp(BF[1])
 }

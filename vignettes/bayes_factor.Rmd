@@ -195,3 +195,5 @@ Whatever I (RJCB) have tried, the Bayes factor barely deviated from 1.0.
  * [1] Drummond, Alexei J., and Remco R. Bouckaert. Bayesian evolutionary analysis with BEAST. Cambridge University Press, 2015. Chapter 1.5.6: Bayesian model selection and model fit, page 18
  * [2] H. Jeffreys (1961). The Theory of Probability (3rd ed.). Oxford. p. 432
  * [3] Newton, Michael A., and Adrian E. Raftery. "Approximate Bayesian inference with the weighted likelihood bootstrap." Journal of the Royal Statistical Society. Series B (Methodological) (1994): 3-48.
+ * [4] Gelman, Andrew, and Donald B. Rubin. "Avoiding model selection in Bayesian social research." Sociological methodology 25 (1995): 165-173.
+ 

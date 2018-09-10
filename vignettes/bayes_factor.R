@@ -96,12 +96,7 @@ pos_gtr <- tracerer::remove_burn_ins(
 knitr::kable(head(pos_gtr))
 
 ## ------------------------------------------------------------------------
-hme_jc69 <- raket::rkt_calc_harm_mean(pos_jc69$likelihood)
-hme_gtr <- raket::rkt_calc_harm_mean(pos_gtr$likelihood)
-
-## ------------------------------------------------------------------------
-log_bayes_factor <- hme_jc69 - hme_gtr
-bayes_factor <- exp(log_bayes_factor)
+bayes_factor <- rkt_calc_bf(pos_jc69$likelihood, pos_gtr$likelihood)
 print(bayes_factor)
 
 ## ------------------------------------------------------------------------
