@@ -1,50 +1,13 @@
----
-title: "Bayes Factor"
-author: "Richel J.C. Bilderbeek"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Bayes Factor}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-```{r setup, include = FALSE}
+## ----setup, include = FALSE----------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-```
 
-## Goal
-
-Measure the Bayes factor between JC69 and GTR.
-
-Set a random seed:
-
-```{r}
+## ------------------------------------------------------------------------
 set.seed(314)
-```
 
-
-## Prepare
-
-For those started from a clean slate, run these statements:
-
-```
-# Install babette
-devtools::install_github("richelbilderbeek/babette")
-
-# Install BEAST2 to a default location
-beastier::install_beast2()
-
-# Install raket
-devtools::install_github("richelbilderbeek/raket")
-```
-
-Obtain the crown age of a phylogeny:
-
-```{r}
+## ------------------------------------------------------------------------
 get_phylogeny_crown_age <- function(phylogeny) {
   n_taxa <- length(phylogeny$tip.label)
   ape::dist.nodes(phylogeny)[n_taxa + 1][1]
@@ -58,10 +21,8 @@ testit::assert(
 testit::assert(
   get_phylogeny_crown_age(ape::read.tree(text = "((A:2, B:2):2, C:4);")) == 4
 )
-```
-Interpretation of the Bayes factor [2]:
 
-```{r}
+## ------------------------------------------------------------------------
 interpret_bayes_factor <- function(bayes_factor) {
   if (bayes_factor < 10^0.0) {
     "in favor of other model"
@@ -83,30 +44,13 @@ testit::assert(interpret_bayes_factor(8.5) == "substantial")
 testit::assert(interpret_bayes_factor(12.5) == "strong")
 testit::assert(interpret_bayes_factor(85.0) == "very strong")
 testit::assert(interpret_bayes_factor(123.0) == "decisive")
-```
 
-## Overview
-
- * Create a data set that *is* JC69
- * Create a Bayesian posterior assuming JC69
- * Create a Bayesian posterior assuming GTR
- * Compare these posteriors using the Bayes factor
- * Interpret the Bayes factor
-
-## Methods
-
-Create an articifical PBD phylogeny with a long time to speciate. That is,
-a tree with all speciation event observed early in time (close to the root):
- 
-```{r fig.width=7}
+## ----fig.width=7---------------------------------------------------------
 phylogeny <- ape::read.tree(text = "((((A:12, B:12):1,C:13):1,D:14):1, E:15);")
 crown_age <- get_phylogeny_crown_age(phylogeny)
 ape::plot.phylo(phylogeny)
-```
 
-Create JC69 alignment and save it to a FASTA file:
-
-```{r fig.width=7}
+## ----fig.width=7---------------------------------------------------------
 sequence_length <- 1000
 
 alignment_phydat <- phangorn::simSeq(
@@ -125,11 +69,8 @@ phangorn::write.phyDat(
   format = "fasta"
 )
 image(alignment_dnabin)
-```
 
-From that alignment, create two posteriors, each assuming their own site model:
-
-```{r}
+## ------------------------------------------------------------------------
 mcmc <- beautier::create_mcmc(chain_length = 10000)
 burn_in_fraction <- 0.2
 
@@ -142,9 +83,8 @@ pos_jc69 <- tracerer::remove_burn_ins(
   burn_in_fraction = burn_in_fraction
 )
 knitr::kable(head(pos_jc69))
-```
 
-```{r}
+## ------------------------------------------------------------------------
 pos_gtr <- tracerer::remove_burn_ins(
   babette::bbt_run(
     fasta_filename, 
@@ -154,44 +94,17 @@ pos_gtr <- tracerer::remove_burn_ins(
   burn_in_fraction = burn_in_fraction
 )
 knitr::kable(head(pos_gtr))
-```
 
-The Bayes factor (usually denoted as K) can be used for model comparison. 
-It can be calculated from the marginal likelihoods ratio:
+## ------------------------------------------------------------------------
+hme_jc69 <- raket::rkt_calc_harm_mean(pos_jc69$likelihood)
+hme_gtr <- raket::rkt_calc_harm_mean(pos_gtr$likelihood)
 
-```
-              Pr(D|M1)
-"BF(M1, M2) = --------
-              Pr(D|M2)
-```
-
-As we are unaware of the marginal likelihoods, we use an estimator
-to obtain it. We use the HME (Harmonic Mean Estimate) to do so,
-following Newton and
-Raftery 1994 [3]:
-
-We follow the methods described in the BEAST book [1] 
-The Bayes factor equals the likelihood odds iff both models are equally likely.
-From an MCMC run, we can simply take the harmonic mean likelihood [1]:
-
-```{r}
-bayes_factor <- rkt_calc_bf(pos_jc69$likelihood, pos_gtr$likelihood)
+## ------------------------------------------------------------------------
+log_bayes_factor <- hme_jc69 - hme_gtr
+bayes_factor <- exp(log_bayes_factor)
 print(bayes_factor)
-```
 
-Interpreting our results:
-
-```{r}
+## ------------------------------------------------------------------------
 print(paste("in favor of model JC69:", interpret_bayes_factor(bayes_factor)))
 print(paste("in favor of model GTR:", interpret_bayes_factor(1.0 / bayes_factor)))
-```
 
-## Conclusion
-
-Whatever I (RJCB) have tried, the Bayes factor barely deviated from 1.0.
-
-## References
-
- * [1] Drummond, Alexei J., and Remco R. Bouckaert. Bayesian evolutionary analysis with BEAST. Cambridge University Press, 2015. Chapter 1.5.6: Bayesian model selection and model fit, page 18
- * [2] H. Jeffreys (1961). The Theory of Probability (3rd ed.). Oxford. p. 432
- * [3] Newton, Michael A., and Adrian E. Raftery. "Approximate Bayesian inference with the weighted likelihood bootstrap." Journal of the Royal Statistical Society. Series B (Methodological) (1994): 3-48.

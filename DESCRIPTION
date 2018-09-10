@@ -70,3 +70,4 @@ URL: https://github.com/richelbilderbeek/raket
 BugReports: https://github.com/richelbilderbeek/raket/issues
 VignetteBuilder: knitr
 RdMacros: Rdpack
+Encoding: UTF-8
