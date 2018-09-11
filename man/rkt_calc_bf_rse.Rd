@@ -2,7 +2,7 @@
 % Please edit documentation in R/rkt_calc_bf.R
 \name{rkt_calc_bf_rse}
 \alias{rkt_calc_bf_rse}
-\title{Calculate the Bayes factor from model A's point of view,}
+\title{Calculate the Bayes factor from model A's point of view}
 \usage{
 rkt_calc_bf_rse(log_likelihoods_a, log_likelihoods_b)
 }
@@ -15,7 +15,7 @@ rkt_calc_bf_rse(log_likelihoods_a, log_likelihoods_b)
 the Bayes factor from model A's point of view
 }
 \description{
-Calculate the Bayes factor from model A's point of view,
+Calculate the Bayes factor from model A's point of view
 }
 \author{
 Rampal S. Etienne, modified by Richel J.C. Bilderbeek

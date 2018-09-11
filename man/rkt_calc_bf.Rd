@@ -3,7 +3,8 @@
 \name{rkt_calc_bf}
 \alias{rkt_calc_bf}
 \title{Calculate the Bayes factor from model A's point of view,
-following the method described in}
+following the method described in [1] using the
+Harmonic Mean Estimator as described in [2]}
 \usage{
 rkt_calc_bf(log_likelihoods_a, log_likelihoods_b)
 }
@@ -17,7 +18,8 @@ the Bayes factor from model A's point of view
 }
 \description{
 Calculate the Bayes factor from model A's point of view,
-following the method described in
+following the method described in [1] using the
+Harmonic Mean Estimator as described in [2]
 }
 \references{
 * [1] Drummond, Alexei J., and Remco R. Bouckaert. Bayesian evolutionary analysis with BEAST. Cambridge University Press, 2015. \cr

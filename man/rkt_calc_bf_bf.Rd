@@ -19,10 +19,6 @@ the Bayes factor from model A's point of view
 Calculate the Bayes factor from model A's point of view,
 using the BayesFactor package
 }
-\references{
-* [1] Drummond, Alexei J., and Remco R. Bouckaert. Bayesian evolutionary analysis with BEAST. Cambridge University Press, 2015. \cr
-   * [2] Newton, Michael A., and Adrian E. Raftery. "Approximate Bayesian inference with the weighted likelihood bootstrap." Journal of the Royal Statistical Society. Series B (Methodological) (1994): 3-48. \cr
-}
 \author{
 Richel J.C. Bilderbeek
 }
