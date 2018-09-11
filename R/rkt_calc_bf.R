@@ -23,15 +23,15 @@ rkt_calc_bf <- function(log_likelihoods_a, log_likelihoods_b) {
 #' @param log_likelihoods_b log-likelihoods of model B
 #' @return the Bayes factor from model A's point of view
 #' @author Richel J.C. Bilderbeek
-rkt_calc_bf_bf <- function(log_likelihoods_a, log_likelihoods_b) {
-  results <- BayesFactor::ttestBF(
-    x = log_likelihoods_a, 
-    y = log_likelihoods_b, 
-    paired = TRUE
-  )
-  exp(results@bayesFactor$bf)
-  #BayesFactor::compare(log_likelihoods_a, log_likelihoods_b)
-}
+# rkt_calc_bf_bf <- function(log_likelihoods_a, log_likelihoods_b) {
+#   results <- BayesFactor::ttestBF(
+#     x = log_likelihoods_a, 
+#     y = log_likelihoods_b, 
+#     paired = TRUE
+#   )
+#   exp(results@bayesFactor$bf)
+#   #BayesFactor::compare(log_likelihoods_a, log_likelihoods_b)
+# }
 
 #' Calculate the Bayes factor from model A's point of view
 #' @param log_likelihoods_a log-likelihoods of model A
