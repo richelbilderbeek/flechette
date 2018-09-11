@@ -1,6 +1,6 @@
 #' Calculate the Bayes factor from model A's point of view,
 #' following the method described in [1] using the
-#' Harmonic Mean Estimator as described in [2]
+#' Harmonic Mean Estimator as described in [2].
 #' @param log_likelihoods_a log-likelihoods of model A
 #' @param log_likelihoods_b log-likelihoods of model B
 #' @return the Bayes factor from model A's point of view
@@ -8,6 +8,7 @@
 #' @references
 #'    * [1] Drummond, Alexei J., and Remco R. Bouckaert. Bayesian evolutionary analysis with BEAST. Cambridge University Press, 2015. \cr
 #'    * [2] Newton, Michael A., and Adrian E. Raftery. "Approximate Bayesian inference with the weighted likelihood bootstrap." Journal of the Royal Statistical Society. Series B (Methodological) (1994): 3-48. \cr 
+#' @export
 rkt_calc_bf <- function(log_likelihoods_a, log_likelihoods_b) {
   # Harmonic Mean Estimate of the log marginal likelihood
   hme_log_marg_lik_a <- rkt_calc_harm_mean(log_likelihoods_a)
