@@ -159,31 +159,20 @@ knitr::kable(head(pos_gtr))
 The Bayes factor (usually denoted as K) can be used for model comparison. 
 It can be calculated from the marginal likelihoods ratio:
 
-```
-              Pr(D|M1)
-"BF(M1, M2) = --------
-              Pr(D|M2)
-```
-
-As we are unaware of the marginal likelihoods, we use an estimator
-to obtain it. We use the HME (Harmonic Mean Estimate) to do so,
-following Newton and
-Raftery 1994 [3]:
-
 We follow the methods described in the BEAST book [1] 
 The Bayes factor equals the likelihood odds iff both models are equally likely.
 From an MCMC run, we can simply take the harmonic mean likelihood [1]:
 
 ```{r}
-bayes_factor <- rkt_calc_bf(pos_jc69$likelihood, pos_gtr$likelihood)
-print(bayes_factor)
+# bayes_factor <- rkt_calc_bf(pos_jc69$likelihood, pos_gtr$likelihood)
+# print(bayes_factor)
 ```
 
 Interpreting our results:
 
 ```{r}
-print(paste("in favor of model JC69:", interpret_bayes_factor(bayes_factor)))
-print(paste("in favor of model GTR:", interpret_bayes_factor(1.0 / bayes_factor)))
+# print(paste("in favor of model JC69:", interpret_bayes_factor(bayes_factor)))
+# print(paste("in favor of model GTR:", interpret_bayes_factor(1.0 / bayes_factor)))
 ```
 
 ## Conclusion
