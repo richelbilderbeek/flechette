@@ -13,6 +13,7 @@ r_github_packages:
   - richelbilderbeek/babette
   - richelbilderbeek/beastier
   - richelbilderbeek/beautier
+  - richelbilderbeek/mauricer
   - richelbilderbeek/nLTT
   - richelbilderbeek/PBD/PBD # Bleeding-edge version
   - richelbilderbeek/pirouette
@@ -25,6 +26,7 @@ before_script:
   - sudo apt-get install -qq oracle-java8-installer # Java 8
   - sudo apt-get install oracle-java8-set-default
   - Rscript -e "beastier::install_beast2()"
+  - Rscript -e 'mauricer::mrc_install("NS")'
   - if [ -f ".lintr" ]; then echo "Do use Hadley Wickham's style guide"; exit 1; fi
   # proselint
   - sudo pip install proselint
