@@ -9,7 +9,7 @@
 #' @export
 rkt_run <- function(
   parameters,
-  beast_path = beastier::get_default_beast2_jar_path(),
+  beast_path = beastier::get_default_beast2_bin_path(),
   verbose = FALSE
 ) {
   if (!is.na(parameters$beast2_rng_seed) && !(parameters$beast2_rng_seed > 0)) {
