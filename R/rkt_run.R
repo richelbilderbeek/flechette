@@ -1,7 +1,7 @@
 #' Run one point of the experiment
 #' @param parameters biological and methodological parameters,
 #'   as created by \code{\link{create_params}}
-#' @param beast_path the path of either 
+#' @param beast2_path the path of either 
 #'   the BEAST2 binary (\code{beast})
 #"   or BEAST jar file (\code{beast.jar})
 #' @param verbose set to TRUE for more (debug) output
@@ -9,7 +9,7 @@
 #' @export
 rkt_run <- function(
   parameters,
-  beast_path = beastier::get_default_beast2_bin_path(),
+  beast2_path = beastier::get_default_beast2_bin_path(),
   verbose = FALSE
 ) {
   if (!is.na(parameters$beast2_rng_seed) && !(parameters$beast2_rng_seed > 0)) {
@@ -20,8 +20,8 @@ rkt_run <- function(
       "'parameters$mcmc' must be an MCMC as created by beautier::create_mcmc"
     )
   }
-  if (!file.exists(beast_path)) {
-    stop("'beast_path' is invalid path to BEAST2")
+  if (!file.exists(beast2_path)) {
+    stop("'beast2_path' is invalid path to BEAST2")
   }
 
   set.seed(parameters$tree_sim_rng_seed)
@@ -79,7 +79,7 @@ rkt_run <- function(
     alignment_rng_seed = parameters$alignment_rng_seed,
     beast2_rng_seed = parameters$beast2_rng_seed,
     verbose = verbose,
-    beast_path = beast_path
+    beast2_path = beast2_path
   )
   out$parameters <- parameters
   out$incipient_tree <- pbd_output$igtree.extant

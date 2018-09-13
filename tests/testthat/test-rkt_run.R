@@ -90,7 +90,7 @@ test_that("abuse", {
         alignment_rng_seed = 42,
         beast2_rng_seed = 42
       ),
-      beast_jar_path = "abs.ent"
+      beast2_path = "abs.ent"
     ),
     "'beast_jar_path' is invalid path to BEAST2"
   )
