@@ -13,7 +13,7 @@ test_that("use", {
         crown_age = 1.0,
         sampling_method = sampling_method,
         mutation_rate = 0.1,
-        sequence_length = 10,
+        sequence_length = 8,
         mcmc = beautier::create_mcmc(chain_length = 2000, store_every = 1000),
         tree_sim_rng_seed = 49,
         alignment_rng_seed = 49,

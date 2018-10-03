@@ -11,7 +11,7 @@ test_that("rkt_get_n_params must match the number of parameter", {
     crown_age_sigma = 0.01,
     sampling_method = "shortest",
     mutation_rate = 0.1,
-    sequence_length = 123,
+    sequence_length = 8,
     mcmc = beautier::create_mcmc(chain_length = 12300),
     tree_sim_rng_seed = 1,
     alignment_rng_seed = 2,

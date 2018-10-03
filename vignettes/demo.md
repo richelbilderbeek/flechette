@@ -60,7 +60,7 @@ Create all parameter files:
 all_input_filenames <- raket::create_input_files_general(
   general_params_set = raket::create_general_params_set(
     mcmc = beautier::create_mcmc(chain_length = 4000, store_every = 1000),
-    sequence_length = 15
+    sequence_length = 16
   ),
   folder_name = folder_name
 )

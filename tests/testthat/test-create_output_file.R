@@ -7,7 +7,7 @@ test_that("use", {
   input_filenames <- create_input_files_general(
     general_params_set = create_general_params_set(
       mcmc_chain_length = 16000,
-      sequence_length = 10
+      sequence_length = 8
     ),
     folder_name = tempdir()
   )
