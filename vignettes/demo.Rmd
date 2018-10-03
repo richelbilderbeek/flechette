@@ -61,7 +61,7 @@ Create all parameter files:
 all_input_filenames <- create_input_files_general(
   general_params_set = create_general_params_set(
     mcmc_chain_length = 16000,
-    sequence_length = 15
+    sequence_length = 16
   ),
   folder_name = folder_name
 )
@@ -81,7 +81,8 @@ while (1) {
   if (readRDS(input_filename)$siri > lowest_sir) next
   break
 }
-file.remove(all_input_filenames[ all_input_filenames != input_filename] )
+statuses <- file.remove(all_input_filenames[ all_input_filenames != input_filename] )
+testit::assert(all(statuses == TRUE))
 testit::assert(file.exists(input_filename))
 ```
 

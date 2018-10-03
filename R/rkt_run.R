@@ -67,7 +67,10 @@ rkt_run <- function(
 
   out <- pirouette::pir_run(
     phylogeny = true_phylogeny,
-    sequence_length = parameters$sequence_length,
+    sequence_length = NULL, # New interface
+    root_sequence = pirouette::create_blocked_dna(
+      length = parameters$sequence_length
+    ),
     mutation_rate = parameters$mutation_rate,
     site_models = site_model,
     clock_models = clock_model,
