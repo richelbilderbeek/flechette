@@ -44,6 +44,7 @@ Suggests:
     gridExtra,
     lintr,
     lubridate,
+    mbd,
     plyr,
     reshape2,
     rmarkdown,
