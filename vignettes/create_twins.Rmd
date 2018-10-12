@@ -45,7 +45,7 @@ Create a true tree (note how it follows both the PBD and MBD model):
 
 ```{r}
 true_tree <- ape::read.tree(text = "((A:12, B:12):3, (C:12, D:12):3);")
-babette::plot_densitree(c(true_tree))
+#babette::plot_densitree(c(true_tree))
 ```
 
 ## 2.3 Estimate speciation rate
