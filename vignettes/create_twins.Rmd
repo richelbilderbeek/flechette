@@ -29,6 +29,7 @@ Load the libraries needed:
 
 ```{r}
 library(pirouette)
+library(mbd)
 ```
 
 ## 2.2 Create a true tree
