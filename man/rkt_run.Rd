@@ -12,7 +12,7 @@ rkt_run(parameters,
 \item{parameters}{biological and methodological parameters,
 as created by \code{\link{create_params}}}
 
-\item{beast2_path}{the path of either 
+\item{beast2_path}{the path of either
 the BEAST2 binary (\code{beast})}
 
 \item{verbose}{set to TRUE for more (debug) output}

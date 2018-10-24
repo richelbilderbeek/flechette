@@ -1,7 +1,7 @@
 #' Run one point of the experiment
 #' @param parameters biological and methodological parameters,
 #'   as created by \code{\link{create_params}}
-#' @param beast2_path the path of either 
+#' @param beast2_path the path of either
 #'   the BEAST2 binary (\code{beast})
 #"   or BEAST jar file (\code{beast.jar})
 #' @param verbose set to TRUE for more (debug) output
