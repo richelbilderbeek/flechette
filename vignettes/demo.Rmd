@@ -27,6 +27,9 @@ First we load the libraries we'll need:
 
 ```{r load_library}
 library(raket)
+if (!mauricer::mrc_is_installed("NS")) {
+  mauricer::mrc_install("NS")
+}
 ```
 
 The research produces two data sets:
@@ -98,7 +101,8 @@ The input file is then run, its results save to an output file:
 output_filename <- tempfile("out.RDa")
 raket::create_output_file(
   input_filename = input_filename,
-  output_filename = output_filename
+  output_filename = output_filename,
+  verbose = TRUE
 )
 ```
 
