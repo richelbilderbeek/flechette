@@ -6,6 +6,9 @@ knitr::opts_chunk$set(
 
 ## ----load_library--------------------------------------------------------
 library(raket)
+if (!mauricer::mrc_is_installed("NS")) {
+  mauricer::mrc_install("NS")
+}
 
 ## ----set_folder_name-----------------------------------------------------
 folder_name <- tempdir()

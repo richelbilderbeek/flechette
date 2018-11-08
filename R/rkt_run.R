@@ -23,6 +23,13 @@ rkt_run <- function(
   if (!file.exists(beast2_path)) {
     stop("'beast2_path' is invalid path to BEAST2")
   }
+  if (!beastier:::is_bin_path(beast2_path)) {
+    stop(
+      "'beast2_path' must be a binary path. ",
+      "Tip: use 'beastier::get_default_beast2_bin_path()'",
+      "Note: only works on UNIX (Linux, Mac) systems"
+    )
+  }
 
   set.seed(parameters$tree_sim_rng_seed)
 
@@ -74,7 +81,14 @@ rkt_run <- function(
     mutation_rate = parameters$mutation_rate,
     site_models = site_model,
     clock_models = clock_model,
-    mcmc = parameters$mcmc,
+    mcmc = beautier::create_mcmc_nested_sampling(
+      chain_length = parameters$mcmc$chain_length,
+      store_every = parameters$mcmc$store_every,
+      particle_count = parameters$mcmc$particle_count,
+      sub_chain_length = parameters$mcmc$sub_chain_length,
+      epsilon = parameters$mcmc$epsilon
+    )
+    ,
     mrca_distr = beautier::create_normal_distr(
       mean = beautier::create_mean_param(value = parameters$crown_age),
       sigma = beautier::create_sigma_param(value = 0.01)
