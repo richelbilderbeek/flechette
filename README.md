@@ -10,7 +10,8 @@ Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![AppVeyor
 master|[![Build Status](https://travis-ci.org/richelbilderbeek/raket.svg?branch=master)](https://travis-ci.org/richelbilderbeek/raket)|[![Build status](https://ci.appveyor.com/api/projects/status/pm0injx1acgrj6gp/branch/master?svg=true)](https://ci.appveyor.com/project/richelbilderbeek/raket/branch/master)|[![codecov.io](https://codecov.io/github/richelbilderbeek/raket/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/raket/branch/master)
 develop|[![Build Status](https://travis-ci.org/richelbilderbeek/raket.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/raket)|[![Build status](https://ci.appveyor.com/api/projects/status/pm0injx1acgrj6gp/branch/develop?svg=true)](https://ci.appveyor.com/project/richelbilderbeek/raket/branch/develop)|[![codecov.io](https://codecov.io/github/richelbilderbeek/raket/coverage.svg?branch=develop)](https://codecov.io/github/richelbilderbeek/raket/branch/develop)
 
-`raket` provides for all code used by [1].
+ * [raket](https://github.com/richelbilderbeek/raket) provides the R code used by [1]
+ * [raket_werper](https://github.com/richelbilderbeek/raket_werper) provides the scripts used by [1]
 
 `raket` is an R package that uses
 
