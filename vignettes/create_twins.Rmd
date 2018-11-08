@@ -29,7 +29,6 @@ Load the libraries needed:
 
 ```{r}
 library(pirouette)
-library(mbd)
 ```
 
 ## 2.2 Create a true tree
@@ -56,16 +55,16 @@ to obtain the speciation rate with the highest likelihood in a
 (normal) birth-death model. 
 
 ```{r}
-ml_est <- mbd::mbd_calc_max_lik(
+ml_est <- becosys::mbd_calc_max_lik(
   branching_times = ape::branching.times(true_tree),
-  init_param_values = mbd::create_mbd_params(
+  init_param_values = becosys::create_mbd_params(
     lambda = 0.1, 
     mu = extinction_rate, 
     nu = 0.0, 
     q = 0.0
   ),
-  fixed_params = mbd::create_mbd_params_selector(mu = TRUE, nu = TRUE, q = TRUE),
-  estimated_params = mbd::create_mbd_params_selector(lambda = TRUE),
+  fixed_params = becosys::create_mbd_params_selector(mu = TRUE, nu = TRUE, q = TRUE),
+  opt_params = becosys::create_mbd_params_selector(lambda = TRUE),
   init_n_species = 2
 )
 ml_est
