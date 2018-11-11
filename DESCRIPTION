@@ -14,7 +14,6 @@ LazyData: TRUE
 Requires: 
     adephylo,
     ape,
-    becosys,
     dplyr,
     geiger,
     PBD,
@@ -38,6 +37,7 @@ Imports:
     tracerer
 Suggests:
     ape,
+    becosys,
     coda,
     dplyr,
     functional,
