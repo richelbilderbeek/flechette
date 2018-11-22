@@ -67,7 +67,7 @@ Remotes:
     richelbilderbeek/nLTT,
     richelbilderbeek/ribir,
     MangoTheCat/goodpractice
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 URL: https://github.com/richelbilderbeek/raket
 BugReports: https://github.com/richelbilderbeek/raket/issues
 VignetteBuilder: knitr
