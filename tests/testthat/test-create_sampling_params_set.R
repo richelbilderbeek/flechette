@@ -40,7 +40,7 @@ test_that("sampling matters", {
   params_set <- create_sampling_params_set(max_n_params = 2)
   for (params in params_set) {
     set.seed(params$tree_sim_rng_seed)
-    out <- pbd_sim_checked(
+    out <- becosys::pbd_sim_checked(
       erg = params$erg,
       eri = params$eri,
       scr = params$scr,

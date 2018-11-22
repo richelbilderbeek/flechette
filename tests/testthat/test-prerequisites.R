@@ -7,7 +7,7 @@ test_that("PBD with Inf as speciation completion rate, #4", {
   set.seed(42)
 
   # Note: if speciation rates are zero, PBD::pbd_sim will last forever
-  pbd_output <- PBD::pbd_sim_checked(
+  pbd_output <- becosys::pbd_sim_checked(
     erg = 0.1,
     eri = 0.1,
     scr = Inf,

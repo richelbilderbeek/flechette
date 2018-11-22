@@ -34,7 +34,7 @@ rkt_run <- function(
   set.seed(parameters$tree_sim_rng_seed)
 
   # Note: if speciation rates are zero, PBD::pbd_sim will last forever
-  pbd_output <- PBD::pbd_sim_checked(
+  pbd_output <- becosys::pbd_sim_checked(
     erg = parameters$erg,
     eri = parameters$eri,
     scr = parameters$scr,

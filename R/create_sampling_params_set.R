@@ -27,7 +27,7 @@ create_sampling_params_set <- function(
       # First seed will be 3481
       tree_sim_rng_seed <- tree_sim_rng_seed + 1
       set.seed(tree_sim_rng_seed)
-      out <- pbd_sim_checked(
+      out <- becosys::pbd_sim_checked(
         erg = params$erg,
         eri = params$eri,
         scr = params$scr,

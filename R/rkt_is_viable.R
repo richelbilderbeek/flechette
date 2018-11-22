@@ -13,7 +13,7 @@ rkt_is_viable <- function(
   if (erg >= sirg) return(FALSE)
   if (eri >= siri) return(FALSE)
   sir <- max(sirg, siri)
-  if (raket::pbd_numspec_quantile_checked(
+  if (becosys::pbd_numspec_quantile_checked(
       sir = sir,
       scr = scr,
       erg = erg,

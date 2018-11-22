@@ -21,7 +21,7 @@ test_that("all less than 1000 taxa with 95% certainty", {
 
   for (params in params_set) {
     sir <- max(params$sirg, params$siri)
-    n <- raket::pbd_numspec_quantile_checked(
+    n <- becosys::pbd_numspec_quantile_checked(
       sir = sir,
       scr = params$scr,
       erg = params$erg,
