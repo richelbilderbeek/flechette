@@ -11,9 +11,6 @@ rkt_run(parameters, verbose = FALSE)
 as created by \code{\link{create_params}}}
 
 \item{verbose}{set to TRUE for more (debug) output}
-
-\item{beast2_path}{the path of either
-the BEAST2 binary (\code{beast})}
 }
 \description{
 Run one point of the experiment
