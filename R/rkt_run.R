@@ -84,9 +84,9 @@ rkt_run <- function(
     mcmc = beautier::create_mcmc_nested_sampling(
       chain_length = parameters$mcmc$chain_length,
       store_every = parameters$mcmc$store_every,
-      particle_count = parameters$mcmc$particle_count,
-      sub_chain_length = parameters$mcmc$sub_chain_length,
-      epsilon = parameters$mcmc$epsilon
+      particle_count = 1,
+      sub_chain_length = max(1000, parameters$mcmc$chain_length / 100),
+      epsilon = 1e-13
     )
     ,
     mrca_distr = beautier::create_normal_distr(

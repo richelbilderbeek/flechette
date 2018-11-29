@@ -51,10 +51,9 @@ create_general_params_set <- function(
                     sampling_method = "random",
                     mutation_rate = 1.0 / crown_age,
                     sequence_length = sequence_length,
-                    mcmc = beautier::create_mcmc_nested_sampling(
+                    mcmc = beautier::create_mcmc(
                       chain_length = mcmc_chain_length * increase_factor,
-                      store_every = 1000 * increase_factor,
-                      sub_chain_length = 1000 * increase_factor / 2 # TODO
+                      store_every = 1000 * increase_factor
                     ),
                     tree_sim_rng_seed = index,
                     alignment_rng_seed = index,

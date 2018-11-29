@@ -33,7 +33,7 @@ df_grid <- data.frame(
   sir = rep(seq(min_sir, max_sir, length.out = n_points), each = n_points),  
   er = rep(seq(min_er, max_er, length.out = n_points), times = n_points)
 )
-df_grid$n <- PBD::pbd_numspec_mean_checked(
+df_grid$n <- becosys::pbd_numspec_mean_checked(
   ergs = df_grid$er, 
   eris = df_grid$er, 
   scr = rep(scr, nrow(df_grid)), 
@@ -55,7 +55,7 @@ knitr::kable(df_bd)
 # The difference between the mean number of species as produced by the
 # BD model and the desired number of species
 sir_error <- function(sir, known_er, known_scr, known_crown_age, n_desired) {
-  PBD::pbd_numspec_mean_checked( 
+  becosys::pbd_numspec_mean_checked( 
     ergs = known_er, 
     eris = known_er, 
     scrs = known_scr, 
@@ -110,7 +110,7 @@ plot <- function(scr, df_goal) {
     sir = rep(seq(min_sir, max_sir, length.out = n_points), each = n_points),  
     er = rep(seq(min_er, max_er, length.out = n_points), times = n_points)
   )
-  df_grid$n <- PBD::pbd_numspec_mean_checked(
+  df_grid$n <- becosys::pbd_numspec_mean_checked(
     ergs = df_grid$er, 
     eris = df_grid$er, 
     scr = rep(scr, nrow(df_grid)), 

@@ -12,7 +12,7 @@ test_that("use", {
   sampling_method <- "shortest"
   mutation_rate <- 0.1
   sequence_length <- 123
-  mcmc <- beautier::create_mcmc_nested_sampling(chain_length = 12300)
+  mcmc <- beautier::create_mcmc(chain_length = 12300)
   tree_sim_rng_seed <- 314
   alignment_rng_seed <- 271
   beast2_rng_seed <- 4242
