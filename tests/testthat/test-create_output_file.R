@@ -1,4 +1,4 @@
-context("create_output_file")
+context("create_posterior_files")
 
 test_that("use", {
 
@@ -8,7 +8,7 @@ test_that("use", {
   # Do not warn if the folder already exists
   dir.create(path = project_folder_name, showWarnings = FALSE)
 
-  output_filename <- tempfile()
+  posterior_filesname <- tempfile()
 
   input_filenames <- create_input_files_general(
     general_params_set = create_general_params_set(
@@ -29,13 +29,13 @@ test_that("use", {
     break
   }
 
-  create_output_file(
+  create_posterior_files(
     input_filename = input_filename,
-    output_filename = output_filename
+    posterior_filesname = posterior_filesname
   )
-  testthat::expect_true(file.exists(output_filename))
+  testthat::expect_true(file.exists(posterior_filesname))
 
-  out <- readRDS(output_filename)
+  out <- readRDS(posterior_filesname)
 
   testthat::expect_true("parameters" %in% names(out))
   testthat::expect_true("incipient_tree" %in% names(out))
@@ -48,9 +48,9 @@ test_that("use", {
 test_that("abuse", {
 
   testthat::expect_error(
-    create_output_file(
+    create_posterior_files(
       input_filename = "abs.ent",
-      output_filename = "irrelevant"
+      posterior_filesname = "irrelevant"
     ),
     "'input_filename' must exist"
   )

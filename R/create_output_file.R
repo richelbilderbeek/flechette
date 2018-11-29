@@ -1,13 +1,13 @@
 #' Process an input file
 #' @param input_filename name of the input file,
 #'   as created by \code{\link{create_input_files_general}}
-#' @param output_filename name of the output file
+#' @param posterior_filesname name of the output file
 #' @param verbose shows output if TRUE
 #' @author Richel J.C. Bilderbeek
 #' @export
-create_output_file <- function(
+create_posterior_files <- function(
   input_filename = input_filename,
-  output_filename = output_filename,
+  posterior_filesname = posterior_filesname,
   verbose = FALSE
 ) {
   if (!file.exists(input_filename)) {
@@ -17,5 +17,5 @@ create_output_file <- function(
     parameters = utils::read.csv(file = input_filename),
     verbose = verbose
   )
-  saveRDS(object = out, file = output_filename)
+  saveRDS(object = out, file = posterior_filesname)
 }

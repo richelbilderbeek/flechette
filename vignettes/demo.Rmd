@@ -102,10 +102,10 @@ print(utils::read.csv(input_filename))
 The input file is then run, its results save to an output file:
 
 ```{r}
-output_filename <- tempfile("out.RDa")
-raket::create_output_file(
+posterior_filesname <- tempfile("out.RDa")
+raket::create_posterior_files(
   input_filename = input_filename,
-  output_filename = output_filename,
+  posterior_filesname = posterior_filesname,
   verbose = TRUE
 )
 ```
@@ -113,7 +113,7 @@ raket::create_output_file(
 The output file contains many things, including the parameters used:
 
 ```{r}
-print(readRDS(output_filename))
+print(readRDS(posterior_filesname))
 ```
 
 From this raw data, the nLTTs can be measured:
@@ -121,8 +121,8 @@ From this raw data, the nLTTs can be measured:
 ```{r}
 nltts_filename <- tempfile("nltt.RDa")
 raket::create_nltt_file(
-  input_filename = output_filename,
-  output_filename = nltts_filename,
+  input_filename = posterior_filesname,
+  posterior_filesname = nltts_filename,
   burn_in_fraction = 0.4
 )
 ```

@@ -5,7 +5,7 @@ test_that("abuse", {
   testthat::expect_error(
     create_nltt_file(
       input_filename = "abs.ent",
-      output_filename = tempfile()
+      posterior_filesname = tempfile()
     ),
     "'input_filename' must be the name of an existing file"
   )

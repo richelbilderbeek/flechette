@@ -4,14 +4,15 @@
 \alias{create_nltt_file}
 \title{Measure the nLTT statistics from a BEAST2 run}
 \usage{
-create_nltt_file(input_filename, output_filename, burn_in_fraction = 0.1)
+create_nltt_file(input_filename, posterior_filesname,
+  burn_in_fraction = 0.1)
 }
 \arguments{
 \item{input_filename}{input filename,
 containing the BEAST2 run results,
-as created by create_output_file}
+as created by create_posterior_files}
 
-\item{output_filename}{output filename,
+\item{posterior_filesname}{output filename,
 containing the nLTT values}
 
 \item{burn_in_fraction}{the proportion of values being removed,

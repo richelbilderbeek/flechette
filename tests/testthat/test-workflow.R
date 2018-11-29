@@ -47,18 +47,18 @@ test_that("Full workflow, general", {
   }
 
   # Name the output files
-  output_filenames <- sub(
+  posterior_filesnames <- sub(
     x = input_filenames,
     pattern = ".RDa", replacement = "_out.RDa"
   )
   # Create the output files
-  testit::assert(length(input_filenames) == length(output_filenames))
+  testit::assert(length(input_filenames) == length(posterior_filesnames))
   for (i in seq_along(input_filenames)) {
-    create_output_file(
+    create_posterior_files(
       input_filename = input_filenames[i],
-      output_filename = output_filenames[i]
+      posterior_filesname = posterior_filesnames[i]
     )
-    testit::assert(length(readRDS(output_filenames[i])$trees) == n_samples)
+    testit::assert(length(readRDS(posterior_filesnames[i])$trees) == n_samples)
   }
 
   ##############################################################################
@@ -70,11 +70,11 @@ test_that("Full workflow, general", {
     pattern = ".RDa", replacement = "_nltt.RDa"
   )
   # Create the output files
-  testit::assert(length(output_filenames) == length(nltt_filenames))
-  for (i in seq_along(output_filenames)) {
+  testit::assert(length(posterior_filesnames) == length(nltt_filenames))
+  for (i in seq_along(posterior_filesnames)) {
     create_nltt_file(
-      input_filename = output_filenames[i],
-      output_filename = nltt_filenames[i],
+      input_filename = posterior_filesnames[i],
+      posterior_filesname = nltt_filenames[i],
       burn_in_fraction = burn_in_fraction
     )
     testit::assert(
