@@ -92,6 +92,6 @@ test_that("abuse", {
       ),
       beast2_path = "abs.ent"
     ),
-    "'beast_jar_path' is invalid path to BEAST2"
+    "'beast2_path' is invalid path to BEAST2"
   )
 })
