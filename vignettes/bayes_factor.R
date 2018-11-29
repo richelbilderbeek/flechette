@@ -84,3 +84,22 @@ pos_jc69 <- tracerer::remove_burn_ins(
 )
 knitr::kable(head(pos_jc69))
 
+## ------------------------------------------------------------------------
+pos_gtr <- tracerer::remove_burn_ins(
+  babette::bbt_run(
+    fasta_filename, 
+    site_models = beautier::create_gtr_site_model(),
+    mcmc = mcmc
+  )$estimates,
+  burn_in_fraction = burn_in_fraction
+)
+knitr::kable(head(pos_gtr))
+
+## ------------------------------------------------------------------------
+# bayes_factor <- rkt_calc_bf(pos_jc69$likelihood, pos_gtr$likelihood)
+# print(bayes_factor)
+
+## ------------------------------------------------------------------------
+# print(paste("in favor of model JC69:", interpret_bayes_factor(bayes_factor)))
+# print(paste("in favor of model GTR:", interpret_bayes_factor(1.0 / bayes_factor)))
+

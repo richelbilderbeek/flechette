@@ -4,18 +4,16 @@
 \alias{rkt_run}
 \title{Run one point of the experiment}
 \usage{
-rkt_run(parameters,
-  beast2_path = beastier::get_default_beast2_bin_path(),
-  verbose = FALSE)
+rkt_run(parameters, verbose = FALSE)
 }
 \arguments{
 \item{parameters}{biological and methodological parameters,
 as created by \code{\link{create_params}}}
 
+\item{verbose}{set to TRUE for more (debug) output}
+
 \item{beast2_path}{the path of either
 the BEAST2 binary (\code{beast})}
-
-\item{verbose}{set to TRUE for more (debug) output}
 }
 \description{
 Run one point of the experiment

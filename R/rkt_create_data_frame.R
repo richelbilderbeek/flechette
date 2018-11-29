@@ -41,8 +41,8 @@ rkt_create_data_frame <- function(
     sampling_method = rep(NA, n_rows),
     mutation_rate = rep(NA, n_rows),
     sequence_length = rep(NA, n_rows),
-    mcmc.chain_length = rep(NA, n_rows),
-    mcmc.store_every = rep(NA, n_rows),
+    mcmc_chain_length = rep(NA, n_rows),
+    mcmc_store_every = rep(NA, n_rows),
     tree_sim_rng_seed = seq(1, n_rows),
     alignment_rng_seed = seq(1, n_rows),
     beast2_rng_seed = seq(1, n_rows),
@@ -62,8 +62,8 @@ rkt_create_data_frame <- function(
   df_params$crown_age_sigma <- as.numeric(df_params$crown_age_sigma)
   df_params$mutation_rate <- as.numeric(df_params$mutation_rate)
   df_params$sequence_length <- as.numeric(df_params$sequence_length)
-  df_params$mcmc.chain_length <- as.numeric(df_params$mcmc.chain_length) # nolint mcmc is a structure, unlist creates the names from that
-  df_params$mcmc.store_every <- as.numeric(df_params$mcmc.store_every) # nolint mcmc is a structure, unlist creates the names from that
+  df_params$mcmc_chain_length <- as.numeric(df_params$mcmc_chain_length)
+  df_params$mcmc_store_every <- as.numeric(df_params$mcmc_store_every)
   df_params$tree_sim_rng_seed <- as.numeric(df_params$tree_sim_rng_seed)
   df_params$alignment_rng_seed <- as.numeric(df_params$alignment_rng_seed)
   df_params$beast2_rng_seed <- as.numeric(df_params$beast2_rng_seed)

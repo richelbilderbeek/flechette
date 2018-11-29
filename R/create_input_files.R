@@ -1,17 +1,19 @@
 #' Creates the parameter files in the article for the general exploration
 #' @param general_params_set the set of parameters,
 #'   as created by \code{\link{create_general_params_set}}
-#' @param folder_name name of the folder where all files are created
+#' @param project_folder_name name of the project folder.
+#'   The name of this folder must be \code{raket_werper}.
 #' @return The filenames of all parameter files created
 #' @export
 #' @author Richel Bilderbeek
 create_input_files_general <- function(
   general_params_set = create_general_params_set(),
-  folder_name = getwd()
+  project_folder_name = getwd()
 ) {
+  check_project_folder_name(project_folder_name = project_folder_name)
   create_input_files_impl(
     params_set = general_params_set,
-    folder_name = folder_name
+    folder_name = project_folder_name
   )
 }
 
@@ -43,14 +45,17 @@ create_input_files_impl <- function(
   params_set,
   folder_name
 ) {
+  dir.create(file.path(folder_name, "data"), showWarnings = FALSE)
+
   filenames <- NULL
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   index <- 1
   n_files <- length(params_set)
   for (index in seq(1, n_files)) {
-    filename <- file.path(folder_name, paste0(index, ".RDa"))
-    params <- params_set[[index]]
-    saveRDS(object = params, file = filename)
+    filename <- file.path(folder_name, "data", paste0(index, ".csv"))
+    params <- as.data.frame(params_set[[index]])
+    utils::write.csv(x = params, file = filename, row.names = FALSE)
+    # saveRDS(object = params, file = filename) # nolint old
     index <- index + 1
     filenames <- c(filenames, filename)
   }

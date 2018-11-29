@@ -6,13 +6,14 @@
 \usage{
 
   create_input_files_general(general_params_set = create_general_params_set(),
-  folder_name = getwd())
+  project_folder_name = getwd())
 }
 \arguments{
 \item{general_params_set}{the set of parameters,
 as created by \code{\link{create_general_params_set}}}
 
-\item{folder_name}{name of the folder where all files are created}
+\item{project_folder_name}{name of the project folder.
+The name of this folder must be \code{raket_werper}.}
 }
 \value{
 The filenames of all parameter files created

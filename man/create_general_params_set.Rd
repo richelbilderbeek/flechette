@@ -21,6 +21,9 @@ number of states}
 
 \item{sequence_length}{a DNA sequence length, in base pairs}
 }
+\value{
+a list with each element a parameter combination
+}
 \description{
 Creates the parameter set for the general exploration
 }

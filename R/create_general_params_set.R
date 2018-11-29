@@ -1,5 +1,6 @@
 #' Creates the parameter set for the general exploration
 #' @inheritParams default_params_doc
+#' @return a list with each element a parameter combination
 #' @export
 #' @author Richel Bilderbeek
 create_general_params_set <- function(

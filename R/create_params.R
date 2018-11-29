@@ -61,7 +61,7 @@ create_params <- function(
   testit::assert(site_model %in% raket::rkt_get_site_models())
   testit::assert(clock_model %in% raket::rkt_get_clock_models())
 
-  list(
+  data.frame(
     sirg = sirg,
     siri = siri,
     scr = scr,
@@ -72,7 +72,8 @@ create_params <- function(
     sampling_method = sampling_method,
     mutation_rate = mutation_rate,
     sequence_length = sequence_length,
-    mcmc = mcmc,
+    mcmc_chain_length = mcmc$chain_length,
+    mcmc_store_every = mcmc$store_every,
     tree_sim_rng_seed = tree_sim_rng_seed,
     alignment_rng_seed = alignment_rng_seed,
     beast2_rng_seed = beast2_rng_seed,

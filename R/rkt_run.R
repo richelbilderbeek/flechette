@@ -9,27 +9,17 @@
 #' @export
 rkt_run <- function(
   parameters,
-  beast2_path = beastier::get_default_beast2_bin_path(),
   verbose = FALSE
 ) {
   if (!is.na(parameters$beast2_rng_seed) && !(parameters$beast2_rng_seed > 0)) {
     stop("'parameters$beast2_rng_seed' must be NA or non-zero positive")
   }
-  if (!beautier:::is_mcmc(parameters$mcmc)) {
-    stop(
-      "'parameters$mcmc' must be an MCMC as created by beautier::create_mcmc"
-    )
-  }
-  if (!file.exists(beast2_path)) {
-    stop("'beast2_path' is invalid path to BEAST2")
-  }
-  if (!beastier:::is_bin_path(beast2_path)) {
-    stop(
-      "'beast2_path' must be a binary path. ",
-      "Tip: use 'beastier::get_default_beast2_bin_path()'",
-      "Note: only works on UNIX (Linux, Mac) systems"
-    )
-  }
+  testit::assert(beastier::is_beast2_installed())
+
+  chain_length <- parameters$mcmc_chain_length
+  store_every <- parameters$mcmc_store_every
+  testit::assert(chain_length >= 1000)
+  testit::assert(store_every >= 1000)
 
   set.seed(parameters$tree_sim_rng_seed)
 
@@ -81,12 +71,9 @@ rkt_run <- function(
     mutation_rate = parameters$mutation_rate,
     site_models = site_model,
     clock_models = clock_model,
-    mcmc = beautier::create_mcmc_nested_sampling(
-      chain_length = parameters$mcmc$chain_length,
-      store_every = parameters$mcmc$store_every,
-      particle_count = 1,
-      sub_chain_length = max(1000, parameters$mcmc$chain_length / 100),
-      epsilon = 1e-13
+    mcmc = beautier::create_mcmc(
+      chain_length = chain_length,
+      store_every = store_every
     )
     ,
     mrca_distr = beautier::create_normal_distr(
@@ -95,8 +82,7 @@ rkt_run <- function(
     ),
     alignment_rng_seed = parameters$alignment_rng_seed,
     beast2_rng_seed = parameters$beast2_rng_seed,
-    verbose = verbose,
-    beast2_path = beast2_path
+    verbose = verbose
   )
   out$parameters <- parameters
   out$incipient_tree <- pbd_output$igtree.extant

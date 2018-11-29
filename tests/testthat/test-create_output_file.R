@@ -2,6 +2,12 @@ context("create_output_file")
 
 test_that("use", {
 
+  # Put files in temporary folder
+  super_folder_name <- tempdir()
+  project_folder_name <- file.path(super_folder_name, "raket_werper")
+  # Do not warn if the folder already exists
+  dir.create(path = project_folder_name, showWarnings = FALSE)
+
   output_filename <- tempfile()
 
   input_filenames <- create_input_files_general(
@@ -9,17 +15,17 @@ test_that("use", {
       mcmc_chain_length = 16000,
       sequence_length = 8
     ),
-    folder_name = tempdir()
+    project_folder_name = project_folder_name
   )
 
   while (1) {
     # Only run an input file with low speciation rate
     input_filename <- sample(x = input_filenames, size = 1)
-    testit::assert("sirg" %in% names(readRDS(input_filename)))
-    testit::assert("siri" %in% names(readRDS(input_filename)))
+    testit::assert("sirg" %in% names(utils::read.csv(input_filename)))
+    testit::assert("siri" %in% names(utils::read.csv(input_filename)))
     lowest_sir <- min(rkt_get_spec_init_rates())
-    if (readRDS(input_filename)$sirg > lowest_sir) next
-    if (readRDS(input_filename)$siri > lowest_sir) next
+    if (utils::read.csv(input_filename)$sirg > lowest_sir) next
+    if (utils::read.csv(input_filename)$siri > lowest_sir) next
     break
   }
 

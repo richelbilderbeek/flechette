@@ -2,6 +2,7 @@ context("create_general_params_set")
 
 test_that("must be a collection of multiple parameters", {
   params_set <- create_general_params_set()
+  expect_equal(class(params_set), "list")
   testthat::expect_true(
     length(params_set) > 20
   )
@@ -30,7 +31,7 @@ test_that("all less than 1000 taxa with 95% certainty", {
       quantile = 0.95
     )
     testthat::expect_true(n < 1000)
-    testthat::expect_true(params$mcmc$chain_length
+    testthat::expect_true(params$mcmc_chain_length
       %in% c(1111000, 2222000, 4444000, 8888000))
   }
 })

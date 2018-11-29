@@ -14,7 +14,7 @@ create_output_file <- function(
     stop("'input_filename' must exist. File '", input_filename, "' not found")
   }
   out <- raket::rkt_run(
-    parameters = readRDS(file = input_filename),
+    parameters = utils::read.csv(file = input_filename),
     verbose = verbose
   )
   saveRDS(object = out, file = output_filename)
