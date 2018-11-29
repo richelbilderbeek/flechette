@@ -110,5 +110,5 @@ test_that("Full workflow, general", {
   # 6. Plot the tidy data in long form as a violin plot,
   #    depends on sampling method
   ##############################################################################
-  testthat::expect_silent(rkt_plot(df_long))
+  testthat::expect_silent(create_fig_1(df_long))
 })

@@ -1,4 +1,4 @@
-context("rkt_plot")
+context("create_fig_1")
 
 test_that("use", {
 
@@ -40,7 +40,7 @@ test_that("use", {
     filename <- tempfile(fileext = ".pdf")
     ggplot2::ggsave(
       filename = filename,
-      plot = rkt_plot(df_long),
+      plot = create_fig_1(df_long),
       device = "pdf",
       width = 21,
       height = 29.7,
