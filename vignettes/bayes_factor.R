@@ -70,3 +70,17 @@ phangorn::write.phyDat(
 )
 image(alignment_dnabin)
 
+## ------------------------------------------------------------------------
+mcmc <- beautier::create_mcmc(chain_length = 10000)
+burn_in_fraction <- 0.2
+
+pos_jc69 <- tracerer::remove_burn_ins(
+  babette::bbt_run(
+    fasta_filename, 
+    site_models = beautier::create_jc69_site_model(),
+    mcmc = mcmc
+  )$estimates,
+  burn_in_fraction = burn_in_fraction
+)
+knitr::kable(head(pos_jc69))
+
