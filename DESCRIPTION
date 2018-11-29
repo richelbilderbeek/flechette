@@ -55,18 +55,6 @@ Suggests:
     testit,
     testthat,
     tidyr
-Remotes: 
-    jimhester/covr,
-    jimhester/lintr,
-    richelbilderbeek/babette,
-    richelbilderbeek/beautier,
-    richelbilderbeek/beastier,
-    richelbilderbeek/PBD/PBD,
-    richelbilderbeek/pirouette,
-    richelbilderbeek/tracerer,
-    richelbilderbeek/nLTT,
-    richelbilderbeek/ribir,
-    MangoTheCat/goodpractice
 RoxygenNote: 6.1.1
 URL: https://github.com/richelbilderbeek/raket
 BugReports: https://github.com/richelbilderbeek/raket/issues
