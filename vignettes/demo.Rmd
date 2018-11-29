@@ -47,8 +47,12 @@ First, we'll specify the folder in which the files are created. By default,
 this is a temporary folder, but this can be changed for those that
 want to see the files:
 
-```{r set_folder_name}
-folder_name <- tempdir()
+```{r set_project_folder_name}
+# Put files in temporary folder
+super_folder_name <- tempdir()
+project_folder_name <- file.path(super_folder_name, "raket_werper")
+# Do not warn if the folder already exists
+dir.create(path = project_folder_name, showWarnings = FALSE)
 ```
 
 To make this vignette as reproducible as possible,
@@ -66,7 +70,7 @@ all_input_filenames <- create_input_files_general(
     mcmc_chain_length = 16000,
     sequence_length = 16
   ),
-  folder_name = folder_name
+  project_folder_name = project_folder_name
 )
 ```
 
@@ -80,8 +84,8 @@ with speciation initiation rate of 0.1:
 while (1) {
   input_filename <- sample(all_input_filenames, size = 1)
   lowest_sir <- min(rkt_get_spec_init_rates())
-  if (readRDS(input_filename)$sirg > lowest_sir) next
-  if (readRDS(input_filename)$siri > lowest_sir) next
+  if (utils::read.csv(input_filename)$sirg > lowest_sir) next
+  if (utils::read.csv(input_filename)$siri > lowest_sir) next
   break
 }
 statuses <- file.remove(all_input_filenames[ all_input_filenames != input_filename] )
@@ -92,7 +96,7 @@ testit::assert(file.exists(input_filename))
 The input file only contains parameters:
 
 ```{r}
-print(readRDS(input_filename))
+print(utils::read.csv(input_filename))
 ```
 
 The input file is then run, its results save to an output file:
