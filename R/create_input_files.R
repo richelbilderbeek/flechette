@@ -10,8 +10,8 @@ create_input_files_general <- function(
   general_params_set = create_general_params_set(),
   project_folder_name = getwd()
 ) {
-  check_project_folder_name(project_folder_name = project_folder_name)
-  create_input_files_impl(
+  check_project_folder_name(project_folder_name = project_folder_name) # nolint internal function
+  create_input_files_impl( # nolint internal function
     params_set = general_params_set,
     folder_name = project_folder_name
   )
