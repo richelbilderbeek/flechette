@@ -66,8 +66,8 @@ rkt_run <- function(
       length = parameters$sequence_length
     ),
     mutation_rate = parameters$mutation_rate,
-    site_models = site_model,
-    clock_models = clock_model,
+    site_model = site_model,
+    clock_model = clock_model,
     mcmc = beautier::create_mcmc(
       chain_length = chain_length,
       store_every = store_every
