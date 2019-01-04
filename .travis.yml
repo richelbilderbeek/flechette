@@ -20,7 +20,7 @@ r_github_packages:
   - richelbilderbeek/PBD/PBD # Bleeding-edge version
   - richelbilderbeek/pirouette
   - richelbilderbeek/ribir
-  - richelbilderbeek/tracerer
+  - ropensci/tracerer
   - MangoTheCat/goodpractice
   - KlausVigo/phangorn
 
