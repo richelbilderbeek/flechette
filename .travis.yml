@@ -13,9 +13,10 @@ r_github_packages:
   - jimhester/lintr
   - ropensci/babette
   - ropensci/beastier
-  - richelbilderbeek/becosys
   - ropensci/beautier
   - ropensci/mauricer
+  - xl0418/dododo
+  - richelbilderbeek/becosys
   - richelbilderbeek/nLTT
   - richelbilderbeek/PBD/PBD # Bleeding-edge version
   - richelbilderbeek/pirouette
@@ -23,7 +24,6 @@ r_github_packages:
   - ropensci/tracerer
   - MangoTheCat/goodpractice
   - KlausVigo/phangorn
-  - xl0418/dododo
 
 before_install:
   - sudo add-apt-repository -y ppa:opencpu/imagemagick
