@@ -6,7 +6,7 @@ knitr::opts_chunk$set(
 
 ## ----load_library--------------------------------------------------------
 library(raket)
-if (!mauricer::mrc_is_installed("NS")) {
+if (!mauricer::is_beast2_pkg_installed("NS")) {
   mauricer::install_beast2_pkg("NS")
 }
 
