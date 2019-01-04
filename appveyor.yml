@@ -26,7 +26,7 @@ build_script:
   - R -e "library(beastier); beastier::install_beast2()"
   - travis-tool.sh install_github richelbilderbeek/ribir
   - travis-tool.sh install_github richelbilderbeek/tracerer
-  - travis-tool.sh install_github richelbilderbeek/beautier
+  - travis-tool.sh install_github ropensci/beautier
   - travis-tool.sh install_github richelbilderbeek/beastier
   - travis-tool.sh install_github richelbilderbeek/babette
   - travis-tool.sh install_github richelbilderbeek/pirouette

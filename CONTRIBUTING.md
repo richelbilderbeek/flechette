@@ -12,7 +12,7 @@ This GitHub follows the [Contributor Covenant Code of Conduct](doc/code_of_condu
 `raket` consists out of multiple packages:
 
 If you want to contribute to the creation of BEAST2 XML input file,
-go to [beautier](https://github.com/richelbilderbeek/beautier/blob/master/CONTRIBUTING.md).
+go to [beautier](https://github.com/ropensci/beautier/blob/master/CONTRIBUTING.md).
 
 If you want to contribute to how BEAST2 is run,
 go to [beastier](https://github.com/richelbilderbeek/beastier/blob/master/CONTRIBUTING.md).
