@@ -7,7 +7,7 @@ knitr::opts_chunk$set(
 ## ----load_library--------------------------------------------------------
 library(raket)
 if (!mauricer::mrc_is_installed("NS")) {
-  mauricer::mrc_install("NS")
+  mauricer::install_beast2_pkg("NS")
 }
 
 ## ----set_project_folder_name---------------------------------------------

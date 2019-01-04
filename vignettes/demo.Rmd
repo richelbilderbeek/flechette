@@ -28,7 +28,7 @@ First we load the libraries we'll need:
 ```{r load_library}
 library(raket)
 if (!mauricer::mrc_is_installed("NS")) {
-  mauricer::mrc_install("NS")
+  mauricer::install_beast2_pkg("NS")
 }
 ```
 
