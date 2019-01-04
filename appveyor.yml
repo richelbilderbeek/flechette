@@ -28,7 +28,7 @@ build_script:
   - travis-tool.sh install_github ropensci/tracerer
   - travis-tool.sh install_github ropensci/beautier
   - travis-tool.sh install_github ropensci/beastier
-  - travis-tool.sh install_github richelbilderbeek/babette
+  - travis-tool.sh install_github ropensci/babette
   - travis-tool.sh install_github richelbilderbeek/pirouette
   - travis-tool.sh install_github jimhester/covr
   - travis-tool.sh install_github jimhester/lintr

@@ -33,7 +33,7 @@ For those started from a clean slate, run these statements:
 
 ```
 # Install babette
-devtools::install_github("richelbilderbeek/babette")
+devtools::install_github("ropensci/babette")
 
 # Install BEAST2 to a default location
 beastier::install_beast2()

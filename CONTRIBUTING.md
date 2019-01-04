@@ -21,7 +21,7 @@ If you want to contribute to how BEAST2 output is parsed,
 go to [tracerer](https://github.com/ropensci/tracerer/blob/master/CONTRIBUTING.md)
 
 If you want to contribute to the full BEAST2 pipeline,
-go to [babette](https://github.com/richelbilderbeek/babette/blob/master/CONTRIBUTING.md)
+go to [babette](https://github.com/ropensci/babette/blob/master/CONTRIBUTING.md)
 
 If you want to contribute to the conversion of initial phylogeny to alignment,
 go to [pirouette](https://github.com/richelbilderbeek/pirouette/blob/master/CONTRIBUTING.md)
