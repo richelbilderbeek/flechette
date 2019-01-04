@@ -12,7 +12,7 @@ r_github_packages:
   - jimhester/covr
   - jimhester/lintr
   - richelbilderbeek/babette
-  - richelbilderbeek/beastier
+  - ropensci/beastier
   - richelbilderbeek/becosys
   - ropensci/beautier
   - richelbilderbeek/mauricer
