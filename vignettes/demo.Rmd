@@ -101,7 +101,7 @@ print(utils::read.csv(input_filename))
 
 The input file is then run, its results save to an output file:
 
-```{r}
+```
 posterior_filesname <- tempfile("out.RDa")
 raket::create_posterior_files(
   input_filename = input_filename,
@@ -112,13 +112,13 @@ raket::create_posterior_files(
 
 The output file contains many things, including the parameters used:
 
-```{r}
+```
 print(readRDS(posterior_filesname))
 ```
 
 From this raw data, the nLTTs can be measured:
 
-```{r}
+```
 nltts_filename <- tempfile("nltt.RDa")
 raket::create_nltt_file(
   input_filename = posterior_filesname,
@@ -129,7 +129,7 @@ raket::create_nltt_file(
 
 The resulting file only contains the parameters and nLTT statistics:
 
-```{r}
+```
 print(names(readRDS(nltts_filename)))
 ```
 
@@ -138,7 +138,7 @@ and the density plot. The latter will be used in the final result as
 well. For few nLTT statistics (that is, short MCMC chain lengths), 
 this picture will look clumsy:
 
-```{r fig.width=7, fig.height=7}
+```
 ggplot2::ggplot(
   data = data.frame(nltts = readRDS(nltts_filename)$nltts),
   ggplot2::aes(x = nltts)
@@ -151,7 +151,7 @@ The next step in the experiment is to convert all nLTT files to one
 comma seperated file. As we only run one experiment, there is only one
 nLTT file to supply:
 
-```{r}
+```
 csv_filename <- tempfile("nltts.csv")
 raket::nltt_files_to_csv(
   nltt_filenames = nltts_filename, 
@@ -162,26 +162,26 @@ raket::nltt_files_to_csv(
 The comma-seperated file contains as many rows as there are experiments run.
 In this case, it will have only one row, looking like this:
 
-```{r}
+```
 knitr::kable(read.csv(file = csv_filename))
 ```
 
 For Tidy Data, the comma-seperated file needs to be read and converted to the 
 long form.
 
-```{r}
+```
 df <- raket::to_long(df = read.csv(csv_filename))
 ```
 
 In this long form, each row contains one measurement (that is, 
 one nLTT statistic):
 
-```{r}
+```
 knitr::kable(df)
 ```
 
 Finally, we plot all (in this case, one) experiments:
 
-```{r fig.width=7, fig.height=7}
+```
 raket::create_fig_1(df_long = df)
 ```
