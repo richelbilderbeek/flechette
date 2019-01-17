@@ -35,6 +35,14 @@ package. Most things it does are intended to run locally.
 
 ## Misc
 
+
+### What software do you use to create the diagrams?
+
+Dia:
+
+ * [homepage](https://wiki.gnome.org/Apps/Dia/)
+ * [Wikipedia](https://en.wikipedia.org/wiki/Dia_(software))
+
 ### How to create the dependency graph from the `.dot` file?
 
 ```
