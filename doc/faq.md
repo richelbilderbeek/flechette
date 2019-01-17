@@ -28,8 +28,16 @@ Article is still in preperation.
 
 `raket` is something fast.
 
-## Why no code coverage?
+## Why no 100% code coverage?
 
 Because `raket` does not intend to be a fully-fledged
 package. Most things it does are intended to run locally.
 
+## Misc
+
+### How to create the dependency graph from the `.dot` file?
+
+```
+dot -Tps dependencies.dot -o dependencies.ps
+convert dependencies.ps dependencies.png
+```
