@@ -11,17 +11,17 @@ r_github_packages:
   - Giappo/mbd
   - jimhester/covr
   - jimhester/lintr
-  - ropensci/babette
-  - ropensci/beastier
   - ropensci/beautier
+  - ropensci/tracerer
+  - ropensci/beastier
   - ropensci/mauricer
+  - ropensci/babette
   - xl0418/dododo
   - richelbilderbeek/becosys
   - richelbilderbeek/nLTT
   - richelbilderbeek/PBD/PBD # Bleeding-edge version
   - richelbilderbeek/pirouette
   - richelbilderbeek/ribir
-  - ropensci/tracerer
   - MangoTheCat/goodpractice
   - KlausVigo/phangorn
 
