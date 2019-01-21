@@ -20,6 +20,7 @@ r_github_packages:
   - richelbilderbeek/becosys
   - richelbilderbeek/nLTT
   - richelbilderbeek/PBD/PBD # Bleeding-edge version
+  - richelbilderbeek/mcbette
   - richelbilderbeek/pirouette
   - richelbilderbeek/ribir
   - MangoTheCat/goodpractice
