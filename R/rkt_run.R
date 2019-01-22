@@ -19,14 +19,9 @@ rkt_run <- function(
   set.seed(raket_params$tree_sim_rng_seed)
 
   # Note: if speciation rates are zero, PBD::pbd_sim will last forever
-  pbd_output <- becosys::pbd_sim_checked(
-    erg = raket_params$pbd_params$erg,
-    eri = raket_params$pbd_params$eri,
-    scr = raket_params$pbd_params$scr,
-    sirg = raket_params$pbd_params$sirg,
-    siri = raket_params$pbd_params$siri,
-    crown_age = raket_params$crown_age,
-    add_shortest_and_longest = TRUE
+  pbd_output <- becosys::bco_pbd_sim(
+    pbd_params = raket_params$pbd_params,
+    crown_age = -12345678901234567890
   )
 
   true_phylogeny <- NA

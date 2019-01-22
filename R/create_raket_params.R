@@ -21,14 +21,8 @@ create_raket_params <- function(
   alignment_params,
   gen_model_select_params,
   best_model_select_params,
-  crown_age,
-  crown_age_sigma = 0.01,
-  sampling_method,
-  mcmc,
-  tree_sim_rng_seed,
-  beast2_rng_seed,
-  site_model = "JC69",
-  clock_model = "strict"
+  inference_param,
+  sampling_method
 ) {
   raket_params <- list(
     pbd_params = pbd_params,
@@ -36,15 +30,8 @@ create_raket_params <- function(
     alignment_params = alignment_params,
     gen_model_select_params = gen_model_select_params,
     best_model_select_params = best_model_select_params,
-    crown_age = crown_age,
-    crown_age_sigma = crown_age_sigma,
-    sampling_method = sampling_method,
-    mcmc_chain_length = mcmc$chain_length,
-    mcmc_store_every = mcmc$store_every,
-    tree_sim_rng_seed = tree_sim_rng_seed,
-    beast2_rng_seed = beast2_rng_seed,
-    site_model = site_model,
-    clock_model = clock_model
+    inference_param = inference_param,
+    sampling_method = sampling_method
   )
   check_raket_params(raket_params)
   raket_params

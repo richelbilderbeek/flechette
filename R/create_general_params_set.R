@@ -69,23 +69,29 @@ create_general_params_set <- function(
                       )
                     )
                   )
-
+                  inference_param <- pirouette::create_inference_param(
+                    mrca_prior = beautier::create_mrca_prior(
+                      alignment_id = "to be added by pir_run",
+                      taxa_names = c("to", "be", "added", "by", "pir_run"),
+                      is_monophyletic = TRUE,
+                      mrca_distr = beautier::create_normal_distr(
+                        mean = crown_age,
+                        sigma = 0.0005
+                      )
+                    ),
+                    mcmc = beautier::create_mcmc(
+                      chain_length = mcmc_chain_length * increase_factor,
+                      store_every = 1000 * increase_factor
+                    ),
+                    rng_seed = index
+                  )
                   params <- create_raket_params(
                     pbd_params = pbd_params,
                     alignment_params = alignment_params,
                     gen_model_select_params = gen_model_select_params,
                     best_model_select_params = best_model_select_params,
-                    crown_age = crown_age,
-                    crown_age_sigma = 0.0005,
-                    sampling_method = "random",
-                    mcmc = beautier::create_mcmc(
-                      chain_length = mcmc_chain_length * increase_factor,
-                      store_every = 1000 * increase_factor
-                    ),
-                    tree_sim_rng_seed = index,
-                    beast2_rng_seed = index,
-                    site_model = site_model,
-                    clock_model = clock_model
+                    inference_param = inference_param,
+                    sampling_method = "random"
                   )
                   params_set[[index]] <- params
                   index <- index + 1

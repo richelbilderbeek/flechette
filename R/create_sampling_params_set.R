@@ -16,6 +16,8 @@ create_sampling_params_set <- function(
     max_n_params = max_n_params
   )
 
+  crown_age <- general_params_set[[1]]$inference_param$mrca_prior$mrca_distr$mean$value # nolint yes, no Law of Demeter here
+
   sampling_params_set <- list()
   index <- 1
   # Each tree will have a unique RNG seed
@@ -33,7 +35,7 @@ create_sampling_params_set <- function(
         scr = params$pbd_params$scr,
         sirg = params$pbd_params$sirg,
         siri = params$pbd_params$siri,
-        crown_age = params$crown_age
+        crown_age = crown_age
       )
       sum_youngest <- sum(out$stree_youngest$edge.length)
       sum_oldest <- sum(out$stree_oldest$edge.length)
