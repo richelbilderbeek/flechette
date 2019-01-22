@@ -5,14 +5,18 @@
 \title{Create the parameters for one experiment.
 Run one point of the experiment}
 \usage{
-create_raket_params(pbd_params, crown_age, crown_age_sigma = 0.01,
-  sampling_method, mutation_rate, sequence_length, mcmc, tree_sim_rng_seed,
-  alignment_rng_seed, beast2_rng_seed, site_model = "JC69",
-  clock_model = "strict")
+create_raket_params(pbd_params,
+  twinning_params = pirouette::create_twinning_params(), crown_age,
+  crown_age_sigma = 0.01, sampling_method, mutation_rate,
+  sequence_length, mcmc, tree_sim_rng_seed, alignment_rng_seed,
+  beast2_rng_seed, site_model = "JC69", clock_model = "strict")
 }
 \arguments{
 \item{pbd_params}{a PBD parameter set,
 as returned by \code{\link[becosys]{create_pbd_params}}}
+
+\item{twinning_params}{parameters for creating a twin tree,
+as can be created by \code{\link[pirouette]{create_twinning_params}}}
 
 \item{crown_age}{crown age, in time units}
 

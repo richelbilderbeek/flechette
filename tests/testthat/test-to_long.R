@@ -2,6 +2,8 @@ context("to_long")
 
 test_that("Use on general data set, #5", {
 
+  skip("Not now")
+
   n_replicates <- 1
   n_nltts <- 10
 
@@ -21,6 +23,8 @@ test_that("Use on general data set, #5", {
 })
 
 test_that("Use on sampling data set, #5", {
+
+  skip("Not now")
 
   n_replicates <- 1
   n_nltts <- 10

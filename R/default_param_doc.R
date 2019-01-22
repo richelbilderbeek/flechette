@@ -15,6 +15,8 @@
 #' @param pbd_params a PBD parameter set,
 #'   as returned by \code{\link[becosys]{create_pbd_params}}
 #' @param quantile the quantile, a value from, and including, zero to one
+#' @param raket_params \code{raket} parameters for one experiment,
+#'   as can be created by \code{\link{create_raket_params}}
 #' @param scr speciation completion rate
 #' @param sequence_length a DNA sequence length, in base pairs
 #' @param sir speciation initiation rate of both
@@ -22,6 +24,8 @@
 #' @param sirg speciation initiation rate of a good species
 #' @param siri speciation initiation rate of an incipient species
 #' @param stem_age stem age. Set either the stem age or the crown age.
+#' @param twinning_params parameters for creating a twin tree,
+#'   as can be created by \code{\link[pirouette]{create_twinning_params}}
 #' @param verbose if TRUE, additional information is displayed, that
 #'   is potentially useful in debugging
 #' @author Richel J.C. Bilderbeek
@@ -39,12 +43,14 @@ default_params_doc <- function(
   n_replicates,
   pbd_params,
   quantile,
+  raket_params,
   scr,
   sequence_length,
   sir,
   sirg,
   siri,
   stem_age,
+  twinning_params,
   verbose
 ) {
   # Nothing

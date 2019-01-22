@@ -22,6 +22,7 @@
 #' @export
 create_raket_params <- function(
   pbd_params,
+  twinning_params = pirouette::create_twinning_params(),
   crown_age,
   crown_age_sigma = 0.01,
   sampling_method,
@@ -34,18 +35,9 @@ create_raket_params <- function(
   site_model = "JC69",
   clock_model = "strict"
 ) {
-
-  becosys::check_pbd_params(pbd_params)
-  testit::assert(crown_age > 0.0)
-  testit::assert(crown_age_sigma > 0.0)
-  testit::assert(mutation_rate >= 0.0)
-  testit::assert(sequence_length >= 0.0)
-  testit::assert(sampling_method %in% raket::rkt_get_sampling_methods())
-  testit::assert(site_model %in% raket::rkt_get_site_models())
-  testit::assert(clock_model %in% raket::rkt_get_clock_models())
-
-  list(
+  raket_params <- list(
     pbd_params = pbd_params,
+    twinning_params = twinning_params,
     crown_age = crown_age,
     crown_age_sigma = crown_age_sigma,
     sampling_method = sampling_method,
@@ -59,4 +51,6 @@ create_raket_params <- function(
     site_model = site_model,
     clock_model = clock_model
   )
+  check_raket_params(raket_params)
+  raket_params
 }

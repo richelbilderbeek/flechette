@@ -6,8 +6,9 @@
 documentation.}
 \usage{
 default_params_doc(crown_age, erg, eri, experiment_type, max_n_params,
-  mcmc, mcmc_chain_length, n_replicates, pbd_params, quantile, scr,
-  sequence_length, sir, sirg, siri, stem_age, verbose)
+  mcmc, mcmc_chain_length, n_replicates, pbd_params, quantile,
+  raket_params, scr, sequence_length, sir, sirg, siri, stem_age,
+  twinning_params, verbose)
 }
 \arguments{
 \item{crown_age}{the crown age of the phylogeny}
@@ -35,6 +36,9 @@ as returned by \code{\link[becosys]{create_pbd_params}}}
 
 \item{quantile}{the quantile, a value from, and including, zero to one}
 
+\item{raket_params}{\code{raket} parameters for one experiment,
+as can be created by \code{\link{create_raket_params}}}
+
 \item{scr}{speciation completion rate}
 
 \item{sequence_length}{a DNA sequence length, in base pairs}
@@ -47,6 +51,9 @@ a good species and an incipient species}
 \item{siri}{speciation initiation rate of an incipient species}
 
 \item{stem_age}{stem age. Set either the stem age or the crown age.}
+
+\item{twinning_params}{parameters for creating a twin tree,
+as can be created by \code{\link[pirouette]{create_twinning_params}}}
 
 \item{verbose}{if TRUE, additional information is displayed, that
 is potentially useful in debugging}

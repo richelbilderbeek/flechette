@@ -11,6 +11,7 @@ test_that("use", {
       erg = 0.1,
       eri = 0.1
     ),
+    twinning_params = pirouette::create_twinning_params(),
     crown_age = 1.0,
     sampling_method = "shortest",
     mutation_rate = 0.1,

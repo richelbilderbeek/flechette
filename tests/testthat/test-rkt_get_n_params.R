@@ -20,5 +20,5 @@ test_that("rkt_get_n_params must match the number of parameter", {
     beast2_rng_seed = 3
   )
 
-  testthat::expect_equal(rkt_get_n_params(), length(unlist(parameters)))
+  expect_equal(rkt_get_n_params(), length(unlist(parameters)))
 })
