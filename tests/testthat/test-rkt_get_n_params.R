@@ -9,14 +9,15 @@ test_that("rkt_get_n_params must match the number of parameter", {
       erg = 0.01,
       eri = 0.01
     ),
+    alignment_params = pirouette::create_alignment_params(
+      root_sequence = pirouette::create_blocked_dna(length = 8),
+      mutation_rate = 0.1
+    ),
     crown_age = 15,
     crown_age_sigma = 0.01,
     sampling_method = "shortest",
-    mutation_rate = 0.1,
-    sequence_length = 8,
     mcmc = beautier::create_mcmc(chain_length = 12300),
     tree_sim_rng_seed = 1,
-    alignment_rng_seed = 2,
     beast2_rng_seed = 3
   )
 

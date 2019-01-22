@@ -61,11 +61,7 @@ rkt_run <- function(
 
   out <- pirouette::pir_run(
     phylogeny = true_phylogeny,
-    sequence_length = NULL, # New interface
-    root_sequence = pirouette::create_blocked_dna(
-      length = parameters$sequence_length
-    ),
-    mutation_rate = parameters$mutation_rate,
+    alignment_params = raket_params$alignment_params,
     site_model = site_model,
     clock_model = clock_model,
     mcmc = beautier::create_mcmc(
@@ -77,7 +73,6 @@ rkt_run <- function(
       mean = beautier::create_mean_param(value = parameters$crown_age),
       sigma = beautier::create_sigma_param(value = 0.01)
     ),
-    alignment_rng_seed = parameters$alignment_rng_seed,
     beast2_rng_seed = parameters$beast2_rng_seed,
     verbose = verbose
   )

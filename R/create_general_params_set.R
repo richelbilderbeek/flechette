@@ -49,17 +49,21 @@ create_general_params_set <- function(
                       erg = erg,
                       eri = eri
                     ),
+                    alignment_params = pirouette::create_alignment_params(
+                      root_sequence = pirouette::create_blocked_dna(
+                        length = sequence_length
+                      ),
+                      mutation_rate = 1.0 / crown_age,
+                      rng_seed = index
+                    ),
                     crown_age = crown_age,
                     crown_age_sigma = 0.0005,
                     sampling_method = "random",
-                    mutation_rate = 1.0 / crown_age,
-                    sequence_length = sequence_length,
                     mcmc = beautier::create_mcmc(
                       chain_length = mcmc_chain_length * increase_factor,
                       store_every = 1000 * increase_factor
                     ),
                     tree_sim_rng_seed = index,
-                    alignment_rng_seed = index,
                     beast2_rng_seed = index,
                     site_model = site_model,
                     clock_model = clock_model

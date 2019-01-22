@@ -1,5 +1,7 @@
 #' This function does nothing. It is intended to inherit is parameters'
 #' documentation.
+#' @param alignment_params parameters for creating an alignment,
+#'   as can be created by \code{\link[pirouette]{create_alignment_params}}
 #' @param crown_age the crown age of the phylogeny
 #' @param erg extinction rate of a good species
 #' @param eri extinction rate of an incipient species
@@ -33,6 +35,7 @@
 #'   \code{@noRd}. This is not done, as this will disallow all
 #'   functions to find the documentation parameters
 default_params_doc <- function(
+  alignment_params,
   crown_age,
   erg,
   eri,

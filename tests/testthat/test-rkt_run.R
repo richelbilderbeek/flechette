@@ -12,13 +12,14 @@ test_that("use", {
       eri = 0.1
     ),
     twinning_params = pirouette::create_twinning_params(),
+    alignment_params = pirouette::create_alignment_params(
+      root_sequence = pirouette::create_blocked_dna(length = 8),
+      mutation_rate = 0.1
+    ),
     crown_age = 1.0,
     sampling_method = "shortest",
-    mutation_rate = 0.1,
-    sequence_length = 8,
     mcmc = beautier::create_mcmc(chain_length = 2000, store_every = 1000),
     tree_sim_rng_seed = 49,
-    alignment_rng_seed = 49,
     beast2_rng_seed = 49
   )
 
@@ -42,18 +43,20 @@ test_that("abuse", {
     erg = 0.1,
     eri = 0.1
   )
+  alignment_params <- pirouette::create_alignment_params(
+    root_sequence = pirouette::create_blocked_dna(length = 8),
+    mutation_rate = 0.1
+  )
 
   expect_error(
     raket::rkt_run(
       parameters = create_raket_params(
         pbd_params = pbd_params,
+        alignment_params = alignment_params,
         crown_age = 15,
         sampling_method = "random",
-        mutation_rate = 0.1,
-        sequence_length = 100,
         mcmc = beautier::create_mcmc(chain_length = 2000),
         tree_sim_rng_seed = 42,
-        alignment_rng_seed = 42,
         beast2_rng_seed = 0 # Error here
       )
     ),

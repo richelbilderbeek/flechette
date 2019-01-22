@@ -5,12 +5,15 @@
 \title{This function does nothing. It is intended to inherit is parameters'
 documentation.}
 \usage{
-default_params_doc(crown_age, erg, eri, experiment_type, max_n_params,
-  mcmc, mcmc_chain_length, n_replicates, pbd_params, quantile,
-  raket_params, scr, sequence_length, sir, sirg, siri, stem_age,
+default_params_doc(alignment_params, crown_age, erg, eri, experiment_type,
+  max_n_params, mcmc, mcmc_chain_length, n_replicates, pbd_params,
+  quantile, raket_params, scr, sequence_length, sir, sirg, siri, stem_age,
   twinning_params, verbose)
 }
 \arguments{
+\item{alignment_params}{parameters for creating an alignment,
+as can be created by \code{\link[pirouette]{create_alignment_params}}}
+
 \item{crown_age}{the crown age of the phylogeny}
 
 \item{erg}{extinction rate of a good species}

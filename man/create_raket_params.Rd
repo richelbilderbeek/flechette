@@ -6,10 +6,10 @@
 Run one point of the experiment}
 \usage{
 create_raket_params(pbd_params,
-  twinning_params = pirouette::create_twinning_params(), crown_age,
-  crown_age_sigma = 0.01, sampling_method, mutation_rate,
-  sequence_length, mcmc, tree_sim_rng_seed, alignment_rng_seed,
-  beast2_rng_seed, site_model = "JC69", clock_model = "strict")
+  twinning_params = pirouette::create_twinning_params(),
+  alignment_params, crown_age, crown_age_sigma = 0.01, sampling_method,
+  mcmc, tree_sim_rng_seed, beast2_rng_seed, site_model = "JC69",
+  clock_model = "strict")
 }
 \arguments{
 \item{pbd_params}{a PBD parameter set,
@@ -17,6 +17,9 @@ as returned by \code{\link[becosys]{create_pbd_params}}}
 
 \item{twinning_params}{parameters for creating a twin tree,
 as can be created by \code{\link[pirouette]{create_twinning_params}}}
+
+\item{alignment_params}{parameters for creating an alignment,
+as can be created by \code{\link[pirouette]{create_alignment_params}}}
 
 \item{crown_age}{crown age, in time units}
 
@@ -26,18 +29,10 @@ distribution, in time units}
 \item{sampling_method}{method how the incipient species representing a
 species is picked. Must be in \link{rkt_get_sampling_methods}.}
 
-\item{mutation_rate}{per-nucleotide probability to mutate per time unit}
-
-\item{sequence_length}{length of simulated DNA alignment,
-number of base pairs}
-
 \item{mcmc}{MCMC options, as created by \link[beautier]{create_mcmc}}
 
 \item{tree_sim_rng_seed}{RNG seed used in the creation of the true
 phylogenetic tree}
-
-\item{alignment_rng_seed}{RNG seed used in the creation of the simulated
-alignment (from the true phylogenetic tree)}
 
 \item{beast2_rng_seed}{RNG seed in the creation of the BEAST2 posterior
 (based on the alignment)}
