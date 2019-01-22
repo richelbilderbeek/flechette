@@ -28,75 +28,71 @@ create_general_params_set <- function(
                   siri = siri
                 )
               ) next
-              for (clock_model in rkt_get_clock_models()) {
-                for (site_model in rkt_get_site_models()) {
-                  if (index >= max_n_params) next
-                  increase_factor <- 1
-                  if (scr == 1.0) {
-                    increase_factor <- increase_factor * 2
-                  }
-                  if (sirg == 0.5) {
-                    increase_factor <- increase_factor * 2
-                  }
-                  if (siri == 0.5) {
-                    increase_factor <- increase_factor * 2
-                  }
-                  pbd_params <- becosys::create_pbd_params(
-                    sirg = sirg,
-                    siri = siri,
-                    scr = scr,
-                    erg = erg,
-                    eri = eri
-                  )
-                  alignment_params <- pirouette::create_alignment_params(
-                    root_sequence = pirouette::create_blocked_dna(
-                      length = sequence_length
-                    ),
-                    mutation_rate = 1.0 / crown_age,
-                    rng_seed = index
-                  )
-                  gen_model_select_params <- list(
-                    pirouette::create_gen_model_select_param(
-                      alignment_params = alignment_params,
-                      tree_prior = beautier::create_bd_tree_prior()
-                    )
-                  )
-                  best_model_select_params <- list(
-                    pirouette::create_best_model_select_param(
-                      tree_priors = list(
-                        beautier::create_yule_tree_prior(),
-                        beautier::create_bd_tree_prior()
-                      )
-                    )
-                  )
-                  inference_param <- pirouette::create_inference_param(
-                    mrca_prior = beautier::create_mrca_prior(
-                      alignment_id = "to be added by pir_run",
-                      taxa_names = c("to", "be", "added", "by", "pir_run"),
-                      is_monophyletic = TRUE,
-                      mrca_distr = beautier::create_normal_distr(
-                        mean = crown_age,
-                        sigma = 0.0005
-                      )
-                    ),
-                    mcmc = beautier::create_mcmc(
-                      chain_length = mcmc_chain_length * increase_factor,
-                      store_every = 1000 * increase_factor
-                    ),
-                    rng_seed = index
-                  )
-                  params <- create_raket_params(
-                    pbd_params = pbd_params,
-                    alignment_params = alignment_params,
-                    gen_model_select_params = gen_model_select_params,
-                    best_model_select_params = best_model_select_params,
-                    inference_param = inference_param,
-                    sampling_method = "random"
-                  )
-                  params_set[[index]] <- params
-                  index <- index + 1
-                }
+              if (index >= max_n_params) next
+              increase_factor <- 1
+              if (scr == 1.0) {
+                increase_factor <- increase_factor * 2
               }
+              if (sirg == 0.5) {
+                increase_factor <- increase_factor * 2
+              }
+              if (siri == 0.5) {
+                increase_factor <- increase_factor * 2
+              }
+              pbd_params <- becosys::create_pbd_params(
+                sirg = sirg,
+                siri = siri,
+                scr = scr,
+                erg = erg,
+                eri = eri
+              )
+              alignment_params <- pirouette::create_alignment_params(
+                root_sequence = pirouette::create_blocked_dna(
+                  length = sequence_length
+                ),
+                mutation_rate = 1.0 / crown_age,
+                rng_seed = index
+              )
+              gen_model_select_params <- list(
+                pirouette::create_gen_model_select_param(
+                  alignment_params = alignment_params,
+                  tree_prior = beautier::create_bd_tree_prior()
+                )
+              )
+              best_model_select_params <- list(
+                pirouette::create_best_model_select_param(
+                  tree_priors = list(
+                    beautier::create_yule_tree_prior(),
+                    beautier::create_bd_tree_prior()
+                  )
+                )
+              )
+              inference_param <- pirouette::create_inference_param(
+                mrca_prior = beautier::create_mrca_prior(
+                  alignment_id = "to be added by pir_run",
+                  taxa_names = c("to", "be", "added", "by", "pir_run"),
+                  is_monophyletic = TRUE,
+                  mrca_distr = beautier::create_normal_distr(
+                    mean = crown_age,
+                    sigma = 0.0005
+                  )
+                ),
+                mcmc = beautier::create_mcmc(
+                  chain_length = mcmc_chain_length * increase_factor,
+                  store_every = 1000 * increase_factor
+                ),
+                rng_seed = index
+              )
+              params <- create_raket_params(
+                pbd_params = pbd_params,
+                alignment_params = alignment_params,
+                gen_model_select_params = gen_model_select_params,
+                best_model_select_params = best_model_select_params,
+                inference_param = inference_param,
+                sampling_method = "random"
+              )
+              params_set[[index]] <- params
+              index <- index + 1
             }
           }
         }
