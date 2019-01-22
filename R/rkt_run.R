@@ -1,6 +1,5 @@
 #' Run one point of the experiment
-#' @param raket_params biological and methodological raket_params,
-#'   as created by \code{\link{create_raket_params}}
+#' @inheritParams default_params_doc
 #' @param verbose set to TRUE for more (debug) output
 #' @author Richel J.C. Bilderbeek
 #' @export

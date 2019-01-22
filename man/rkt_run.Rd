@@ -7,10 +7,10 @@
 rkt_run(raket_params, verbose = FALSE)
 }
 \arguments{
-\item{verbose}{set to TRUE for more (debug) output}
+\item{raket_params}{\code{raket} parameters for one experiment,
+as can be created by \code{\link{create_raket_params}}}
 
-\item{parameters}{biological and methodological parameters,
-as created by \code{\link{create_raket_params}}}
+\item{verbose}{set to TRUE for more (debug) output}
 }
 \description{
 Run one point of the experiment

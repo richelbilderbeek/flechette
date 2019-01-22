@@ -7,9 +7,8 @@ Run one point of the experiment}
 \usage{
 create_raket_params(pbd_params,
   twinning_params = pirouette::create_twinning_params(),
-  alignment_params, gen_model_select_params, crown_age,
-  crown_age_sigma = 0.01, sampling_method, mcmc, tree_sim_rng_seed,
-  beast2_rng_seed, site_model = "JC69", clock_model = "strict")
+  alignment_params, gen_model_select_params, best_model_select_params,
+  inference_param, sampling_method)
 }
 \arguments{
 \item{pbd_params}{a PBD parameter set,
@@ -27,13 +26,13 @@ the Bayesian inference.
 Use \code{\link[pirouette]{create_gen_model_select_params}} to create
 this parameter set}
 
+\item{sampling_method}{method how the incipient species representing a
+species is picked. Must be in \link{rkt_get_sampling_methods}.}
+
 \item{crown_age}{crown age, in time units}
 
 \item{crown_age_sigma}{the standard deviation of MRCA prior's
 distribution, in time units}
-
-\item{sampling_method}{method how the incipient species representing a
-species is picked. Must be in \link{rkt_get_sampling_methods}.}
 
 \item{mcmc}{MCMC options, as created by \link[beautier]{create_mcmc}}
 
