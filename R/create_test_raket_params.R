@@ -1,7 +1,10 @@
-context("create_raket_params")
-
-test_that("use", {
-
+#' Create a test \code{raket_params}
+#'
+#' @return a test \code{raket_params},
+#'   as can be created by \link{create_raket_params}
+#' @export
+#' @author Richel J.C. Bilderbeek
+create_test_raket_params <- function() {
   pbd_params <- becosys::create_pbd_params(
     sirg = 0.1,
     siri = 0.15,
@@ -30,7 +33,7 @@ test_that("use", {
   site_model <- "GTR"
   clock_model <- "RLN"
 
-  raket_params <- create_raket_params(
+  create_raket_params(
     pbd_params = pbd_params,
     alignment_params = alignment_params,
     gen_model_select_params = gen_model_select_params,
@@ -43,19 +46,4 @@ test_that("use", {
     site_model = site_model,
     clock_model = clock_model
   )
-
-  expect_equal(pbd_params, raket_params$pbd_params)
-  expect_equal(alignment_params, raket_params$alignment_params)
-  expect_equal(gen_model_select_params, raket_params$gen_model_select_params)
-
-  expect_equal(crown_age, raket_params$crown_age)
-  expect_equal(crown_age_sigma, raket_params$crown_age_sigma)
-  expect_equal(sampling_method, as.character(raket_params$sampling_method))
-  expect_equal(mcmc$chain_length, raket_params$mcmc_chain_length)
-  expect_equal(mcmc$store_every, raket_params$mcmc_store_every)
-  expect_equal(tree_sim_rng_seed, raket_params$tree_sim_rng_seed)
-  expect_equal(beast2_rng_seed, raket_params$beast2_rng_seed)
-  expect_equal(site_model, as.character(raket_params$site_model))
-  expect_equal(clock_model, as.character(raket_params$clock_model))
-  expect_equal(rkt_get_n_params(), length(unlist(raket_params)))
-})
+}

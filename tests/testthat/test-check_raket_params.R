@@ -14,6 +14,13 @@ test_that("use", {
     root_sequence = pirouette::create_blocked_dna(length = 8),
     mutation_rate = 0.1
   )
+  gen_model_select_params <- list(
+    pirouette::create_gen_model_select_param(
+      alignment_params = alignment_params,
+      tree_prior = beautier::create_bd_tree_prior()
+    )
+  )
+
   crown_age <- 15
   crown_age_sigma <- 0.01
   sampling_method <- "shortest"
@@ -25,6 +32,7 @@ test_that("use", {
   raket_params <- create_raket_params(
     pbd_params = pbd_params,
     alignment_params = alignment_params,
+    gen_model_select_params = gen_model_select_params,
     crown_age = crown_age,
     crown_age_sigma = crown_age_sigma,
     sampling_method = sampling_method,

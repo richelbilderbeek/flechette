@@ -4,13 +4,13 @@
 \alias{rkt_run}
 \title{Run one point of the experiment}
 \usage{
-rkt_run(parameters, verbose = FALSE)
+rkt_run(raket_params, verbose = FALSE)
 }
 \arguments{
+\item{verbose}{set to TRUE for more (debug) output}
+
 \item{parameters}{biological and methodological parameters,
 as created by \code{\link{create_raket_params}}}
-
-\item{verbose}{set to TRUE for more (debug) output}
 }
 \description{
 Run one point of the experiment

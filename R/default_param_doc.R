@@ -7,6 +7,11 @@
 #' @param eri extinction rate of an incipient species
 #' @param experiment_type type of experiment,
 #'   must a member of \code{\link{rkt_get_experiment_types}}
+#' @param gen_model_select_params a generative model selection parameter,
+#'   which will select the generative model to be run in
+#'   the Bayesian inference.
+#'   Use \code{\link[pirouette]{create_gen_model_select_params}} to create
+#'   this parameter set
 #' @param max_n_params the maximum number of parameters created. Set to a lower
 #'   value in debugging
 #' @param mcmc one mcmc object,
@@ -40,6 +45,7 @@ default_params_doc <- function(
   erg,
   eri,
   experiment_type,
+  gen_model_select_params,
   max_n_params,
   mcmc,
   mcmc_chain_length,

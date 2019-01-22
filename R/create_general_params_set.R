@@ -41,21 +41,31 @@ create_general_params_set <- function(
                   if (siri == 0.5) {
                     increase_factor <- increase_factor * 2
                   }
+                  pbd_params <- becosys::create_pbd_params(
+                    sirg = sirg,
+                    siri = siri,
+                    scr = scr,
+                    erg = erg,
+                    eri = eri
+                  )
+                  alignment_params <- pirouette::create_alignment_params(
+                    root_sequence = pirouette::create_blocked_dna(
+                      length = sequence_length
+                    ),
+                    mutation_rate = 1.0 / crown_age,
+                    rng_seed = index
+                  )
+                  gen_model_select_params <- list(
+                    pirouette::create_gen_model_select_param(
+                      alignment_params = alignment_params,
+                      tree_prior = beautier::create_bd_tree_prior()
+                    )
+                  )
+
                   params <- create_raket_params(
-                    pbd_params = becosys::create_pbd_params(
-                      sirg = sirg,
-                      siri = siri,
-                      scr = scr,
-                      erg = erg,
-                      eri = eri
-                    ),
-                    alignment_params = pirouette::create_alignment_params(
-                      root_sequence = pirouette::create_blocked_dna(
-                        length = sequence_length
-                      ),
-                      mutation_rate = 1.0 / crown_age,
-                      rng_seed = index
-                    ),
+                    pbd_params = pbd_params,
+                    alignment_params = alignment_params,
+                    gen_model_select_params = gen_model_select_params,
                     crown_age = crown_age,
                     crown_age_sigma = 0.0005,
                     sampling_method = "random",

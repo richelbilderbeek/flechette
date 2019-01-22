@@ -7,9 +7,9 @@ Run one point of the experiment}
 \usage{
 create_raket_params(pbd_params,
   twinning_params = pirouette::create_twinning_params(),
-  alignment_params, crown_age, crown_age_sigma = 0.01, sampling_method,
-  mcmc, tree_sim_rng_seed, beast2_rng_seed, site_model = "JC69",
-  clock_model = "strict")
+  alignment_params, gen_model_select_params, crown_age,
+  crown_age_sigma = 0.01, sampling_method, mcmc, tree_sim_rng_seed,
+  beast2_rng_seed, site_model = "JC69", clock_model = "strict")
 }
 \arguments{
 \item{pbd_params}{a PBD parameter set,
@@ -20,6 +20,12 @@ as can be created by \code{\link[pirouette]{create_twinning_params}}}
 
 \item{alignment_params}{parameters for creating an alignment,
 as can be created by \code{\link[pirouette]{create_alignment_params}}}
+
+\item{gen_model_select_params}{a generative model selection parameter,
+which will select the generative model to be run in
+the Bayesian inference.
+Use \code{\link[pirouette]{create_gen_model_select_params}} to create
+this parameter set}
 
 \item{crown_age}{crown age, in time units}
 
