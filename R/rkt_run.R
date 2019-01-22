@@ -1,11 +1,9 @@
 #' Run one point of the experiment
 #' @inheritParams default_params_doc
-#' @param verbose set to TRUE for more (debug) output
 #' @author Richel J.C. Bilderbeek
 #' @export
 rkt_run <- function(
-  raket_params,
-  verbose = FALSE
+  raket_params
 ) {
   check_raket_params(raket_params)
   testit::assert(beastier::is_beast2_installed())
@@ -66,7 +64,7 @@ rkt_run <- function(
       sigma = beautier::create_sigma_param(value = 0.01)
     ),
     beast2_rng_seed = raket_params$beast2_rng_seed,
-    verbose = verbose
+    verbose = raket_params$inference_param$verbose
   )
   out$raket_params <- raket_params
   out$incipient_tree <- pbd_output$igtree.extant
