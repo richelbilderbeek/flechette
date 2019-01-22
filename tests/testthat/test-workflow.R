@@ -3,7 +3,7 @@ context("workflow")
 test_that("Full workflow, general", {
 
   skip("No full workflow")
-  if (!ribir::is_on_travis()) return()
+  if (!beastier::is_on_travis()) return()
 
   n_parameters <- rkt_get_n_params()
   mcmc_chain_length <- 16000

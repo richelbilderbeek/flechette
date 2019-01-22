@@ -2,6 +2,7 @@ context("rkt_run")
 
 test_that("use", {
 
+  if (!beastier::is_on_travis()) return()
   params <- create_raket_params(
     sirg = 1.0,
     siri = 1.0,

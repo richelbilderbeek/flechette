@@ -1,6 +1,8 @@
-context("create_fig_1")
+context("rkt_plot")
 
 test_that("use", {
+
+  skip("Not now")
 
   n_replicates <- rkt_get_n_replicates()
   n_nltts <- 1000

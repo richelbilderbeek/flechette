@@ -1,6 +1,8 @@
-context("create_posterior_files")
+context("create_output_file")
 
 test_that("use", {
+
+  skip("Not now")
 
   # Put files in temporary folder
   super_folder_name <- tempdir()
