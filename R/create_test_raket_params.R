@@ -24,6 +24,10 @@ create_test_raket_params <- function() {
   )
   pirouette:::check_model_select_params(gen_model_select_params)
 
+  best_model_select_params <- list(pirouette::create_best_model_select_param())
+  pirouette:::check_model_select_params(best_model_select_params)
+
+
   crown_age <- 15
   crown_age_sigma <- 0.01
   sampling_method <- "shortest"
@@ -37,6 +41,7 @@ create_test_raket_params <- function() {
     pbd_params = pbd_params,
     alignment_params = alignment_params,
     gen_model_select_params = gen_model_select_params,
+    best_model_select_params = best_model_select_params,
     crown_age = crown_age,
     crown_age_sigma = crown_age_sigma,
     sampling_method = sampling_method,

@@ -15,11 +15,13 @@ test_that("use", {
   )
   gen_model_select_params <- list(
     pirouette::create_gen_model_select_param(
-      alignment_params = alignment_params,
-      tree_prior = beautier::create_bd_tree_prior()
+      alignment_params = alignment_params
     )
   )
   pirouette:::check_model_select_params(gen_model_select_params)
+
+  best_model_select_params <- list(pirouette::create_best_model_select_param())
+  pirouette:::check_model_select_params(best_model_select_params)
 
   crown_age <- 15
   crown_age_sigma <- 0.01
@@ -34,6 +36,7 @@ test_that("use", {
     pbd_params = pbd_params,
     alignment_params = alignment_params,
     gen_model_select_params = gen_model_select_params,
+    best_model_select_params = best_model_select_params,
     crown_age = crown_age,
     crown_age_sigma = crown_age_sigma,
     sampling_method = sampling_method,
@@ -47,6 +50,7 @@ test_that("use", {
   expect_equal(pbd_params, raket_params$pbd_params)
   expect_equal(alignment_params, raket_params$alignment_params)
   expect_equal(gen_model_select_params, raket_params$gen_model_select_params)
+  expect_equal(best_model_select_params, raket_params$best_model_select_params)
 
   expect_equal(crown_age, raket_params$crown_age)
   expect_equal(crown_age_sigma, raket_params$crown_age_sigma)

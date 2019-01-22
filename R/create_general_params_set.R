@@ -61,11 +61,20 @@ create_general_params_set <- function(
                       tree_prior = beautier::create_bd_tree_prior()
                     )
                   )
+                  best_model_select_params <- list(
+                    pirouette::create_best_model_select_param(
+                      tree_priors = list(
+                        beautier::create_yule_tree_prior(),
+                        beautier::create_bd_tree_prior()
+                      )
+                    )
+                  )
 
                   params <- create_raket_params(
                     pbd_params = pbd_params,
                     alignment_params = alignment_params,
                     gen_model_select_params = gen_model_select_params,
+                    best_model_select_params = best_model_select_params,
                     crown_age = crown_age,
                     crown_age_sigma = 0.0005,
                     sampling_method = "random",

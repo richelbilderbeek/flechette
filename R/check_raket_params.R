@@ -10,7 +10,7 @@ check_raket_params <- function(
 ) {
   argument_names <- c(
     "pbd_params", "twinning_params", "alignment_params",
-    "gen_model_select_params"
+    "gen_model_select_params", "best_model_select_params"
   )
   for (arg_name in argument_names) {
     if (!arg_name %in% names(raket_params)) {
@@ -24,6 +24,7 @@ check_raket_params <- function(
   pirouette:::check_twinning_params(raket_params$twinning_params) # nolint internal pirouette function, will be exported in pirouette v1.1
   pirouette:::check_alignment_params(raket_params$alignment_params) # nolint internal pirouette function, will be exported in pirouette v1.1
   pirouette:::check_model_select_params(raket_params$gen_model_select_params) # nolint internal pirouette function, will be exported in pirouette v1.1
+  pirouette:::check_model_select_params(raket_params$best_model_select_params) # nolint internal pirouette function, will be exported in pirouette v1.1
 
   testit::assert(raket_params$crown_age > 0.0)
   testit::assert(raket_params$crown_age_sigma > 0.0)
