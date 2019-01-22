@@ -42,11 +42,13 @@ create_general_params_set <- function(
                     increase_factor <- increase_factor * 2
                   }
                   params <- create_raket_params(
-                    sirg = sirg,
-                    siri = siri,
-                    scr = scr,
-                    erg = erg,
-                    eri = eri,
+                    pbd_params = becosys::create_pbd_params(
+                      sirg = sirg,
+                      siri = siri,
+                      scr = scr,
+                      erg = erg,
+                      eri = eri
+                    ),
                     crown_age = crown_age,
                     crown_age_sigma = 0.0005,
                     sampling_method = "random",

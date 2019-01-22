@@ -22,17 +22,17 @@ create_sampling_params_set <- function(
   tree_sim_rng_seed <- 3480
   for (params in general_params_set) {
     # Remove all SCR == Inf
-    if (params$scr >= 1000.0) next
+    if (params$pbd_params$scr >= 1000.0) next
     while (index < max_n_params) {
       # First seed will be 3481
       tree_sim_rng_seed <- tree_sim_rng_seed + 1
       set.seed(tree_sim_rng_seed)
       out <- becosys::pbd_sim_checked(
-        erg = params$erg,
-        eri = params$eri,
-        scr = params$scr,
-        sirg = params$sirg,
-        siri = params$siri,
+        erg = params$pbd_params$erg,
+        eri = params$pbd_params$eri,
+        scr = params$pbd_params$scr,
+        sirg = params$pbd_params$sirg,
+        siri = params$pbd_params$siri,
         crown_age = params$crown_age
       )
       sum_youngest <- sum(out$stree_youngest$edge.length)

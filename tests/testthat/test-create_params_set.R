@@ -1,17 +1,17 @@
 context("create_params_set")
 
 test_that("use", {
-  testthat::expect_silent(create_params_set("general"))
+  expect_silent(create_params_set("general"))
 })
 
 test_that("use, sampling", {
-  testthat::expect_silent(
+  expect_silent(
     create_params_set("sampling", max_n_params = 2)
   )
 })
 
 test_that("abuse", {
-  testthat::expect_error(create_params_set("nonsense"),
+  expect_error(create_params_set("nonsense"),
     "'experiment_type' must be 'general' or 'sampling'"
   )
 })

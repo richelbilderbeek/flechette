@@ -2,11 +2,13 @@ context("create_raket_params")
 
 test_that("use", {
 
-  sirg <- 0.1
-  siri <- 0.1
-  scr <- 0.2
-  erg <- 0.01
-  eri <- 0.01
+  pbd_params <- becosys::create_pbd_params(
+    sirg = 0.1,
+    siri = 0.15,
+    scr = 0.2,
+    erg = 0.01,
+    eri = 0.02
+  )
   crown_age <- 15
   crown_age_sigma <- 0.01
   sampling_method <- "shortest"
@@ -20,11 +22,7 @@ test_that("use", {
   clock_model <- "RLN"
 
   parameters <- create_raket_params(
-    sirg = sirg,
-    siri = siri,
-    scr = scr,
-    erg = erg,
-    eri = eri,
+    pbd_params = pbd_params,
     crown_age = crown_age,
     crown_age_sigma = crown_age_sigma,
     sampling_method = sampling_method,
@@ -38,11 +36,7 @@ test_that("use", {
     clock_model = clock_model
   )
 
-  expect_equal(sirg, parameters$sirg)
-  expect_equal(siri, parameters$siri)
-  expect_equal(scr, parameters$scr)
-  expect_equal(erg, parameters$erg)
-  expect_equal(eri, parameters$eri)
+  expect_equal(pbd_params, parameters$pbd_params)
   expect_equal(crown_age, parameters$crown_age)
   expect_equal(crown_age_sigma, parameters$crown_age_sigma)
   expect_equal(sampling_method, as.character(parameters$sampling_method))

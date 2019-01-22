@@ -1,16 +1,6 @@
 #' Create the parameters for one experiment.
 #' Run one point of the experiment
-#' @param sirg speciation rate of a good species,
-#'   per lineage probability per time unit
-#' @param siri speciation rate of an incipient species,
-#'   per lineage probability per time unit
-#' @param scr speciation completion rate (of
-#'   incipient species),
-#'   per lineage probability per time unit
-#' @param erg extinction rate of a good species,
-#'   per lineage probability per time unit
-#' @param eri extinction rate of an incipient species,
-#'   per lineage probability per time unit
+#' @inheritParams default_params_doc
 #' @param crown_age crown age, in time units
 #' @param crown_age_sigma the standard deviation of MRCA prior's
 #'   distribution, in time units
@@ -31,11 +21,7 @@
 #' @author Richel J.C. Bilderbeek
 #' @export
 create_raket_params <- function(
-  sirg,
-  siri,
-  scr,
-  erg,
-  eri,
+  pbd_params,
   crown_age,
   crown_age_sigma = 0.01,
   sampling_method,
@@ -48,11 +34,8 @@ create_raket_params <- function(
   site_model = "JC69",
   clock_model = "strict"
 ) {
-  testit::assert(sirg >= 0.0)
-  testit::assert(siri >= 0.0)
-  testit::assert(scr >= 0.0)
-  testit::assert(erg >= 0.0)
-  testit::assert(eri >= 0.0)
+
+  becosys::check_pbd_params(pbd_params)
   testit::assert(crown_age > 0.0)
   testit::assert(crown_age_sigma > 0.0)
   testit::assert(mutation_rate >= 0.0)
@@ -61,12 +44,8 @@ create_raket_params <- function(
   testit::assert(site_model %in% raket::rkt_get_site_models())
   testit::assert(clock_model %in% raket::rkt_get_clock_models())
 
-  data.frame(
-    sirg = sirg,
-    siri = siri,
-    scr = scr,
-    erg = erg,
-    eri = eri,
+  list(
+    pbd_params = pbd_params,
     crown_age = crown_age,
     crown_age_sigma = crown_age_sigma,
     sampling_method = sampling_method,

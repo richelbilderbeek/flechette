@@ -6,8 +6,8 @@
 documentation.}
 \usage{
 default_params_doc(crown_age, erg, eri, experiment_type, max_n_params,
-  mcmc, mcmc_chain_length, n_replicates, quantile, scr, sequence_length,
-  sir, sirg, siri, stem_age, verbose)
+  mcmc, mcmc_chain_length, n_replicates, pbd_params, quantile, scr,
+  sequence_length, sir, sirg, siri, stem_age, verbose)
 }
 \arguments{
 \item{crown_age}{the crown age of the phylogeny}
@@ -29,6 +29,9 @@ as returned by \code{\link[beautier]{create_mcmc}}}
 number of states}
 
 \item{n_replicates}{number of replicates per biological parameter set}
+
+\item{pbd_params}{a PBD parameter set,
+as returned by \code{\link[becosys]{create_pbd_params}}}
 
 \item{quantile}{the quantile, a value from, and including, zero to one}
 

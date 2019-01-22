@@ -5,27 +5,14 @@
 \title{Create the parameters for one experiment.
 Run one point of the experiment}
 \usage{
-create_raket_params(sirg, siri, scr, erg, eri, crown_age,
-  crown_age_sigma = 0.01, sampling_method, mutation_rate,
-  sequence_length, mcmc, tree_sim_rng_seed, alignment_rng_seed,
-  beast2_rng_seed, site_model = "JC69", clock_model = "strict")
+create_raket_params(pbd_params, crown_age, crown_age_sigma = 0.01,
+  sampling_method, mutation_rate, sequence_length, mcmc, tree_sim_rng_seed,
+  alignment_rng_seed, beast2_rng_seed, site_model = "JC69",
+  clock_model = "strict")
 }
 \arguments{
-\item{sirg}{speciation rate of a good species,
-per lineage probability per time unit}
-
-\item{siri}{speciation rate of an incipient species,
-per lineage probability per time unit}
-
-\item{scr}{speciation completion rate (of
-incipient species),
-per lineage probability per time unit}
-
-\item{erg}{extinction rate of a good species,
-per lineage probability per time unit}
-
-\item{eri}{extinction rate of an incipient species,
-per lineage probability per time unit}
+\item{pbd_params}{a PBD parameter set,
+as returned by \code{\link[becosys]{create_pbd_params}}}
 
 \item{crown_age}{crown age, in time units}
 

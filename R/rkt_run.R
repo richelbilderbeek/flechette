@@ -48,7 +48,7 @@ rkt_run <- function(
     testit::assert(parameters$site_model == "GTR")
     site_model <- beautier::create_gtr_site_model()
   }
-  testit::assert(beautier:::is_site_model(site_model))
+  testit::assert(beautier::is_site_model(site_model))
 
   clock_model <- NA
   if (parameters$clock_model == "strict") {
@@ -57,7 +57,7 @@ rkt_run <- function(
     testit::assert(parameters$clock_model == "RLN")
     clock_model <- beautier::create_rln_clock_model()
   }
-  testit::assert(beautier:::is_clock_model(clock_model))
+  testit::assert(beautier::is_clock_model(clock_model))
 
   out <- pirouette::pir_run(
     phylogeny = true_phylogeny,

@@ -2,11 +2,13 @@ context("rkt_get_n_params")
 
 test_that("rkt_get_n_params must match the number of parameter", {
   parameters <- create_raket_params(
-    sirg = 0.1,
-    siri = 0.1,
-    scr = 0.2,
-    erg = 0.01,
-    eri = 0.01,
+    pbd_params = becosys::create_pbd_params(
+      sirg = 0.1,
+      siri = 0.1,
+      scr = 0.2,
+      erg = 0.01,
+      eri = 0.01
+    ),
     crown_age = 15,
     crown_age_sigma = 0.01,
     sampling_method = "shortest",

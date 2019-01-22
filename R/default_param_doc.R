@@ -12,6 +12,8 @@
 #' @param mcmc_chain_length length of the MCMC chain, in
 #'   number of states
 #' @param n_replicates number of replicates per biological parameter set
+#' @param pbd_params a PBD parameter set,
+#'   as returned by \code{\link[becosys]{create_pbd_params}}
 #' @param quantile the quantile, a value from, and including, zero to one
 #' @param scr speciation completion rate
 #' @param sequence_length a DNA sequence length, in base pairs
@@ -35,6 +37,7 @@ default_params_doc <- function(
   mcmc,
   mcmc_chain_length,
   n_replicates,
+  pbd_params,
   quantile,
   scr,
   sequence_length,

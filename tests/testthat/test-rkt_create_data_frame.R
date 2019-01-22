@@ -1,6 +1,8 @@
 context("rkt_create_data_frame")
 
 test_that("use, general", {
+
+  skip("Not now")
   n_replicates <- 1
   n_nltts <- 5
   df <- rkt_create_data_frame(
