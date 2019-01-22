@@ -30,7 +30,7 @@
 #' @param clock_model clock model assumed in the BEAST2 inference
 #' @author Richel J.C. Bilderbeek
 #' @export
-create_params <- function(
+create_raket_params <- function(
   sirg,
   siri,
   scr,

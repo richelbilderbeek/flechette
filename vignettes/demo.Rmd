@@ -32,29 +32,6 @@ if (!mauricer::is_beast2_pkg_installed("NS")) {
 }
 ```
 
-The research produces two data sets:
-
- * a general balanced data set
- * a data set conditioned on sampling having an effect
-
-This vignette will run one experiment for the general data set.
-
-For this data set, we will create all parameter files, after which we
-will keep only one file to actually run. Additionally, we will create
-parameters that are shorter to run.
-
-First, we'll specify the folder in which the files are created. By default,
-this is a temporary folder, but this can be changed for those that
-want to see the files:
-
-```{r set_project_folder_name}
-# Put files in temporary folder
-super_folder_name <- tempdir()
-project_folder_name <- file.path(super_folder_name, "raket_werper")
-# Do not warn if the folder already exists
-dir.create(path = project_folder_name, showWarnings = FALSE)
-```
-
 To make this vignette as reproducible as possible,
 a random number generator seed is specified:
 
@@ -62,9 +39,10 @@ a random number generator seed is specified:
 set.seed(42)
 ```
 
+
 Create all parameter files:
 
-```{r}
+```
 all_input_filenames <- create_input_files_general(
   general_params_set = create_general_params_set(
     mcmc_chain_length = 16000,
@@ -80,7 +58,7 @@ so the simulations are faster to run.
 Remove all parameter files, except for a randomly sampled one
 with speciation initiation rate of 0.1:
 
-```{r}
+```
 while (1) {
   input_filename <- sample(all_input_filenames, size = 1)
   lowest_sir <- min(rkt_get_spec_init_rates())
@@ -95,7 +73,7 @@ testit::assert(file.exists(input_filename))
 
 The input file only contains parameters:
 
-```{r}
+```
 print(utils::read.csv(input_filename))
 ```
 

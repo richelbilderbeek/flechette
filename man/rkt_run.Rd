@@ -8,7 +8,7 @@ rkt_run(parameters, verbose = FALSE)
 }
 \arguments{
 \item{parameters}{biological and methodological parameters,
-as created by \code{\link{create_params}}}
+as created by \code{\link{create_raket_params}}}
 
 \item{verbose}{set to TRUE for more (debug) output}
 }

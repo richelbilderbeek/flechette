@@ -2,7 +2,7 @@ context("rkt_run")
 
 test_that("use", {
 
-  params <- create_params(
+  params <- create_raket_params(
     sirg = 1.0,
     siri = 1.0,
     scr = 1.0,
@@ -33,7 +33,7 @@ test_that("abuse", {
 
   expect_error(
     raket::rkt_run(
-      parameters = create_params(
+      parameters = create_raket_params(
         sirg = 0.1,
         siri = 0.1,
         scr = 0.2,

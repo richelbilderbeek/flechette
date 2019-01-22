@@ -1,7 +1,7 @@
 context("rkt_get_n_params")
 
 test_that("rkt_get_n_params must match the number of parameter", {
-  parameters <- create_params(
+  parameters <- create_raket_params(
     sirg = 0.1,
     siri = 0.1,
     scr = 0.2,

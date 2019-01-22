@@ -1,4 +1,4 @@
-context("create_params")
+context("create_raket_params")
 
 test_that("use", {
 
@@ -19,7 +19,7 @@ test_that("use", {
   site_model <- "GTR"
   clock_model <- "RLN"
 
-  parameters <- create_params(
+  parameters <- create_raket_params(
     sirg = sirg,
     siri = siri,
     scr = scr,

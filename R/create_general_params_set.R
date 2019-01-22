@@ -41,7 +41,7 @@ create_general_params_set <- function(
                   if (siri == 0.5) {
                     increase_factor <- increase_factor * 2
                   }
-                  params <- create_params(
+                  params <- create_raket_params(
                     sirg = sirg,
                     siri = siri,
                     scr = scr,

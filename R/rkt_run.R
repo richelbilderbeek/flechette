@@ -1,6 +1,6 @@
 #' Run one point of the experiment
 #' @param parameters biological and methodological parameters,
-#'   as created by \code{\link{create_params}}
+#'   as created by \code{\link{create_raket_params}}
 #' @param verbose set to TRUE for more (debug) output
 #' @author Richel J.C. Bilderbeek
 #' @export
