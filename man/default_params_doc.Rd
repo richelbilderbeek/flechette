@@ -7,8 +7,8 @@ documentation.}
 \usage{
 default_params_doc(alignment_params, crown_age, erg, eri, experiment_type,
   gen_model_select_params, max_n_params, mcmc, mcmc_chain_length,
-  n_replicates, pbd_params, quantile, raket_params, scr, sequence_length,
-  sir, sirg, siri, stem_age, twinning_params, verbose)
+  n_replicates, pbd_params, quantile, raket_params, sampling_method, scr,
+  sequence_length, sir, sirg, siri, stem_age, twinning_params, verbose)
 }
 \arguments{
 \item{alignment_params}{parameters for creating an alignment,
@@ -26,7 +26,7 @@ must a member of \code{\link{rkt_get_experiment_types}}}
 \item{gen_model_select_params}{a generative model selection parameter,
 which will select the generative model to be run in
 the Bayesian inference.
-Use \code{\link[pirouette]{create_gen_model_select_params}} to create
+Use \link[pirouette]{create_gen_model_select_param} to create
 this parameter set}
 
 \item{max_n_params}{the maximum number of parameters created. Set to a lower
@@ -47,6 +47,9 @@ as returned by \code{\link[becosys]{create_pbd_params}}}
 
 \item{raket_params}{\code{raket} parameters for one experiment,
 as can be created by \code{\link{create_raket_params}}}
+
+\item{sampling_method}{method how the incipient species representing a
+species is picked. Must be in \link{rkt_get_sampling_methods}.}
 
 \item{scr}{speciation completion rate}
 

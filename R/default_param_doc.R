@@ -10,7 +10,7 @@
 #' @param gen_model_select_params a generative model selection parameter,
 #'   which will select the generative model to be run in
 #'   the Bayesian inference.
-#'   Use \code{\link[pirouette]{create_gen_model_select_params}} to create
+#'   Use \link[pirouette]{create_gen_model_select_param} to create
 #'   this parameter set
 #' @param max_n_params the maximum number of parameters created. Set to a lower
 #'   value in debugging
@@ -24,6 +24,8 @@
 #' @param quantile the quantile, a value from, and including, zero to one
 #' @param raket_params \code{raket} parameters for one experiment,
 #'   as can be created by \code{\link{create_raket_params}}
+#' @param sampling_method method how the incipient species representing a
+#'   species is picked. Must be in \link{rkt_get_sampling_methods}.
 #' @param scr speciation completion rate
 #' @param sequence_length a DNA sequence length, in base pairs
 #' @param sir speciation initiation rate of both
@@ -53,6 +55,7 @@ default_params_doc <- function(
   pbd_params,
   quantile,
   raket_params,
+  sampling_method,
   scr,
   sequence_length,
   sir,

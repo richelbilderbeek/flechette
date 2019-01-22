@@ -23,28 +23,11 @@ as can be created by \code{\link[pirouette]{create_alignment_params}}}
 \item{gen_model_select_params}{a generative model selection parameter,
 which will select the generative model to be run in
 the Bayesian inference.
-Use \code{\link[pirouette]{create_gen_model_select_params}} to create
+Use \link[pirouette]{create_gen_model_select_param} to create
 this parameter set}
 
 \item{sampling_method}{method how the incipient species representing a
 species is picked. Must be in \link{rkt_get_sampling_methods}.}
-
-\item{crown_age}{crown age, in time units}
-
-\item{crown_age_sigma}{the standard deviation of MRCA prior's
-distribution, in time units}
-
-\item{mcmc}{MCMC options, as created by \link[beautier]{create_mcmc}}
-
-\item{tree_sim_rng_seed}{RNG seed used in the creation of the true
-phylogenetic tree}
-
-\item{beast2_rng_seed}{RNG seed in the creation of the BEAST2 posterior
-(based on the alignment)}
-
-\item{site_model}{site model assumed in the BEAST2 inference}
-
-\item{clock_model}{clock model assumed in the BEAST2 inference}
 }
 \description{
 Create the parameters for one experiment.
