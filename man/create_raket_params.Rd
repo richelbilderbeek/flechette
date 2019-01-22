@@ -26,6 +26,15 @@ the Bayesian inference.
 Use \link[pirouette]{create_gen_model_select_param} to create
 this parameter set}
 
+\item{best_model_select_params}{a parameter set to specify to
+pick the inference model with the highest evidene (also:
+marginal likelihood),
+as can be created by
+\code{\link[pirouette]{create_best_model_select_param}}}
+
+\item{inference_param}{the parameters used in all Bayesian inference,
+as created by \link[pirouette]{create_inference_param}}
+
 \item{sampling_method}{method how the incipient species representing a
 species is picked. Must be in \link{rkt_get_sampling_methods}.}
 }

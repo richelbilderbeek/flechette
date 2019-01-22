@@ -2,6 +2,11 @@
 #' documentation.
 #' @param alignment_params parameters for creating an alignment,
 #'   as can be created by \code{\link[pirouette]{create_alignment_params}}
+#' @param best_model_select_params a parameter set to specify to
+#'   pick the inference model with the highest evidene (also:
+#'   marginal likelihood),
+#'   as can be created by
+#'   \code{\link[pirouette]{create_best_model_select_param}}
 #' @param crown_age the crown age of the phylogeny
 #' @param erg extinction rate of a good species
 #' @param eri extinction rate of an incipient species
@@ -12,6 +17,8 @@
 #'   the Bayesian inference.
 #'   Use \link[pirouette]{create_gen_model_select_param} to create
 #'   this parameter set
+#' @param inference_param the parameters used in all Bayesian inference,
+#'   as created by \link[pirouette]{create_inference_param}
 #' @param max_n_params the maximum number of parameters created. Set to a lower
 #'   value in debugging
 #' @param mcmc one mcmc object,
@@ -43,11 +50,13 @@
 #'   functions to find the documentation parameters
 default_params_doc <- function(
   alignment_params,
+  best_model_select_params,
   crown_age,
   erg,
   eri,
   experiment_type,
   gen_model_select_params,
+  inference_param,
   max_n_params,
   mcmc,
   mcmc_chain_length,
