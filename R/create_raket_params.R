@@ -21,6 +21,6 @@ create_raket_params <- function(
     inference_param = inference_param,
     sampling_method = sampling_method
   )
-  check_raket_params(raket_params)
+  check_raket_params(raket_params) # nolint raket function
   raket_params
 }
