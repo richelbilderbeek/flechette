@@ -5,7 +5,7 @@
 rkt_run <- function(
   raket_params
 ) {
-  check_raket_params(raket_params)
+  check_raket_params(raket_params) # nolint raket function
   testit::assert(beastier::is_beast2_installed())
 
   chain_length <- raket_params$mcmc_chain_length
