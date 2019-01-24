@@ -7,8 +7,13 @@ Run one point of the experiment}
 \usage{
 create_raket_params(pbd_params,
   twinning_params = pirouette::create_twinning_params(),
-  alignment_params, gen_model_select_params, best_model_select_params,
-  inference_params, sampling_method)
+  alignment_params = pirouette::create_alignment_params(root_sequence =
+  "acgt", mutation_rate = 0.1),
+  model_select_params = list(pirouette::create_gen_model_select_param(alignment_params),
+  pirouette::create_best_model_select_param()),
+  inference_params = pirouette::create_inference_params(),
+  error_measure_params = pirouette::create_error_measure_params(),
+  sampling_method)
 }
 \arguments{
 \item{pbd_params}{a PBD parameter set,
@@ -19,18 +24,6 @@ as can be created by \code{\link[pirouette]{create_twinning_params}}}
 
 \item{alignment_params}{parameters for creating an alignment,
 as can be created by \code{\link[pirouette]{create_alignment_params}}}
-
-\item{gen_model_select_params}{a generative model selection parameter,
-which will select the generative model to be run in
-the Bayesian inference.
-Use \link[pirouette]{create_gen_model_select_param} to create
-this parameter set}
-
-\item{best_model_select_params}{a parameter set to specify to
-pick the inference model with the highest evidene (also:
-marginal likelihood),
-as can be created by
-\code{\link[pirouette]{create_best_model_select_param}}}
 
 \item{inference_params}{the parameters used in all Bayesian inference,
 as created by \link[pirouette]{create_inference_params}}

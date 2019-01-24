@@ -19,11 +19,11 @@ test_that("files are created in right folder", {
   #   * data
   #   * figures
 
-  # OK: Parameter filenames are a number with a .csv
+  # OK: Parameter filenames are a number with a .RDa
   expect_true(
     length(
       grep(
-        pattern = "[[:digit:]]?\\.csv$", filenames[1], perl = TRUE, value = TRUE
+        pattern = "[[:digit:]]?\\.RDa$", filenames[1], perl = TRUE, value = TRUE
       )
     ) > 0
   )

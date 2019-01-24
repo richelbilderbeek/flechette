@@ -6,19 +6,24 @@
 create_raket_params <- function(
   pbd_params,
   twinning_params = pirouette::create_twinning_params(),
-  alignment_params,
-  gen_model_select_params,
-  best_model_select_params,
-  inference_params,
+  alignment_params = pirouette::create_alignment_params(
+    root_sequence = "acgt", mutation_rate = 0.1
+  ),
+  model_select_params = list(
+    pirouette::create_gen_model_select_param(alignment_params),
+    pirouette::create_best_model_select_param()
+  ),
+  inference_params = pirouette::create_inference_params(),
+  error_measure_params = pirouette::create_error_measure_params(),
   sampling_method
 ) {
   raket_params <- list(
     pbd_params = pbd_params,
     twinning_params = twinning_params,
     alignment_params = alignment_params,
-    gen_model_select_params = gen_model_select_params,
-    best_model_select_params = best_model_select_params,
+    model_select_params = model_select_params,
     inference_params = inference_params,
+    error_measure_params = error_measure_params,
     sampling_method = sampling_method
   )
   check_raket_params(raket_params) # nolint raket function

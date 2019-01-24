@@ -49,13 +49,10 @@ create_input_files_impl <- function(
 
   filenames <- NULL
   # Must start at one, as the BEAST2 RNG seed must be at least one.
-  index <- 1
   n_files <- length(params_set)
   for (index in seq(1, n_files)) {
-    filename <- file.path(folder_name, "data", paste0(index, ".csv"))
-    params <- as.data.frame(params_set[[index]])
-    utils::write.csv(x = params, file = filename, row.names = FALSE)
-    # saveRDS(object = params, file = filename) # nolint old
+    filename <- file.path(folder_name, "data", paste0(index, ".RDa"))
+    saveRDS(object = params_set[[index]], file = filename)
     index <- index + 1
     filenames <- c(filenames, filename)
   }

@@ -13,90 +13,106 @@ create_general_params_set <- function(
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   params_set <- list()
   index <- 1
-  for (i in seq(1, n_replicates)) {
-    for (sirg in rkt_get_spec_init_rates()) {
-      for (siri in rkt_get_spec_init_rates()) {
-        for (scr in rkt_get_spec_compl_rates()) {
-          for (erg in rkt_get_ext_rates()) {
-            for (eri in rkt_get_ext_rates()) {
-              if (!rkt_is_viable(
-                  crown_age = crown_age,
-                  erg = erg,
-                  eri = eri,
-                  scr = scr,
-                  sirg = sirg,
-                  siri = siri
-                )
-              ) next
-              if (index >= max_n_params) next
-              increase_factor <- 1
-              if (scr == 1.0) {
-                increase_factor <- increase_factor * 2
-              }
-              if (sirg == 0.5) {
-                increase_factor <- increase_factor * 2
-              }
-              if (siri == 0.5) {
-                increase_factor <- increase_factor * 2
-              }
-              pbd_params <- becosys::create_pbd_params(
-                sirg = sirg,
-                siri = siri,
-                scr = scr,
-                erg = erg,
-                eri = eri
-              )
-              alignment_params <- pirouette::create_alignment_params(
-                root_sequence = pirouette::create_blocked_dna(
-                  length = sequence_length
-                ),
-                mutation_rate = 1.0 / crown_age,
-                rng_seed = index
-              )
-              gen_model_select_params <- list(
-                pirouette::create_gen_model_select_param(
-                  alignment_params = alignment_params,
-                  tree_prior = beautier::create_bd_tree_prior()
-                )
-              )
-              best_model_select_params <- list(
-                pirouette::create_best_model_select_param(
-                  tree_priors = list(
-                    beautier::create_yule_tree_prior(),
-                    beautier::create_bd_tree_prior()
-                  )
-                )
-              )
-              inference_params <- pirouette::create_inference_params(
-                mrca_prior = beautier::create_mrca_prior(
-                  alignment_id = "to be added by pir_run",
-                  taxa_names = c("to", "be", "added", "by", "pir_run"),
-                  is_monophyletic = TRUE,
-                  mrca_distr = beautier::create_normal_distr(
-                    mean = crown_age,
-                    sigma = 0.0005
-                  )
-                ),
-                mcmc = beautier::create_mcmc(
-                  chain_length = mcmc_chain_length * increase_factor,
-                  store_every = 1000 * increase_factor
-                ),
-                rng_seed = index
-              )
-              params <- create_raket_params(
-                pbd_params = pbd_params,
-                alignment_params = alignment_params,
-                gen_model_select_params = gen_model_select_params,
-                best_model_select_params = best_model_select_params,
-                inference_params = inference_params,
-                sampling_method = "random"
-              )
-              params_set[[index]] <- params
-              index <- index + 1
-            }
-          }
-        }
-      }
+  bio_params_all <- expand.grid(
+    sirg = rkt_get_spec_init_rates(),
+    siri = rkt_get_spec_init_rates(),
+    scr = rkt_get_spec_compl_rates(),
+    erg = rkt_get_ext_rates(),
+    eri = rkt_get_ext_rates()
+  )
+  bio_params <- bio_params_all[
+    rkt_are_viable(
+      crown_age = crown_age,
+      ergs = bio_params_all$erg,
+      eris = bio_params_all$eri,
+      scrs = bio_params_all$scr,
+      sirgs = bio_params_all$sirg,
+      siris = bio_params_all$siri
+    ), ]
+
+  # All shared variables, only the RNG seed needs to be set
+  twinning_params <- create_twinning_params()
+  alignment_params <- create_alignment_params(
+    root_sequence = create_blocked_dna(
+      length = sequence_length
+    ),
+    mutation_rate = 1.0 / crown_age
+  )
+  gen_model_select_params <- list(
+    create_gen_model_select_param(
+      alignment_params = alignment_params,
+      tree_prior = beautier::create_bd_tree_prior()
+    )
+  )
+  best_model_select_params <- list(
+    create_best_model_select_param(
+      tree_priors = list(
+        beautier::create_yule_tree_prior(),
+        beautier::create_bd_tree_prior()
+      )
+    )
+  )
+  model_select_params <- list(
+    gen_model_select_params, best_model_select_params
+  )
+  inference_params <- create_inference_params(
+    mrca_prior = beautier::create_mrca_prior(
+      is_monophyletic = TRUE,
+      mrca_distr = beautier::create_normal_distr(
+        mean = crown_age,
+        sigma = 0.0005
+      )
+    )
+  )
+  error_measure_params <- create_error_measure_params()
+
+  # Go through all rows of the biological parameters
+  for (row_index in seq(1, nrow(bio_params))) {
+    erg <- bio_params$erg[row_index]
+    eri <- bio_params$eri[row_index]
+    scr <- bio_params$scr[row_index]
+    sirg <- bio_params$sirg[row_index]
+    siri <- bio_params$siri[row_index]
+
+    pbd_params <- becosys::create_pbd_params(
+      sirg = sirg,
+      siri = siri,
+      scr = scr,
+      erg = erg,
+      eri = eri
+    )
+
+    # Let runs that converge slower run longer to achieve a high enough ESS
+    increase_factor <- 1
+    if (scr == 1.0) {
+      increase_factor <- increase_factor * 2
+    }
+    if (sirg == 0.5) {
+      increase_factor <- increase_factor * 2
+    }
+    if (siri == 0.5) {
+      increase_factor <- increase_factor * 2
+    }
+    for (i in seq(1, n_replicates)) {
+      if (index >= max_n_params) next
+
+      alignment_params$rng_seed <- index
+      inference_params$rng_seed <- index
+      inference_params$mcmc <- beautier::create_mcmc(
+        chain_length = mcmc_chain_length * increase_factor,
+        store_every = 1000 * increase_factor
+      )
+      params <- create_raket_params(
+        pbd_params = pbd_params,
+        twinning_params = twinning_params,
+        alignment_params = alignment_params,
+        model_select_params = model_select_params,
+        inference_params = inference_params,
+        error_measure_params = error_measure_params,
+        sampling_method = "random"
+      )
+      params_set[[index]] <- params
+      index <- index + 1
     }
   }
   params_set
