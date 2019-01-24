@@ -8,7 +8,7 @@ Run one point of the experiment}
 create_raket_params(pbd_params,
   twinning_params = pirouette::create_twinning_params(),
   alignment_params, gen_model_select_params, best_model_select_params,
-  inference_param, sampling_method)
+  inference_params, sampling_method)
 }
 \arguments{
 \item{pbd_params}{a PBD parameter set,
@@ -32,8 +32,8 @@ marginal likelihood),
 as can be created by
 \code{\link[pirouette]{create_best_model_select_param}}}
 
-\item{inference_param}{the parameters used in all Bayesian inference,
-as created by \link[pirouette]{create_inference_param}}
+\item{inference_params}{the parameters used in all Bayesian inference,
+as created by \link[pirouette]{create_inference_params}}
 
 \item{sampling_method}{method how the incipient species representing a
 species is picked. Must be in \link{rkt_get_sampling_methods}.}

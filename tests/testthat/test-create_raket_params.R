@@ -25,7 +25,7 @@ test_that("use", {
   best_model_select_params <- list(pirouette::create_best_model_select_param())
   pirouette:::check_model_select_params(best_model_select_params)
 
-  inference_param <- pirouette::create_inference_param(
+  inference_params <- pirouette::create_inference_params(
     mrca_prior = beautier::create_mrca_prior(
       alignment_id = "to be added by pir_run",
       taxa_names = c("to", "be", "added", "by", "pir_run"),
@@ -45,7 +45,7 @@ test_that("use", {
     alignment_params = alignment_params,
     gen_model_select_params = gen_model_select_params,
     best_model_select_params = best_model_select_params,
-    inference_param = inference_param,
+    inference_params = inference_params,
     sampling_method = sampling_method
   )
 
@@ -53,6 +53,6 @@ test_that("use", {
   expect_equal(alignment_params, raket_params$alignment_params)
   expect_equal(gen_model_select_params, raket_params$gen_model_select_params)
   expect_equal(best_model_select_params, raket_params$best_model_select_params)
-  expect_equal(inference_param, raket_params$inference_param)
+  expect_equal(inference_params, raket_params$inference_params)
   expect_equal(sampling_method, as.character(raket_params$sampling_method))
 })

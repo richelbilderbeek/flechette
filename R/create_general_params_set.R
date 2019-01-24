@@ -67,7 +67,7 @@ create_general_params_set <- function(
                   )
                 )
               )
-              inference_param <- pirouette::create_inference_param(
+              inference_params <- pirouette::create_inference_params(
                 mrca_prior = beautier::create_mrca_prior(
                   alignment_id = "to be added by pir_run",
                   taxa_names = c("to", "be", "added", "by", "pir_run"),
@@ -88,7 +88,7 @@ create_general_params_set <- function(
                 alignment_params = alignment_params,
                 gen_model_select_params = gen_model_select_params,
                 best_model_select_params = best_model_select_params,
-                inference_param = inference_param,
+                inference_params = inference_params,
                 sampling_method = "random"
               )
               params_set[[index]] <- params

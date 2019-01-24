@@ -64,7 +64,7 @@ rkt_run <- function(
       sigma = beautier::create_sigma_param(value = 0.01)
     ),
     beast2_rng_seed = raket_params$beast2_rng_seed,
-    verbose = raket_params$inference_param$verbose
+    verbose = raket_params$inference_params$verbose
   )
   out$raket_params <- raket_params
   out$incipient_tree <- pbd_output$igtree.extant

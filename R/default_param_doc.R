@@ -17,8 +17,8 @@
 #'   the Bayesian inference.
 #'   Use \link[pirouette]{create_gen_model_select_param} to create
 #'   this parameter set
-#' @param inference_param the parameters used in all Bayesian inference,
-#'   as created by \link[pirouette]{create_inference_param}
+#' @param inference_params the parameters used in all Bayesian inference,
+#'   as created by \link[pirouette]{create_inference_params}
 #' @param max_n_params the maximum number of parameters created. Set to a lower
 #'   value in debugging
 #' @param mcmc one mcmc object,
@@ -56,7 +56,7 @@ default_params_doc <- function(
   eri,
   experiment_type,
   gen_model_select_params,
-  inference_param,
+  inference_params,
   max_n_params,
   mcmc,
   mcmc_chain_length,

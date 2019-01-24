@@ -28,7 +28,7 @@ create_test_raket_params <- function() {
   best_model_select_params <- list(pirouette::create_best_model_select_param())
   pirouette:::check_model_select_params(best_model_select_params)
 
-  inference_param <- pirouette::create_inference_param(
+  inference_params <- pirouette::create_inference_params(
     mrca_prior = beautier::create_mrca_prior(
       alignment_id = "to be added by pir_run",
       taxa_names = c("to", "be", "added", "by", "pir_run"),
@@ -48,7 +48,7 @@ create_test_raket_params <- function() {
     alignment_params = alignment_params,
     gen_model_select_params = gen_model_select_params,
     best_model_select_params = best_model_select_params,
-    inference_param = inference_param,
+    inference_params = inference_params,
     sampling_method = sampling_method
   )
 }

@@ -16,7 +16,7 @@ create_sampling_params_set <- function(
     max_n_params = max_n_params
   )
 
-  crown_age <- general_params_set[[1]]$inference_param$mrca_prior$mrca_distr$mean$value # nolint yes, no Law of Demeter here
+  crown_age <- general_params_set[[1]]$inference_params$mrca_prior$mrca_distr$mean$value # nolint yes, no Law of Demeter here
 
   sampling_params_set <- list()
   index <- 1

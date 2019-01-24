@@ -9,7 +9,7 @@ create_raket_params <- function(
   alignment_params,
   gen_model_select_params,
   best_model_select_params,
-  inference_param,
+  inference_params,
   sampling_method
 ) {
   raket_params <- list(
@@ -18,7 +18,7 @@ create_raket_params <- function(
     alignment_params = alignment_params,
     gen_model_select_params = gen_model_select_params,
     best_model_select_params = best_model_select_params,
-    inference_param = inference_param,
+    inference_params = inference_params,
     sampling_method = sampling_method
   )
   check_raket_params(raket_params) # nolint raket function

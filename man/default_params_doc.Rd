@@ -6,7 +6,7 @@
 documentation.}
 \usage{
 default_params_doc(alignment_params, best_model_select_params, crown_age,
-  erg, eri, experiment_type, gen_model_select_params, inference_param,
+  erg, eri, experiment_type, gen_model_select_params, inference_params,
   max_n_params, mcmc, mcmc_chain_length, n_replicates, pbd_params,
   quantile, raket_params, sampling_method, scr, sequence_length, sir, sirg,
   siri, stem_age, twinning_params, verbose)
@@ -36,8 +36,8 @@ the Bayesian inference.
 Use \link[pirouette]{create_gen_model_select_param} to create
 this parameter set}
 
-\item{inference_param}{the parameters used in all Bayesian inference,
-as created by \link[pirouette]{create_inference_param}}
+\item{inference_params}{the parameters used in all Bayesian inference,
+as created by \link[pirouette]{create_inference_params}}
 
 \item{max_n_params}{the maximum number of parameters created. Set to a lower
 value in debugging}

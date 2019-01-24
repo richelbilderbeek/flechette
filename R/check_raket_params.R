@@ -11,7 +11,7 @@ check_raket_params <- function(
   argument_names <- c(
     "pbd_params", "twinning_params", "alignment_params",
     "gen_model_select_params", "best_model_select_params",
-    "inference_param",
+    "inference_params",
     "sampling_method"
   )
   for (arg_name in argument_names) {
@@ -27,7 +27,7 @@ check_raket_params <- function(
   pirouette:::check_alignment_params(raket_params$alignment_params) # nolint internal pirouette function, will be exported in pirouette v1.1
   pirouette:::check_model_select_params(raket_params$gen_model_select_params) # nolint internal pirouette function, will be exported in pirouette v1.1
   pirouette:::check_model_select_params(raket_params$best_model_select_params) # nolint internal pirouette function, will be exported in pirouette v1.1
-  pirouette:::check_inference_param(raket_params$inference_param) # nolint internal pirouette function, will be exported in pirouette v1.1
+  pirouette:::check_inference_params(raket_params$inference_params) # nolint internal pirouette function, will be exported in pirouette v1.1
   testit::assert(
     raket_params$sampling_method %in% raket::rkt_get_sampling_methods()
   )
