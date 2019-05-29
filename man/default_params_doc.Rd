@@ -8,8 +8,8 @@ documentation.}
 default_params_doc(alignment_params, best_model_select_params, crown_age,
   erg, eri, experiment_type, gen_model_select_params, inference_params,
   max_n_params, mcmc, mcmc_chain_length, n_replicates, pbd_params,
-  quantile, raket_params, sampling_method, scr, sequence_length, sir, sirg,
-  siri, stem_age, twinning_params, verbose)
+  pir_params, quantile, raket_params, sampling_method, scr,
+  sequence_length, sir, sirg, siri, stem_age, twinning_params, verbose)
 }
 \arguments{
 \item{alignment_params}{parameters for creating an alignment,
@@ -52,6 +52,9 @@ number of states}
 
 \item{pbd_params}{a PBD parameter set,
 as returned by \code{\link[becosys]{create_pbd_params}}}
+
+\item{pir_params}{\code[pirouette] parameter set,
+as created by \link[pirouette]{create_pir_params}}
 
 \item{quantile}{the quantile, a value from, and including, zero to one}
 

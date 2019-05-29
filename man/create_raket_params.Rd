@@ -11,6 +11,9 @@ create_raket_params(pbd_params, pir_params, sampling_method)
 \item{pbd_params}{a PBD parameter set,
 as returned by \code{\link[becosys]{create_pbd_params}}}
 
+\item{pir_params}{\code[pirouette] parameter set,
+as created by \link[pirouette]{create_pir_params}}
+
 \item{sampling_method}{method how the incipient species representing a
 species is picked. Must be in \link{rkt_get_sampling_methods}.}
 }
