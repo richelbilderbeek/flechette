@@ -31,18 +31,12 @@ rkt_run <- function(
   testit::assert(!is.na(true_phylogeny))
 
   # Let pirouette measure the error
-  testit::assert("twinning_params" %in% names(raket_params))
-  testit::assert("alignment_params" %in% names(raket_params))
-  testit::assert("model_select_params" %in% names(raket_params))
-  testit::assert("inference_params" %in% names(raket_params))
-  testit::assert("error_measure_params" %in% names(raket_params))
-
+  # The results are stored in the files specifief
+  # at raket_params$pir_params$experiments[...]$beast2_options
+  testit::assert("pir_params" %in% names(raket_params))
   pirouette::pir_run(
     phylogeny = true_phylogeny,
-    twinning_params = raket_params$twinning_params,
-    alignment_params = raket_params$alignment_params,
-    model_select_params = raket_params$model_select_params,
-    inference_params = raket_params$inference_params,
-    error_measure_params = raket_params$error_measure_params
+    pir_params = raket_params$pir_params
+
   )
 }

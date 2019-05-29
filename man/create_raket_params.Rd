@@ -5,28 +5,11 @@
 \title{Create the parameters for one experiment.
 Run one point of the experiment}
 \usage{
-create_raket_params(pbd_params,
-  twinning_params = pirouette::create_twinning_params(),
-  alignment_params = pirouette::create_alignment_params(root_sequence =
-  "acgt", mutation_rate = 0.1),
-  model_select_params = list(pirouette::create_gen_model_select_param(alignment_params),
-  pirouette::create_best_model_select_param()),
-  inference_params = pirouette::create_inference_params(),
-  error_measure_params = pirouette::create_error_measure_params(),
-  sampling_method)
+create_raket_params(pbd_params, pir_params, sampling_method)
 }
 \arguments{
 \item{pbd_params}{a PBD parameter set,
 as returned by \code{\link[becosys]{create_pbd_params}}}
-
-\item{twinning_params}{parameters for creating a twin tree,
-as can be created by \code{\link[pirouette]{create_twinning_params}}}
-
-\item{alignment_params}{parameters for creating an alignment,
-as can be created by \code{\link[pirouette]{create_alignment_params}}}
-
-\item{inference_params}{the parameters used in all Bayesian inference,
-as created by \link[pirouette]{create_inference_params}}
 
 \item{sampling_method}{method how the incipient species representing a
 species is picked. Must be in \link{rkt_get_sampling_methods}.}
