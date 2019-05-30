@@ -23,17 +23,10 @@ Requires:
     tools,
     TreeSim
 Imports:
-    babette,
     beautier,
     beastier,
-    geiger,
     nLTT,
-    PBD,
-    phangorn,
-    phytools,
     pirouette,
-    Rdpack,
-    ribir,
     tracerer
 Suggests:
     ape,

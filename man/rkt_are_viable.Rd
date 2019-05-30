@@ -10,6 +10,16 @@ rkt_are_viable(crown_age, ergs, eris, scrs, sirgs, siris,
 \arguments{
 \item{crown_age}{the crown age of the phylogeny}
 
+\item{ergs}{extinction rates for good species}
+
+\item{eris}{extinction rates for incipient species}
+
+\item{scrs}{speciation completion rates}
+
+\item{sirgs}{speciation initiation rates of good species}
+
+\item{siris}{speciation initiation rates of incipient species}
+
 \item{quantile}{the quantile, a value from, and including, zero to one}
 }
 \description{
