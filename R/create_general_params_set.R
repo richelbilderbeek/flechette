@@ -4,15 +4,13 @@
 #' @export
 #' @author Richel Bilderbeek
 create_general_params_set <- function(
-  crown_age = 15,
+  crown_age = 15.0,
   max_n_params = Inf,
   mcmc_chain_length = 1111000,
   n_replicates = 1,
   sequence_length = 15000
 ) {
-  # Must start at one, as the BEAST2 RNG seed must be at least one.
-  params_set <- list()
-  index <- 1
+  # A data frame with all combinations
   bio_params_all <- expand.grid(
     sirg = rkt_get_spec_init_rates(),
     siri = rkt_get_spec_init_rates(),
@@ -20,6 +18,7 @@ create_general_params_set <- function(
     erg = rkt_get_ext_rates(),
     eri = rkt_get_ext_rates()
   )
+  # A data frame with all viable combinations
   bio_params <- bio_params_all[
     rkt_are_viable(
       crown_age = crown_age,
@@ -28,16 +27,28 @@ create_general_params_set <- function(
       scrs = bio_params_all$scr,
       sirgs = bio_params_all$sirg,
       siris = bio_params_all$siri
-    ), ]
-
-  # All shared variables, only the RNG seed needs to be set
-  twinning_params <- create_twinning_params()
-  alignment_params <- create_alignment_params(
-    root_sequence = create_blocked_dna(
-      length = sequence_length
     ),
-    mutation_rate = 1.0 / crown_age
-  )
+  ]
+  # A list of all viable combinations
+  pbd_paramses <- list()
+
+  for (i in seq(1, nrow(bio_params))) {
+    erg <- bio_params$erg[i]
+    eri <- bio_params$eri[i]
+    scr <- bio_params$scr[i]
+    sirg <- bio_params$sirg[i]
+    siri <- bio_params$siri[i]
+    pbd_params <- becosys::create_pbd_params(
+      sirg = sirg,
+      siri = siri,
+      scr = scr,
+      erg = erg,
+      eri = eri
+    )
+    pbd_paramses[[i]] <- pbd_params
+  }
+  testit::assert(length(pbd_paramses) == nrow(bio_params))
+
   ##############################################################################
   # Create all experiments
   ##############################################################################
@@ -70,52 +81,71 @@ create_general_params_set <- function(
       )
     )
   }
-  error_measure_params <- pirouette::create_error_measure_params()
+  ##############################################################################
+  # Create the pirouette parameters
+  ##############################################################################
+  # All shared variables, only the RNG seed needs to be set
+  pir_params <- pirouette::create_pir_params(
+    alignment_params = pirouette::create_alignment_params(
+      root_sequence = pirouette::create_blocked_dna(
+        length = sequence_length
+      ),
+      mutation_rate = 1.0 / crown_age
+    ),
+    twinning_params = pirouette::create_twinning_params(),
+    experiments = experiments,
+    error_measure_params = pirouette::create_error_measure_params(),
+    evidence_filename = tempfile(pattern = "evidence_", fileext = ".csv")
+  )
 
-  # Go through all rows of the biological parameters
-  for (row_index in seq(1, nrow(bio_params))) {
-    erg <- bio_params$erg[row_index]
-    eri <- bio_params$eri[row_index]
-    scr <- bio_params$scr[row_index]
-    sirg <- bio_params$sirg[row_index]
-    siri <- bio_params$siri[row_index]
 
-    pbd_params <- becosys::create_pbd_params(
-      sirg = sirg,
-      siri = siri,
-      scr = scr,
-      erg = erg,
-      eri = eri
+  ##############################################################################
+  # Create 'params_set'
+  ##############################################################################
+  # 'params_set' is the set of all parameters this function creates
+  # 'index' is the current index in that list
+  #   ('index' must start at one, as the BEAST2 RNG seed must be at least one)
+  params_set <- list()
+  index <- 1
+
+  # Biological parameters
+  for (i in seq_along(pbd_paramses)) {
+    pbd_params <- pbd_paramses[[i]]
+
+    # Create an MCMC that runs longer if there is slower convergence
+    increase_factor <- 1
+    if (pbd_params$scr == 1.0) {
+      increase_factor <- increase_factor * 2
+    }
+    if (pbd_params$sirg == 0.5) {
+      increase_factor <- increase_factor * 2
+    }
+    if (pbd_params$siri == 0.5) {
+      increase_factor <- increase_factor * 2
+    }
+    mcmc <- beautier::create_mcmc(
+      chain_length = mcmc_chain_length * increase_factor,
+      store_every = 1000 * increase_factor
     )
 
-    # Let runs that converge slower run longer to achieve a high enough ESS
-    increase_factor <- 1
-    if (scr == 1.0) {
-      increase_factor <- increase_factor * 2
-    }
-    if (sirg == 0.5) {
-      increase_factor <- increase_factor * 2
-    }
-    if (siri == 0.5) {
-      increase_factor <- increase_factor * 2
-    }
+    # Replicates
     for (i in seq(1, n_replicates)) {
       if (index >= max_n_params) next
 
-      alignment_params$rng_seed <- index
-      inference_params$rng_seed <- index
-      inference_params$mcmc <- beautier::create_mcmc(
-        chain_length = mcmc_chain_length * increase_factor,
-        store_every = 1000 * increase_factor
-      )
+      # Set the RNG seeds, use 'index' as it is unique
+      pir_params$alignment_params$rng_seed <- index
+      pir_params$twinning_params$rng_seed <- index
+      for (i in seq_along(experiments)) {
+        pir_params$experiments[[i]]$beast2_options$rng_seed <- index
+      }
+      # Set the MCMCs
+      for (i in seq_along(experiments)) {
+        pir_params$experiments[[i]]$inference_model$mcmc <- mcmc
+      }
+
       params <- create_raket_params(
         pbd_params = pbd_params,
-        pir_params = pirouette::create_pir_params(
-          twinning_params = twinning_params,
-          alignment_params = alignment_params,
-          experiments = experiments,
-          error_measure_params = error_measure_params
-        ),
+        pir_params = pir_params,
         sampling_method = "random"
       )
       params_set[[index]] <- params
