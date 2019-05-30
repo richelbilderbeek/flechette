@@ -5,7 +5,7 @@
 #' @export
 #' @author Richel J.C. Bilderbeek
 create_test_raket_params <- function() {
-  crown_age <- 15
+  crown_age <- 15.0
   crown_age_sigma <- 0.01
   pbd_params <- becosys::create_pbd_params(
     sirg = 0.1,
@@ -19,40 +19,56 @@ create_test_raket_params <- function() {
     root_sequence = pirouette::create_blocked_dna(length = 32),
     mutation_rate = 0.12
   )
-  gen_model_select_params <- list(
-    pirouette::create_gen_model_select_param(
-      alignment_params = alignment_params
-    )
-  )
-  pirouette:::check_model_select_params(gen_model_select_params)
+  ##############################################################################
+  # Create all experiments
+  ##############################################################################
+  #
+  # +-----+-----+------+-----+
+  # |     |site |clock |tree |
+  # |type |model|model |prior|
+  # +-----+-----+------+-----+
+  # |gen  |JC   |strict|BD   |
+  # +-----+-----+------+-----+
+  # |cand | .. all others .. |
+  # +-----+-----+------+-----+
+  #
+  gen_experiment <- pirouette::create_gen_experiment()
+  gen_experiment$inference_model$tree_prior <- beautier::create_bd_tree_prior()
+  cand_experiments <- pirouette::create_all_experiments(
+    exclude_model = gen_experiment$inference_model
+  )[1:2]
+  testit::assert(length(cand_experiments) >= 1)
+  experiments <- c(list(gen_experiment), cand_experiments)
+  testit::assert(length(experiments) == 1 + length(cand_experiments))
 
-  best_model_select_params <- list(pirouette::create_best_model_select_param())
-  pirouette:::check_model_select_params(best_model_select_params)
-  model_select_params <- list(gen_model_select_params, best_model_select_params)
-
-  inference_params <- pirouette::create_inference_params(
-    mrca_prior = beautier::create_mrca_prior(
-      alignment_id = "to be added by pir_run",
-      taxa_names = c("to", "be", "added", "by", "pir_run"),
+  # Set an MRCA prior in all experiments
+  for (i in seq_along(experiments)) {
+    experiments[[i]]$inference_model$mrca_prior <- beautier::create_mrca_prior(
       is_monophyletic = TRUE,
       mrca_distr = beautier::create_normal_distr(
         mean = crown_age,
         sigma = crown_age_sigma
       )
-    ),
-    mcmc = beautier::create_mcmc(chain_length = 12300)
-  )
+    )
+  }
+  # Set a short MCMC in all experiments
+  for (i in seq_along(experiments)) {
+    experiments[[i]]$inference_model$mcmc <- beautier::create_mcmc(
+      chain_length = 2000, store_every = 1000
+    )
+  }
 
   error_measure_params <- pirouette::create_error_measure_params()
   sampling_method <- "shortest"
 
   create_raket_params(
     pbd_params = pbd_params,
-    twinning_params = twinning_params,
-    alignment_params = alignment_params,
-    model_select_params = model_select_params,
-    inference_params = inference_params,
-    error_measure_params = error_measure_params,
+    pir_params = pirouette::create_pir_params(
+      twinning_params = twinning_params,
+      alignment_params = alignment_params,
+      experiments = experiments,
+      error_measure_params = error_measure_params
+    ),
     sampling_method = sampling_method
   )
 }
