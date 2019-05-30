@@ -28,7 +28,7 @@
 #' @param n_replicates number of replicates per biological parameter set
 #' @param pbd_params a PBD parameter set,
 #'   as returned by \code{\link[becosys]{create_pbd_params}}
-#' @param pir_params \code[pirouette] parameter set,
+#' @param pir_params \code{pirouette} parameter set,
 #'   as created by \link[pirouette]{create_pir_params}
 #' @param quantile the quantile, a value from, and including, zero to one
 #' @param raket_params \code{raket} parameters for one experiment,

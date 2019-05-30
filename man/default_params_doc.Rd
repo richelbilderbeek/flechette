@@ -53,7 +53,7 @@ number of states}
 \item{pbd_params}{a PBD parameter set,
 as returned by \code{\link[becosys]{create_pbd_params}}}
 
-\item{pir_params}{\code[pirouette] parameter set,
+\item{pir_params}{\code{pirouette} parameter set,
 as created by \link[pirouette]{create_pir_params}}
 
 \item{quantile}{the quantile, a value from, and including, zero to one}

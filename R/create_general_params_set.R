@@ -38,33 +38,39 @@ create_general_params_set <- function(
     ),
     mutation_rate = 1.0 / crown_age
   )
-  gen_model_select_params <- list(
-    create_gen_model_select_param(
-      alignment_params = alignment_params,
-      tree_prior = beautier::create_bd_tree_prior()
-    )
+  ##############################################################################
+  # Create all experiments
+  ##############################################################################
+  #
+  # +-----+-----+------+-----+
+  # |     |site |clock |tree |
+  # |type |model|model |prior|
+  # +-----+-----+------+-----+
+  # |gen  |JC   |strict|BD   |
+  # +-----+-----+------+-----+
+  # |cand | .. all others .. |
+  # +-----+-----+------+-----+
+  #
+  gen_experiment <- pirouette::create_gen_experiment()
+  gen_experiment$inference_model$tree_prior <- beautier::create_bd_tree_prior()
+  cand_experiments <- pirouette::create_all_experiments(
+    exclude_model = gen_experiment$inference_model
   )
-  best_model_select_params <- list(
-    create_best_model_select_param(
-      tree_priors = list(
-        beautier::create_yule_tree_prior(),
-        beautier::create_bd_tree_prior()
-      )
-    )
-  )
-  model_select_params <- list(
-    gen_model_select_params, best_model_select_params
-  )
-  inference_params <- create_inference_params(
-    mrca_prior = beautier::create_mrca_prior(
+  testit::assert(length(cand_experiments) >= 39)
+  experiments <- c(list(gen_experiment), cand_experiments)
+  testit::assert(length(experiments) == 1 + length(cand_experiments))
+
+  # Set an MRCA prior in all experiments
+  for (i in seq_along(experiments)) {
+    experiments[[i]]$inference_model$mrca_prior <- beautier::create_mrca_prior(
       is_monophyletic = TRUE,
       mrca_distr = beautier::create_normal_distr(
         mean = crown_age,
         sigma = 0.0005
       )
     )
-  )
-  error_measure_params <- create_error_measure_params()
+  }
+  error_measure_params <- pirouette::create_error_measure_params()
 
   # Go through all rows of the biological parameters
   for (row_index in seq(1, nrow(bio_params))) {
@@ -104,11 +110,12 @@ create_general_params_set <- function(
       )
       params <- create_raket_params(
         pbd_params = pbd_params,
-        twinning_params = twinning_params,
-        alignment_params = alignment_params,
-        model_select_params = model_select_params,
-        inference_params = inference_params,
-        error_measure_params = error_measure_params,
+        pir_params = pirouette::create_pir_params(
+          twinning_params = twinning_params,
+          alignment_params = alignment_params,
+          experiments = experiments,
+          error_measure_params = error_measure_params
+        ),
         sampling_method = "random"
       )
       params_set[[index]] <- params
