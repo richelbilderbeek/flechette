@@ -45,13 +45,10 @@
 #'   functions to find the documentation parameters
 default_params_doc <- function(
   alignment_params,
-  best_model_select_params,
   crown_age,
   erg, ergs,
   eri, eris,
   experiment_type,
-  gen_model_select_params,
-  inference_params,
   max_n_params,
   mcmc,
   mcmc_chain_length,
