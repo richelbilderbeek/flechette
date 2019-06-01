@@ -5,9 +5,8 @@
 \title{This function does nothing. It is intended to inherit is parameters'
 documentation.}
 \usage{
-default_params_doc(alignment_params, best_model_select_params, crown_age,
-  erg, ergs, eri, eris, experiment_type, gen_model_select_params,
-  inference_params, max_n_params, mcmc, mcmc_chain_length, n_replicates,
+default_params_doc(alignment_params, crown_age, erg, ergs, eri, eris,
+  experiment_type, max_n_params, mcmc, mcmc_chain_length, n_replicates,
   pbd_params, pir_params, quantile, raket_params, sampling_method, scr,
   scrs, sequence_length, sir, sirg, sirgs, siri, siris, stem_age,
   twinning_params, verbose)
