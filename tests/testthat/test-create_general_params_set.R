@@ -14,13 +14,15 @@ test_that("all less than 1000 taxa with 95% certainty", {
   params_set <- create_general_params_set()
 
   for (params in params_set) {
+    crown_age <- params$pir_params$experiments[[1]]$inference_model$mrca_prior$mrca_distr$mean$value # nolint indeed a long line, sorry Demeter
+    testit::assert(crown_age > 0.0)
     sir <- max(params$pbd_params$sirg, params$pbd_params$siri)
     n <- becosys::pbd_numspec_quantile_checked(
       sir = sir,
       scr = params$pbd_params$scr,
       erg = params$pbd_params$erg,
       eri = params$pbd_params$eri,
-      crown_age = params$inference_params$mrca_prior$mrca_distr$mean$value,
+      crown_age = crown_age,
       quantile = 0.95
     )
     testthat::expect_true(n < 1000)
