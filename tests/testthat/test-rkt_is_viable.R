@@ -4,7 +4,7 @@ test_that("use", {
 
   testthat::expect_true(
     rkt_is_viable(
-      crown_age = 15,
+      crown_age = 15.0,
       erg = 0.0,
       eri = 0.0,
       scr = 1.0,
@@ -14,7 +14,7 @@ test_that("use", {
   )
   testthat::expect_false(
     rkt_is_viable(
-      crown_age = 15,
+      crown_age = 15.0,
       erg = 0.123, # More than sirg
       eri = 0.0,
       scr = 1.0,
@@ -24,7 +24,7 @@ test_that("use", {
   )
   testthat::expect_false(
     rkt_is_viable(
-      crown_age = 15,
+      crown_age = 15.0,
       erg = 0.0,
       eri = 0.123, # More than siri
       scr = 1.0,
@@ -34,7 +34,7 @@ test_that("use", {
   )
   testthat::expect_false(
     rkt_is_viable(
-      crown_age = 15,
+      crown_age = 15.0,
       erg = 0.0,
       eri = 0.0,
       scr = 1.0,
@@ -44,7 +44,7 @@ test_that("use", {
   )
   testthat::expect_false(
     rkt_is_viable(
-      crown_age = 15,
+      crown_age = 15.0,
       erg = 0.0,
       eri = 0.0,
       scr = 1.0,

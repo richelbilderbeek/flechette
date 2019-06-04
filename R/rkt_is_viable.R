@@ -10,6 +10,7 @@ rkt_is_viable <- function(
   siri,
   quantile = 0.95
 ) {
+  testit::assert(crown_age >= 0)
   if (erg >= sirg) return(FALSE)
   if (eri >= siri) return(FALSE)
   sir <- max(sirg, siri)
@@ -37,6 +38,7 @@ rkt_are_viable <- function(
   siris,
   quantile = 0.95
 ) {
+  testit::assert(crown_age > 0.0)
   testit::assert(length(ergs) == length(eris))
   testit::assert(length(ergs) == length(scrs))
   testit::assert(length(ergs) == length(sirgs))
