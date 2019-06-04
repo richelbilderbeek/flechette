@@ -16,7 +16,8 @@ create_sampling_params_set <- function(
     max_n_params = max_n_params
   )
 
-  crown_age <- general_params_set[[1]]$inference_params$mrca_prior$mrca_distr$mean$value # nolint yes, no Law of Demeter here
+  crown_age <- general_params_set[[1]]$pir_params$experiments[[1]]$inference_model$mrca_prior$mrca_distr$mean$value # nolint yes, no Law of Demeter here
+  testit::assert(crown_age >= 0.0)
 
   sampling_params_set <- list()
   index <- 1

@@ -6,7 +6,7 @@ test_that("use", {
 
 test_that("use, sampling", {
   expect_silent(
-    create_params_set("sampling", max_n_params = 2)
+    create_params_set(experiment_type = "sampling", max_n_params = 2)
   )
 })
 

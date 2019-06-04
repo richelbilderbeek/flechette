@@ -54,7 +54,7 @@ test_that("sampling matters", {
       scr = params$scr,
       sirg = params$sirg,
       siri = params$siri,
-      crown_age = params$crown_age
+      crown_age = params$inference_params$mrca_prior$mrca_distr$mean$value
     )
     sum_youngest <- sum(out$stree_youngest$edge.length)
     sum_oldest <- sum(out$stree_oldest$edge.length)
