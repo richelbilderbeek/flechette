@@ -3,5 +3,6 @@
 #' initiation rate of a good species, etc.
 #' @export
 rkt_get_n_params <- function() {
-  301
+
+  416
 }
