@@ -49,7 +49,7 @@ script:
 after_success:
   - Rscript -e 'lintr::lint_package()'
   - travis_wait 60 R Rscript -e 'covr::codecov()'
-  - travis_wait 60 R Rscript -e 'goodpractice::gp()'
+  - # travis_wait 60 R Rscript -e 'goodpractice::gp()'
   - proselint *.md | egrep -v "typography\.symbols\.curly_quotes"
 
 after_failure:
