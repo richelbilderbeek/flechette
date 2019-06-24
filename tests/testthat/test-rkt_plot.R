@@ -8,7 +8,7 @@ test_that("use", {
   n_nltts <- 1000
   max_n_params <- Inf
 
-  if (!ribir::is_on_travis()) {
+  if (!beastier::is_on_travis()) {
     # Smaller on local computer
     n_replicates <- 2
     n_nltts <- 10

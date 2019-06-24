@@ -6,7 +6,7 @@ test_that("Can create such a big data frame, #9", {
   ncols <- rkt_get_max_n_cols()
   nrows <- rkt_get_max_n_rows()
 
-  if (!ribir::is_on_travis()) {
+  if (!beastier::is_on_travis()) {
     # Smaller on local computer
     ncols <- ncols / 10
     nrows <- nrows / 10
