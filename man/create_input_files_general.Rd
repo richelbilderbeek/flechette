@@ -2,6 +2,7 @@
 % Please edit documentation in R/create_input_files.R
 \name{create_input_files_general}
 \alias{create_input_files_general}
+\alias{create_files_raket_paramses}
 \title{Creates the parameter files in the article for the general exploration}
 \usage{
 

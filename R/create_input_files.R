@@ -4,9 +4,10 @@
 #' @param project_folder_name name of the project folder.
 #'   The name of this folder must be \code{raket_werper}.
 #' @return The filenames of all parameter files created
-#' @export
+#' @export create_input_files_general create_files_raket_paramses
+#' @aliases create_input_files_general create_files_raket_paramses
 #' @author Richel Bilderbeek
-create_input_files_general <- function(
+create_input_files_general <- create_files_raket_paramses <- function(
   general_params_set = create_general_params_set(),
   project_folder_name = getwd()
 ) {
@@ -43,7 +44,8 @@ create_input_files_sampling <- function(
 #' @author Richel Bilderbeek
 create_input_files_impl <- function(
   params_set,
-  folder_name
+  folder_name,
+  experiment_type
 ) {
   dir.create(file.path(folder_name, "data"), showWarnings = FALSE)
 

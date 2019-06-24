@@ -4,7 +4,7 @@
 \alias{create_input_files_impl}
 \title{Creates the parameter files in the article for the general exploration}
 \usage{
-create_input_files_impl(params_set, folder_name)
+create_input_files_impl(params_set, folder_name, experiment_type)
 }
 \arguments{
 \item{params_set}{the set of parameters,

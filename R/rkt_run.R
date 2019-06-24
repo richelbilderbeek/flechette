@@ -1,8 +1,9 @@
 #' Run one point of the experiment
 #' @inheritParams default_params_doc
 #' @author Richel J.C. Bilderbeek
-#' @export
-rkt_run <- function(
+#' @aliases run_raket rkt_run
+#' @export run_raket rkt_run
+run_raket <- rkt_run <- function(
   raket_params
 ) {
   check_raket_params(raket_params) # nolint raket function
