@@ -51,7 +51,8 @@ create_input_files_impl <- function(
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   n_files <- length(params_set)
   for (index in seq(1, n_files)) {
-    filename <- file.path(folder_name, "data", paste0(index, ".RDa"))
+    dir.create(file.path(folder_name, "data", index), showWarnings = FALSE)
+    filename <- file.path(folder_name, "data", index, "parameters.RDa")
     saveRDS(object = params_set[[index]], file = filename)
     index <- index + 1
     filenames <- c(filenames, filename)

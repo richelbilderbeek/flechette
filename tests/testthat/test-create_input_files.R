@@ -9,7 +9,7 @@ test_that("files are created in right folder", {
   dir.create(path = project_folder_name, showWarnings = FALSE)
 
   filenames <- create_input_files_general(
-    general_params_set = create_general_params_set(),
+    general_params_set = create_general_params_set(max_n_params = 2),
     project_folder_name = project_folder_name
   )
 
