@@ -2,13 +2,23 @@ context("create_general_params_set")
 
 test_that("must return the number of parameters", {
 
+  max_n_params <- 1
+  params_set <- create_general_params_set(max_n_params = max_n_params)
+  expect_equal(class(params_set), "list")
+  expect_equal(max_n_params, length(params_set))
+
+  if (!beastier::is_on_travis()) return()
+
   max_n_params <- 2
   params_set <- create_general_params_set(max_n_params = max_n_params)
   expect_equal(class(params_set), "list")
   expect_equal(max_n_params, length(params_set))
+
 })
 
 test_that("all less than 1000 taxa with 95% certainty", {
+
+  if (!beastier::is_on_travis()) return()
 
   params_set <- create_general_params_set()
 
@@ -24,6 +34,6 @@ test_that("all less than 1000 taxa with 95% certainty", {
       crown_age = crown_age,
       quantile = 0.95
     )
-    testthat::expect_true(n < 1000)
+    expect_true(n < 1000)
   }
 })

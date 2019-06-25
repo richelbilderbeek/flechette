@@ -14,10 +14,15 @@ create_test_raket_params <- function() {
     erg = 0.01,
     eri = 0.02
   )
-  twinning_params <- pirouette::create_twinning_params()
+  twinning_params <- pirouette::create_twinning_params(
+    twin_tree_filename = razzo::get_pff_tempfile(),
+    twin_alignment_filename = razzo::get_pff_tempfile(),
+    twin_evidence_filename = razzo::get_pff_tempfile()
+  )
   alignment_params <- pirouette::create_alignment_params(
     root_sequence = pirouette::create_blocked_dna(length = 32),
-    mutation_rate = 0.12
+    mutation_rate = 0.12,
+    fasta_filename = razzo::get_pff_tempfile()
   )
   ##############################################################################
   # Create all experiments
@@ -57,6 +62,19 @@ create_test_raket_params <- function() {
       chain_length = 2000, store_every = 1000
     )
   }
+  # Make all filenames PFF
+  for (i in seq_along(experiments)) {
+    experiments[[i]]$beast2_options$input_filename <-
+      razzo::get_pff_tempfile()
+    experiments[[i]]$beast2_options$output_log_filename <-
+      razzo::get_pff_tempfile()
+    experiments[[i]]$beast2_options$output_trees_filenames <-
+      razzo::get_pff_tempfile()
+    experiments[[i]]$beast2_options$output_state_filename <-
+      razzo::get_pff_tempfile()
+    experiments[[i]]$beast2_options$beast2_working_dir <-
+      razzo::get_pff_tempdir()
+  }
 
   error_measure_params <- pirouette::create_error_measure_params()
   sampling_method <- "shortest"
@@ -73,4 +91,5 @@ create_test_raket_params <- function() {
   )
 
   check_raket_params(raket_params)
+  raket_params
 }
