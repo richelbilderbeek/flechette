@@ -34,7 +34,7 @@ test_that("use", {
     check_raket_params(raket_params = list(
       pbd_params = pbd_params, pir_params = pir_params)
     ),
-    "'misc_params' must be an element of a 'raket_params'"
+    "'sampling_method' must be an element of a 'raket_params'"
   )
 
   # Check pbd_params
@@ -74,42 +74,43 @@ test_that("use", {
 
   for (i in seq_along(pir_params$experiments)) {
     raket_params <- good_raket_params
-    raket_params$pir_params$experiments[[i]]$beast2_options$input_filename <- "/tmp/puf"
+    raket_params$pir_params$experiments[[i]]$beast2_options$input_filename <- "/tmp/puf"  # nolint cannot be made to fit on one line, sorry Demeter
     expect_error(
       check_raket_params(raket_params),
       "Peregrine-unfriendly filename for '"
     )
 
     raket_params <- good_raket_params
-    raket_params$pir_params$experiments[[i]]$beast2_options$output_log_filename <- "/tmp/puf"
+    raket_params$pir_params$experiments[[i]]$beast2_options$output_log_filename <- "/tmp/puf"  # nolint cannot be made to fit on one line, sorry Demeter
     expect_error(
       check_raket_params(raket_params),
       "Peregrine-unfriendly filename for '"
     )
 
     raket_params <- good_raket_params
-    raket_params$pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- "/tmp/puf"
+    raket_params$pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- "/tmp/puf"  # nolint cannot be made to fit on one line, sorry Demeter
     expect_error(
       check_raket_params(raket_params),
       "Peregrine-unfriendly filename for '"
     )
 
     raket_params <- good_raket_params
-    raket_params$pir_params$experiments[[i]]$beast2_options$output_state_filename <- "/tmp/puf"
+    raket_params$pir_params$experiments[[i]]$beast2_options$output_state_filename <- "/tmp/puf"  # nolint cannot be made to fit on one line, sorry Demeter
     expect_error(
       check_raket_params(raket_params),
       "Peregrine-unfriendly filename for '"
     )
 
     raket_params <- good_raket_params
-    raket_params$pir_params$experiments[[i]]$beast2_options$beast2_working_dir <- "/tmp/puf"
+    raket_params$pir_params$experiments[[i]]$beast2_options$beast2_working_dir <- "/tmp/puf"  # nolint cannot be made to fit on one line, sorry Demeter
     expect_error(
       check_raket_params(raket_params),
       "Peregrine-unfriendly filename for '"
     )
 
     raket_params <- good_raket_params
-    raket_params$pir_params$experiments[[i]]$beast2_options$beast2_path <- "/tmp/puf"
+    raket_params$pir_params$experiments[[i]]$beast2_options$beast2_path <-
+      "/tmp/puf"
     expect_error(
       check_raket_params(raket_params),
       "Peregrine-unfriendly filename for '"
@@ -117,7 +118,7 @@ test_that("use", {
   }
   # Check misc_params
   raket_params <- good_raket_params
-  raket_params$misc_params$tree_filename <- "/tmp/puf"
+  raket_params$pir_params$twinning_params$twin_tree_filename <- "/tmp/puf"
   expect_error(
     check_raket_params(raket_params),
     "Peregrine-unfriendly filename for '"
