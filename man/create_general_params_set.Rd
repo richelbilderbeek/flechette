@@ -4,11 +4,13 @@
 \alias{create_general_params_set}
 \title{Creates the parameter set for the general exploration}
 \usage{
-create_general_params_set(crown_age = 15, max_n_params = Inf,
-  mcmc_chain_length = 1111000, n_replicates = 1,
-  sequence_length = 15000)
+create_general_params_set(project_folder_name = getwd(),
+  crown_age = 15, max_n_params = Inf, mcmc_chain_length = 1111000,
+  n_replicates = 1, sequence_length = 15000)
 }
 \arguments{
+\item{project_folder_name}{name of project folder}
+
 \item{crown_age}{the crown age of the phylogeny}
 
 \item{max_n_params}{the maximum number of parameters created. Set to a lower

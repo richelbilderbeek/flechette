@@ -9,7 +9,8 @@ check_raket_params <- function(
   raket_params
 ) {
   argument_names <- c(
-    "pbd_params", "pir_params",
+    "pbd_params",
+    "pir_params",
     "sampling_method"
   )
   for (arg_name in argument_names) {
@@ -22,9 +23,7 @@ check_raket_params <- function(
 
   becosys::check_pbd_params(raket_params$pbd_params)
   pirouette::check_pir_params(raket_params$pir_params)
-  testit::assert(
-    raket_params$sampling_method %in% raket::rkt_get_sampling_methods()
-  )
+  check_sampling_method(raket_params$sampling_method)
 
   if (!beautier::has_mrca_prior(
       raket_params$pir_params$experiments[[1]]$inference_model
@@ -41,15 +40,6 @@ check_raket_params <- function(
   first_mrca_prior <- first_experiment$inference_model$mrca_prior
   if (beautier::is_one_na(first_mrca_prior)) {
     stop("An inference model must have a valid MRCA prior that is not NA")
-  }
-  if (raket_params$mbd_params$crown_age !=
-      first_mrca_prior$mrca_distr$mean$value
-  ) {
-    stop(
-      "Crown ages in MBD param (", raket_params$mbd_params$crown_age,
-      ") and inference model's MRCA prior (",
-      first_mrca_prior$mrca_distr$mean$value, ") must be equal"
-    )
   }
   for (experiment in raket_params$pir_params$experiments) {
     mrca_prior <- experiment$inference_model$mrca_prior

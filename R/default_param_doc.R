@@ -20,6 +20,7 @@
 #'   as returned by \code{\link[becosys]{create_pbd_params}}
 #' @param pir_params \code{pirouette} parameter set,
 #'   as created by \link[pirouette]{create_pir_params}
+#' @param project_folder_name name of project folder
 #' @param quantile the quantile, a value from, and including, zero to one
 #' @param raket_params \code{raket} parameters for one experiment,
 #'   as can be created by \code{\link{create_raket_params}}
@@ -58,6 +59,7 @@ default_params_doc <- function(
   n_replicates,
   pbd_params,
   pir_params,
+  project_folder_name,
   quantile,
   raket_params,
   raket_paramses,

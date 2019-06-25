@@ -4,6 +4,7 @@
 #' @export
 #' @author Richel Bilderbeek
 create_general_params_set <- function(
+  project_folder_name = getwd(),
   crown_age = 15.0,
   max_n_params = Inf,
   mcmc_chain_length = 1111000,
@@ -52,6 +53,10 @@ create_general_params_set <- function(
   ##############################################################################
   # Create all experiments
   ##############################################################################
+  # This experiments serves as a template for all others.
+  # Of the others, the unique and PFF filenames and RNG seed need to be set
+  #
+  #
   #
   # +-----+-----+------+-----+
   # |     |site |clock |tree |
@@ -84,7 +89,8 @@ create_general_params_set <- function(
   ##############################################################################
   # Create the pirouette parameters
   ##############################################################################
-  # All shared variables, only the RNG seed needs to be set
+  # This pir_params serves as a template for all others.
+  # Of the others, the unique and PFF filenames and RNG seed need to be set
   pir_params <- pirouette::create_pir_params(
     alignment_params = pirouette::create_alignment_params(
       root_sequence = pirouette::create_blocked_dna(
@@ -94,10 +100,8 @@ create_general_params_set <- function(
     ),
     twinning_params = pirouette::create_twinning_params(),
     experiments = experiments,
-    error_measure_params = pirouette::create_error_measure_params(),
-    evidence_filename = tempfile(pattern = "evidence_", fileext = ".csv")
+    error_measure_params = pirouette::create_error_measure_params()
   )
-
 
   ##############################################################################
   # Create 'params_set'
@@ -130,7 +134,8 @@ create_general_params_set <- function(
 
     # Replicates
     for (i in seq(1, n_replicates)) {
-      if (index >= max_n_params) next
+      if (index > max_n_params) next
+
 
       # Set the RNG seeds, use 'index' as it is unique
       pir_params$alignment_params$rng_seed <- index
@@ -141,6 +146,43 @@ create_general_params_set <- function(
       # Set the MCMCs
       for (i in seq_along(experiments)) {
         pir_params$experiments[[i]]$inference_model$mcmc <- mcmc
+      }
+
+      # Set the filenames
+      pir_params$alignment_params$fasta_filename <- file.path(
+        project_folder_name, index, "pbd.fasta"
+      )
+      pir_params$twinning_params$twin_tree_filename <- file.path(
+        project_folder_name, index, "pbd_twin.tree"
+      )
+      pir_params$twinning_params$twin_alignment_filename <- file.path(
+        project_folder_name, index, "pbd_twin.fasta"
+      )
+      pir_params$twinning_params$twin_evidence_filename <- file.path(
+        project_folder_name, index, "pbd_marg_lik_twin.csv"
+      )
+      pir_params$experiments[[1]]$beast2_options$input_filename <-
+        file.path(project_folder_name, index, "pbd_gen.xml")
+      pir_params$experiments[[1]]$beast2_options$output_log_filename <-
+        file.path(project_folder_name, index, "pbd_gen.log")
+      pir_params$experiments[[1]]$beast2_options$output_trees_filenames <-
+        file.path(project_folder_name, index, "pbd_gen.trees")
+      pir_params$experiments[[1]]$beast2_options$output_state_filename <-
+        file.path(project_folder_name, index, "pbd_gen.xml.state")
+      pir_params$experiments[[1]]$beast2_options$beast2_working_dir <-
+        razzo::get_pff_tempdir()
+      for (i in seq_along(experiments)[-1]) {
+        testit::assert(i > 1)
+        pir_params$experiments[[i]]$beast2_options$input_filename <-
+          file.path(project_folder_name, index, "pbd_gen.xml")
+        pir_params$experiments[[i]]$beast2_options$output_log_filename <-
+          file.path(project_folder_name, index, "pbd_gen.log")
+        pir_params$experiments[[i]]$beast2_options$output_trees_filenames <-
+          file.path(project_folder_name, index, "pbd_gen.trees")
+        pir_params$experiments[[i]]$beast2_options$output_state_filename <-
+          file.path(project_folder_name, index, "pbd_gen.xml.state")
+        pir_params$experiments[[i]]$beast2_options$beast2_working_dir <-
+          razzo::get_pff_tempdir()
       }
 
       params <- create_raket_params(

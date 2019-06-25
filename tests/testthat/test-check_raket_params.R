@@ -7,13 +7,13 @@ test_that("use", {
     check_raket_params(raket_params = good_raket_params)
   )
 
-  mbd_params <- create_test_mbd_params()
+  pbd_params <- create_test_pbd_params()
   pir_params <- create_test_pff_pir_params()
   misc_params <- create_misc_params()
 
   expect_silent(
     create_raket_params(
-      mbd_params = mbd_params,
+      pbd_params = pbd_params,
       pir_params = pir_params,
       misc_params = misc_params
     )
@@ -22,23 +22,23 @@ test_that("use", {
   # Check elements
   expect_error(
     check_raket_params(raket_params = list()),
-    "'mbd_params' must be an element of a 'raket_params'"
+    "'pbd_params' must be an element of a 'raket_params'"
   )
 
   expect_error(
-    check_raket_params(raket_params = list(mbd_params = mbd_params)),
+    check_raket_params(raket_params = list(pbd_params = pbd_params)),
     "'pir_params' must be an element of a 'raket_params'"
   )
 
   expect_error(
     check_raket_params(raket_params = list(
-      mbd_params = mbd_params, pir_params = pir_params)
+      pbd_params = pbd_params, pir_params = pir_params)
     ),
     "'misc_params' must be an element of a 'raket_params'"
   )
 
-  # Check mbd_params
-  # done by check_mbd_params
+  # Check pbd_params
+  # done by check_pbd_params
 
   # Check pir_params
   # Mostly done by check_pir_params

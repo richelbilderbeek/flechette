@@ -7,9 +7,9 @@ documentation.}
 \usage{
 default_params_doc(alignment_params, crown_age, erg, ergs, eri, eris,
   experiment_type, max_n_params, mcmc, mcmc_chain_length, n_replicates,
-  pbd_params, pir_params, quantile, raket_params, raket_paramses,
-  sampling_method, scr, scrs, sequence_length, sir, sirg, sirgs, siri,
-  siris, stem_age, twinning_params, verbose)
+  pbd_params, pir_params, project_folder_name, quantile, raket_params,
+  raket_paramses, sampling_method, scr, scrs, sequence_length, sir, sirg,
+  sirgs, siri, siris, stem_age, twinning_params, verbose)
 }
 \arguments{
 \item{alignment_params}{parameters for creating an alignment,
@@ -44,6 +44,8 @@ as returned by \code{\link[becosys]{create_pbd_params}}}
 
 \item{pir_params}{\code{pirouette} parameter set,
 as created by \link[pirouette]{create_pir_params}}
+
+\item{project_folder_name}{name of project folder}
 
 \item{quantile}{the quantile, a value from, and including, zero to one}
 
