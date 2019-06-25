@@ -18,6 +18,7 @@ r_github_packages:
   - rsetienne/PBD/PBD # Bleeding-edge version
   - richelbilderbeek/mcbette
   - richelbilderbeek/pirouette
+  - richelbilderbeek/razzo@richel
   - MangoTheCat/goodpractice
   - KlausVigo/phangorn
 

@@ -42,6 +42,7 @@ Suggests:
     mauricer,
     mbd,
     plyr,
+    razzo,
     reshape2,
     rmarkdown,
     stringr,

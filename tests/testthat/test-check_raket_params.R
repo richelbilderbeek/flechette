@@ -8,14 +8,14 @@ test_that("use", {
   )
 
   pbd_params <- create_test_pbd_params()
-  pir_params <- create_test_pff_pir_params()
-  misc_params <- create_misc_params()
+  pir_params <- razzo::create_test_pff_pir_params()
+  sampling_method <- rkt_get_sampling_methods()[3]
 
   expect_silent(
     create_raket_params(
       pbd_params = pbd_params,
       pir_params = pir_params,
-      misc_params = misc_params
+      sampling_method = sampling_method
     )
   )
 
