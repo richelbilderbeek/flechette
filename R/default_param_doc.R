@@ -23,6 +23,9 @@
 #' @param quantile the quantile, a value from, and including, zero to one
 #' @param raket_params \code{raket} parameters for one experiment,
 #'   as can be created by \code{\link{create_raket_params}}
+#' @param raket_paramses a list of \code{raket_params},
+#'   as created by \code{\link{create_general_params_set}}
+#'   or \code{\link{create_sampling_params_set}}
 #' @param sampling_method method how the incipient species representing a
 #'   species is picked. Must be in \link{rkt_get_sampling_methods}.
 #' @param scr speciation completion rate
@@ -57,6 +60,7 @@ default_params_doc <- function(
   pir_params,
   quantile,
   raket_params,
+  raket_paramses,
   sampling_method,
   scr, scrs,
   sequence_length,

@@ -6,6 +6,11 @@
 \usage{
 check_raket_paramses(raket_paramses)
 }
+\arguments{
+\item{raket_paramses}{a list of \code{raket_params},
+as created by \code{\link{create_general_params_set}}
+or \code{\link{create_sampling_params_set}}}
+}
 \description{
 Check if the argument is a list of \code{raket_params}
 }

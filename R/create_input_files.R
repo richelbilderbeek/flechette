@@ -36,16 +36,13 @@ create_input_files_sampling <- function(
 }
 
 #' Creates the parameter files in the article for the general exploration
-#' @param raket_paramses a list of \code{raket_params},
-#'   as created by \code{\link{create_general_params_set}}
-#'   or \code{\link{create_sampling_params_set}}
+#' @inheritParams default_params_doc
 #' @param folder_name name of the folder where all files are created
 #' @return The filenames of all parameter files created
 #' @author Richel Bilderbeek
 create_input_files_impl <- function(
   raket_paramses,
-  folder_name,
-  experiment_type
+  folder_name
 ) {
   check_raket_paramses(raket_paramses)
 

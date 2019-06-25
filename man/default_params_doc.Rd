@@ -7,9 +7,9 @@ documentation.}
 \usage{
 default_params_doc(alignment_params, crown_age, erg, ergs, eri, eris,
   experiment_type, max_n_params, mcmc, mcmc_chain_length, n_replicates,
-  pbd_params, pir_params, quantile, raket_params, sampling_method, scr,
-  scrs, sequence_length, sir, sirg, sirgs, siri, siris, stem_age,
-  twinning_params, verbose)
+  pbd_params, pir_params, quantile, raket_params, raket_paramses,
+  sampling_method, scr, scrs, sequence_length, sir, sirg, sirgs, siri,
+  siris, stem_age, twinning_params, verbose)
 }
 \arguments{
 \item{alignment_params}{parameters for creating an alignment,
@@ -49,6 +49,10 @@ as created by \link[pirouette]{create_pir_params}}
 
 \item{raket_params}{\code{raket} parameters for one experiment,
 as can be created by \code{\link{create_raket_params}}}
+
+\item{raket_paramses}{a list of \code{raket_params},
+as created by \code{\link{create_general_params_set}}
+or \code{\link{create_sampling_params_set}}}
 
 \item{sampling_method}{method how the incipient species representing a
 species is picked. Must be in \link{rkt_get_sampling_methods}.}
