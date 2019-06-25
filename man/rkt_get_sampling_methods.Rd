@@ -9,3 +9,6 @@ rkt_get_sampling_methods()
 \description{
 Get the sampling methods used
 }
+\author{
+Richel J.C. Bilderbeek
+}

@@ -61,7 +61,7 @@ create_test_raket_params <- function() {
   error_measure_params <- pirouette::create_error_measure_params()
   sampling_method <- "shortest"
 
-  create_raket_params(
+  raket_params <- create_raket_params(
     pbd_params = pbd_params,
     pir_params = pirouette::create_pir_params(
       twinning_params = twinning_params,
@@ -71,4 +71,6 @@ create_test_raket_params <- function() {
     ),
     sampling_method = sampling_method
   )
+
+  check_raket_params(raket_params)
 }

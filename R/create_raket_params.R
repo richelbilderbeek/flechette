@@ -8,6 +8,10 @@ create_raket_params <- function(
   pir_params,
   sampling_method
 ) {
+  becosys::check_pbd_params(pbd_params)
+  pirouette::check_pir_params(pir_params)
+  check_sampling_method(sampling_method)
+
   raket_params <- list(
     pbd_params = pbd_params,
     pir_params = pir_params,
