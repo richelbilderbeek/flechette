@@ -49,9 +49,10 @@ create_sampling_params_set <- function(
         sampling_params_set[[index]]$sampling_method <- "shortest"
         sampling_params_set[[index + 1]]$sampling_method <- "longest"
         index <- index + 2
-        break ()
+        break()
       }
     }
   }
+  check_raket_paramses(raket_paramses = sampling_params_set)
   sampling_params_set
 }

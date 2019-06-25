@@ -4,10 +4,10 @@
 \alias{create_input_files_impl}
 \title{Creates the parameter files in the article for the general exploration}
 \usage{
-create_input_files_impl(params_set, folder_name, experiment_type)
+create_input_files_impl(raket_paramses, folder_name, experiment_type)
 }
 \arguments{
-\item{params_set}{the set of parameters,
+\item{raket_paramses}{a list of \code{raket_params},
 as created by \code{\link{create_general_params_set}}
 or \code{\link{create_sampling_params_set}}}
 
