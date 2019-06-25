@@ -81,7 +81,7 @@ The input file is then run, its results save to an output file:
 
 ```
 posterior_filesname <- tempfile("out.RDa")
-raket::create_posterior_files(
+raket::run_raket(
   input_filename = input_filename,
   posterior_filesname = posterior_filesname,
   verbose = TRUE
