@@ -7,13 +7,7 @@
 create_test_raket_params <- function() {
   crown_age <- 15.0
   crown_age_sigma <- 0.01
-  pbd_params <- becosys::create_pbd_params(
-    sirg = 0.1,
-    siri = 0.15,
-    scr = 0.2,
-    erg = 0.01,
-    eri = 0.02
-  )
+  pbd_params <- create_test_pbd_params()
   twinning_params <- pirouette::create_twinning_params(
     twin_tree_filename = razzo::get_pff_tempfile(),
     twin_alignment_filename = razzo::get_pff_tempfile(),

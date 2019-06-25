@@ -2,13 +2,7 @@ context("create_raket_params")
 
 test_that("use", {
 
-  pbd_params <- becosys::create_pbd_params(
-    sirg = 0.1,
-    siri = 0.15,
-    scr = 0.2,
-    erg = 0.01,
-    eri = 0.02
-  )
+  pbd_params <- create_test_pbd_params()
   pir_params <- pirouette::create_test_pir_params()
   sampling_method <- "shortest"
 
