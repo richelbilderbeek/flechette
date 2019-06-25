@@ -47,6 +47,10 @@ create_input_files_impl <- function(
   folder_name,
   experiment_type
 ) {
+  for (raket_params in params_set) {
+    check_raket_params(raket_params)
+  }
+
   dir.create(file.path(folder_name, "data"), showWarnings = FALSE)
 
   filenames <- NULL

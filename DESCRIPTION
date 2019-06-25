@@ -46,7 +46,7 @@ Suggests:
     rmarkdown,
     stringr,
     testit,
-    testthat,
+    testthat (>= 2.1.0),
     tidyr
 RoxygenNote: 6.1.1
 URL: https://github.com/richelbilderbeek/raket
