@@ -3,7 +3,7 @@ context("create_raket_params")
 test_that("use", {
 
   pbd_params <- create_test_pbd_params()
-  pir_params <- razzo::create_test_pff_pir_params(
+  pir_params <- peregrine::create_test_pff_pir_params(
     twinning_params = pirouette::create_twinning_params()
   )
   sampling_method <- "shortest"

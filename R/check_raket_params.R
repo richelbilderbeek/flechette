@@ -23,6 +23,7 @@ check_raket_params <- function(
 
   becosys::check_pbd_params(raket_params$pbd_params)
   pirouette::check_pir_params(raket_params$pir_params)
+  peregrine::check_pff_pir_params(pir_params)
   check_sampling_method(raket_params$sampling_method)
 
   if (!beautier::has_mrca_prior(
@@ -69,39 +70,4 @@ check_raket_params <- function(
       )
     }
   }
-
-  if (!razzo::is_pff(pir_params$twinning_params$twin_tree_filename)) {
-    stop("Peregrine-unfriendly filename for 'pir_params$twinning_params$twin_tree_filename'")
-  }
-  if (!razzo::is_pff(pir_params$twinning_params$twin_alignment_filename)) {
-    stop("Peregrine-unfriendly filename for 'pir_params$twinning_params$twin_alignment_filename'")
-  }
-  if (!razzo::is_pff(pir_params$twinning_params$twin_evidence_filename)) {
-    stop("Peregrine-unfriendly filename for 'pir_params$twinning_params$twin_evidence_filename'")
-  }
-  if (!razzo::is_pff(pir_params$alignment_params$fasta_filename)) {
-    stop("Peregrine-unfriendly filename for 'pir_params$alignment_params$fasta_filename'")
-  }
-  for (i in seq_along(pir_params$experiments)) {
-    experiment <- pir_params$experiments[[i]]
-    if (!razzo::is_pff(experiment$beast2_options$input_filename)) {
-      stop("Peregrine-unfriendly filename for 'experiment$beast2_options$input_filename'")
-    }
-    if (!razzo::is_pff(experiment$beast2_options$output_log_filename)) {
-      stop("Peregrine-unfriendly filename for 'experiment$beast2_options$output_log_filename'")
-    }
-    if (!razzo::is_pff(experiment$beast2_options$output_trees_filenames)) {
-      stop("Peregrine-unfriendly filename for 'experiment$beast2_options$output_trees_filenames'")
-    }
-    if (!razzo::is_pff(experiment$beast2_options$output_state_filename)) {
-      stop("Peregrine-unfriendly filename for 'experiment$beast2_options$output_state_filename'")
-    }
-    if (!razzo::is_pff(experiment$beast2_options$beast2_working_dir)) {
-      stop("Peregrine-unfriendly filename for 'experiment$beast2_options$beast2_working_dir'")
-    }
-    if (!razzo::is_pff(experiment$beast2_options$beast2_path)) {
-      stop("Peregrine-unfriendly filename for 'experiment$beast2_options$beast2_path'")
-    }
-  }
-
 }

@@ -170,7 +170,7 @@ create_general_params_set <- function(
       pir_params$experiments[[1]]$beast2_options$output_state_filename <-
         file.path(project_folder_name, index, "pbd_gen.xml.state")
       pir_params$experiments[[1]]$beast2_options$beast2_working_dir <-
-        razzo::get_pff_tempdir()
+        peregrine::get_pff_tempdir()
       for (i in seq_along(experiments)[-1]) {
         testit::assert(i > 1)
         pir_params$experiments[[i]]$beast2_options$input_filename <-
@@ -182,7 +182,7 @@ create_general_params_set <- function(
         pir_params$experiments[[i]]$beast2_options$output_state_filename <-
           file.path(project_folder_name, index, "pbd_gen.xml.state")
         pir_params$experiments[[i]]$beast2_options$beast2_working_dir <-
-          razzo::get_pff_tempdir()
+          peregrine::get_pff_tempdir()
       }
 
       params <- create_raket_params(

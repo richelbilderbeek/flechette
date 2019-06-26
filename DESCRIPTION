@@ -17,6 +17,7 @@ Requires:
     dplyr,
     geiger,
     PBD,
+    peregrine,
     phangorn,
     testit,
     tidyr,
