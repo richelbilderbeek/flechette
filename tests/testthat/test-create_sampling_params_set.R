@@ -2,32 +2,14 @@ context("create_sampling_params_set")
 
 test_that("must be a collection of multiple parameters", {
 
-  skip("Not now")
-
-  # Need an odd number here, as params come in pairs
-  # (due to two sampling methods)
+  # Need an odd number here, as params come in pairs,
+  # due to two sampling methods
   max_n_params <- 2
   params_set <- create_sampling_params_set(
     max_n_params = max_n_params
   )
-  testthat::expect_equal(
-    max_n_params,
-    length(params_set)
-  )
-})
-
-test_that("each parameter must have the right number of elements", {
-
-  skip("Not now")
-
-  max_n_params <- 2
-  params_set <- create_sampling_params_set(
-    max_n_params = max_n_params
-  )
-  params <- params_set[[1]]
-  testthat::expect_equal(
-    rkt_get_n_params(), length(unlist(params))
-  )
+  expect_equal(class(params_set), "list")
+  expect_equal(max_n_params, length(params_set))
 })
 
 test_that("no high SRCs", {
@@ -35,9 +17,7 @@ test_that("no high SRCs", {
   skip("Not now")
 
   for (params in create_sampling_params_set(max_n_params = 2)) {
-    testthat::expect_true(
-      params$scr < 1000.0
-    )
+    expect_true(params$scr < 1000.0)
   }
 })
 
