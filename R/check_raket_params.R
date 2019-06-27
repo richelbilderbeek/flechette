@@ -23,7 +23,7 @@ check_raket_params <- function(
 
   becosys::check_pbd_params(raket_params$pbd_params)
   pirouette::check_pir_params(raket_params$pir_params)
-  peregrine::check_pff_pir_params(pir_params)
+  peregrine::check_pff_pir_params(raket_params$pir_params)
   check_sampling_method(raket_params$sampling_method)
 
   if (!beautier::has_mrca_prior(
