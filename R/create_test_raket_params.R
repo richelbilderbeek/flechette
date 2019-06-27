@@ -31,9 +31,8 @@ create_test_raket_params <- function() {
   # |cand | .. all others .. |
   # +-----+-----+------+-----+
   #
-  gen_experiment <- pirouette::create_gen_experiment()
-  gen_experiment$inference_model$tree_prior <- beautier::create_bd_tree_prior()
-  cand_experiments <- pirouette::create_all_experiments(
+  gen_experiment <- peregrine::create_test_pff_gen_experiment()
+  cand_experiments <- peregrine::create_all_pff_experiments(
     exclude_model = gen_experiment$inference_model
   )[1:2]
   testit::assert(length(cand_experiments) >= 1)
