@@ -161,6 +161,10 @@ create_general_params_set <- function(
       pir_params$twinning_params$twin_evidence_filename <- file.path(
         project_folder_name, index, "pbd_marg_lik_twin.csv"
       )
+      pir_params$evidence_filename <- file.path(
+        project_folder_name, index, "pbd_evidence.csv"
+      )
+      # First and generative experiment
       pir_params$experiments[[1]]$beast2_options$input_filename <-
         file.path(project_folder_name, index, "pbd_gen.xml")
       pir_params$experiments[[1]]$beast2_options$output_log_filename <-
