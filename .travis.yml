@@ -17,8 +17,8 @@ r_github_packages:
   - richelbilderbeek/nLTT
   - rsetienne/PBD/PBD # Bleeding-edge version
   - richelbilderbeek/mcbette
-  - richelbilderbeek/pirouette
-  - richelbilderbeek/peregrine
+  - richelbilderbeek/pirouette@richel
+  - richelbilderbeek/peregrine@develop
   - richelbilderbeek/razzo@richel
   - MangoTheCat/goodpractice
   - KlausVigo/phangorn
