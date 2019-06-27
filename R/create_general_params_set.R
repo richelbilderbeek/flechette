@@ -175,18 +175,22 @@ create_general_params_set <- function(
         file.path(project_folder_name, index, "pbd_gen.xml.state")
       pir_params$experiments[[1]]$beast2_options$beast2_working_dir <-
         peregrine::get_pff_tempdir()
+      pir_params$experiments[[1]]$errors_filename <-
+        file.path(project_folder_name, index, "pbd_errors.csv")
       for (i in seq_along(experiments)[-1]) {
         testit::assert(i > 1)
         pir_params$experiments[[i]]$beast2_options$input_filename <-
-          file.path(project_folder_name, index, "pbd_gen.xml")
+          file.path(project_folder_name, index, "bd_gen.xml")
         pir_params$experiments[[i]]$beast2_options$output_log_filename <-
-          file.path(project_folder_name, index, "pbd_gen.log")
+          file.path(project_folder_name, index, "bd_gen.log")
         pir_params$experiments[[i]]$beast2_options$output_trees_filenames <-
-          file.path(project_folder_name, index, "pbd_gen.trees")
+          file.path(project_folder_name, index, "bd_gen.trees")
         pir_params$experiments[[i]]$beast2_options$output_state_filename <-
-          file.path(project_folder_name, index, "pbd_gen.xml.state")
+          file.path(project_folder_name, index, "bd_gen.xml.state")
         pir_params$experiments[[i]]$beast2_options$beast2_working_dir <-
           peregrine::get_pff_tempdir()
+        pir_params$experiments[[i]]$errors_filename <-
+          file.path(project_folder_name, index, "bd_errors.csv")
       }
 
       params <- create_raket_params(
