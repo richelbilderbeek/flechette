@@ -6,10 +6,11 @@
 documentation.}
 \usage{
 default_params_doc(alignment_params, crown_age, erg, ergs, eri, eris,
-  experiment_type, max_n_params, mcmc, mcmc_chain_length, n_replicates,
-  pbd_params, pir_params, project_folder_name, quantile, raket_params,
-  raket_paramses, sampling_method, scr, scrs, sequence_length, sir, sirg,
-  sirgs, siri, siris, stem_age, twinning_params, verbose)
+  experiment_type, filename, max_n_params, mcmc, mcmc_chain_length,
+  n_replicates, pbd_params, pir_params, project_folder_name, quantile,
+  raket_params, raket_paramses, sampling_method, scr, scrs,
+  sequence_length, sir, sirg, sirgs, siri, siris, stem_age,
+  twinning_params, verbose)
 }
 \arguments{
 \item{alignment_params}{parameters for creating an alignment,
@@ -27,6 +28,8 @@ as can be created by \code{\link[pirouette]{create_alignment_params}}}
 
 \item{experiment_type}{type of experiment,
 must a member of \code{\link{rkt_get_experiment_types}}}
+
+\item{filename}{name of the file}
 
 \item{max_n_params}{the maximum number of parameters created. Set to a lower
 value in debugging}

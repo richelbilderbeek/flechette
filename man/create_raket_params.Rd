@@ -2,6 +2,7 @@
 % Please edit documentation in R/create_raket_params.R
 \name{create_raket_params}
 \alias{create_raket_params}
+\alias{create_params_raket}
 \title{Create the parameters for one experiment.
 Run one point of the experiment}
 \usage{

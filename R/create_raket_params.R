@@ -2,8 +2,9 @@
 #' Run one point of the experiment
 #' @inheritParams default_params_doc
 #' @author Richel J.C. Bilderbeek
-#' @export
-create_raket_params <- function(
+#' @aliases create_raket_params create_params_raket
+#' @export create_raket_params create_params_raket
+create_raket_params <- create_params_raket <- function(
   pbd_params,
   pir_params,
   sampling_method

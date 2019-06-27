@@ -9,6 +9,7 @@
 #' @param eris extinction rates for incipient species
 #' @param experiment_type type of experiment,
 #'   must a member of \code{\link{rkt_get_experiment_types}}
+#' @param filename name of the file
 #' @param max_n_params the maximum number of parameters created. Set to a lower
 #'   value in debugging
 #' @param mcmc one mcmc object,
@@ -53,6 +54,7 @@ default_params_doc <- function(
   erg, ergs,
   eri, eris,
   experiment_type,
+  filename,
   max_n_params,
   mcmc,
   mcmc_chain_length,

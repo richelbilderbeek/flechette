@@ -6,6 +6,9 @@
 \usage{
 get_raket_path(filename)
 }
+\arguments{
+\item{filename}{name of the file}
+}
 \value{
 the full path of the filename, if and only if
   the file is present. Will stop otherwise.
@@ -14,7 +17,10 @@ the full path of the filename, if and only if
 Get the full path of a file in the \code{inst/extdata} folder
 }
 \examples{
-  testit::assert(is.character(get_raket_path("parameters.RDa")))
+library(testthat)
+
+expect_silent(get_raket_path("parameters.RDa"))
+expect_error(get_raket_path("abs.ent"))
 }
 \author{
 Richel J.C. Bilderbeek
