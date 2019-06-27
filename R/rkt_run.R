@@ -16,7 +16,7 @@ run_raket <- rkt_run <- function(
   set.seed(raket_params$tree_sim_rng_seed)
   pbd_output <- becosys::bco_pbd_sim(
     pbd_params = raket_params$pbd_params,
-    crown_age = raket_params$inference_params$mrca_prior$mrca_distr$mean$value
+    crown_age = raket_params$pir_params$experiments[[1]]$inference_model$mrca_prior$mrca_distr$mean$value
   )
 
   # Get a species tree
