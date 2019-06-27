@@ -16,8 +16,6 @@ Requires:
     ape,
     dplyr,
     geiger,
-    PBD,
-    peregrine,
     phangorn,
     testit,
     tidyr,
@@ -27,6 +25,7 @@ Imports:
     beautier,
     beastier,
     nLTT,
+    peregrine,
     pirouette,
     tracerer
 Suggests:
@@ -39,9 +38,9 @@ Suggests:
     gridExtra,
     knitr,
     lintr,
-    lubridate,
     mauricer,
     mbd,
+    PBD,
     plyr,
     razzo,
     reshape2,
