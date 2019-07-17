@@ -150,47 +150,47 @@ create_general_params_set <- function(
 
       # Set the filenames
       pir_params$alignment_params$fasta_filename <- file.path(
-        project_folder_name, index, "pbd.fasta"
+        project_folder_name, "data", index, "pbd.fasta"
       )
       pir_params$twinning_params$twin_tree_filename <- file.path(
-        project_folder_name, index, "pbd_twin.tree"
+        project_folder_name, "data", index, "pbd_twin.tree"
       )
       pir_params$twinning_params$twin_alignment_filename <- file.path(
-        project_folder_name, index, "pbd_twin.fasta"
+        project_folder_name, "data", index, "pbd_twin.fasta"
       )
       pir_params$twinning_params$twin_evidence_filename <- file.path(
-        project_folder_name, index, "pbd_marg_lik_twin.csv"
+        project_folder_name, "data", index, "pbd_marg_lik_twin.csv"
       )
       pir_params$evidence_filename <- file.path(
-        project_folder_name, index, "pbd_evidence.csv"
+        project_folder_name, "data", index, "pbd_evidence.csv"
       )
       # First and generative experiment
       pir_params$experiments[[1]]$beast2_options$input_filename <-
-        file.path(project_folder_name, index, "pbd_gen.xml")
+        file.path(project_folder_name, "data", index, "pbd_gen.xml")
       pir_params$experiments[[1]]$beast2_options$output_log_filename <-
-        file.path(project_folder_name, index, "pbd_gen.log")
+        file.path(project_folder_name, "data", index, "pbd_gen.log")
       pir_params$experiments[[1]]$beast2_options$output_trees_filenames <-
-        file.path(project_folder_name, index, "pbd_gen.trees")
+        file.path(project_folder_name, "data", index, "pbd_gen.trees")
       pir_params$experiments[[1]]$beast2_options$output_state_filename <-
-        file.path(project_folder_name, index, "pbd_gen.xml.state")
+        file.path(project_folder_name, "data", index, "pbd_gen.xml.state")
       pir_params$experiments[[1]]$beast2_options$beast2_working_dir <-
         peregrine::get_pff_tempdir()
       pir_params$experiments[[1]]$errors_filename <-
-        file.path(project_folder_name, index, "pbd_errors.csv")
+        file.path(project_folder_name, "data", index, "pbd_errors.csv")
       for (i in seq_along(experiments)[-1]) {
         testit::assert(i > 1)
         pir_params$experiments[[i]]$beast2_options$input_filename <-
-          file.path(project_folder_name, index, "bd_gen.xml")
+          file.path(project_folder_name, "data", index, "bd_gen.xml")
         pir_params$experiments[[i]]$beast2_options$output_log_filename <-
-          file.path(project_folder_name, index, "bd_gen.log")
+          file.path(project_folder_name, "data", index, "bd_gen.log")
         pir_params$experiments[[i]]$beast2_options$output_trees_filenames <-
-          file.path(project_folder_name, index, "bd_gen.trees")
+          file.path(project_folder_name, "data", index, "bd_gen.trees")
         pir_params$experiments[[i]]$beast2_options$output_state_filename <-
-          file.path(project_folder_name, index, "bd_gen.xml.state")
+          file.path(project_folder_name, "data", index, "bd_gen.xml.state")
         pir_params$experiments[[i]]$beast2_options$beast2_working_dir <-
           peregrine::get_pff_tempdir()
         pir_params$experiments[[i]]$errors_filename <-
-          file.path(project_folder_name, index, "bd_errors.csv")
+          file.path(project_folder_name, "data", index, "bd_errors.csv")
       }
 
       params <- create_raket_params(

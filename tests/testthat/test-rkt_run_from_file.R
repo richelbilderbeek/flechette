@@ -11,10 +11,17 @@ test_that("use", {
     general_params_set = create_general_params_set(
       n_replicates = 2,
       max_n_params = 3,
-      mcmc_chain_length = 2000
+      mcmc_chain_length = 2000,
+      project_folder_name = project_folder_name
     ),
     project_folder_name = project_folder_name
   )
+
+  if (1 == 2) {
+    run_raket_from_file(
+      parameters_filename = parameters_filenames[1]
+    )
+  }
 
   # Only run the first
   for (i in seq_along(parameters_filenames)) {

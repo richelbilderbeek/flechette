@@ -46,13 +46,21 @@ create_input_files_impl <- function(
 ) {
   check_raket_paramses(raket_paramses)
 
-  dir.create(file.path(folder_name, "data"), showWarnings = FALSE)
+  dir.create(
+    file.path(folder_name, "data"),
+    recursive = TRUE,
+    showWarnings = FALSE
+  )
 
   filenames <- NULL
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   n_files <- length(raket_paramses)
   for (index in seq(1, n_files)) {
-    dir.create(file.path(folder_name, "data", index), showWarnings = FALSE)
+    dir.create(
+      file.path(folder_name, "data", index),
+      recursive = TRUE,
+      showWarnings = FALSE
+    )
     filename <- file.path(folder_name, "data", index, "parameters.RDa")
     saveRDS(object = raket_paramses[[index]], file = filename)
     index <- index + 1
