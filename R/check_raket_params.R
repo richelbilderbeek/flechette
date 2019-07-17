@@ -55,12 +55,14 @@ check_raket_params <- function(
     }
     if (beautier::is_one_na(mrca_prior$mrca_distr$mean$value)) {
       stop(
-        "Must use an MRCA prior with a distribution that has a mean with a value"
+        "Must use an MRCA prior with a distribution ",
+        "that has a mean with a value"
       )
     }
     if (length(mrca_prior$mrca_distr$mean$value) == 0) {
       stop(
-        "Must use an MRCA prior with a distribution that has a mean with a value"
+        "Must use an MRCA prior with a distribution ",
+        "that has a mean with a value"
       )
     }
     if (mrca_prior$mrca_distr$mean$value <= 0.0) {

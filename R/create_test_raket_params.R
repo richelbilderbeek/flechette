@@ -8,8 +8,8 @@ create_test_raket_params <- function() {
   crown_age <- 15.0
   crown_age_sigma <- 0.01
   pbd_params <- create_test_pbd_params()
-  twinning_params = peregrine::create_pff_twinning_params()
-  alignment_params = peregrine::create_pff_alignment_params(
+  twinning_params <- peregrine::create_pff_twinning_params()
+  alignment_params <- peregrine::create_pff_alignment_params(
     root_sequence = pirouette::create_blocked_dna(length = 32),
     mutation_rate = 0.12
   )

@@ -49,7 +49,7 @@ create_sampling_params_set <- function(
         sampling_params_set[[index]]$sampling_method <- "shortest"
         sampling_params_set[[index + 1]]$sampling_method <- "longest"
         index <- index + 2
-        break()
+        break() # nolint lintr wants 'break ()', RStudio wants like this. I prefer RStudio's
       }
     }
   }

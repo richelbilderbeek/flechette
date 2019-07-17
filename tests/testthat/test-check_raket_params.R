@@ -8,7 +8,9 @@ test_that("use", {
   )
 
   pbd_params <- create_test_pbd_params()
-  pir_params <- peregrine::create_test_pff_pir_params()
+  pir_params <- peregrine::create_test_pff_pir_params(
+    twinning_params = peregrine::create_pff_twinning_params()
+  )
   sampling_method <- rkt_get_sampling_methods()[3]
 
   expect_silent(

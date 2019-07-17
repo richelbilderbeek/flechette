@@ -4,5 +4,5 @@
 #' @export
 rkt_get_n_params <- function() {
 
-  416
+  413
 }

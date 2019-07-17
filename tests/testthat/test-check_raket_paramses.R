@@ -6,11 +6,13 @@ test_that("use", {
       list(create_test_raket_params())
     )
   )
+
   expect_silent(
     check_raket_paramses(
       create_general_params_set(max_n_params = 2)
     )
   )
+
   expect_error(
     check_raket_paramses(
       create_test_raket_params()
