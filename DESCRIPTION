@@ -24,10 +24,8 @@ Requires:
 Imports:
     beautier,
     beastier,
-    nLTT,
     peregrine,
-    pirouette,
-    tracerer
+    pirouette
 Suggests:
     ape,
     becosys,
@@ -48,7 +46,8 @@ Suggests:
     stringr,
     testit,
     testthat (>= 2.1.0),
-    tidyr
+    tidyr,
+    tracerer
 RoxygenNote: 6.1.1
 URL: https://github.com/richelbilderbeek/raket
 BugReports: https://github.com/richelbilderbeek/raket/issues
