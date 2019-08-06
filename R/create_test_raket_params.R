@@ -30,6 +30,7 @@ create_test_raket_params <- function() {
   gen_experiment$inference_model$mcmc <- beautier::create_mcmc(
     chain_length = 2000, store_every = 1000
   )
+  first_mcmc <- gen_experiment$inference_model$mcmc
   peregrine::check_pff_experiment(gen_experiment)
 
   # Candidate experiments
@@ -38,7 +39,7 @@ create_test_raket_params <- function() {
   )[1:2]
   for (i in seq_along(cand_experiments)) {
     cand_experiments[[i]]$beast2_options <- cand_experiments[[1]]$beast2_options
-    cand_experiments[[i]]$inference_model$mcmc <- gen_experiment$inference_model$mcmc
+    cand_experiments[[i]]$inference_model$mcmc <- first_mcmc
   }
   peregrine::check_pff_experiments(cand_experiments)
   testit::assert(length(cand_experiments) >= 1)
