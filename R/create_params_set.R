@@ -13,7 +13,7 @@ create_params_set <- function(
   if (!experiment_type %in%
     raket::rkt_get_experiment_types()
   ) {
-    stop("'experiment_type' must be 'general' or 'sampling'")
+    stop("'experiment_type' must be in 'rkt_get_experiment_types()'")
   }
   if (experiment_type == "general") {
     create_general_params_set(
@@ -22,13 +22,15 @@ create_params_set <- function(
       n_replicates = n_replicates,
       max_n_params = max_n_params
     )
-  } else {
-    testit::assert(experiment_type == "sampling")
+  } else if (experiment_type == "sampling") {
     create_sampling_params_set(
       mcmc_chain_length = mcmc_chain_length,
       sequence_length = sequence_length,
       n_replicates = n_replicates,
       max_n_params = max_n_params
     )
+  } else {
+    testit::assert(experiment_type == "test")
+    create_test_params_set()
   }
 }

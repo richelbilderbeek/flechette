@@ -2,16 +2,15 @@
 % Please edit documentation in R/rkt_get_experiment_types.R
 \name{rkt_get_experiment_types}
 \alias{rkt_get_experiment_types}
-\title{Get the two types of experiments, which
-are 'general' (to produce a general data set),
-and 'sampling' (to investigate the worst-case
-effect of sampling)}
+\title{Get the types of experiments.}
 \usage{
 rkt_get_experiment_types()
 }
 \description{
-Get the two types of experiments, which
-are 'general' (to produce a general data set),
-and 'sampling' (to investigate the worst-case
-effect of sampling)
+These are:
+\enumeration{
+  \item general to produce a general data set
+  \item sampling to investigate the worst-case effect of sampling
+  \item test to produce a testing data set
+}
 }
