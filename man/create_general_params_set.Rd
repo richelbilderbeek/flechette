@@ -24,11 +24,11 @@ number of states}
 \item{sequence_length}{a DNA sequence length, in base pairs}
 }
 \value{
-a list with each element a parameter combination
+a list of which each element is a \code{raket_params}
 }
 \description{
 Creates the parameter set for the general exploration
 }
 \author{
-Richel Bilderbeek
+Richel J.C. Bilderbeek
 }

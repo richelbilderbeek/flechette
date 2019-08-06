@@ -1,8 +1,8 @@
 #' Creates the parameter set for the general exploration
 #' @inheritParams default_params_doc
-#' @return a list with each element a parameter combination
+#' @return a list of which each element is a \code{raket_params}
+#' @author Richel J.C. Bilderbeek
 #' @export
-#' @author Richel Bilderbeek
 create_general_params_set <- function(
   project_folder_name = getwd(),
   crown_age = 15.0,

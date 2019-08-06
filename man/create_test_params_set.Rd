@@ -6,6 +6,12 @@
 \usage{
 create_test_params_set()
 }
+\value{
+a list of which each element is a \code{raket_params}
+}
 \description{
 Create the parameter set used in testing
+}
+\author{
+Richel J.C. Bilderbeek
 }
