@@ -27,15 +27,23 @@ create_test_raket_params <- function() {
   # +-----+-----+------+-----+
   #
   gen_experiment <- peregrine::create_test_pff_gen_experiment()
+  gen_experiment$inference_model$mcmc <- beautier::create_mcmc(
+    chain_length = 2000, store_every = 1000
+  )
   peregrine::check_pff_experiment(gen_experiment)
+
+  # Candidate experiments
   cand_experiments <- peregrine::create_all_pff_experiments(
     exclude_model = gen_experiment$inference_model
   )[1:2]
+  for (i in seq_along(cand_experiments)) {
+    cand_experiments[[i]]$beast2_options <- cand_experiments[[1]]$beast2_options
+    cand_experiments[[i]]$inference_model$mcmc <- gen_experiment$inference_model$mcmc
+  }
   peregrine::check_pff_experiments(cand_experiments)
   testit::assert(length(cand_experiments) >= 1)
   experiments <- c(list(gen_experiment), cand_experiments)
   testit::assert(length(experiments) == 1 + length(cand_experiments))
-  peregrine::check_pff_experiments(experiments)
 
   # Set an MRCA prior in all experiments
   for (i in seq_along(experiments)) {
@@ -47,12 +55,7 @@ create_test_raket_params <- function() {
       )
     )
   }
-  # Set a short MCMC in all experiments
-  for (i in seq_along(experiments)) {
-    experiments[[i]]$inference_model$mcmc <- beautier::create_mcmc(
-      chain_length = 2000, store_every = 1000
-    )
-  }
+  peregrine::check_pff_experiments(experiments)
 
   error_measure_params <- pirouette::create_error_measure_params()
   sampling_method <- "shortest"

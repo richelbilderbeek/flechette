@@ -1,10 +1,12 @@
 context("create_params_set")
 
 test_that("use", {
+  if (!beastier::is_on_travis()) return()
   expect_silent(create_params_set("general"))
 })
 
 test_that("use, sampling", {
+  if (!beastier::is_on_travis()) return()
   expect_silent(
     create_params_set(experiment_type = "sampling", max_n_params = 2)
   )
