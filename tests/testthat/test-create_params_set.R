@@ -17,6 +17,6 @@ test_that("use, sampling", {
 
 test_that("abuse", {
   expect_error(create_params_set("nonsense"),
-    "'experiment_type' must be 'general' or 'sampling'"
+    "'experiment_type' must be in 'rkt_get_experiment_types()'"
   )
 })
