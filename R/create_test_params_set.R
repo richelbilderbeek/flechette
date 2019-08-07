@@ -11,8 +11,9 @@ create_test_params_set <- function() {
   cand_experiments <- pirouette::create_all_experiments(
     exclude_model = gen_experiment$inference_model
   )
+  first_cand_beast2_options <- cand_experiments[[1]]$beast2_options
   for (index in seq_along(cand_experiments)) {
-    cand_experiments[[index]]$beast2_options <- cand_experiments[[1]]$beast2_options
+    cand_experiments[[index]]$beast2_options <- first_cand_beast2_options
   }
   experiments <- c(list(gen_experiment), cand_experiments)
   for (index in seq_along(experiments)) {
