@@ -7,15 +7,14 @@ test_that("use", {
   super_folder_name <- peregrine::get_pff_tempdir()
   project_folder_name <- file.path(super_folder_name, "raket_werper")
   dir.create(path = project_folder_name, recursive = TRUE, showWarnings = FALSE)
+
+
+  Rprof("~/profile.out")
   parameters_filenames <- create_files_raket_paramses(
-    general_params_set = create_general_params_set(
-      n_replicates = 2,
-      max_n_params = 3,
-      mcmc_chain_length = 2000,
-      project_folder_name = project_folder_name
-    ),
+    general_params_set = create_test_params_set(),
     project_folder_name = project_folder_name
   )
+  Rprof(NULL); summaryRprof("~/profile.out")
 
   for (i in seq_along(parameters_filenames)) {
     print(parameters_filenames[i])
