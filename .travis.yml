@@ -43,7 +43,7 @@ before_script:
 
 script:
   - travis_wait 60 R CMD build .
-  - travis_wait 60 R CMD check *tar.gz
+  #- travis_wait 60 R CMD check *tar.gz
 
 after_success:
   - Rscript -e 'lintr::lint_package()'
