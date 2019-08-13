@@ -17,6 +17,7 @@ r_github_packages:
   - ropensci/beastier
   - ropensci/mauricer
   - ropensci/babette
+  - richelbilderbeek/ribir@develop
   - richelbilderbeek/becosys@develop
   - richelbilderbeek/nLTT
   - rsetienne/PBD/PBD # Bleeding-edge version
