@@ -9,26 +9,10 @@ run_raket <- rkt_run <- function(
   check_raket_params(raket_params) # nolint raket function
   testit::assert(beastier::is_beast2_installed())
 
-  # Simulate incipient species tree
-  # Note: if speciation rates are zero, PBD::pbd_sim will last forever
-  testit::assert(raket_params$pbd_params$sirg > 0.0)
-  testit::assert(raket_params$pbd_params$siri > 0.0)
-  set.seed(raket_params$tree_sim_rng_seed)
-  first_experiment <- raket_params$pir_params$experiments[[1]]
-  first_inference_model <- first_experiment$inference_model
-  crown_age <- first_inference_model$mrca_prior$mrca_distr$mean$value
+  create_pbd_output_file(raket_params)
 
-  pbd_output <- becosys::bco_pbd_sim(
-    pbd_params = raket_params$pbd_params,
-    crown_age = crown_age,
-    add_shortest_and_longest = TRUE
-  )
-  becosys::check_pbd_sim_out(pbd_output)
-
-  # Save the PBD sim output
-  testit::assert("pbd_sim_out_filename" %in% names(raket_params))
-  saveRDS(object = pbd_output, file = raket_params$pbd_sim_out_filename)
-
+  beautier::check_file_exists(raket_params$pbd_sim_out_filename)
+  pbd_output <- readRDS(raket_params$pbd_sim_out_filename)
 
   # Get a species tree
   true_phylogeny <- NA
