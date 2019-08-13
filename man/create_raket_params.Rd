@@ -6,7 +6,11 @@
 \title{Create the parameters for one experiment.
 Run one point of the experiment}
 \usage{
-create_raket_params(pbd_params, pir_params, sampling_method)
+create_raket_params(pbd_params, pir_params, sampling_method,
+  true_tree_filename = peregrine::get_pff_tempfile(pattern = "pbd_",
+  fileext = "newick"),
+  pbd_sim_out_filename = peregrine::get_pff_tempfile(pattern =
+  "pbd_sim_out_", fileext = "RDa"))
 }
 \arguments{
 \item{pbd_params}{a PBD parameter set,

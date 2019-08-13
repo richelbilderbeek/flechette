@@ -22,26 +22,92 @@ test_that("use", {
   )
 
   # Check elements
+  raket_params <- good_raket_params
+  raket_params$pbd_params <- NULL
   expect_error(
-    check_raket_params(raket_params = list()),
+    check_raket_params(raket_params),
     "'pbd_params' must be an element of a 'raket_params'"
   )
 
+  raket_params <- good_raket_params
+  raket_params$pir_params <- NULL
   expect_error(
-    check_raket_params(raket_params = list(pbd_params = pbd_params)),
+    check_raket_params(raket_params),
     "'pir_params' must be an element of a 'raket_params'"
   )
 
+  raket_params <- good_raket_params
+  raket_params$sampling_method <- NULL
   expect_error(
-    check_raket_params(raket_params = list(
-      pbd_params = pbd_params, pir_params = pir_params)
-    ),
+    check_raket_params(raket_params),
     "'sampling_method' must be an element of a 'raket_params'"
   )
+
+  raket_params <- good_raket_params
+  raket_params$true_tree_filename <- NULL
+  expect_error(
+    check_raket_params(raket_params),
+    "'true_tree_filename' must be an element of a 'raket_params'"
+  )
+
+  raket_params <- good_raket_params
+  raket_params$pbd_sim_out_filename <- NULL
+  expect_error(
+    check_raket_params(raket_params),
+    "'pbd_sim_out_filename' must be an element of a 'raket_params'"
+  )
+
 
   # Check pbd_params
   # done by check_pbd_params
 
   # Check pir_params
   # Done by pirouette::check_pir_params and peregrine::check_pff_pir_params
+
+  # Sampling method
+  raket_params <- good_raket_params
+  raket_params$sampling_method <- "nonsense"
+  expect_error(
+    check_raket_params(raket_params),
+    "'sampling_method' must be a sampling method"
+  )
+
+  raket_params <- good_raket_params
+  raket_params$sampling_method <- NA
+  expect_error(
+    check_raket_params(raket_params),
+    "'sampling_method' must be a sampling method"
+  )
+
+  raket_params <- good_raket_params
+  raket_params$true_tree_filename <- NA
+  expect_error(
+    check_raket_params(raket_params),
+    "raket_params\\$true_tree_filename is not of class 'character'"
+  )
+
+  raket_params <- good_raket_params
+  raket_params$true_tree_filename <- "/no_way.newick"
+  expect_error(
+    check_raket_params(raket_params),
+    "'true_tree_filename' must be Peregrine-friendly"
+  )
+
+
+  raket_params <- good_raket_params
+  raket_params$pbd_sim_out_filename <- NA
+  expect_error(
+    check_raket_params(raket_params),
+    "raket_params\\$pbd_sim_out_filename is not of class 'character'"
+  )
+
+  raket_params <- good_raket_params
+  raket_params$pbd_sim_out_filename <- "/no_way.RDa"
+  expect_error(
+    check_raket_params(raket_params),
+    "'pbd_sim_out_filename' must be Peregrine-friendly"
+  )
+
+
+
 })

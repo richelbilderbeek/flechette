@@ -11,7 +11,9 @@ check_raket_params <- function(
   argument_names <- c(
     "pbd_params",
     "pir_params",
-    "sampling_method"
+    "sampling_method",
+    "true_tree_filename",
+    "pbd_sim_out_filename"
   )
   for (arg_name in argument_names) {
     if (!arg_name %in% names(raket_params)) {
@@ -25,6 +27,22 @@ check_raket_params <- function(
   pirouette::check_pir_params(raket_params$pir_params)
   peregrine::check_pff_pir_params(raket_params$pir_params)
   check_sampling_method(raket_params$sampling_method)
+  assertive::assert_is_a_string(raket_params$true_tree_filename)
+  assertive::assert_is_a_string(raket_params$pbd_sim_out_filename)
+
+  if (!peregrine::is_pff(raket_params$true_tree_filename)) {
+    stop(
+      "'true_tree_filename' must be Peregrine-friendly. \n",
+      "Actual value: ", raket_params$true_tree_filename
+    )
+  }
+  if (!peregrine::is_pff(raket_params$pbd_sim_out_filename)) {
+    stop(
+      "'pbd_sim_out_filename' must be Peregrine-friendly. \n",
+      "Actual value: ", raket_params$pbd_sim_out_filename
+    )
+  }
+
 
   if (!beautier::has_mrca_prior(
       raket_params$pir_params$experiments[[1]]$inference_model

@@ -7,16 +7,25 @@
 create_raket_params <- create_params_raket <- function(
   pbd_params,
   pir_params,
-  sampling_method
+  sampling_method,
+  true_tree_filename = peregrine::get_pff_tempfile(
+    pattern = "pbd_", fileext = "newick"
+  ),
+  pbd_sim_out_filename = peregrine::get_pff_tempfile(
+    pattern = "pbd_sim_out_", fileext = "RDa"
+  )
 ) {
   becosys::check_pbd_params(pbd_params)
   pirouette::check_pir_params(pir_params)
   check_sampling_method(sampling_method)
+  assertive::assert_is_a_string(true_tree_filename)
 
   raket_params <- list(
     pbd_params = pbd_params,
     pir_params = pir_params,
-    sampling_method = sampling_method
+    sampling_method = sampling_method,
+    true_tree_filename = true_tree_filename,
+    pbd_sim_out_filename = pbd_sim_out_filename
   )
   check_raket_params(raket_params) # nolint raket function
   raket_params
