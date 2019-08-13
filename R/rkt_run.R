@@ -10,7 +10,7 @@ run_raket <- rkt_run <- function(
   testit::assert(beastier::is_beast2_installed())
 
   # Create a PBD sim output file
-  create_pbd_sim_out_file(raket_params$pbd_sim_out_filename)
+  create_pbd_sim_out_file(raket_params)
   beautier::check_file_exists(raket_params$pbd_sim_out_filename)
 
   # Create a true tree file
