@@ -1,6 +1,8 @@
+#' Create the file to store the results of a PBD sim
+#' @return the filename
 #' @inheritParams default_params_doc
 #' @export
-create_pbd_output_file <- function(raket_params) {
+create_pbd_sim_out_file <- function(raket_params) {
   check_raket_params(raket_params) # nolint raket function
 
   # Simulate incipient species tree
@@ -12,12 +14,12 @@ create_pbd_output_file <- function(raket_params) {
   first_inference_model <- first_experiment$inference_model
   crown_age <- first_inference_model$mrca_prior$mrca_distr$mean$value
 
-  pbd_output <- becosys::bco_pbd_sim(
+  pbd_sim_out <- becosys::bco_pbd_sim(
     pbd_params = raket_params$pbd_params,
     crown_age = crown_age,
     add_shortest_and_longest = TRUE
   )
-  becosys::check_pbd_sim_out(pbd_output)
+  becosys::check_pbd_sim_out(pbd_sim_out)
 
   # Save the PBD sim output
   testit::assert("pbd_sim_out_filename" %in% names(raket_params))
@@ -26,5 +28,6 @@ create_pbd_output_file <- function(raket_params) {
     recursive = TRUE,
     showWarnings = FALSE
   )
-  saveRDS(object = pbd_output, file = raket_params$pbd_sim_out_filename)
+  saveRDS(object = pbd_sim_out, file = raket_params$pbd_sim_out_filename)
+  raket_params$pbd_sim_out_filename
 }
