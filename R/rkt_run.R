@@ -22,6 +22,15 @@ run_raket <- rkt_run <- function(
   true_phylogeny <- ape::read.tree(raket_params$true_tree_filename)
   beautier::check_phylogeny(true_phylogeny)
 
+  # For phylogenies with 5 or less taxa, one cannot use the
+  # Coalescent Bayesian Skyline.
+  # Remove the pirouette experiments that use CBS
+  if (ape::Ntip(true_phylogeny) < 6) {
+    raket_params$pir_params$experiments <- remove_cbs_exps(
+      raket_params$pir_params$experiments
+    )
+  }
+
   # Let pirouette measure the error
   # The results are stored in the files specifief
   # at raket_params$pir_params$experiments[...]$beast2_options
