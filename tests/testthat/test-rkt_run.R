@@ -7,7 +7,7 @@ test_that("use, random", {
   if (!beastier::is_on_travis()) return()
 
   raket_params <- create_test_raket_params()
-  out <- rkt_run(raket_params)
+  out <- run_raket(raket_params)
   expect_true("parameters" %in% names(out))
   expect_true("incipient_tree" %in% names(out))
   expect_true("species_tree" %in% names(out))

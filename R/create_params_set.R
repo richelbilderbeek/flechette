@@ -16,14 +16,14 @@ create_params_set <- function(
     stop("'experiment_type' must be in 'rkt_get_experiment_types()'")
   }
   if (experiment_type == "general") {
-    create_general_params_set(
+    create_general_params_set( # nolint raket function
       mcmc_chain_length = mcmc_chain_length,
       sequence_length = sequence_length,
       n_replicates = n_replicates,
       max_n_params = max_n_params
     )
   } else if (experiment_type == "sampling") {
-    create_sampling_params_set(
+    create_sampling_params_set( # nolint raket function
       mcmc_chain_length = mcmc_chain_length,
       sequence_length = sequence_length,
       n_replicates = n_replicates,
@@ -31,6 +31,6 @@ create_params_set <- function(
     )
   } else {
     testit::assert(experiment_type == "test")
-    create_test_params_set()
+    create_test_params_set() # nolint raket function
   }
 }

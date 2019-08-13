@@ -4,7 +4,7 @@
 #' @export
 create_test_params_set <- function() {
 
-  pbd_paramses <- create_test_pbd_paramses()
+  pbd_paramses <- create_test_pbd_paramses() # nolint raket function
 
   # pir_params
   gen_experiment <- pirouette::create_gen_experiment()

@@ -26,7 +26,7 @@ check_raket_params <- function(
   becosys::check_pbd_params(raket_params$pbd_params)
   pirouette::check_pir_params(raket_params$pir_params)
   peregrine::check_pff_pir_params(raket_params$pir_params)
-  check_sampling_method(raket_params$sampling_method)
+  check_sampling_method(raket_params$sampling_method) # nolint raket function
   assertive::assert_is_a_string(raket_params$true_tree_filename)
   assertive::assert_is_a_string(raket_params$pbd_sim_out_filename)
 

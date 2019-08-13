@@ -202,6 +202,6 @@ create_general_params_set <- function(
       index <- index + 1
     }
   }
-  check_raket_paramses(raket_paramses = params_set)
+  check_raket_paramses(raket_paramses = params_set) # nolint raket function
   params_set
 }

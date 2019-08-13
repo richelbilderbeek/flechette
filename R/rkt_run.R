@@ -32,7 +32,7 @@ run_raket <- rkt_run <- function(
   }
 
   # Let pirouette measure the error
-  # The results are stored in the files specifief
+  # The results are stored in the files specified
   # at raket_params$pir_params$experiments[...]$beast2_options
   testit::assert("pir_params" %in% names(raket_params))
   pirouette::pir_run(

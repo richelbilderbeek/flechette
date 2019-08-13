@@ -75,6 +75,6 @@ create_test_raket_params <- function() {
     sampling_method = sampling_method
   )
 
-  check_raket_params(raket_params)
+  check_raket_params(raket_params) # nolint raket function
   raket_params
 }

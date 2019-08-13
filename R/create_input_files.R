@@ -60,7 +60,7 @@ create_input_files_impl <- function(
   raket_paramses,
   folder_name
 ) {
-  check_raket_paramses(raket_paramses)
+  check_raket_paramses(raket_paramses) # nolint raket function
 
   dir.create(
     file.path(folder_name, "data"),
