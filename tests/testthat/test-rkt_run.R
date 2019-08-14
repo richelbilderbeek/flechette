@@ -42,7 +42,8 @@ test_that("use, on CBS with too few taxa, should give proper error", {
   # https://github.com/richelbilderbeek/pirouette/issues/317
   expect_silent(run_raket(raket_params))
 
-  raket_params$pir_params$experiments[[1]]$inference_model$tree_prior <- create_cbs_tree_prior()
+  raket_params$pir_params$experiments[[1]]$inference_model$tree_prior <-
+    create_cbs_tree_prior()
   check_raket_params(raket_params)
   expect_error(
     run_raket(raket_params),
