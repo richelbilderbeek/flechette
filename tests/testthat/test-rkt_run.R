@@ -22,5 +22,3 @@ test_that("use, random", {
   raket_params$sampling_method <- "random"
   expect_silent(run_raket(raket_params))
 })
-
-
