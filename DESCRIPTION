@@ -23,7 +23,7 @@ Requires:
     tools,
     TreeSim
 Imports:
-    beastier (>= 2.0.17),
+    beastier (>= 2.0.18),
     beautier (>= 2.2.2),
     peregrine (>= 0.4),
     pirouette
