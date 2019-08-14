@@ -1,5 +1,6 @@
 #' Create a test \code{raket_params}
 #'
+#' @inheritParams default_params_doc
 #' @return a test \code{raket_params},
 #'   as can be created by \link{create_raket_params}
 #' @export
