@@ -28,9 +28,12 @@ create_test_raket_params <- function() {
   # +-----+-----+------+-----+
   #
   gen_experiment <- peregrine::create_test_pff_gen_experiment()
-  gen_experiment$inference_model$site_model <- beautier::create_jc69_site_model()
-  gen_experiment$inference_model$clock_model <- beautier::create_strict_clock_model()
-  gen_experiment$inference_model$tree_prior <- beautier::create_yule_tree_prior()
+  gen_experiment$inference_model$site_model <-
+    beautier::create_jc69_site_model()
+  gen_experiment$inference_model$clock_model <-
+    beautier::create_strict_clock_model()
+  gen_experiment$inference_model$tree_prior <-
+    beautier::create_yule_tree_prior()
   gen_experiment$inference_model$mcmc <- beautier::create_mcmc(
     chain_length = 2000, store_every = 1000
   )
@@ -41,13 +44,19 @@ create_test_raket_params <- function() {
   cand_experiments <- peregrine::create_all_pff_experiments(
     exclude_model = gen_experiment$inference_model
   )[1:2]
-  cand_experiments[[1]]$inference_model$site_model <- beautier::create_jc69_site_model()
-  cand_experiments[[1]]$inference_model$clock_model <- beautier::create_strict_clock_model()
-  cand_experiments[[1]]$inference_model$tree_prior <- beautier::create_bd_tree_prior()
+  cand_experiments[[1]]$inference_model$site_model <-
+    beautier::create_jc69_site_model()
+  cand_experiments[[1]]$inference_model$clock_model <-
+    beautier::create_strict_clock_model()
+  cand_experiments[[1]]$inference_model$tree_prior <-
+    beautier::create_bd_tree_prior()
 
-  cand_experiments[[2]]$inference_model$site_model <- beautier::create_hky_site_model()
-  cand_experiments[[2]]$inference_model$clock_model <- beautier::create_strict_clock_model()
-  cand_experiments[[2]]$inference_model$tree_prior <- beautier::create_yule_tree_prior()
+  cand_experiments[[2]]$inference_model$site_model <-
+    beautier::create_hky_site_model()
+  cand_experiments[[2]]$inference_model$clock_model <-
+    beautier::create_strict_clock_model()
+  cand_experiments[[2]]$inference_model$tree_prior <-
+    beautier::create_yule_tree_prior()
 
   for (i in seq_along(cand_experiments)) {
     cand_experiments[[i]]$beast2_options <- cand_experiments[[1]]$beast2_options
