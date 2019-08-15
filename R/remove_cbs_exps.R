@@ -15,6 +15,11 @@ remove_cbs_exps <- function(experiments) {
       index <- index + 1
     }
   }
+  if (length(experiments) == 0) {
+    stop(
+      "No experiments left after removing all experiments with a CBS tree prior"
+    )
+  }
   pirouette::check_experiments(experiments)
   experiments
 }

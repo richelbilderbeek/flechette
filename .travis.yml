@@ -17,13 +17,13 @@ r_github_packages:
   - ropensci/beastier
   - ropensci/mauricer
   - ropensci/babette
-  - richelbilderbeek/ribir@develop
-  - richelbilderbeek/becosys@develop
+  - richelbilderbeek/ribir
+  - richelbilderbeek/becosys
   - richelbilderbeek/nLTT
-  - rsetienne/PBD/PBD # Bleeding-edge version
+  - rsetienne/PBD/PBD
   - richelbilderbeek/mcbette
-  - richelbilderbeek/pirouette@richel
-  - richelbilderbeek/peregrine@develop
+  - richelbilderbeek/pirouette
+  - richelbilderbeek/peregrine
   - richelbilderbeek/razzo@richel
   - MangoTheCat/goodpractice
   - KlausVigo/phangorn
