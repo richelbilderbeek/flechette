@@ -17,7 +17,6 @@ test_that("use, random", {
 
   if (!beastier::is_on_travis()) return()
 
-  skip("Sum of evidences deviates too much from one, Issue 36, Issue #36")
   raket_params <- create_test_raket_params()
   raket_params$sampling_method <- "random"
   expect_silent(run_raket(raket_params))
