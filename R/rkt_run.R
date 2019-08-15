@@ -40,4 +40,20 @@ run_raket <- rkt_run <- function(
     pir_params = raket_params$pir_params
 
   )
+
+  # Twin alignment must have as much mutations as the true alignment
+  n_mutations_true <- pirouette::count_n_mutations(
+    alignment = ape::read.FASTA(
+      raket_params$pir_params$alignment_params$fasta_filename
+    ),
+    root_sequence = raket_params$pir_params$alignment_params$root_sequence
+  )
+  n_mutations_twin <- pirouette::count_n_mutations(
+    alignment = ape::read.FASTA(
+      raket_params$pir_params$twinning_params$twin_alignment_filename
+    ),
+    root_sequence = raket_params$pir_params$alignment_params$root_sequence
+  )
+  testit::assert(n_mutations_true == n_mutations_twin)
+
 }
