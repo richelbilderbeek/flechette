@@ -8,11 +8,11 @@ create_raket_params <- create_params_raket <- function(
   pbd_params,
   pir_params,
   sampling_method,
-  true_tree_filename = peregrine::get_pff_tempfile(
-    pattern = "pbd_", fileext = "newick"
+  true_tree_filename = file.path(
+    dirname(pir_params$alignment_params$fasta_filename), "pbd.newick"
   ),
-  pbd_sim_out_filename = peregrine::get_pff_tempfile(
-    pattern = "pbd_sim_out_", fileext = "RDa"
+  pbd_sim_out_filename = file.path(
+    dirname(pir_params$alignment_params$fasta_filename), "pbd_sim_out.RDa"
   )
 ) {
   becosys::check_pbd_params(pbd_params)

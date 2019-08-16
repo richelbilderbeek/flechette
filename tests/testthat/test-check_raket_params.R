@@ -1,25 +1,7 @@
-context("test-check_raket_params")
-
 test_that("use", {
 
   good_raket_params <- create_test_raket_params()
-    expect_silent(
-    check_raket_params(raket_params = good_raket_params)
-  )
-
-  pbd_params <- create_test_pbd_params()
-  pir_params <- peregrine::create_test_pff_pir_params(
-    twinning_params = peregrine::create_pff_twinning_params()
-  )
-  sampling_method <- rkt_get_sampling_methods()[3]
-
-  expect_silent(
-    create_raket_params(
-      pbd_params = pbd_params,
-      pir_params = pir_params,
-      sampling_method = sampling_method
-    )
-  )
+  expect_silent(check_raket_params(good_raket_params))
 
   # Check elements
   raket_params <- good_raket_params
@@ -84,87 +66,125 @@ test_that("use", {
     "'raket_params\\$true_tree_filename' must be be '\\[folder_name\\]/pbd.newick'" # nolint indeed long
   )
 
-  if (1 == 2) {
-    raket_params <- create_test_raket_params()
-    folder_name <- dirname(
-      raket_params$pir_params$alignment_params$fasta_filename
+  # True alignment
+  # One may expect the error:
+  #   "'raket_params\\$pir_params\\$alignment_params\\$fasta_filename' must be be '\\[folder_name\\]/pbd.fasta'" # nolint indeed long
+  # but this is false, as the folder of the alignment is used to generate
+  # all other errors
+  raket_params <- good_raket_params
+  raket_params$pir_params$alignment_params$fasta_filename <- "nonsense"
+  expect_error(
+    check_raket_params(raket_params),
+    "'raket_params\\$pbd_sim_out_filename' must be be '\\[folder_name\\]/pbd_sim_out.RDa'" # nolint indeed long
+  )
+  # First experiment must be generative
+  # (yes, to test this is hard to set up)
+  raket_params <- good_raket_params
+  raket_params$pir_params$experiments[[1]]$inference_conditions$model_type <- "candidate"
+  raket_params$pir_params$experiments[[1]]$inference_conditions$run_if <- "best_candidate"
+  raket_params$pir_params$experiments[[1]]$inference_conditions$do_measure_evidence <- TRUE
+  raket_params$pir_params$experiments[[1]]$errors_filename <- raket_params$pir_params$experiments[[2]]$errors_filename
+  raket_params$pir_params$experiments[[1]]$beast2_options <- raket_params$pir_params$experiments[[2]]$beast2_options
+  expect_error(
+    check_raket_params(raket_params),
+    "raket_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$inference_conditions\\$model_type' must be be 'generative'" # nolint indeed long
+  )
+  # BEAST2 input filename
+  raket_params <- good_raket_params
+  raket_params$pir_params$experiments[[1]]$beast2_options$input_filename <- "nonsense"
+  expect_error(
+    check_raket_params(raket_params),
+    "'raket_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$input_filename' must be be '\\[folder_name\\]/pbd_gen.xml'" # nolint indeed long
+  )
+  # BEAST2 output log filename
+  raket_params <- good_raket_params
+  raket_params$pir_params$experiments[[1]]$beast2_options$output_log_filename <- "nonsense"
+  expect_error(
+    check_raket_params(raket_params),
+    "'raket_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$output_log_filename' must be be '\\[folder_name\\]/pbd_gen.log'" # nolint indeed long
+  )
+  # BEAST2 output trees filename
+  raket_params <- good_raket_params
+  raket_params$pir_params$experiments[[1]]$beast2_options$output_trees_filenames <- "nonsense"
+  expect_error(
+    check_raket_params(raket_params),
+    "'raket_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$output_trees_filenames' must be be '\\[folder_name\\]/pbd_gen.trees'" # nolint indeed long
+  )
+  # BEAST2 output trees filename
+  raket_params <- good_raket_params
+  raket_params$pir_params$experiments[[1]]$beast2_options$output_state_filename <- "nonsense"
+  expect_error(
+    check_raket_params(raket_params),
+    "'raket_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$output_state_filename' must be be '\\[folder_name\\]/pbd_gen.xml.state'" # nolint indeed long
+  )
+  for (i in seq(2, 3)) {
+    # First experiment must be candidate
+    # (yes, to test this is hard to set up)
+    raket_params <- good_raket_params
+    raket_params$pir_params$experiments[[i]]$inference_conditions$model_type <- "generative"
+    raket_params$pir_params$experiments[[i]]$inference_conditions$run_if <- "always"
+    raket_params$pir_params$experiments[[i]]$inference_conditions$do_measure_evidence <- FALSE
+    raket_params$pir_params$experiments[[i]]$errors_filename <- raket_params$pir_params$experiments[[2]]$errors_filename
+    raket_params$pir_params$experiments[[i]]$beast2_options <- raket_params$pir_params$experiments[[2]]$beast2_options
+    expect_error(
+      check_raket_params(raket_params),
+      "Specifying more than one 'generative' model experiment is redundant"
     )
-    # True alignment
-    expect_equal(
-      file.path(folder_name, "pbd.fasta"),
-      raket_params$pir_params$alignment_params$fasta_filename
+    # BEAST2 input file
+    raket_params <- good_raket_params
+    raket_params$pir_params$experiments[[i]]$beast2_options$input_filename <- "nonsense"
+    expect_error(
+      check_raket_params(raket_params)
     )
-    # True posterior, generative at index 1
-    gen_experiment <- raket_params$pir_params$experiments[[1]]
-    expect_equal(
-      gen_experiment$inference_conditions$model_type,
-      "generative"
+    # BEAST2 output log file
+    raket_params <- good_raket_params
+    raket_params$pir_params$experiments[[i]]$beast2_options$output_log_filename <- "nonsense"
+    expect_error(
+      check_raket_params(raket_params)
     )
-    expect_equal(
-      file.path(folder_name, "pbd_gen.xml"),
-      gen_experiment$beast2_options$input_filename,
+    # BEAST2 ouput trees files
+    raket_params <- good_raket_params
+    raket_params$pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- "nonsense"
+    expect_error(
+      check_raket_params(raket_params)
     )
-    expect_equal(
-      file.path(folder_name, "pbd_gen.log"),
-      gen_experiment$beast2_options$output_log_filename,
+    # BEAST2 input file
+    raket_params <- good_raket_params
+    raket_params$pir_params$experiments[[i]]$beast2_options$output_state_filename <- "nonsense"
+    expect_error(
+      check_raket_params(raket_params)
     )
-    expect_equal(
-      file.path(folder_name, "pbd_gen.trees"),
-      gen_experiment$beast2_options$output_trees_filenames,
-    )
-    expect_equal(
-      file.path(folder_name, "pbd_gen.xml.state"),
-      gen_experiment$beast2_options$output_state_filename,
-    )
-    expect_equal(
-      file.path(folder_name, "pbd_nltts_gen.csv"),
-      gen_experiment$errors_filename
-    )
-    # Candidate experiments, at all but the first index
-    cand_experiments <- raket_params$pir_params$experiments[-1]
-    for (cand_experiment in cand_experiments) {
-      expect_equal(
-        cand_experiment$inference_conditions$model_type,
-        "candidate"
-      )
-      expect_equal(
-        file.path(folder_name, "pbd_best.xml"),
-        cand_experiment$beast2_options$input_filename,
-      )
-      expect_equal(
-        file.path(folder_name, "pbd_best.log"),
-        cand_experiment$beast2_options$output_log_filename,
-      )
-      expect_equal(
-        file.path(folder_name, "pbd_best.trees"),
-        cand_experiment$beast2_options$output_trees_filenames,
-      )
-      expect_equal(
-        file.path(folder_name, "pbd_best.xml.state"),
-        cand_experiment$beast2_options$output_state_filename,
-      )
-      expect_equal(
-        file.path(folder_name, "pbd_nltts_best.csv"),
-        cand_experiment$errors_filename
-      )
-    }
-    expect_equal(
-      file.path(folder_name, "pbd_twin.newick"),
-      raket_params$pir_params$twinning_params$twin_tree_filename
-    )
-    expect_equal(
-      file.path(folder_name, "pbd_twin.fasta"),
-      raket_params$pir_params$twinning_params$twin_alignment_filename
-    )
-    expect_equal(
-      file.path(folder_name, "pbd_marg_lik_twin.csv"),
-      raket_params$pir_params$twinning_params$twin_evidence_filename
-    )
-    expect_equal(
-      file.path(folder_name, "pbd_marg_lik.csv"),
-      raket_params$pir_params$evidence_filename
+    # Errors file
+    raket_params <- good_raket_params
+    raket_params$pir_params$experiments[[i]]$errors_filename <- "nonsense"
+    expect_error(
+      check_raket_params(raket_params)
     )
   }
+  # Twinning params: tree
+  raket_params <- good_raket_params
+  raket_params$pir_params$twinning_params$twin_tree_filename <- "nonsense"
+  expect_error(
+    check_raket_params(raket_params)
+  )
+  # Twinning params: alignment
+  raket_params <- good_raket_params
+  raket_params$pir_params$twinning_params$twin_alignment_filename <- "nonsense"
+  expect_error(
+    check_raket_params(raket_params)
+  )
+  # Twinning params: evidence
+  raket_params <- good_raket_params
+  raket_params$pir_params$twinning_params$twin_evidence_filename <- "nonsense"
+  expect_error(
+    check_raket_params(raket_params)
+  )
+  # Evidence
+  raket_params <- good_raket_params
+  raket_params$pir_params$evidence_filename <- "nonsense"
+  expect_error(
+    check_raket_params(raket_params)
+  )
 
   # Sampling method
   raket_params <- good_raket_params
@@ -209,7 +229,5 @@ test_that("use", {
     check_raket_params(raket_params),
     "'pbd_sim_out_filename' must be Peregrine-friendly"
   )
-
-
 
 })
