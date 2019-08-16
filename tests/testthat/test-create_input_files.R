@@ -8,6 +8,7 @@ test_that("files are created in right folder", {
   # Do not warn if the folder already exists
   dir.create(path = project_folder_name, showWarnings = FALSE)
 
+  skip("Issue 40, Issue #40")
   filenames <- create_input_files_general(
     general_params_set = create_general_params_set(max_n_params = 2),
     project_folder_name = project_folder_name
