@@ -63,95 +63,108 @@ test_that("use", {
 
   # Check pir_params
   # Done by pirouette::check_pir_params and peregrine::check_pff_pir_params
-  raket_params <- create_test_raket_params()
-  folder_name <- dirname(
-    raket_params$pir_params$alignment_params$fasta_filename
+
+  ##############################################################################
+  # Filenames
+  ##############################################################################
+  good_raket_params <- create_test_raket_params()
+  # PBD sim
+  raket_params <- good_raket_params
+  raket_params$pbd_sim_out_filename <- "nonsense"
+  expect_error(
+    check_raket_params(raket_params),
+    "'raket_params\\$pbd_sim_out_filename' must be be '\\[folder_name\\]/pbd_sim_out.RDa'" # nolint indeed long
   )
-  # Sim
-  expect_equal(
-    file.path(folder_name, "pbd_sim_out.RDa"),
-    raket_params$pbd_sim_out_filename
-  )
+
   # True tree
-  expect_equal(
-    file.path(folder_name, "pbd.newick"),
-    raket_params$true_tree_filename
+  raket_params <- good_raket_params
+  raket_params$true_tree_filename <- "nonsense"
+  expect_error(
+    check_raket_params(raket_params),
+    "'raket_params\\$true_tree_filename' must be be '\\[folder_name\\]/pbd.newick'" # nolint indeed long
   )
-  # True alignment
-  expect_equal(
-    file.path(folder_name, "pbd.fasta"),
-    raket_params$pir_params$alignment_params$fasta_filename
-  )
-  # True posterior, generative at index 1
-  gen_experiment <- raket_params$pir_params$experiments[[1]]
-  expect_equal(
-    gen_experiment$inference_conditions$model_type,
-    "generative"
-  )
-  expect_equal(
-    file.path(folder_name, "pbd_gen.xml"),
-    gen_experiment$beast2_options$input_filename,
-  )
-  expect_equal(
-    file.path(folder_name, "pbd_gen.log"),
-    gen_experiment$beast2_options$output_log_filename,
-  )
-  expect_equal(
-    file.path(folder_name, "pbd_gen.trees"),
-    gen_experiment$beast2_options$output_trees_filenames,
-  )
-  expect_equal(
-    file.path(folder_name, "pbd_gen.xml.state"),
-    gen_experiment$beast2_options$output_state_filename,
-  )
-  expect_equal(
-    file.path(folder_name, "pbd_nltts_gen.csv"),
-    gen_experiment$errors_filename
-  )
-  # Candidate experiments, at all but the first index
-  cand_experiments <- raket_params$pir_params$experiments[-1]
-  for (cand_experiment in cand_experiments) {
+
+  if (1 == 2) {
+    raket_params <- create_test_raket_params()
+    folder_name <- dirname(
+      raket_params$pir_params$alignment_params$fasta_filename
+    )
+    # True alignment
     expect_equal(
-      cand_experiment$inference_conditions$model_type,
-      "candidate"
+      file.path(folder_name, "pbd.fasta"),
+      raket_params$pir_params$alignment_params$fasta_filename
+    )
+    # True posterior, generative at index 1
+    gen_experiment <- raket_params$pir_params$experiments[[1]]
+    expect_equal(
+      gen_experiment$inference_conditions$model_type,
+      "generative"
     )
     expect_equal(
-      file.path(folder_name, "pbd_best.xml"),
-      cand_experiment$beast2_options$input_filename,
+      file.path(folder_name, "pbd_gen.xml"),
+      gen_experiment$beast2_options$input_filename,
     )
     expect_equal(
-      file.path(folder_name, "pbd_best.log"),
-      cand_experiment$beast2_options$output_log_filename,
+      file.path(folder_name, "pbd_gen.log"),
+      gen_experiment$beast2_options$output_log_filename,
     )
     expect_equal(
-      file.path(folder_name, "pbd_best.trees"),
-      cand_experiment$beast2_options$output_trees_filenames,
+      file.path(folder_name, "pbd_gen.trees"),
+      gen_experiment$beast2_options$output_trees_filenames,
     )
     expect_equal(
-      file.path(folder_name, "pbd_best.xml.state"),
-      cand_experiment$beast2_options$output_state_filename,
+      file.path(folder_name, "pbd_gen.xml.state"),
+      gen_experiment$beast2_options$output_state_filename,
     )
     expect_equal(
-      file.path(folder_name, "pbd_nltts_best.csv"),
-      cand_experiment$errors_filename
+      file.path(folder_name, "pbd_nltts_gen.csv"),
+      gen_experiment$errors_filename
+    )
+    # Candidate experiments, at all but the first index
+    cand_experiments <- raket_params$pir_params$experiments[-1]
+    for (cand_experiment in cand_experiments) {
+      expect_equal(
+        cand_experiment$inference_conditions$model_type,
+        "candidate"
+      )
+      expect_equal(
+        file.path(folder_name, "pbd_best.xml"),
+        cand_experiment$beast2_options$input_filename,
+      )
+      expect_equal(
+        file.path(folder_name, "pbd_best.log"),
+        cand_experiment$beast2_options$output_log_filename,
+      )
+      expect_equal(
+        file.path(folder_name, "pbd_best.trees"),
+        cand_experiment$beast2_options$output_trees_filenames,
+      )
+      expect_equal(
+        file.path(folder_name, "pbd_best.xml.state"),
+        cand_experiment$beast2_options$output_state_filename,
+      )
+      expect_equal(
+        file.path(folder_name, "pbd_nltts_best.csv"),
+        cand_experiment$errors_filename
+      )
+    }
+    expect_equal(
+      file.path(folder_name, "pbd_twin.newick"),
+      raket_params$pir_params$twinning_params$twin_tree_filename
+    )
+    expect_equal(
+      file.path(folder_name, "pbd_twin.fasta"),
+      raket_params$pir_params$twinning_params$twin_alignment_filename
+    )
+    expect_equal(
+      file.path(folder_name, "pbd_marg_lik_twin.csv"),
+      raket_params$pir_params$twinning_params$twin_evidence_filename
+    )
+    expect_equal(
+      file.path(folder_name, "pbd_marg_lik.csv"),
+      raket_params$pir_params$evidence_filename
     )
   }
-  expect_equal(
-    file.path(folder_name, "pbd_twin.newick"),
-    raket_params$pir_params$twinning_params$twin_tree_filename
-  )
-  expect_equal(
-    file.path(folder_name, "pbd_twin.fasta"),
-    raket_params$pir_params$twinning_params$twin_alignment_filename
-  )
-  expect_equal(
-    file.path(folder_name, "pbd_marg_lik_twin.csv"),
-    raket_params$pir_params$twinning_params$twin_evidence_filename
-  )
-  expect_equal(
-    file.path(folder_name, "pbd_marg_lik.csv"),
-    raket_params$pir_params$evidence_filename
-  )
 
   # Sampling method
   raket_params <- good_raket_params

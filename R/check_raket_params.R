@@ -43,7 +43,6 @@ check_raket_params <- function(
     )
   }
 
-
   if (!beautier::has_mrca_prior(
       raket_params$pir_params$experiments[[1]]$inference_model
     )
@@ -90,4 +89,36 @@ check_raket_params <- function(
       )
     }
   }
+
+  # Filenames
+  folder_name <- dirname(
+    raket_params$pir_params$alignment_params$fasta_filename
+  )
+  # Sim
+  if (raket_params$pbd_sim_out_filename !=
+      file.path(folder_name, "pbd_sim_out.RDa")
+  ) {
+    stop(
+      "'raket_params$pbd_sim_out_filename' must be be ",
+        "'[folder_name]/pbd_sim_out.RDa'. \n",
+      "Actual value: '", raket_params$pbd_sim_out_filename, "'\n",
+      "[folder_name] ",
+        "(from raket_params$pir_params$alignment_params$fasta_filename): ",
+        folder_name, "\n"
+    )
+  }
+  # True tree
+  if (raket_params$true_tree_filename !=
+      file.path(folder_name, "pbd.newick")
+  ) {
+    stop(
+      "'raket_params$true_tree_filename' must be be ",
+        "'[folder_name]/pbd.newick'. \n",
+      "Actual value: '", raket_params$true_tree_filename, "'\n",
+      "[folder_name] ",
+        "(from raket_params$pir_params$alignment_params$fasta_filename): ",
+        folder_name, "\n"
+    )
+  }
+
 }
