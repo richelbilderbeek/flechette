@@ -8,7 +8,7 @@
 create_test_raket_params <- function(
   folder_name = peregrine::get_pff_tempdir()
 ) {
-  crown_age <- 15.0
+  crown_age <- 10.0
   crown_age_sigma <- 0.01
   pbd_params <- create_test_pbd_params() # nolint raket function
   twinning_params <- pirouette::create_twinning_params(

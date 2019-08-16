@@ -1,30 +1,19 @@
-context("create_general_params_set")
-
 test_that("must return the number of parameters", {
 
-  skip("Takes too long?")
-
-  max_n_params <- 1
-  params_set <- create_general_params_set(max_n_params = max_n_params)
+  n_replicates <- 2
+  params_set <- create_general_params_set(
+    n_replicates = n_replicates
+  )
   expect_equal(class(params_set), "list")
-  expect_equal(max_n_params, length(params_set))
+  expect_equal(
+    length(params_set),
+    n_replicates *
+      length(rkt_get_ext_rates()) *
+      length(rkt_get_spec_compl_rates()) *
+      length(rkt_get_spec_init_rates())
+  )
 
-  if (!beastier::is_on_travis()) return()
-
-  max_n_params <- 2
-  params_set <- create_general_params_set(max_n_params = max_n_params)
-  expect_equal(class(params_set), "list")
-  expect_equal(max_n_params, length(params_set))
-
-})
-
-test_that("all less than 1000 taxa with 95% certainty", {
-
-  if (!beastier::is_on_travis()) return()
-
-  skip("Takes too long?")
-
-  params_set <- create_general_params_set()
+  # all less than 1000 taxa with 95% certainty
 
   for (params in params_set) {
     crown_age <- params$pir_params$experiments[[1]]$inference_model$mrca_prior$mrca_distr$mean$value # nolint indeed a long line, sorry Demeter

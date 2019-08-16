@@ -8,13 +8,10 @@
 #' @aliases create_input_files_general create_files_raket_paramses
 #' @author Richel Bilderbeek
 create_input_files_general <- create_files_raket_paramses <- function(
-  general_params_set = create_general_params_set(),
-  project_folder_name = getwd()
+  raket_paramses = create_general_params_set()
 ) {
-  check_project_folder_name(project_folder_name = project_folder_name) # nolint internal function
   create_input_files_impl( # nolint internal function
-    raket_paramses = general_params_set,
-    folder_name = project_folder_name
+    raket_paramses = raket_paramses
   )
 }
 

@@ -5,9 +5,7 @@
 \alias{create_files_raket_paramses}
 \title{Creates the parameter files in the article for the general exploration}
 \usage{
-
-  create_input_files_general(general_params_set = create_general_params_set(),
-  project_folder_name = getwd())
+create_input_files_general(raket_paramses = create_general_params_set())
 }
 \arguments{
 \item{general_params_set}{the set of parameters,
