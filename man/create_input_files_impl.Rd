@@ -4,7 +4,7 @@
 \alias{create_input_files_impl}
 \title{Creates the parameter files in the article for the general exploration}
 \usage{
-create_input_files_impl(raket_paramses, folder_name)
+create_input_files_impl(raket_paramses)
 }
 \arguments{
 \item{raket_paramses}{a list of \code{raket_params},

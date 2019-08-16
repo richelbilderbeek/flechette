@@ -43,13 +43,9 @@ create_input_files_sampling <- function(
 #' @export
 #' @author Richel Bilderbeek
 create_input_files_test <- function(
-  test_params_set = create_test_params_set(),
-  folder_name = getwd()
+  raket_paramses = create_test_params_set()
 ) {
-  create_input_files_impl(
-    raket_paramses = test_params_set,
-    folder_name = folder_name
-  )
+  create_input_files_impl(raket_paramses)
 }
 #' Creates the parameter files in the article for the general exploration
 #' @inheritParams default_params_doc
@@ -57,30 +53,19 @@ create_input_files_test <- function(
 #' @return The filenames of all parameter files created
 #' @author Richel Bilderbeek
 create_input_files_impl <- function(
-  raket_paramses,
-  folder_name
+  raket_paramses
 ) {
   check_raket_paramses(raket_paramses) # nolint raket function
 
-  dir.create(
-    file.path(folder_name, "data"),
-    recursive = TRUE,
-    showWarnings = FALSE
-  )
-
-  filenames <- NULL
-  # Must start at one, as the BEAST2 RNG seed must be at least one.
   n_files <- length(raket_paramses)
+  filenames <- rep(NA, n_files)
   for (index in seq(1, n_files)) {
-    dir.create(
-      file.path(folder_name, "data", index),
-      recursive = TRUE,
-      showWarnings = FALSE
-    )
-    filename <- file.path(folder_name, "data", index, "parameters.RDa")
+    folder_name <- dirname(raket_paramses[[index]]$true_tree_filename)
+    dir.create(file.path(folder_name), recursive = TRUE, showWarnings = FALSE)
+    filename <- file.path(folder_name, "parameters.RDa")
     saveRDS(object = raket_paramses[[index]], file = filename)
+    filenames[index] <- filename
     index <- index + 1
-    filenames <- c(filenames, filename)
   }
   filenames
 }

@@ -5,8 +5,9 @@
 #'   as can be created by \link{create_raket_params}
 #' @export
 #' @author Richel J.C. Bilderbeek
-create_test_raket_params <- function() {
-  folder_name <- peregrine::get_pff_tempdir()
+create_test_raket_params <- function(
+  folder_name = peregrine::get_pff_tempdir()
+) {
   crown_age <- 15.0
   crown_age_sigma <- 0.01
   pbd_params <- create_test_pbd_params() # nolint raket function

@@ -4,7 +4,7 @@
 \alias{create_test_raket_params}
 \title{Create a test \code{raket_params}}
 \usage{
-create_test_raket_params()
+create_test_raket_params(folder_name = peregrine::get_pff_tempdir())
 }
 \value{
 a test \code{raket_params},

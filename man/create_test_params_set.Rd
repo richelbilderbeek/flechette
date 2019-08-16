@@ -4,7 +4,9 @@
 \alias{create_test_params_set}
 \title{Create the parameter set used in testing}
 \usage{
-create_test_params_set()
+
+  create_test_params_set(project_folder_name = file.path(peregrine::get_pff_tempdir(),
+  "raket_werper"))
 }
 \value{
 a list of which each element is a \code{raket_params}

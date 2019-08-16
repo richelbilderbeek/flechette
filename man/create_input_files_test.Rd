@@ -4,14 +4,13 @@
 \alias{create_input_files_test}
 \title{Creates the parameter files in the article for the general exploration}
 \usage{
-create_input_files_test(test_params_set = create_test_params_set(),
-  folder_name = getwd())
+create_input_files_test(raket_paramses = create_test_params_set())
 }
 \arguments{
-\item{folder_name}{name of the folder where all files are created}
-
 \item{sampling_params_set}{the set of parameters,
 as created by \code{\link{create_sampling_params_set}}}
+
+\item{folder_name}{name of the folder where all files are created}
 }
 \value{
 The filenames of all parameter files created
