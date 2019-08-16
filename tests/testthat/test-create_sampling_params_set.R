@@ -2,6 +2,8 @@ context("create_sampling_params_set")
 
 test_that("must be a collection of multiple parameters", {
 
+  skip("Takes too long?")
+
   # Need an odd number here, as params come in pairs,
   # due to two sampling methods
   max_n_params <- 2
@@ -13,6 +15,8 @@ test_that("must be a collection of multiple parameters", {
 })
 
 test_that("no high SRCs", {
+
+  skip("Takes too long?")
 
   if (!beastier::is_on_travis()) return()
 

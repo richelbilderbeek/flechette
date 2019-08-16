@@ -2,6 +2,8 @@ context("create_general_params_set")
 
 test_that("must return the number of parameters", {
 
+  skip("Takes too long?")
+
   max_n_params <- 1
   params_set <- create_general_params_set(max_n_params = max_n_params)
   expect_equal(class(params_set), "list")
@@ -19,6 +21,8 @@ test_that("must return the number of parameters", {
 test_that("all less than 1000 taxa with 95% certainty", {
 
   if (!beastier::is_on_travis()) return()
+
+  skip("Takes too long?")
 
   params_set <- create_general_params_set()
 

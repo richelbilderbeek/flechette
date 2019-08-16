@@ -2,6 +2,7 @@ context("rkt_get_max_n_rows")
 
 test_that("Can create such a big data frame, #9", {
 
+  skip("Really needed?")
   # Ideal
   ncols <- rkt_get_max_n_cols()
   nrows <- rkt_get_max_n_rows()

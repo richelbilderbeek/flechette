@@ -3,7 +3,7 @@ context("test-check_raket_params")
 test_that("use", {
 
   good_raket_params <- create_test_raket_params()
-  expect_silent(
+    expect_silent(
     check_raket_params(raket_params = good_raket_params)
   )
 
@@ -63,6 +63,15 @@ test_that("use", {
 
   # Check pir_params
   # Done by pirouette::check_pir_params and peregrine::check_pff_pir_params
+  expect_true(
+    !is.na(
+      stringr::str_match(
+        raket_params$pir_params$alignment_params$fasta_filename,
+        "pbd\\.fasta$"
+      )[1,1]
+    )
+  )
+
 
   # Sampling method
   raket_params <- good_raket_params
