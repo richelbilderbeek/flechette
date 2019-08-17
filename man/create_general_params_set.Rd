@@ -6,24 +6,12 @@
 \usage{
 
   create_general_params_set(project_folder_name = file.path(peregrine::get_pff_tempdir(),
-  "raket_werper"), crown_age = 15, max_n_params = Inf,
-  mcmc_chain_length = 1111000, n_replicates = 1,
-  sequence_length = 15000)
+  "raket_werper"), n_replicates = 1)
 }
 \arguments{
 \item{project_folder_name}{name of project folder}
 
-\item{crown_age}{the crown age of the phylogeny}
-
-\item{max_n_params}{the maximum number of parameters created. Set to a lower
-value in debugging}
-
-\item{mcmc_chain_length}{length of the MCMC chain, in
-number of states}
-
 \item{n_replicates}{number of replicates per biological parameter set}
-
-\item{sequence_length}{a DNA sequence length, in base pairs}
 }
 \value{
 a list of which each element is a \code{raket_params}

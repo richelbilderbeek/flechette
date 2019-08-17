@@ -7,8 +7,10 @@ test_that("files are created in right folder", {
   project_folder_name <- file.path(super_folder_name, "raket_werper")
   skip("Issue 40, Issue #40")
   filenames <- create_input_files_general(
-    general_params_set = create_general_params_set(max_n_params = 2),
-    project_folder_name = project_folder_name
+    create_general_params_set(
+      project_folder_name = project_folder_name,
+      n_replicates = 1
+    )
   )
 
   # The folder structure created:
