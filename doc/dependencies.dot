@@ -1,0 +1,26 @@
+digraph G
+{
+  mbd [shape=none];
+  PBD [shape=none];
+  phangorn [shape=none];
+  nLTT [shape=none];
+  babette -> beastier;
+  babette -> mauricer [style=dotted];
+  mauricer -> beastier;
+  beastier -> tracerer;
+  beastier -> beautier;
+  tracerer -> phangorn;
+  lumier -> beautier;
+  mcbette -> babette;
+  pirouette -> babette;
+  pirouette -> mcbette [style=dotted];
+  pirouette -> mbd;
+  pirouette -> nLTT;
+  razzo -> pirouette;
+  peregrine -> pirouette;
+  razzo -> peregrine;
+  raket -> razzo;
+  raket -> becosys;
+  raket -> PBD;
+  becosys -> ribir;
+}
