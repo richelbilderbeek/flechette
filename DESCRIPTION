@@ -25,7 +25,7 @@ Requires:
 Imports:
     beastier (>= 2.0.18),
     beautier (>= 2.2.2),
-    peregrine (>= 0.4),
+    peregrine (>= 0.5),
     pirouette (>= 1.5)
 Suggests:
     ape,
