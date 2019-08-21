@@ -212,6 +212,4 @@ check_raket_params <- function(
     file.path(folder_name, "pbd_marg_lik.csv") ==
     raket_params$pir_params$evidence_filename
   )
-
-
 }
