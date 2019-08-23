@@ -26,7 +26,7 @@ run_raket <- rkt_run <- function(
   # Coalescent Bayesian Skyline.
   # Remove the pirouette experiments that use CBS
   if (ape::Ntip(true_phylogeny) < 6) {
-    raket_params$pir_params$experiments <- remove_cbs_exps(
+    raket_params$pir_params$experiments <- razzo::remove_cbs_exps(
       raket_params$pir_params$experiments
     )
   }
