@@ -80,39 +80,48 @@ test_that("use", {
   # First experiment must be generative
   # (yes, to test this is hard to set up)
   raket_params <- good_raket_params
-  raket_params$pir_params$experiments[[1]]$inference_conditions$model_type <- "candidate"
-  raket_params$pir_params$experiments[[1]]$inference_conditions$run_if <- "best_candidate"
-  raket_params$pir_params$experiments[[1]]$inference_conditions$do_measure_evidence <- TRUE
-  raket_params$pir_params$experiments[[1]]$errors_filename <- raket_params$pir_params$experiments[[2]]$errors_filename
-  raket_params$pir_params$experiments[[1]]$beast2_options <- raket_params$pir_params$experiments[[2]]$beast2_options
+  raket_params$pir_params$experiments[[1]]$inference_conditions$model_type <-
+    "candidate"
+  raket_params$pir_params$experiments[[1]]$inference_conditions$run_if <-
+    "best_candidate"
+  raket_params$pir_params$experiments[[1]]$inference_conditions$do_measure_evidence <- # nolint sorry Demeter
+    TRUE
+  raket_params$pir_params$experiments[[1]]$errors_filename <-
+    raket_params$pir_params$experiments[[2]]$errors_filename
+  raket_params$pir_params$experiments[[1]]$beast2_options <-
+    raket_params$pir_params$experiments[[2]]$beast2_options
   expect_error(
     check_raket_params(raket_params),
     "raket_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$inference_conditions\\$model_type' must be be 'generative'" # nolint indeed long
   )
   # BEAST2 input filename
   raket_params <- good_raket_params
-  raket_params$pir_params$experiments[[1]]$beast2_options$input_filename <- "nonsense"
+  raket_params$pir_params$experiments[[1]]$beast2_options$input_filename <-
+    "nonsense"
   expect_error(
     check_raket_params(raket_params),
     "'raket_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$input_filename' must be be '\\[folder_name\\]/pbd_gen.xml'" # nolint indeed long
   )
   # BEAST2 output log filename
   raket_params <- good_raket_params
-  raket_params$pir_params$experiments[[1]]$beast2_options$output_log_filename <- "nonsense"
+  raket_params$pir_params$experiments[[1]]$beast2_options$output_log_filename <- # nolint sorry Demeter
+    "nonsense"
   expect_error(
     check_raket_params(raket_params),
     "'raket_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$output_log_filename' must be be '\\[folder_name\\]/pbd_gen.log'" # nolint indeed long
   )
   # BEAST2 output trees filename
   raket_params <- good_raket_params
-  raket_params$pir_params$experiments[[1]]$beast2_options$output_trees_filenames <- "nonsense"
+  raket_params$pir_params$experiments[[1]]$beast2_options$output_trees_filenames <- # nolint sorry Demeter
+    "nonsense"
   expect_error(
     check_raket_params(raket_params),
     "'raket_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$output_trees_filenames' must be be '\\[folder_name\\]/pbd_gen.trees'" # nolint indeed long
   )
   # BEAST2 output trees filename
   raket_params <- good_raket_params
-  raket_params$pir_params$experiments[[1]]$beast2_options$output_state_filename <- "nonsense"
+  raket_params$pir_params$experiments[[1]]$beast2_options$output_state_filename <- # nolint sorry Demeter
+    "nonsense"
   expect_error(
     check_raket_params(raket_params),
     "'raket_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$output_state_filename' must be be '\\[folder_name\\]/pbd_gen.xml.state'" # nolint indeed long
@@ -121,36 +130,45 @@ test_that("use", {
     # First experiment must be candidate
     # (yes, to test this is hard to set up)
     raket_params <- good_raket_params
-    raket_params$pir_params$experiments[[i]]$inference_conditions$model_type <- "generative"
-    raket_params$pir_params$experiments[[i]]$inference_conditions$run_if <- "always"
-    raket_params$pir_params$experiments[[i]]$inference_conditions$do_measure_evidence <- FALSE
-    raket_params$pir_params$experiments[[i]]$errors_filename <- raket_params$pir_params$experiments[[2]]$errors_filename
-    raket_params$pir_params$experiments[[i]]$beast2_options <- raket_params$pir_params$experiments[[2]]$beast2_options
+    raket_params$pir_params$experiments[[i]]$inference_conditions$model_type <-
+      "generative"
+    raket_params$pir_params$experiments[[i]]$inference_conditions$run_if <-
+      "always"
+    raket_params$pir_params$experiments[[i]]$inference_conditions$do_measure_evidence <- # nolint sorry Demeter
+      FALSE
+    raket_params$pir_params$experiments[[i]]$errors_filename <-
+      raket_params$pir_params$experiments[[2]]$errors_filename
+    raket_params$pir_params$experiments[[i]]$beast2_options <-
+      raket_params$pir_params$experiments[[2]]$beast2_options
     expect_error(
       check_raket_params(raket_params),
       "Specifying more than one 'generative' model experiment is redundant"
     )
     # BEAST2 input file
     raket_params <- good_raket_params
-    raket_params$pir_params$experiments[[i]]$beast2_options$input_filename <- "nonsense"
+    raket_params$pir_params$experiments[[i]]$beast2_options$input_filename <-
+      "nonsense"
     expect_error(
       check_raket_params(raket_params)
     )
     # BEAST2 output log file
     raket_params <- good_raket_params
-    raket_params$pir_params$experiments[[i]]$beast2_options$output_log_filename <- "nonsense"
+    raket_params$pir_params$experiments[[i]]$beast2_options$output_log_filename <- # nolint sorry Demeter
+      "nonsense"
     expect_error(
       check_raket_params(raket_params)
     )
     # BEAST2 ouput trees files
     raket_params <- good_raket_params
-    raket_params$pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- "nonsense"
+    raket_params$pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- # nolint sorry Demeter
+      "nonsense"
     expect_error(
       check_raket_params(raket_params)
     )
     # BEAST2 input file
     raket_params <- good_raket_params
-    raket_params$pir_params$experiments[[i]]$beast2_options$output_state_filename <- "nonsense"
+    raket_params$pir_params$experiments[[i]]$beast2_options$output_state_filename <- # nolint sorry Demeter
+      "nonsense"
     expect_error(
       check_raket_params(raket_params)
     )

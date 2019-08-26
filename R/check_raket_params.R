@@ -116,7 +116,7 @@ check_raket_params <- function(
   if (raket_params$pir_params$alignment_params$fasta_filename != file.path(folder_name, "pbd.fasta")) { # nolint indeed long
     stop(
       "'raket_params$pir_params$alignment_params$fasta_filename' must be be '[folder_name]/pbd.fasta'. \n", # nolint indeed long
-      "Actual value: '", raket_params$pir_params$alignment_params$fasta_filename, "'\n",
+      "Actual value: '", raket_params$pir_params$alignment_params$fasta_filename, "'\n", # nolint long line indeed
       "[folder_name]: '", folder_name, "'\n",
       "(folder name taken from raket_params$pir_params$alignment_params$fasta_filename)" # nolint indeed long
     )

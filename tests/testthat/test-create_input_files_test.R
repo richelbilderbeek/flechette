@@ -3,7 +3,9 @@ test_that("files are created in right folder", {
   # Put files in temporary folder
   super_folder_name <- peregrine::get_pff_tempdir()
   project_folder_name <- file.path(super_folder_name, "raket_werper")
-  filenames <- create_input_files_test(create_test_params_set(project_folder_name))
+  filenames <- create_input_files_test(
+    create_test_params_set(project_folder_name)
+  )
 
   first_parameters <- readRDS(filenames[1])
   expect_false(
