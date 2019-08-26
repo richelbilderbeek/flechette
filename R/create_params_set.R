@@ -4,6 +4,7 @@
 #' @return a list of parameters
 #' @export
 create_params_set <- function(
+  project_folder_name = file.path(peregrine::get_pff_tempdir(), "raket_werper"),
   experiment_type,
   mcmc_chain_length = 1111000,
   sequence_length = 15000,
@@ -17,17 +18,13 @@ create_params_set <- function(
   }
   if (experiment_type == "general") {
     create_general_params_set( # nolint raket function
-      mcmc_chain_length = mcmc_chain_length,
-      sequence_length = sequence_length,
-      n_replicates = n_replicates,
-      max_n_params = max_n_params
+      project_folder_name = project_folder_name,
+      n_replicates = n_replicates
     )
   } else if (experiment_type == "sampling") {
     create_sampling_params_set( # nolint raket function
-      mcmc_chain_length = mcmc_chain_length,
-      sequence_length = sequence_length,
-      n_replicates = n_replicates,
-      max_n_params = max_n_params
+      project_folder_name = project_folder_name,
+      n_replicates = n_replicates
     )
   } else {
     testit::assert(experiment_type == "test")

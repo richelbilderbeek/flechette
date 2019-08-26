@@ -5,10 +5,14 @@
 \title{Create the set of parameters to use, for each of the
 two experiment types}
 \usage{
-create_params_set(experiment_type, mcmc_chain_length = 1111000,
+
+  create_params_set(project_folder_name = file.path(peregrine::get_pff_tempdir(),
+  "raket_werper"), experiment_type, mcmc_chain_length = 1111000,
   sequence_length = 15000, n_replicates = 1, max_n_params = Inf)
 }
 \arguments{
+\item{project_folder_name}{name of project folder}
+
 \item{experiment_type}{type of experiment,
 must a member of \code{\link{rkt_get_experiment_types}}}
 

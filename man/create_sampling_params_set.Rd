@@ -5,19 +5,14 @@
 \title{Create the set of parameters for the experiment
 to measure the effect of sampling}
 \usage{
-create_sampling_params_set(mcmc_chain_length = 1111000,
-  sequence_length = 15000, n_replicates = 1, max_n_params = Inf)
+
+  create_sampling_params_set(project_folder_name = file.path(peregrine::get_pff_tempdir(),
+  "raket_werper"), n_replicates = 1)
 }
 \arguments{
-\item{mcmc_chain_length}{length of the MCMC chain, in
-number of states}
-
-\item{sequence_length}{a DNA sequence length, in base pairs}
+\item{project_folder_name}{name of project folder}
 
 \item{n_replicates}{number of replicates per biological parameter set}
-
-\item{max_n_params}{the maximum number of parameters created. Set to a lower
-value in debugging}
 }
 \description{
 Create the set of parameters for the experiment
