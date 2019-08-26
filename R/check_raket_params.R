@@ -9,7 +9,7 @@ check_raket_params <- function(
   raket_params
 ) {
   # Check if the list elements are all present
-  check_raket_params_list_elements(raket_params)
+  check_raket_params_list_elements(raket_params) # nolint raket function
 
   becosys::check_pbd_params(raket_params$pbd_params)
   pirouette::check_pir_params(raket_params$pir_params)
