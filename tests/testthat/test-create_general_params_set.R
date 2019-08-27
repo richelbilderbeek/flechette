@@ -1,10 +1,14 @@
-test_that("must return the number of parameters", {
+test_that("must return the expected number of parameter sets", {
+
+  if (!beastier::is_on_travis()) return()
 
   n_replicates <- 2
   params_set <- create_general_params_set(
     n_replicates = n_replicates
   )
-  expect_equal(class(params_set), "list")
+  expect_silent(
+    check_raket_paramses(params_set)
+  )
   expect_equal(
     length(params_set),
     n_replicates *
@@ -12,8 +16,33 @@ test_that("must return the number of parameters", {
       length(rkt_get_spec_compl_rates()) *
       length(rkt_get_spec_init_rates())
   )
+})
 
-  # all less than 1000 taxa with 95% certainty
+test_that("all filenames are Peregrine friendly", {
+
+  if (!beastier::is_on_travis()) return()
+
+  n_replicates <- 2
+  params_set <- create_general_params_set(
+    n_replicates = n_replicates
+  )
+  flat_params_set <- unlist(params_set)
+  names <- names(flat_params_set)
+  filename_indices <- which(grepl(pattern = "(filename|working_dir)", x = names))
+  filenames <- flat_params_set[filename_indices]
+  for (filename in filenames) {
+    expect_true(beautier::is_one_na(filename) || peregrine::is_pff(filename))
+  }
+})
+
+test_that("all less than 1000 taxa with 95% certainty", {
+
+  if (!beastier::is_on_travis()) return()
+
+  n_replicates <- 2
+  params_set <- create_general_params_set(
+    n_replicates = n_replicates
+  )
 
   for (params in params_set) {
     crown_age <- params$pir_params$experiments[[1]]$inference_model$mrca_prior$mrca_distr$mean$value # nolint indeed a long line, sorry Demeter

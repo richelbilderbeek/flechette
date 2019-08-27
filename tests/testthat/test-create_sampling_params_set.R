@@ -1,17 +1,12 @@
-context("create_sampling_params_set")
+test_that("must be a valid raket_paramses", {
 
-test_that("must be a collection of multiple parameters", {
+  if (!beastier::is_on_travis()) return()
 
-  skip("Takes too long?")
-
-  # Need an odd number here, as params come in pairs,
-  # due to two sampling methods
-  max_n_params <- 2
-  params_set <- create_sampling_params_set(
-    max_n_params = max_n_params
+  expect_silent(
+    check_raket_paramses(
+      create_sampling_params_set(n_replicates = 2)
+    )
   )
-  expect_equal(class(params_set), "list")
-  expect_equal(max_n_params, length(params_set))
 })
 
 test_that("no high SRCs", {
@@ -46,5 +41,20 @@ test_that("sampling matters", {
     sum_youngest <- sum(out$stree_youngest$edge.length)
     sum_oldest <- sum(out$stree_oldest$edge.length)
     expect_true(sum_youngest != sum_oldest)
+  }
+})
+
+test_that("all filenames are Peregrine friendly", {
+
+  if (!beastier::is_on_travis()) return()
+
+  params_set <- create_sampling_params_set(n_replicates = 2)
+
+  flat_params_set <- unlist(params_set)
+  names <- names(flat_params_set)
+  filename_indices <- which(grepl(pattern = "(filename|working_dir)", x = names))
+  filenames <- flat_params_set[filename_indices]
+  for (filename in filenames) {
+    expect_true(beautier::is_one_na(filename) || peregrine::is_pff(filename))
   }
 })

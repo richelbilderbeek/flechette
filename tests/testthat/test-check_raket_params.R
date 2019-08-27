@@ -40,16 +40,100 @@ test_that("use", {
   )
 
 
+  # First experiment must be generative
+  # (yes, to test this is hard to set up)
+  raket_params <- good_raket_params
+  raket_params$pir_params$experiments[[1]]$inference_conditions$model_type <-
+    "candidate"
+  raket_params$pir_params$experiments[[1]]$inference_conditions$run_if <-
+    "best_candidate"
+  raket_params$pir_params$experiments[[1]]$inference_conditions$do_measure_evidence <- # nolint sorry Demeter
+    TRUE
+  raket_params$pir_params$experiments[[1]]$errors_filename <-
+    raket_params$pir_params$experiments[[2]]$errors_filename
+  raket_params$pir_params$experiments[[1]]$beast2_options <-
+    raket_params$pir_params$experiments[[2]]$beast2_options
+  expect_error(
+    check_raket_params(raket_params),
+    "raket_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$inference_conditions\\$model_type' must be be 'generative'" # nolint indeed long
+  )
+
+  for (i in seq(2, 3)) {
+    # Non-first experiments must be candidate
+    # (yes, to test this is hard to set up)
+    raket_params <- good_raket_params
+    raket_params$pir_params$experiments[[i]]$inference_conditions$model_type <-
+      "generative"
+    raket_params$pir_params$experiments[[i]]$inference_conditions$run_if <-
+      "always"
+    raket_params$pir_params$experiments[[i]]$inference_conditions$do_measure_evidence <- # nolint sorry Demeter
+      FALSE
+    raket_params$pir_params$experiments[[i]]$errors_filename <-
+      raket_params$pir_params$experiments[[2]]$errors_filename
+    raket_params$pir_params$experiments[[i]]$beast2_options <-
+      raket_params$pir_params$experiments[[2]]$beast2_options
+    expect_error(
+      check_raket_params(raket_params),
+      "Specifying more than one 'generative' model experiment is redundant"
+    )
+  }
   # Check pbd_params
   # done by check_pbd_params
 
   # Check pir_params
   # Done by pirouette::check_pir_params and peregrine::check_pff_pir_params
 
-  ##############################################################################
-  # Filenames
-  ##############################################################################
+  # Sampling method
+  raket_params <- good_raket_params
+  raket_params$sampling_method <- "nonsense"
+  expect_error(
+    check_raket_params(raket_params),
+    "'sampling_method' must be a sampling method"
+  )
+
+  raket_params <- good_raket_params
+  raket_params$sampling_method <- NA
+  expect_error(
+    check_raket_params(raket_params),
+    "'sampling_method' must be a sampling method"
+  )
+
+  raket_params <- good_raket_params
+  raket_params$true_tree_filename <- NA
+  expect_error(
+    check_raket_params(raket_params),
+    "raket_params\\$true_tree_filename is not of class 'character'"
+  )
+
+  raket_params <- good_raket_params
+  raket_params$true_tree_filename <- "/no_way.newick"
+  expect_error(
+    check_raket_params(raket_params),
+    "'true_tree_filename' must be Peregrine-friendly"
+  )
+
+
+  raket_params <- good_raket_params
+  raket_params$pbd_sim_out_filename <- NA
+  expect_error(
+    check_raket_params(raket_params),
+    "raket_params\\$pbd_sim_out_filename is not of class 'character'"
+  )
+
+  raket_params <- good_raket_params
+  raket_params$pbd_sim_out_filename <- "/no_way.RDa"
+  expect_error(
+    check_raket_params(raket_params),
+    "'pbd_sim_out_filename' must be Peregrine-friendly"
+  )
+
+})
+
+test_that("naming conventions", {
+
   good_raket_params <- create_test_raket_params()
+  expect_silent(check_raket_params(good_raket_params))
+
   # PBD sim
   raket_params <- good_raket_params
   raket_params$pbd_sim_out_filename <- "nonsense"
@@ -76,23 +160,6 @@ test_that("use", {
   expect_error(
     check_raket_params(raket_params),
     "'raket_params\\$pbd_sim_out_filename' must be be '\\[folder_name\\]/pbd_sim_out.RDa'" # nolint indeed long
-  )
-  # First experiment must be generative
-  # (yes, to test this is hard to set up)
-  raket_params <- good_raket_params
-  raket_params$pir_params$experiments[[1]]$inference_conditions$model_type <-
-    "candidate"
-  raket_params$pir_params$experiments[[1]]$inference_conditions$run_if <-
-    "best_candidate"
-  raket_params$pir_params$experiments[[1]]$inference_conditions$do_measure_evidence <- # nolint sorry Demeter
-    TRUE
-  raket_params$pir_params$experiments[[1]]$errors_filename <-
-    raket_params$pir_params$experiments[[2]]$errors_filename
-  raket_params$pir_params$experiments[[1]]$beast2_options <-
-    raket_params$pir_params$experiments[[2]]$beast2_options
-  expect_error(
-    check_raket_params(raket_params),
-    "raket_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$inference_conditions\\$model_type' must be be 'generative'" # nolint indeed long
   )
   # BEAST2 input filename
   raket_params <- good_raket_params
@@ -127,23 +194,6 @@ test_that("use", {
     "'raket_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$output_state_filename' must be be '\\[folder_name\\]/pbd_gen.xml.state'" # nolint indeed long
   )
   for (i in seq(2, 3)) {
-    # First experiment must be candidate
-    # (yes, to test this is hard to set up)
-    raket_params <- good_raket_params
-    raket_params$pir_params$experiments[[i]]$inference_conditions$model_type <-
-      "generative"
-    raket_params$pir_params$experiments[[i]]$inference_conditions$run_if <-
-      "always"
-    raket_params$pir_params$experiments[[i]]$inference_conditions$do_measure_evidence <- # nolint sorry Demeter
-      FALSE
-    raket_params$pir_params$experiments[[i]]$errors_filename <-
-      raket_params$pir_params$experiments[[2]]$errors_filename
-    raket_params$pir_params$experiments[[i]]$beast2_options <-
-      raket_params$pir_params$experiments[[2]]$beast2_options
-    expect_error(
-      check_raket_params(raket_params),
-      "Specifying more than one 'generative' model experiment is redundant"
-    )
     # BEAST2 input file
     raket_params <- good_raket_params
     raket_params$pir_params$experiments[[i]]$beast2_options$input_filename <-
@@ -202,50 +252,6 @@ test_that("use", {
   raket_params$pir_params$evidence_filename <- "nonsense"
   expect_error(
     check_raket_params(raket_params)
-  )
-
-  # Sampling method
-  raket_params <- good_raket_params
-  raket_params$sampling_method <- "nonsense"
-  expect_error(
-    check_raket_params(raket_params),
-    "'sampling_method' must be a sampling method"
-  )
-
-  raket_params <- good_raket_params
-  raket_params$sampling_method <- NA
-  expect_error(
-    check_raket_params(raket_params),
-    "'sampling_method' must be a sampling method"
-  )
-
-  raket_params <- good_raket_params
-  raket_params$true_tree_filename <- NA
-  expect_error(
-    check_raket_params(raket_params),
-    "raket_params\\$true_tree_filename is not of class 'character'"
-  )
-
-  raket_params <- good_raket_params
-  raket_params$true_tree_filename <- "/no_way.newick"
-  expect_error(
-    check_raket_params(raket_params),
-    "'true_tree_filename' must be Peregrine-friendly"
-  )
-
-
-  raket_params <- good_raket_params
-  raket_params$pbd_sim_out_filename <- NA
-  expect_error(
-    check_raket_params(raket_params),
-    "raket_params\\$pbd_sim_out_filename is not of class 'character'"
-  )
-
-  raket_params <- good_raket_params
-  raket_params$pbd_sim_out_filename <- "/no_way.RDa"
-  expect_error(
-    check_raket_params(raket_params),
-    "'pbd_sim_out_filename' must be Peregrine-friendly"
   )
 
 })

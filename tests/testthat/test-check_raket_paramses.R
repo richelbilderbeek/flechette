@@ -1,6 +1,5 @@
 test_that("use", {
 
-
   expect_silent(
     check_raket_paramses(
       list(create_test_raket_params())

@@ -83,6 +83,14 @@ check_raket_params_filenames <- function(raket_params) { # nolint indeed a long 
       "(folder name taken from raket_params$pir_params$alignment_params$fasta_filename)" # nolint indeed long
     )
   }
+  if (!peregrine::is_pff(
+    raket_params$pir_params$experiments[[1]]$beast2_options$beast2_working_dir)
+  ) {
+    stop(
+      "First experiments BEAST2 working directory must be Peregrine friendly"
+    )
+  }
+
   # Lost inspiration for this grunt work ...
   cand_experiments <- raket_params$pir_params$experiments[-1]
   for (cand_experiment in cand_experiments) {
@@ -109,6 +117,9 @@ check_raket_params_filenames <- function(raket_params) { # nolint indeed a long 
     testit::assert(
       file.path(folder_name, "pbd_nltts_best.csv") ==
       cand_experiment$errors_filename
+    )
+    testit::assert(peregrine::is_pff(
+      cand_experiment$beast2_options$beast2_working_dir)
     )
   }
   # Twinning
