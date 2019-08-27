@@ -11,7 +11,7 @@ create_test_params_set <- function(
   raket_paramses <- list()
   for (index in seq_along(pbd_paramses)) {
     folder_name <- file.path(project_folder_name, "data", index)
-    raket_params <- create_test_raket_params(folder_name)
+    raket_params <- create_test_raket_params(folder_name) # nolint raket function
     raket_params$sampling_method <- "random"
     raket_params$pbd_params <- pbd_paramses[[index]]
     raket_paramses[[index]] <- raket_params

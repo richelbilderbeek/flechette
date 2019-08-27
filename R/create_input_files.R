@@ -42,7 +42,7 @@ create_input_files_sampling <- function(
 create_input_files_test <- function(
   raket_paramses = create_test_params_set()
 ) {
-  create_input_files_impl(raket_paramses)
+  create_input_files_impl(raket_paramses) #  nolint raket function
 }
 #' Creates the parameter files in the article for the general exploration
 #' @inheritParams default_params_doc
