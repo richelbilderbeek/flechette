@@ -42,7 +42,7 @@ create_sampling_params_set <- function(
           sampling_params_set[[index]] <- params
           sampling_params_set[[index + 1]] <- params
           sampling_params_set[[index]]$tree_sim_rng_seed <- tree_sim_rng_seed
-          sampling_params_set[[index + 1]]$tree_sim_rng_seed <- 
+          sampling_params_set[[index + 1]]$tree_sim_rng_seed <-
             tree_sim_rng_seed
           sampling_params_set[[index]]$sampling_method <- "shortest"
           sampling_params_set[[index + 1]]$sampling_method <- "longest"
