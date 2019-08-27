@@ -13,7 +13,9 @@ test_that("all filenames are Peregrine friendly", {
 
   flat_params_set <- unlist(params_set)
   names <- names(flat_params_set)
-  filename_indices <- which(grepl(pattern = "(filename|working_dir)", x = names))
+  filename_indices <- which(
+    grepl(pattern = "(filename|working_dir)", x = names)
+  )
   filenames <- flat_params_set[filename_indices]
   for (filename in filenames) {
     expect_true(beautier::is_one_na(filename) || peregrine::is_pff(filename))
