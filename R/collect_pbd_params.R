@@ -6,7 +6,7 @@
 collect_pbd_params <- function(
   project_folder_name
 ) {
-  check_project_folder_name(project_folder_name)
+  check_project_folder_name(project_folder_name) # nolint raket function
   param_filenames <- list.files(
     path = project_folder_name,
     pattern = "parameters\\.RDa$",
@@ -34,7 +34,7 @@ collect_pbd_params <- function(
   for (i in seq_along(param_filenames)) {
     filename <- param_filenames[i]
     raket_params <- readRDS(filename)
-    check_raket_params(raket_params)
+    check_raket_params(raket_params) # nolint raket function
     pbd_params <- raket_params$pbd_params
     df$erg[i] <- pbd_params$erg
     df$eri[i] <- pbd_params$eri
