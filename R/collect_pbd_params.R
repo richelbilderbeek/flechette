@@ -16,14 +16,14 @@ collect_pbd_params <- function(
   # Folder names must be relative and always start with 'data/'
   folder_names <- stringr::str_match(
     string = dirname(param_filenames),
-    pattern = "data/.*$"
+    pattern = "data/.*?$"
   )[, 1]
 
   first_param_filename <- param_filenames[1]
   first_raket_params <- readRDS(first_param_filename)
   first_raket_pbd_params <- first_raket_params$pbd_params
 
-  df <- data.frame(folder = folder_names)
+  df <- data.frame(folder = folder_names, stringsAsFactors = FALSE)
   df$erg <- NA
   df$eri <- NA
   df$scr <- NA

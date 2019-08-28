@@ -25,6 +25,7 @@ test_that("use", {
   expect_true("siri" %in% names(df))
 
   # Data must make sense
+  expect_equal(df$folder[1], "data/raket_werper/data/1")
   expect_true(all(df$erg >= 0.0))
   expect_true(all(df$eri >= 0.0))
   expect_true(all(df$scr >= 0.0))
