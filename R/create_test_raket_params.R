@@ -42,6 +42,7 @@ create_test_raket_params <- function(
     beautier::create_strict_clock_model()
   gen_experiment$inference_model$tree_prior <-
     beautier::create_yule_tree_prior()
+  # Use short MCMC
   gen_experiment$inference_model$mcmc <- beautier::create_mcmc(
     chain_length = 2000, store_every = 1000
   )
@@ -93,6 +94,15 @@ create_test_raket_params <- function(
   }
   peregrine::check_pff_experiments(cand_experiments)
   experiments <- c(list(gen_experiment), cand_experiments)
+
+  # Do sloppy model comparison
+  for (i in seq_along(experiments)) {
+    experiments[[i]]$est_evidence_mcmc <- beautier::create_mcmc_nested_sampling(
+      chain_length = 2000,
+      store_every = 1000,
+      epsilon = 100
+    )
+  }
 
   # Set an MRCA prior in all experiments
   for (i in seq_along(experiments)) {
