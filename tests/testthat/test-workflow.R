@@ -3,112 +3,36 @@ context("workflow")
 test_that("Full workflow, general", {
 
   skip("No full workflow")
+
   if (!beastier::is_on_travis()) return()
-
-  n_parameters <- rkt_get_n_params()
-  mcmc_chain_length <- 16000
-  sequence_length <- 15
-  testit::assert(sampling_interval >= 1000)
-  n_samples <- 1 + (chain_length / sampling_interval)
-  burn_in_fraction <- 0.40
-  n_samples_to_remove <- burn_in_fraction * n_samples
-  n_samples_no_burn_in <- n_samples - n_samples_to_remove
+  super_folder_name <- peregrine::get_pff_tempdir()
+  project_folder_name <- file.path(super_folder_name, "raket_werper")
 
   ##############################################################################
-  # 1.1 Create all `.RDa` input/parameter files to do a general mapping
+  # 2 Create all `.RDa` parameter files
   ##############################################################################
-  input_filenames_all <- create_input_files_general(
-    general_params_set = create_general_params_set(
-      mcmc_chain_length = chain_length,
-      sequence_length = sequence_length
-    ),
-    folder_name = tempdir()
-  )
 
-  testit::assert(n_parameters ==
-    length(unlist(readRDS(input_filenames_all[1])))
+  parameter_filenames <- create_input_files_test(
+    create_test_params_set(project_folder_name)
   )
 
   ##############################################################################
   # 2 Run simulation, store all info (such as all posterior phylogenies) as .RDa
   ##############################################################################
-  # Only run the first three input file, pick three easy ones
-  set.seed(42)
-  while (1) {
-    input_filenames <- sample(input_filenames_all, size = 3, replace = FALSE)
-    lowest_sir <- min(rkt_get_spec_init_rates())
-    if (readRDS(input_filenames[1])$sirg > lowest_sir) next
-    if (readRDS(input_filenames[1])$siri > lowest_sir) next
-    if (readRDS(input_filenames[2])$sirg > lowest_sir) next
-    if (readRDS(input_filenames[2])$siri > lowest_sir) next
-    if (readRDS(input_filenames[3])$sirg > lowest_sir) next
-    if (readRDS(input_filenames[3])$siri > lowest_sir) next
-    break
-  }
 
-  # Name the output files
-  posterior_filesnames <- sub(
-    x = input_filenames,
-    pattern = ".RDa", replacement = "_out.RDa"
-  )
-  # Create the output files
-  testit::assert(length(input_filenames) == length(posterior_filesnames))
-  for (i in seq_along(input_filenames)) {
-    create_posterior_files(
-      input_filename = input_filenames[i],
-      posterior_filesname = posterior_filesnames[i]
-    )
-    testit::assert(length(readRDS(posterior_filesnames[i])$trees) == n_samples)
+  for (parameter_filename in parameter_filenames) {
+    rkt_run_from_file(parameter_filename)
   }
 
   ##############################################################################
-  # 3. Extract nLTT values from output file, store parameters and nLTTs as .RDa
+  # 7. Collect the nLTT statistics
   ##############################################################################
-  # Name the nLTT files
-  nltt_filenames <- sub(
-    x = input_filenames,
-    pattern = ".RDa", replacement = "_nltt.RDa"
-  )
-  # Create the output files
-  testit::assert(length(posterior_filesnames) == length(nltt_filenames))
-  for (i in seq_along(posterior_filesnames)) {
-    create_nltt_file(
-      input_filename = posterior_filesnames[i],
-      posterior_filesname = nltt_filenames[i],
-      burn_in_fraction = burn_in_fraction
-    )
-    testit::assert(
-      length(readRDS(nltt_filenames[i])$nltts) == n_samples_no_burn_in
-    )
-  }
-
-  ##############################################################################
-  # 4. Merge all nLTT values into one `.csv` file
-  ##############################################################################
-  csv_filename <- tempfile()
-  nltt_files_to_csv(
-    nltt_filenames = nltt_filenames,
-    csv_filename = csv_filename
+  razzo::collect_nltt_stats(
+    project_folder_name = project_folder_name
   )
 
-  # Reading the .csv
-  testthat::expect_true(file.exists(csv_filename))
-  df <- utils::read.csv(file = csv_filename)
-  testthat::expect_true(nrow(df) == length(input_filenames))
-  testthat::expect_true(ncol(df) == n_parameters + n_samples_no_burn_in)
-
   ##############################################################################
-  # 5. After reading the `.csv` with `read.csv()`,
-  #    convert data frame to tidy data in the long form
-  ##############################################################################
-  n_measurements <- n_samples_no_burn_in * length(input_filenames)
-  df_long <- to_long(df)
-  testthat::expect_true(nrow(df_long) == n_measurements)
-  testthat::expect_true(ncol(df_long) == n_parameters + 2)
-
-  ##############################################################################
-  # 6. Plot the tidy data in long form as a violin plot,
-  #    depends on sampling method
+  # 10. Show figure 1
   ##############################################################################
   testthat::expect_silent(create_fig_1(df_long))
 })

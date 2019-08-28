@@ -27,8 +27,20 @@ First we load the libraries we'll need:
 
 ```{r load_library}
 library(raket)
-if (!mauricer::is_beast2_pkg_installed("NS")) {
-  mauricer::install_beast2_pkg("NS")
+```
+
+Here we check if all prerequisties are met:
+
+```{r}
+can_run <- TRUE
+if (!beastier::is_beast2_installed()) {
+  print("Please install BEAST2")
+  print("Tip: run 'beastier::install_beast2()'")
+  can_run <- FALSE
+} else if (!mauricer::is_beast2_ns_pkg_installed()) {
+  print("Please install the NS BEAST2 package")
+  print("Tip: run 'mauricer::install_beast2_pkg(\"NS\")'")
+  can_run <- FALSE
 }
 ```
 
@@ -97,12 +109,7 @@ print(readRDS(posterior_filesname))
 From this raw data, the nLTTs can be measured:
 
 ```
-nltts_filename <- tempfile("nltt.RDa")
-raket::create_nltt_file(
-  input_filename = posterior_filesname,
-  posterior_filesname = nltts_filename,
-  burn_in_fraction = 0.4
-)
+nltts_filename <- razzo::collect_nltt_stats(project_folder_name = project_folder_name)
 ```
 
 The resulting file only contains the parameters and nLTT statistics:

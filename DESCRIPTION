@@ -41,7 +41,7 @@ Suggests:
     mbd,
     PBD,
     plyr,
-    razzo,
+    razzo (>= 0.2),
     reshape2,
     rmarkdown,
     stringr,

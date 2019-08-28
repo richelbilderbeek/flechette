@@ -4,7 +4,9 @@ test_that("use, shortest", {
 
   raket_params <- create_test_raket_params()
   testit::assert(raket_params$sampling_method == "shortest")
+
   out <- run_raket(raket_params)
+
   expect_true("parameters" %in% names(out))
   expect_true("incipient_tree" %in% names(out))
   expect_true("species_tree" %in% names(out))
