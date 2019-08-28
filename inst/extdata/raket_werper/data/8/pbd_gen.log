@@ -1,0 +1,58 @@
+#
+#model:
+#
+#<?xml version="1.0" encoding="UTF-8" standalone="no"?><input id="posterior" spec="beast.core.util.CompoundDistribution">
+#    <distribution id="prior" spec="beast.core.util.CompoundDistribution">
+#        <distribution id="YuleModel.t:pbd" spec="beast.evolution.speciation.YuleModel">
+#            <parameter id="birthRate.t:pbd" name="birthDiffRate" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#            <tree id="Tree.t:pbd" spec="beast.evolution.tree.Tree">
+#                <taxonset id="TaxonSet.pbd" spec="beast.evolution.alignment.TaxonSet">
+#                </taxonset>
+#            </tree>
+#        </distribution>
+#        <prior id="YuleBirthRatePrior.t:pbd" name="distribution" x="@birthRate.t:pbd">
+#            <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="ClockPrior.c:pbd" name="distribution">
+#            <parameter id="clockRate.c:pbd" name="x" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#            <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
+#        </prior>
+#        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:pbd">
+#            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
+#                <taxon id="S13-13-18" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S15-15-16" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S11-11-11" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S5-5-6" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S4-4-5" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S10-10-13" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S14-14-14" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S7-7-7" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S9-9-12" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S12-12-10" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S17-17-19" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S18-18-21" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S19-19-23" spec="beast.evolution.alignment.Taxon"/>
+#            </taxonset>
+#            <Normal id="Normal.151" name="distr">
+#                <parameter estimate="false" id="RealParameter.300" name="mean" spec="beast.core.parameter.RealParameter">10.0</parameter>
+#                <parameter estimate="false" id="RealParameter.301" name="sigma" spec="beast.core.parameter.RealParameter">0.01</parameter>
+#            </Normal>
+#        </distribution>
+#    </distribution>
+#    <distribution id="likelihood" spec="beast.core.util.CompoundDistribution" useThreads="true">
+#        <distribution data="@pbd" id="treeLikelihood.pbd" spec="beast.evolution.likelihood.ThreadedTreeLikelihood" tree="@Tree.t:pbd">
+#            <siteModel id="SiteModel.s:pbd" spec="beast.evolution.sitemodel.SiteModel">
+#                <parameter estimate="false" id="mutationRate.s:pbd" name="mutationRate" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="gammaShape.s:pbd" name="shape" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="proportionInvariant.s:pbd" lower="0.0" name="proportionInvariant" spec="beast.core.parameter.RealParameter" upper="1.0">0.0</parameter>
+#                <substModel id="JC69.s:pbd" spec="beast.evolution.substitutionmodel.JukesCantor"/>
+#            </siteModel>
+#            <branchRateModel clock.rate="@clockRate.c:pbd" id="StrictClock.c:pbd" spec="beast.evolution.branchratemodel.StrictClockModel"/>
+#        </distribution>
+#    </distribution>
+#</input>
+#
+Sample	posterior	likelihood	prior	treeLikelihood.pbd	TreeHeight	YuleModel	birthRate	logP(mrca(auto_name_1))	mrca.age(auto_name_1)	clockRate
+0	-437701.60637937754	-727.8956962637341	-436973.7106831138	-727.8956962637341	0.6514843629638493	-3.673835219443758	1.0	-436970.0368478943	0.6514843629638493	1.0
+1000	-518.4862341557887	-490.55992939042045	-27.926304765368172	-490.55992939042045	10.022293104134679	-29.127623958353382	0.21869078990479845	1.2013191929852094	10.022293104134679	0.23049736269473922
+2000	-522.9216764737168	-490.04758347486745	-32.87409299884945	-490.04758347486745	9.973931504766151	-33.162492432846825	0.171892930637296	0.2883994339973732	9.973931504766151	0.10288388801031598

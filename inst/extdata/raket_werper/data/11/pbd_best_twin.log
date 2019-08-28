@@ -1,0 +1,78 @@
+#
+#model:
+#
+#<?xml version="1.0" encoding="UTF-8" standalone="no"?><input id="posterior" spec="beast.core.util.CompoundDistribution">
+#    <distribution id="prior" spec="beast.core.util.CompoundDistribution">
+#        <distribution id="BirthDeath.t:pbd_twin" spec="beast.evolution.speciation.BirthDeathGernhard08Model">
+#            <parameter id="BDDeathRate.t:pbd_twin" lower="0.0" name="relativeDeathRate" spec="beast.core.parameter.RealParameter" upper="1.0">0.5</parameter>
+#            <parameter id="BDBirthRate.t:pbd_twin" lower="0.0" name="birthDiffRate" spec="beast.core.parameter.RealParameter" upper="10000.0">1.0</parameter>
+#            <tree id="Tree.t:pbd_twin" spec="beast.evolution.tree.Tree">
+#                <taxonset id="TaxonSet.pbd_twin" spec="beast.evolution.alignment.TaxonSet">
+#                </taxonset>
+#            </tree>
+#        </distribution>
+#        <prior id="BirthRatePrior.t:pbd_twin" name="distribution" x="@BDBirthRate.t:pbd_twin">
+#            <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="DeathRatePrior.t:pbd_twin" name="distribution" x="@BDDeathRate.t:pbd_twin">
+#            <Uniform id="Uniform.101" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="ClockPrior.c:pbd_twin" name="distribution">
+#            <parameter id="clockRate.c:pbd_twin" name="x" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#            <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
+#        </prior>
+#        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:pbd_twin">
+#            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
+#                <taxon id="S2-2-3" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S33-33-44" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S11-11-15" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S27-27-32" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S34-34-40" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S36-36-43" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S21-21-49" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S9-9-39" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S37-37-46" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S22-22-23" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S19-19-24" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S32-32-41" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S29-29-35" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S7-7-10" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S5-5-7" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S4-4-6" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S14-14-16" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S24-24-28" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S35-35-31" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S6-6-8" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S31-31-45" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S25-25-30" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S18-18-50" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S30-30-42" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S16-16-18" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S26-26-51" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S17-17-19" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S15-15-20" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S12-12-17" spec="beast.evolution.alignment.Taxon"/>
+#            </taxonset>
+#            <Normal id="Normal.151" name="distr">
+#                <parameter estimate="false" id="RealParameter.300" name="mean" spec="beast.core.parameter.RealParameter">10.0</parameter>
+#                <parameter estimate="false" id="RealParameter.301" name="sigma" spec="beast.core.parameter.RealParameter">0.01</parameter>
+#            </Normal>
+#        </distribution>
+#    </distribution>
+#    <distribution id="likelihood" spec="beast.core.util.CompoundDistribution" useThreads="true">
+#        <distribution data="@pbd_twin" id="treeLikelihood.pbd_twin" spec="beast.evolution.likelihood.ThreadedTreeLikelihood" tree="@Tree.t:pbd_twin">
+#            <siteModel id="SiteModel.s:pbd_twin" spec="beast.evolution.sitemodel.SiteModel">
+#                <parameter estimate="false" id="mutationRate.s:pbd_twin" name="mutationRate" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="gammaShape.s:pbd_twin" name="shape" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="proportionInvariant.s:pbd_twin" lower="0.0" name="proportionInvariant" spec="beast.core.parameter.RealParameter" upper="1.0">0.0</parameter>
+#                <substModel id="JC69.s:pbd_twin" spec="beast.evolution.substitutionmodel.JukesCantor"/>
+#            </siteModel>
+#            <branchRateModel clock.rate="@clockRate.c:pbd_twin" id="StrictClock.c:pbd_twin" spec="beast.evolution.branchratemodel.StrictClockModel"/>
+#        </distribution>
+#    </distribution>
+#</input>
+#
+Sample	posterior	likelihood	prior	treeLikelihood.pbd_twin	TreeHeight	BirthDeath	BDBirthRate	BDDeathRate	logP(mrca(auto_name_1))	mrca.age(auto_name_1)	clockRate
+0	-358433.7163537662	-1810.2690845820982	-356623.4472691841	-1810.2690845820982	1.5545326921537006	2.456738666207075	1.0	0.5	-356625.90400785033	1.5545326921537006	1.0
+1000	-1101.453681758636	-1066.0803280830596	-35.373353675576546	-1066.0803280830596	9.996971216500292	-39.01371768091944	0.6219629694409258	0.5782789033138729	3.6403640053428936	9.996971216500292	1.0702027680641686
+2000	-978.8915433427081	-943.7307964832928	-35.160746859415276	-943.7307964832928	10.004695342581476	-38.73674730241159	0.15483148741825342	0.8390120563000223	3.5760004429963117	10.004695342581476	0.4366319142165194

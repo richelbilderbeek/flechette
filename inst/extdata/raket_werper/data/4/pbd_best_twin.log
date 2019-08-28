@@ -1,0 +1,63 @@
+#
+#model:
+#
+#<?xml version="1.0" encoding="UTF-8" standalone="no"?><input id="posterior" spec="beast.core.util.CompoundDistribution">
+#    <distribution id="prior" spec="beast.core.util.CompoundDistribution">
+#        <distribution id="BirthDeath.t:pbd_twin" spec="beast.evolution.speciation.BirthDeathGernhard08Model">
+#            <parameter id="BDDeathRate.t:pbd_twin" lower="0.0" name="relativeDeathRate" spec="beast.core.parameter.RealParameter" upper="1.0">0.5</parameter>
+#            <parameter id="BDBirthRate.t:pbd_twin" lower="0.0" name="birthDiffRate" spec="beast.core.parameter.RealParameter" upper="10000.0">1.0</parameter>
+#            <tree id="Tree.t:pbd_twin" spec="beast.evolution.tree.Tree">
+#                <taxonset id="TaxonSet.pbd_twin" spec="beast.evolution.alignment.TaxonSet">
+#                </taxonset>
+#            </tree>
+#        </distribution>
+#        <prior id="BirthRatePrior.t:pbd_twin" name="distribution" x="@BDBirthRate.t:pbd_twin">
+#            <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="DeathRatePrior.t:pbd_twin" name="distribution" x="@BDDeathRate.t:pbd_twin">
+#            <Uniform id="Uniform.101" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="ClockPrior.c:pbd_twin" name="distribution">
+#            <parameter id="clockRate.c:pbd_twin" name="x" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#            <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
+#        </prior>
+#        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:pbd_twin">
+#            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
+#                <taxon id="S6-6-6" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S7-7-7" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S2-2-22" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S3-3-17" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S5-5-14" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S8-8-12" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S4-4-19" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S11-11-65" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S1-1-44" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S13-13-52" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S12-12-66" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S14-14-76" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S9-9-58" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S10-10-38" spec="beast.evolution.alignment.Taxon"/>
+#            </taxonset>
+#            <Normal id="Normal.151" name="distr">
+#                <parameter estimate="false" id="RealParameter.300" name="mean" spec="beast.core.parameter.RealParameter">10.0</parameter>
+#                <parameter estimate="false" id="RealParameter.301" name="sigma" spec="beast.core.parameter.RealParameter">0.01</parameter>
+#            </Normal>
+#        </distribution>
+#    </distribution>
+#    <distribution id="likelihood" spec="beast.core.util.CompoundDistribution" useThreads="true">
+#        <distribution data="@pbd_twin" id="treeLikelihood.pbd_twin" spec="beast.evolution.likelihood.ThreadedTreeLikelihood" tree="@Tree.t:pbd_twin">
+#            <siteModel id="SiteModel.s:pbd_twin" spec="beast.evolution.sitemodel.SiteModel">
+#                <parameter estimate="false" id="mutationRate.s:pbd_twin" name="mutationRate" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="gammaShape.s:pbd_twin" name="shape" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="proportionInvariant.s:pbd_twin" lower="0.0" name="proportionInvariant" spec="beast.core.parameter.RealParameter" upper="1.0">0.0</parameter>
+#                <substModel id="JC69.s:pbd_twin" spec="beast.evolution.substitutionmodel.JukesCantor"/>
+#            </siteModel>
+#            <branchRateModel clock.rate="@clockRate.c:pbd_twin" id="StrictClock.c:pbd_twin" spec="beast.evolution.branchratemodel.StrictClockModel"/>
+#        </distribution>
+#    </distribution>
+#</input>
+#
+Sample	posterior	likelihood	prior	treeLikelihood.pbd_twin	TreeHeight	BirthDeath	BDBirthRate	BDDeathRate	logP(mrca(auto_name_1))	mrca.age(auto_name_1)	clockRate
+0	-430371.17038561363	-900.2032644424727	-429470.9671211712	-900.2032644424727	0.7320292442550773	1.7562938915526147	1.0	0.5	-429472.72341506276	0.7320292442550773	1.0
+1000	-534.4224529295525	-508.1206281290285	-26.301824800524038	-508.1206281290285	9.998050242629395	-29.969048684286314	0.16876889999358596	0.5708707731440894	3.667223883762274	9.998050242629395	0.34165973148844664
+2000	-528.6485816272835	-505.58988255989146	-23.05869906739202	-505.58988255989146	9.998050242629395	-26.725922951154292	0.12158476612579672	0.8326956811115509	3.667223883762274	9.998050242629395	0.4753128861554881

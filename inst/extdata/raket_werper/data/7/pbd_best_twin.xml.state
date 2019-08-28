@@ -1,0 +1,23 @@
+<itsabeastystatewerein version='2.0' sample='2000'>
+<statenode id='Tree.t:pbd_twin'>(0:9.99766638103792,((1:1.393570450116298,(3:1.0101492799165221,4:1.0101492799165221)5:0.38342117019977584)7:0.8399522794769578,2:2.233522729593256)6:7.764143651444664)8:0.0</statenode>
+<statenode id='kappa.s:pbd_twin'>kappa.s:pbd_twin[1 1] (0.0,Infinity): 1.7564373409523508 </statenode>
+<statenode id='freqParameter.s:pbd_twin'>freqParameter.s:pbd_twin[4 1] (0.0,1.0): 0.24457812716677294 0.2491479651136528 0.25627390771957426 0.25 </statenode>
+<statenode id='birthRate.t:pbd_twin'>birthRate.t:pbd_twin[1 1] (-Infinity,Infinity): 0.22059843453182756 </statenode>
+<statenode id='clockRate.c:pbd_twin'>clockRate.c:pbd_twin[1 1] (0.0,Infinity): 0.21764781738215713 </statenode>
+</itsabeastystatewerein>
+<!--
+{"operators":[
+{"id":"YuleBirthRateScaler.t:pbd_twin","p":0.75,"accept":47,"reject":18,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelTreeScaler.t:pbd_twin","p":0.5,"accept":0,"reject":52,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelTreeRootScaler.t:pbd_twin","p":0.5,"accept":1,"reject":57,"acceptFC":0,"rejectFC":0,"rejectIv":2,"rejectOp":2},
+{"id":"YuleModelUniformOperator.t:pbd_twin","p":"NaN","accept":301,"reject":416,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelSubtreeSlide.t:pbd_twin","p":1,"accept":116,"reject":303,"acceptFC":0,"rejectFC":0,"rejectIv":81,"rejectOp":81},
+{"id":"YuleModelNarrow.t:pbd_twin","p":"NaN","accept":73,"reject":309,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelWide.t:pbd_twin","p":"NaN","accept":3,"reject":69,"acceptFC":0,"rejectFC":0,"rejectIv":44,"rejectOp":44},
+{"id":"YuleModelWilsonBalding.t:pbd_twin","p":"NaN","accept":0,"reject":71,"acceptFC":0,"rejectFC":0,"rejectIv":41,"rejectOp":41},
+{"id":"KappaScaler.s:pbd_twin","p":0.5,"accept":1,"reject":2,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"FrequenciesExchanger.s:pbd_twin","p":0.010000000000000004,"accept":3,"reject":0,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"StrictClockRateScaler.c:pbd_twin","p":0.75,"accept":55,"reject":19,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"strictClockUpDownOperator.c:pbd_twin","p":0.75,"accept":3,"reject":82,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0}
+]}
+-->

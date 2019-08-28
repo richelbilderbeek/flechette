@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beast beautitemplate='Standard' beautistatus='' namespace="beast.core:beast.evolution.alignment:beast.evolution.tree.coalescent:beast.core.util:beast.evolution.nuc:beast.evolution.operators:beast.evolution.sitemodel:beast.evolution.substitutionmodel:beast.evolution.likelihood" required="" version="2.4">
+
+
+    <data
+id="pbd"
+name="alignment">
+                    <sequence id="seq_S1-1-1" taxon="S1-1-1" totalcount="4" value="caagcaccttccctctatcgtcgttttttatg"/>
+                    <sequence id="seq_S2-2-2" taxon="S2-2-2" totalcount="4" value="ggacttatagttaatcattacaggttgcgatg"/>
+                </data>
+
+
+    
+
+
+    
+
+
+    
+<map name="Uniform" >beast.math.distributions.Uniform</map>
+<map name="Exponential" >beast.math.distributions.Exponential</map>
+<map name="LogNormal" >beast.math.distributions.LogNormalDistributionModel</map>
+<map name="Normal" >beast.math.distributions.Normal</map>
+<map name="Beta" >beast.math.distributions.Beta</map>
+<map name="Gamma" >beast.math.distributions.Gamma</map>
+<map name="LaplaceDistribution" >beast.math.distributions.LaplaceDistribution</map>
+<map name="prior" >beast.math.distributions.Prior</map>
+<map name="InverseGamma" >beast.math.distributions.InverseGamma</map>
+<map name="OneOnX" >beast.math.distributions.OneOnX</map>
+
+
+<run id="mcmc" spec="MCMC" chainLength="2000" storeEvery="1000">
+    <state id="state" storeEvery="5000">
+        <tree id="Tree.t:pbd" name="stateNode">
+            <taxonset id="TaxonSet.pbd" spec="TaxonSet">
+                <alignment idref="pbd"/>
+            </taxonset>
+        </tree>
+        <parameter id="birthRate.t:pbd" name="stateNode">1.0</parameter>
+        <parameter id="clockRate.c:pbd" name="stateNode">1.0</parameter>
+    </state>
+
+    <init id="RandomTree.t:pbd" spec="beast.evolution.tree.RandomTree" estimate="false" initial="@Tree.t:pbd" taxa="@pbd">
+        <populationModel id="ConstantPopulation0.t:pbd" spec="ConstantPopulation">
+            <parameter id="randomPopSize.t:pbd" name="popSize">1.0</parameter>
+        </populationModel>
+    </init>
+
+    <distribution id="posterior" spec="util.CompoundDistribution">
+        <distribution id="prior" spec="util.CompoundDistribution">
+            <distribution id="YuleModel.t:pbd" spec="beast.evolution.speciation.YuleModel" birthDiffRate="@birthRate.t:pbd" tree="@Tree.t:pbd"/>
+            <prior id="YuleBirthRatePrior.t:pbd" name="distribution" x="@birthRate.t:pbd">
+                <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+            </prior>
+            <prior id="ClockPrior.c:pbd" name="distribution" x="@clockRate.c:pbd">
+                <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
+            </prior>
+            <distribution id="auto_name_1.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:pbd">
+                <taxonset id="auto_name_1" spec="TaxonSet">
+                    <taxon id="S1-1-1" spec="Taxon"/>
+                    <taxon id="S2-2-2" spec="Taxon"/>
+                </taxonset>
+                <Normal id="Normal.151" name="distr">
+                    <parameter id="RealParameter.300" estimate="false" name="mean">10</parameter>
+                    <parameter id="RealParameter.301" estimate="false" name="sigma">0.01</parameter>
+                </Normal>
+            </distribution>
+        </distribution>
+        <distribution id="likelihood" spec="util.CompoundDistribution" useThreads="true">
+            <distribution id="treeLikelihood.pbd" spec="ThreadedTreeLikelihood" data="@pbd" tree="@Tree.t:pbd">
+                <siteModel id="SiteModel.s:pbd" spec="SiteModel">
+                    <parameter id="mutationRate.s:pbd" estimate="false" name="mutationRate">1.0</parameter>
+                    <parameter id="gammaShape.s:pbd" estimate="false" name="shape">1.0</parameter>
+                    <parameter id="proportionInvariant.s:pbd" estimate="false" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+                    <substModel id="JC69.s:pbd" spec="JukesCantor"/>
+                </siteModel>
+                <branchRateModel id="StrictClock.c:pbd" spec="beast.evolution.branchratemodel.StrictClockModel" clock.rate="@clockRate.c:pbd"/>
+            </distribution>
+        </distribution>
+    </distribution>
+
+    <operator id="YuleBirthRateScaler.t:pbd" spec="ScaleOperator" parameter="@birthRate.t:pbd" scaleFactor="0.75" weight="3.0"/>
+
+    <operator id="YuleModelTreeScaler.t:pbd" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:pbd" weight="3.0"/>
+
+    <operator id="YuleModelTreeRootScaler.t:pbd" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:pbd" weight="3.0"/>
+
+    <operator id="YuleModelUniformOperator.t:pbd" spec="Uniform" tree="@Tree.t:pbd" weight="30.0"/>
+
+    <operator id="YuleModelSubtreeSlide.t:pbd" spec="SubtreeSlide" tree="@Tree.t:pbd" weight="15.0"/>
+
+    <operator id="YuleModelNarrow.t:pbd" spec="Exchange" tree="@Tree.t:pbd" weight="15.0"/>
+
+    <operator id="YuleModelWide.t:pbd" spec="Exchange" isNarrow="false" tree="@Tree.t:pbd" weight="3.0"/>
+
+    <operator id="YuleModelWilsonBalding.t:pbd" spec="WilsonBalding" tree="@Tree.t:pbd" weight="3.0"/>
+
+    <operator id="StrictClockRateScaler.c:pbd" spec="ScaleOperator" parameter="@clockRate.c:pbd" scaleFactor="0.75" weight="3.0"/>
+
+    <operator id="strictClockUpDownOperator.c:pbd" spec="UpDownOperator" scaleFactor="0.75" weight="3.0">
+        <up idref="clockRate.c:pbd"/>
+        <down idref="Tree.t:pbd"/>
+    </operator>
+
+    <logger id="tracelog" fileName="pbd.log" logEvery="1000" model="@posterior" sanitiseHeaders="true" sort="smart">
+        <log idref="posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+        <log idref="treeLikelihood.pbd"/>
+        <log id="TreeHeight.t:pbd" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:pbd"/>
+        <log idref="YuleModel.t:pbd"/>
+        <log idref="birthRate.t:pbd"/>
+        <log idref="auto_name_1.prior"/>
+        <log idref="clockRate.c:pbd"/>
+    </logger>
+
+    <logger id="screenlog" logEvery="1000">
+        <log idref="posterior"/>
+        <log id="ESS.0" spec="util.ESS" arg="@posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+    </logger>
+
+    <logger id="treelog.t:pbd" fileName="$(tree).trees" logEvery="1000" mode="tree">
+        <log id="TreeWithMetaDataLogger.t:pbd" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:pbd"/>
+    </logger>
+
+</run>
+
+</beast>

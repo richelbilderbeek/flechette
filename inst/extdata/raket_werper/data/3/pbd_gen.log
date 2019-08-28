@@ -1,0 +1,47 @@
+#
+#model:
+#
+#<?xml version="1.0" encoding="UTF-8" standalone="no"?><input id="posterior" spec="beast.core.util.CompoundDistribution">
+#    <distribution id="prior" spec="beast.core.util.CompoundDistribution">
+#        <distribution id="YuleModel.t:pbd" spec="beast.evolution.speciation.YuleModel">
+#            <parameter id="birthRate.t:pbd" name="birthDiffRate" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#            <tree id="Tree.t:pbd" spec="beast.evolution.tree.Tree">
+#                <taxonset id="TaxonSet.pbd" spec="beast.evolution.alignment.TaxonSet">
+#                </taxonset>
+#            </tree>
+#        </distribution>
+#        <prior id="YuleBirthRatePrior.t:pbd" name="distribution" x="@birthRate.t:pbd">
+#            <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="ClockPrior.c:pbd" name="distribution">
+#            <parameter id="clockRate.c:pbd" name="x" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#            <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
+#        </prior>
+#        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:pbd">
+#            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
+#                <taxon id="S1-1-1" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S2-2-2" spec="beast.evolution.alignment.Taxon"/>
+#            </taxonset>
+#            <Normal id="Normal.151" name="distr">
+#                <parameter estimate="false" id="RealParameter.300" name="mean" spec="beast.core.parameter.RealParameter">10.0</parameter>
+#                <parameter estimate="false" id="RealParameter.301" name="sigma" spec="beast.core.parameter.RealParameter">0.01</parameter>
+#            </Normal>
+#        </distribution>
+#    </distribution>
+#    <distribution id="likelihood" spec="beast.core.util.CompoundDistribution" useThreads="true">
+#        <distribution data="@pbd" id="treeLikelihood.pbd" spec="beast.evolution.likelihood.ThreadedTreeLikelihood" tree="@Tree.t:pbd">
+#            <siteModel id="SiteModel.s:pbd" spec="beast.evolution.sitemodel.SiteModel">
+#                <parameter estimate="false" id="mutationRate.s:pbd" name="mutationRate" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="gammaShape.s:pbd" name="shape" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="proportionInvariant.s:pbd" lower="0.0" name="proportionInvariant" spec="beast.core.parameter.RealParameter" upper="1.0">0.0</parameter>
+#                <substModel id="JC69.s:pbd" spec="beast.evolution.substitutionmodel.JukesCantor"/>
+#            </siteModel>
+#            <branchRateModel clock.rate="@clockRate.c:pbd" id="StrictClock.c:pbd" spec="beast.evolution.branchratemodel.StrictClockModel"/>
+#        </distribution>
+#    </distribution>
+#</input>
+#
+Sample	posterior	likelihood	prior	treeLikelihood.pbd	TreeHeight	YuleModel	birthRate	logP(mrca(auto_name_1))	mrca.age(auto_name_1)	clockRate
+0	-239880.17052187913	-88.72174398644775	-239791.44877789269	-88.72174398644775	3.0748515020165024	-6.72641392996558	1.1108770189373498	-239784.72236396273	3.0748515020165024	1.0
+1000	-91.24824737793494	-88.722839111673	-2.5254082662619517	-88.722839111673	9.989128831698439	-5.620728417841049	0.20104320653977722	3.095320151579097	9.989128831698439	2.893361483116298
+2000	-90.46309052383134	-88.722839111673	-1.7402514121583437	-88.722839111673	9.983642916060385	-4.088712089903637	0.07513519306353111	2.348460677745293	9.983642916060385	1.7582617042469215

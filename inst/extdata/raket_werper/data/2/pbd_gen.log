@@ -1,0 +1,54 @@
+#
+#model:
+#
+#<?xml version="1.0" encoding="UTF-8" standalone="no"?><input id="posterior" spec="beast.core.util.CompoundDistribution">
+#    <distribution id="prior" spec="beast.core.util.CompoundDistribution">
+#        <distribution id="YuleModel.t:pbd" spec="beast.evolution.speciation.YuleModel">
+#            <parameter id="birthRate.t:pbd" name="birthDiffRate" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#            <tree id="Tree.t:pbd" spec="beast.evolution.tree.Tree">
+#                <taxonset id="TaxonSet.pbd" spec="beast.evolution.alignment.TaxonSet">
+#                </taxonset>
+#            </tree>
+#        </distribution>
+#        <prior id="YuleBirthRatePrior.t:pbd" name="distribution" x="@birthRate.t:pbd">
+#            <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="ClockPrior.c:pbd" name="distribution">
+#            <parameter id="clockRate.c:pbd" name="x" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#            <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
+#        </prior>
+#        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:pbd">
+#            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
+#                <taxon id="S1-1-1" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S5-5-6" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S3-3-3" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S6-6-7" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S4-4-5" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S7-7-4" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S2-2-2" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S8-8-10" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S9-9-11" spec="beast.evolution.alignment.Taxon"/>
+#            </taxonset>
+#            <Normal id="Normal.151" name="distr">
+#                <parameter estimate="false" id="RealParameter.300" name="mean" spec="beast.core.parameter.RealParameter">10.0</parameter>
+#                <parameter estimate="false" id="RealParameter.301" name="sigma" spec="beast.core.parameter.RealParameter">0.01</parameter>
+#            </Normal>
+#        </distribution>
+#    </distribution>
+#    <distribution id="likelihood" spec="beast.core.util.CompoundDistribution" useThreads="true">
+#        <distribution data="@pbd" id="treeLikelihood.pbd" spec="beast.evolution.likelihood.ThreadedTreeLikelihood" tree="@Tree.t:pbd">
+#            <siteModel id="SiteModel.s:pbd" spec="beast.evolution.sitemodel.SiteModel">
+#                <parameter estimate="false" id="mutationRate.s:pbd" name="mutationRate" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="gammaShape.s:pbd" name="shape" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="proportionInvariant.s:pbd" lower="0.0" name="proportionInvariant" spec="beast.core.parameter.RealParameter" upper="1.0">0.0</parameter>
+#                <substModel id="JC69.s:pbd" spec="beast.evolution.substitutionmodel.JukesCantor"/>
+#            </siteModel>
+#            <branchRateModel clock.rate="@clockRate.c:pbd" id="StrictClock.c:pbd" spec="beast.evolution.branchratemodel.StrictClockModel"/>
+#        </distribution>
+#    </distribution>
+#</input>
+#
+Sample	posterior	likelihood	prior	treeLikelihood.pbd	TreeHeight	YuleModel	birthRate	logP(mrca(auto_name_1))	mrca.age(auto_name_1)	clockRate
+0	-418122.45204467425	-446.5415433858945	-417675.91050128837	-446.5415433858945	0.8602355600259045	-3.1266418661561985	1.0	-417672.7838594222	0.8602355600259045	1.0
+1000	-336.8599764597695	-321.6798251697096	-15.180151290059882	-321.6798251697096	10.009217819938062	-18.44154192079064	0.3841765899505104	3.261390630730759	10.009217819938062	0.6868750907675395
+2000	-335.3744626809892	-320.2269467188344	-15.147515962154792	-320.2269467188344	10.009217819938062	-18.40890659288555	0.237123471252246	3.261390630730759	10.009217819938062	0.4728806468196187

@@ -1,0 +1,61 @@
+#
+#model:
+#
+#<?xml version="1.0" encoding="UTF-8" standalone="no"?><input id="posterior" spec="beast.core.util.CompoundDistribution">
+#    <distribution id="prior" spec="beast.core.util.CompoundDistribution">
+#        <distribution id="YuleModel.t:pbd_twin" spec="beast.evolution.speciation.YuleModel">
+#            <parameter id="birthRate.t:pbd_twin" name="birthDiffRate" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#            <tree id="Tree.t:pbd_twin" spec="beast.evolution.tree.Tree">
+#                <taxonset id="TaxonSet.pbd_twin" spec="beast.evolution.alignment.TaxonSet">
+#                </taxonset>
+#            </tree>
+#        </distribution>
+#        <prior id="YuleBirthRatePrior.t:pbd_twin" name="distribution" x="@birthRate.t:pbd_twin">
+#            <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="KappaPrior.s:pbd_twin" name="distribution">
+#            <parameter id="kappa.s:pbd_twin" lower="0.0" name="x" spec="beast.core.parameter.RealParameter">2.0</parameter>
+#            <LogNormal id="LogNormalDistributionModel.0" name="distr">
+#                <parameter estimate="false" id="RealParameter.0" name="M" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="RealParameter.1" lower="0.0" name="S" spec="beast.core.parameter.RealParameter" upper="Infinity">1.25</parameter>
+#            </LogNormal>
+#        </prior>
+#        <prior id="ClockPrior.c:pbd_twin" name="distribution">
+#            <parameter id="clockRate.c:pbd_twin" name="x" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#            <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
+#        </prior>
+#        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:pbd_twin">
+#            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
+#                <taxon id="S1-1-9" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S2-2-11" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S5-5-14" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S6-6-17" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S4-4-16" spec="beast.evolution.alignment.Taxon"/>
+#            </taxonset>
+#            <Normal id="Normal.151" name="distr">
+#                <parameter estimate="false" id="RealParameter.300" name="mean" spec="beast.core.parameter.RealParameter">10.0</parameter>
+#                <parameter estimate="false" id="RealParameter.301" name="sigma" spec="beast.core.parameter.RealParameter">0.01</parameter>
+#            </Normal>
+#        </distribution>
+#    </distribution>
+#    <distribution id="likelihood" spec="beast.core.util.CompoundDistribution" useThreads="true">
+#        <distribution data="@pbd_twin" id="treeLikelihood.pbd_twin" spec="beast.evolution.likelihood.ThreadedTreeLikelihood" tree="@Tree.t:pbd_twin">
+#            <siteModel id="SiteModel.s:pbd_twin" spec="beast.evolution.sitemodel.SiteModel">
+#                <parameter estimate="false" id="mutationRate.s:pbd_twin" name="mutationRate" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="gammaShape.s:pbd_twin" name="shape" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="proportionInvariant.s:pbd_twin" lower="0.0" name="proportionInvariant" spec="beast.core.parameter.RealParameter" upper="1.0">0.0</parameter>
+#                <substModel id="hky.s:pbd_twin" kappa="@kappa.s:pbd_twin" spec="beast.evolution.substitutionmodel.HKY">
+#                    <frequencies id="estimatedFreqs.s:pbd_twin" spec="beast.evolution.substitutionmodel.Frequencies">
+#                        <parameter dimension="4" id="freqParameter.s:pbd_twin" lower="0.0" name="frequencies" spec="beast.core.parameter.RealParameter" upper="1.0">0.25</parameter>
+#                    </frequencies>
+#                </substModel>
+#            </siteModel>
+#            <branchRateModel clock.rate="@clockRate.c:pbd_twin" id="StrictClock.c:pbd_twin" spec="beast.evolution.branchratemodel.StrictClockModel"/>
+#        </distribution>
+#    </distribution>
+#</input>
+#
+Sample	posterior	likelihood	prior	treeLikelihood.pbd_twin	TreeHeight	kappa	freqParameter.1	freqParameter.2	freqParameter.3	freqParameter.4	YuleModel	birthRate	logP(mrca(auto_name_1))	mrca.age(auto_name_1)	clockRate
+0	-392989.68104757724	-240.36154107334218	-392749.3195065039	-240.36154107334218	1.1371816249609217	2.0	0.25	0.25	0.25	0.25	-3.392633471113283	1.0	-392744.0615129988	1.1371816249609217	1.0
+1000	-211.00494498228036	-201.29242412976427	-9.712520852516084	-201.29242412976427	9.99766638103792	2.0	0.24457812716677294	0.2491479651136528	0.25627390771957426	0.25	-11.50616358402432	0.3233671439899217	3.6590027654825232	9.99766638103792	1.0276859104206144
+2000	-215.20345429130373	-205.61650515303927	-9.58694913826445	-205.61650515303927	9.99766638103792	1.7564373409523508	0.24457812716677294	0.2491479651136528	0.25627390771957426	0.25	-11.479552606788879	0.22059843453182756	3.6590027654825232	9.99766638103792	0.21764781738215713

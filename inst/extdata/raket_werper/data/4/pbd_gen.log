@@ -1,0 +1,59 @@
+#
+#model:
+#
+#<?xml version="1.0" encoding="UTF-8" standalone="no"?><input id="posterior" spec="beast.core.util.CompoundDistribution">
+#    <distribution id="prior" spec="beast.core.util.CompoundDistribution">
+#        <distribution id="YuleModel.t:pbd" spec="beast.evolution.speciation.YuleModel">
+#            <parameter id="birthRate.t:pbd" name="birthDiffRate" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#            <tree id="Tree.t:pbd" spec="beast.evolution.tree.Tree">
+#                <taxonset id="TaxonSet.pbd" spec="beast.evolution.alignment.TaxonSet">
+#                </taxonset>
+#            </tree>
+#        </distribution>
+#        <prior id="YuleBirthRatePrior.t:pbd" name="distribution" x="@birthRate.t:pbd">
+#            <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="ClockPrior.c:pbd" name="distribution">
+#            <parameter id="clockRate.c:pbd" name="x" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#            <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
+#        </prior>
+#        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:pbd">
+#            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
+#                <taxon id="S6-6-6" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S7-7-7" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S2-2-22" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S3-3-17" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S5-5-14" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S8-8-12" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S4-4-19" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S11-11-65" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S1-1-44" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S13-13-52" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S12-12-66" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S14-14-76" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S9-9-58" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S10-10-38" spec="beast.evolution.alignment.Taxon"/>
+#            </taxonset>
+#            <Normal id="Normal.151" name="distr">
+#                <parameter estimate="false" id="RealParameter.300" name="mean" spec="beast.core.parameter.RealParameter">10.0</parameter>
+#                <parameter estimate="false" id="RealParameter.301" name="sigma" spec="beast.core.parameter.RealParameter">0.01</parameter>
+#            </Normal>
+#        </distribution>
+#    </distribution>
+#    <distribution id="likelihood" spec="beast.core.util.CompoundDistribution" useThreads="true">
+#        <distribution data="@pbd" id="treeLikelihood.pbd" spec="beast.evolution.likelihood.ThreadedTreeLikelihood" tree="@Tree.t:pbd">
+#            <siteModel id="SiteModel.s:pbd" spec="beast.evolution.sitemodel.SiteModel">
+#                <parameter estimate="false" id="mutationRate.s:pbd" name="mutationRate" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="gammaShape.s:pbd" name="shape" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="proportionInvariant.s:pbd" lower="0.0" name="proportionInvariant" spec="beast.core.parameter.RealParameter" upper="1.0">0.0</parameter>
+#                <substModel id="JC69.s:pbd" spec="beast.evolution.substitutionmodel.JukesCantor"/>
+#            </siteModel>
+#            <branchRateModel clock.rate="@clockRate.c:pbd" id="StrictClock.c:pbd" spec="beast.evolution.branchratemodel.StrictClockModel"/>
+#        </distribution>
+#    </distribution>
+#</input>
+#
+Sample	posterior	likelihood	prior	treeLikelihood.pbd	TreeHeight	YuleModel	birthRate	logP(mrca(auto_name_1))	mrca.age(auto_name_1)	clockRate
+0	-381193.30302394956	-916.2836935520362	-380277.01933039754	-916.2836935520362	1.2790393141608	-4.92914228568125	1.0	-380272.0901881119	1.2790393141608	1.0
+1000	-601.874457287542	-567.0860021574056	-34.78845513013639	-567.0860021574056	9.962180125713617	-31.322972327730866	0.4517065668525919	-3.4654828024055266	9.962180125713617	0.501178238999687
+2000	-571.2611673666397	-543.4606178639248	-27.80054950271494	-543.4606178639248	10.034276966424237	-25.612229019257065	0.3311377095547652	-2.1883204834578764	10.034276966424237	0.6199100962013709

@@ -1,0 +1,21 @@
+<itsabeastystatewerein version='2.0' sample='2000'>
+<statenode id='Tree.t:pbd'>((0:1.9504700437232518,(((1:0.0017907507624609566,3:0.0017907507624609566)7:0.09458477806138665,5:0.09637552882384762)9:0.7871473816859437,4:0.8835229105097913)8:1.0669471332134606)6:8.040737048964331,2:9.991207092687583)10:0.0</statenode>
+<statenode id='BDBirthRate.t:pbd'>BDBirthRate.t:pbd[1 1] (0.0,10000.0): 0.16875931065242952 </statenode>
+<statenode id='BDDeathRate.t:pbd'>BDDeathRate.t:pbd[1 1] (0.0,1.0): 0.26473810126130093 </statenode>
+<statenode id='clockRate.c:pbd'>clockRate.c:pbd[1 1] (0.0,Infinity): 3.151325171818834 </statenode>
+</itsabeastystatewerein>
+<!--
+{"operators":[
+{"id":"BirthRateScaler.t:pbd","p":0.75,"accept":54,"reject":23,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"DeathRateScaler.t:pbd","p":0.75,"accept":56,"reject":13,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathTreeScaler.t:pbd","p":0.5,"accept":4,"reject":64,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathTreeRootScaler.t:pbd","p":0.5,"accept":3,"reject":74,"acceptFC":0,"rejectFC":0,"rejectIv":5,"rejectOp":5},
+{"id":"BirthDeathUniformOperator.t:pbd","p":"NaN","accept":246,"reject":474,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathSubtreeSlide.t:pbd","p":1,"accept":86,"reject":261,"acceptFC":0,"rejectFC":0,"rejectIv":93,"rejectOp":93},
+{"id":"BirthDeathNarrow.t:pbd","p":"NaN","accept":140,"reject":233,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathWide.t:pbd","p":"NaN","accept":7,"reject":54,"acceptFC":0,"rejectFC":0,"rejectIv":38,"rejectOp":38},
+{"id":"BirthDeathWilsonBalding.t:pbd","p":"NaN","accept":4,"reject":61,"acceptFC":0,"rejectFC":0,"rejectIv":29,"rejectOp":29},
+{"id":"StrictClockRateScaler.c:pbd","p":0.75,"accept":57,"reject":27,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"strictClockUpDownOperator.c:pbd","p":0.75,"accept":4,"reject":56,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0}
+]}
+-->

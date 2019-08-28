@@ -1,0 +1,21 @@
+<itsabeastystatewerein version='2.0' sample='2000'>
+<statenode id='Tree.t:pbd'>((0:1.6007072472792185,8:1.6007072472792185)23:8.397453488411378,((1:2.030027355541737,(((2:0.3836285444983951,5:0.3836285444983951)19:0.05330453558063303,3:0.43693308007902815)21:0.565994165579865,(4:0.4119113138393081,13:0.4119113138393081)15:0.591015931819585)24:1.0271001098828438)22:3.4614998844078837,(((6:0.09380226035914754,11:0.09380226035914754)17:0.4340922150380755,(7:0.23558127796804973,(9:0.18765068243426314,12:0.18765068243426314)16:0.04793059553378659)14:0.2923131974291733)18:0.1745941426086869,10:0.7024886180059099)20:4.78903862194371)25:4.506633495740976)26:0.0</statenode>
+<statenode id='BDBirthRate.t:pbd'>BDBirthRate.t:pbd[1 1] (0.0,10000.0): 0.26328280851304003 </statenode>
+<statenode id='BDDeathRate.t:pbd'>BDDeathRate.t:pbd[1 1] (0.0,1.0): 0.5445703683437599 </statenode>
+<statenode id='clockRate.c:pbd'>clockRate.c:pbd[1 1] (0.0,Infinity): 1.1566789857485331 </statenode>
+</itsabeastystatewerein>
+<!--
+{"operators":[
+{"id":"BirthRateScaler.t:pbd","p":0.75,"accept":43,"reject":27,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"DeathRateScaler.t:pbd","p":0.75,"accept":63,"reject":12,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathTreeScaler.t:pbd","p":0.5,"accept":3,"reject":54,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathTreeRootScaler.t:pbd","p":0.5,"accept":3,"reject":76,"acceptFC":0,"rejectFC":0,"rejectIv":6,"rejectOp":6},
+{"id":"BirthDeathUniformOperator.t:pbd","p":"NaN","accept":353,"reject":375,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathSubtreeSlide.t:pbd","p":1,"accept":100,"reject":228,"acceptFC":0,"rejectFC":0,"rejectIv":81,"rejectOp":81},
+{"id":"BirthDeathNarrow.t:pbd","p":"NaN","accept":217,"reject":172,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathWide.t:pbd","p":"NaN","accept":12,"reject":60,"acceptFC":0,"rejectFC":0,"rejectIv":37,"rejectOp":37},
+{"id":"BirthDeathWilsonBalding.t:pbd","p":"NaN","accept":11,"reject":53,"acceptFC":0,"rejectFC":0,"rejectIv":12,"rejectOp":12},
+{"id":"StrictClockRateScaler.c:pbd","p":0.75,"accept":44,"reject":35,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"strictClockUpDownOperator.c:pbd","p":0.75,"accept":6,"reject":54,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0}
+]}
+-->

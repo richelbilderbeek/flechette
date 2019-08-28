@@ -1,0 +1,127 @@
+#
+#model:
+#
+#<?xml version="1.0" encoding="UTF-8" standalone="no"?><input id="posterior" spec="beast.core.util.CompoundDistribution">
+#    <distribution id="prior" spec="beast.core.util.CompoundDistribution">
+#        <distribution id="YuleModel.t:pbd" spec="beast.evolution.speciation.YuleModel">
+#            <parameter id="birthRate.t:pbd" name="birthDiffRate" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#            <tree id="Tree.t:pbd" spec="beast.evolution.tree.Tree">
+#                <taxonset id="TaxonSet.pbd" spec="beast.evolution.alignment.TaxonSet">
+#                </taxonset>
+#            </tree>
+#        </distribution>
+#        <prior id="YuleBirthRatePrior.t:pbd" name="distribution" x="@birthRate.t:pbd">
+#            <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="ClockPrior.c:pbd" name="distribution">
+#            <parameter id="clockRate.c:pbd" name="x" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#            <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
+#        </prior>
+#        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:pbd">
+#            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
+#                <taxon id="S68-68-68" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S27-27-27" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S60-60-60" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S37-37-37" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S63-63-63" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S19-19-19" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S56-56-56" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S62-62-62" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S53-53-53" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S87-87-87" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S64-64-64" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S96-96-96" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S81-81-81" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S71-71-71" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S101-101-101" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S69-69-69" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S45-45-45" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S107-107-107" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S94-94-94" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S100-100-100" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S14-14-14" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S74-74-74" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S21-21-21" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S76-76-76" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S89-89-89" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S17-17-17" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S2-2-2" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S39-39-39" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S88-88-88" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S49-49-49" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S50-50-50" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S42-42-42" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S105-105-105" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S54-54-54" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S38-38-38" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S99-99-99" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S51-51-51" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S95-95-95" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S92-92-92" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S106-106-106" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S91-91-91" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S61-61-61" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S22-22-22" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S85-85-85" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S55-55-55" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S25-25-25" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S97-97-97" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S34-34-34" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S102-102-102" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S84-84-84" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S70-70-70" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S66-66-66" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S77-77-77" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S3-3-3" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S29-29-29" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S57-57-57" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S80-80-80" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S58-58-58" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S33-33-33" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S108-108-108" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S90-90-90" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S46-46-46" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S75-75-75" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S67-67-67" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S24-24-24" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S15-15-15" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S93-93-93" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S43-43-43" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S65-65-65" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S82-82-82" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S40-40-40" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S28-28-28" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S73-73-73" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S104-104-104" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S78-78-78" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S16-16-16" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S103-103-103" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S59-59-59" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S86-86-86" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S109-109-109" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S114-114-114" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="S117-117-117" spec="beast.evolution.alignment.Taxon"/>
+#            </taxonset>
+#            <Normal id="Normal.151" name="distr">
+#                <parameter estimate="false" id="RealParameter.300" name="mean" spec="beast.core.parameter.RealParameter">10.0</parameter>
+#                <parameter estimate="false" id="RealParameter.301" name="sigma" spec="beast.core.parameter.RealParameter">0.01</parameter>
+#            </Normal>
+#        </distribution>
+#    </distribution>
+#    <distribution id="likelihood" spec="beast.core.util.CompoundDistribution" useThreads="true">
+#        <distribution data="@pbd" id="treeLikelihood.pbd" spec="beast.evolution.likelihood.ThreadedTreeLikelihood" tree="@Tree.t:pbd">
+#            <siteModel id="SiteModel.s:pbd" spec="beast.evolution.sitemodel.SiteModel">
+#                <parameter estimate="false" id="mutationRate.s:pbd" name="mutationRate" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="gammaShape.s:pbd" name="shape" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="proportionInvariant.s:pbd" lower="0.0" name="proportionInvariant" spec="beast.core.parameter.RealParameter" upper="1.0">0.0</parameter>
+#                <substModel id="JC69.s:pbd" spec="beast.evolution.substitutionmodel.JukesCantor"/>
+#            </siteModel>
+#            <branchRateModel clock.rate="@clockRate.c:pbd" id="StrictClock.c:pbd" spec="beast.evolution.branchratemodel.StrictClockModel"/>
+#        </distribution>
+#    </distribution>
+#</input>
+#
+Sample	posterior	likelihood	prior	treeLikelihood.pbd	TreeHeight	YuleModel	birthRate	logP(mrca(auto_name_1))	mrca.age(auto_name_1)	clockRate
+0	-404316.8564181124	-6620.9403571053535	-397695.91606100707	-6620.9403571053535	1.0815870248086596	-9.152312353550347	1.0	-397686.7637486535	1.0815870248086596	1.0
+1000	-3585.696712133916	-3527.9947566344595	-57.70195549945685	-3527.9947566344595	9.959075456259894	-53.01409575056111	1.5150609810295006	-4.6878597488957405	9.959075456259894	7.337239117911223
+2000	-3355.4939021106065	-3305.532200283735	-49.9617018268715	-3305.532200283735	10.008145045667167	-53.31622463505376	1.5341611813912837	3.354522808182257	10.008145045667167	3.503896246127617

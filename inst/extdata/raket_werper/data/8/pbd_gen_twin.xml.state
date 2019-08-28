@@ -1,0 +1,19 @@
+<itsabeastystatewerein version='2.0' sample='2000'>
+<statenode id='Tree.t:pbd_twin'>((((((0:0.3515471052227437,4:0.3515471052227437)18:0.22614300638722484,9:0.5776901116099685)22:0.06292343926844435,(11:0.4439348759208307,12:0.4439348759208307)23:0.19667867495758218)16:1.4983294686620723,(1:1.1774845038148993,2:1.1774845038148993)15:0.9614585157255857)13:0.3087627164159956,(6:0.2488664150863214,(7:0.09667806554647376,8:0.09667806554647376)20:0.15218834953984764)19:2.1988393208701593)14:7.563984779651623,((3:0.5631032105421742,10:0.5631032105421742)21:0.53135383612464,5:1.0944570466668142)17:8.917233468941289)24:0.0</statenode>
+<statenode id='birthRate.t:pbd_twin'>birthRate.t:pbd_twin[1 1] (-Infinity,Infinity): 0.492594268478115 </statenode>
+<statenode id='clockRate.c:pbd_twin'>clockRate.c:pbd_twin[1 1] (0.0,Infinity): 0.6666257700401842 </statenode>
+</itsabeastystatewerein>
+<!--
+{"operators":[
+{"id":"YuleBirthRateScaler.t:pbd_twin","p":0.75,"accept":52,"reject":19,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelTreeScaler.t:pbd_twin","p":0.5,"accept":1,"reject":64,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelTreeRootScaler.t:pbd_twin","p":0.5,"accept":2,"reject":77,"acceptFC":0,"rejectFC":0,"rejectIv":1,"rejectOp":1},
+{"id":"YuleModelUniformOperator.t:pbd_twin","p":"NaN","accept":394,"reject":377,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelSubtreeSlide.t:pbd_twin","p":1,"accept":100,"reject":266,"acceptFC":0,"rejectFC":0,"rejectIv":105,"rejectOp":105},
+{"id":"YuleModelNarrow.t:pbd_twin","p":"NaN","accept":215,"reject":166,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelWide.t:pbd_twin","p":"NaN","accept":3,"reject":66,"acceptFC":0,"rejectFC":0,"rejectIv":33,"rejectOp":33},
+{"id":"YuleModelWilsonBalding.t:pbd_twin","p":"NaN","accept":9,"reject":53,"acceptFC":0,"rejectFC":0,"rejectIv":19,"rejectOp":19},
+{"id":"StrictClockRateScaler.c:pbd_twin","p":0.75,"accept":25,"reject":36,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"strictClockUpDownOperator.c:pbd_twin","p":0.75,"accept":1,"reject":75,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0}
+]}
+-->

@@ -1,0 +1,19 @@
+<itsabeastystatewerein version='2.0' sample='2000'>
+<statenode id='Tree.t:pbd_twin'>(((0:2.858706494707237,9:2.858706494707237)34:1.731837713557829,((((((((1:0.4291798538364263,((3:0.24101872946655323,5:0.24101872946655323)32:0.07676188421127939,13:0.3177806136778326)54:0.1113992401585937)53:0.22318874960013757,((((4:0.15742385643953674,12:0.15742385643953674)31:0.1436850905469119,(16:0.12844738153448626,26:0.12844738153448626)33:0.17266156545196237)45:0.10343641962806788,17:0.4045453666145165)47:0.20765523000973168,6:0.6122005966242482)48:0.04016800681231569)38:1.036279950418055,25:1.688648553854619)35:0.017891466452969462,(20:0.8687907952278205,22:0.8687907952278205)41:0.8377492250797679)37:0.0700886087840531,(15:0.5811726489740381,28:0.5811726489740381)46:1.1954559801176035)30:0.21177331270227273,(((2:0.9400096631573196,((11:0.4611120075656682,24:0.4611120075656682)43:0.22127285049679973,21:0.682384858062468)40:0.25762480509485164)39:0.04107920130789022,19:0.9810888644652098)49:0.47315278278540185,27:1.4542416472506117)36:0.5341602945433026)55:0.22515410087075316,(7:2.107346400872245,(14:1.208999850105148,18:1.208999850105148)42:0.8983465507670969)50:0.10620964179242254)52:0.6962935053942862,(8:2.359700790189455,23:2.359700790189455)51:0.5501487578694988)44:1.6806946602061124)29:5.411973215847914,10:10.00251742411298)56:0.0</statenode>
+<statenode id='birthRate.t:pbd_twin'>birthRate.t:pbd_twin[1 1] (-Infinity,Infinity): 0.5287043304469919 </statenode>
+<statenode id='clockRate.c:pbd_twin'>clockRate.c:pbd_twin[1 1] (0.0,Infinity): 0.4246442909052803 </statenode>
+</itsabeastystatewerein>
+<!--
+{"operators":[
+{"id":"YuleBirthRateScaler.t:pbd_twin","p":0.75,"accept":43,"reject":21,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelTreeScaler.t:pbd_twin","p":0.5,"accept":5,"reject":73,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelTreeRootScaler.t:pbd_twin","p":0.5,"accept":1,"reject":63,"acceptFC":0,"rejectFC":0,"rejectIv":1,"rejectOp":1},
+{"id":"YuleModelUniformOperator.t:pbd_twin","p":"NaN","accept":428,"reject":317,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelSubtreeSlide.t:pbd_twin","p":1,"accept":86,"reject":285,"acceptFC":0,"rejectFC":0,"rejectIv":123,"rejectOp":123},
+{"id":"YuleModelNarrow.t:pbd_twin","p":"NaN","accept":229,"reject":125,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelWide.t:pbd_twin","p":"NaN","accept":13,"reject":71,"acceptFC":0,"rejectFC":0,"rejectIv":37,"rejectOp":37},
+{"id":"YuleModelWilsonBalding.t:pbd_twin","p":"NaN","accept":16,"reject":75,"acceptFC":0,"rejectFC":0,"rejectIv":19,"rejectOp":19},
+{"id":"StrictClockRateScaler.c:pbd_twin","p":0.75,"accept":35,"reject":43,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"strictClockUpDownOperator.c:pbd_twin","p":0.75,"accept":5,"reject":67,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0}
+]}
+-->

@@ -1,0 +1,3 @@
+"","site_model_name","clock_model_name","tree_prior_name","marg_log_lik","marg_log_lik_sd","weight","ess"
+"1","JC69","strict","birth_death",-336.674594606348,4.00205948832989,0.703696335969686,6.50102831142432
+"2","HKY","strict","yule",-337.539556708049,3.70054821446696,0.296303664030314,5.01255642859407

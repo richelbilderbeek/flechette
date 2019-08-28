@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beast beautitemplate='Standard' beautistatus='' namespace="beast.core:beast.evolution.alignment:beast.evolution.tree.coalescent:beast.core.util:beast.evolution.nuc:beast.evolution.operators:beast.evolution.sitemodel:beast.evolution.substitutionmodel:beast.evolution.likelihood" required="" version="2.4">
+
+
+    <data
+id="pbd_twin"
+name="alignment">
+                    <sequence id="seq_S1-1-9" taxon="S1-1-9" totalcount="4" value="aacgaccactcattacctgtgtcatgtttttc"/>
+                    <sequence id="seq_S2-2-11" taxon="S2-2-11" totalcount="4" value="gcgtcgtacctctacgggagagttcggtggtt"/>
+                    <sequence id="seq_S4-4-16" taxon="S4-4-16" totalcount="4" value="gcacagtagacatactggggcagctctttgcc"/>
+                    <sequence id="seq_S5-5-14" taxon="S5-5-14" totalcount="4" value="gccagatacacagatggagccaggttactgca"/>
+                    <sequence id="seq_S6-6-17" taxon="S6-6-17" totalcount="4" value="gcgagatacacaggtgcgtgcaagttgtagct"/>
+                </data>
+
+
+    
+
+
+    
+
+
+    
+<map name="Uniform" >beast.math.distributions.Uniform</map>
+<map name="Exponential" >beast.math.distributions.Exponential</map>
+<map name="LogNormal" >beast.math.distributions.LogNormalDistributionModel</map>
+<map name="Normal" >beast.math.distributions.Normal</map>
+<map name="Beta" >beast.math.distributions.Beta</map>
+<map name="Gamma" >beast.math.distributions.Gamma</map>
+<map name="LaplaceDistribution" >beast.math.distributions.LaplaceDistribution</map>
+<map name="prior" >beast.math.distributions.Prior</map>
+<map name="InverseGamma" >beast.math.distributions.InverseGamma</map>
+<map name="OneOnX" >beast.math.distributions.OneOnX</map>
+
+
+<run id="mcmc" spec="MCMC" chainLength="2000" storeEvery="1000">
+    <state id="state" storeEvery="5000">
+        <tree id="Tree.t:pbd_twin" name="stateNode">
+            <taxonset id="TaxonSet.pbd_twin" spec="TaxonSet">
+                <alignment idref="pbd_twin"/>
+            </taxonset>
+        </tree>
+        <parameter id="kappa.s:pbd_twin" lower="0.0" name="stateNode">2.0</parameter>
+        <parameter id="freqParameter.s:pbd_twin" dimension="4" lower="0.0" name="stateNode" upper="1.0">0.25</parameter>
+        <parameter id="birthRate.t:pbd_twin" name="stateNode">1.0</parameter>
+        <parameter id="clockRate.c:pbd_twin" name="stateNode">1.0</parameter>
+    </state>
+
+    <init id="RandomTree.t:pbd_twin" spec="beast.evolution.tree.RandomTree" estimate="false" initial="@Tree.t:pbd_twin" taxa="@pbd_twin">
+        <populationModel id="ConstantPopulation0.t:pbd_twin" spec="ConstantPopulation">
+            <parameter id="randomPopSize.t:pbd_twin" name="popSize">1.0</parameter>
+        </populationModel>
+    </init>
+
+    <distribution id="posterior" spec="util.CompoundDistribution">
+        <distribution id="prior" spec="util.CompoundDistribution">
+            <distribution id="YuleModel.t:pbd_twin" spec="beast.evolution.speciation.YuleModel" birthDiffRate="@birthRate.t:pbd_twin" tree="@Tree.t:pbd_twin"/>
+            <prior id="YuleBirthRatePrior.t:pbd_twin" name="distribution" x="@birthRate.t:pbd_twin">
+                <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+            </prior>
+            <prior id="KappaPrior.s:pbd_twin" name="distribution" x="@kappa.s:pbd_twin">
+                <LogNormal id="LogNormalDistributionModel.0" name="distr">
+                    <parameter id="RealParameter.0" estimate="false" name="M">1.0</parameter>
+                    <parameter id="RealParameter.1" estimate="false" lower="0" name="S" upper="Infinity">1.25</parameter>
+                </LogNormal>
+            </prior>
+            <prior id="ClockPrior.c:pbd_twin" name="distribution" x="@clockRate.c:pbd_twin">
+                <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
+            </prior>
+            <distribution id="auto_name_1.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:pbd_twin">
+                <taxonset id="auto_name_1" spec="TaxonSet">
+                    <taxon id="S1-1-9" spec="Taxon"/>
+                    <taxon id="S2-2-11" spec="Taxon"/>
+                    <taxon id="S5-5-14" spec="Taxon"/>
+                    <taxon id="S6-6-17" spec="Taxon"/>
+                    <taxon id="S4-4-16" spec="Taxon"/>
+                </taxonset>
+                <Normal id="Normal.151" name="distr">
+                    <parameter id="RealParameter.300" estimate="false" name="mean">10</parameter>
+                    <parameter id="RealParameter.301" estimate="false" name="sigma">0.01</parameter>
+                </Normal>
+            </distribution>
+        </distribution>
+        <distribution id="likelihood" spec="util.CompoundDistribution" useThreads="true">
+            <distribution id="treeLikelihood.pbd_twin" spec="ThreadedTreeLikelihood" data="@pbd_twin" tree="@Tree.t:pbd_twin">
+                <siteModel id="SiteModel.s:pbd_twin" spec="SiteModel">
+                    <parameter id="mutationRate.s:pbd_twin" estimate="false" name="mutationRate">1.0</parameter>
+                    <parameter id="gammaShape.s:pbd_twin" estimate="false" name="shape">1.0</parameter>
+                    <parameter id="proportionInvariant.s:pbd_twin" estimate="false" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+                    <substModel id="hky.s:pbd_twin" spec="HKY" kappa="@kappa.s:pbd_twin">
+                        <frequencies id="estimatedFreqs.s:pbd_twin" spec="Frequencies" frequencies="@freqParameter.s:pbd_twin"/>
+                    </substModel>
+                </siteModel>
+                <branchRateModel id="StrictClock.c:pbd_twin" spec="beast.evolution.branchratemodel.StrictClockModel" clock.rate="@clockRate.c:pbd_twin"/>
+            </distribution>
+        </distribution>
+    </distribution>
+
+    <operator id="YuleBirthRateScaler.t:pbd_twin" spec="ScaleOperator" parameter="@birthRate.t:pbd_twin" scaleFactor="0.75" weight="3.0"/>
+
+    <operator id="YuleModelTreeScaler.t:pbd_twin" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:pbd_twin" weight="3.0"/>
+
+    <operator id="YuleModelTreeRootScaler.t:pbd_twin" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:pbd_twin" weight="3.0"/>
+
+    <operator id="YuleModelUniformOperator.t:pbd_twin" spec="Uniform" tree="@Tree.t:pbd_twin" weight="30.0"/>
+
+    <operator id="YuleModelSubtreeSlide.t:pbd_twin" spec="SubtreeSlide" tree="@Tree.t:pbd_twin" weight="15.0"/>
+
+    <operator id="YuleModelNarrow.t:pbd_twin" spec="Exchange" tree="@Tree.t:pbd_twin" weight="15.0"/>
+
+    <operator id="YuleModelWide.t:pbd_twin" spec="Exchange" isNarrow="false" tree="@Tree.t:pbd_twin" weight="3.0"/>
+
+    <operator id="YuleModelWilsonBalding.t:pbd_twin" spec="WilsonBalding" tree="@Tree.t:pbd_twin" weight="3.0"/>
+
+    <operator id="KappaScaler.s:pbd_twin" spec="ScaleOperator" parameter="@kappa.s:pbd_twin" scaleFactor="0.5" weight="0.1"/>
+
+    <operator id="FrequenciesExchanger.s:pbd_twin" spec="DeltaExchangeOperator" delta="0.01" weight="0.1">
+        <parameter idref="freqParameter.s:pbd_twin"/>
+    </operator>
+
+    <operator id="StrictClockRateScaler.c:pbd_twin" spec="ScaleOperator" parameter="@clockRate.c:pbd_twin" scaleFactor="0.75" weight="3.0"/>
+
+    <operator id="strictClockUpDownOperator.c:pbd_twin" spec="UpDownOperator" scaleFactor="0.75" weight="3.0">
+        <up idref="clockRate.c:pbd_twin"/>
+        <down idref="Tree.t:pbd_twin"/>
+    </operator>
+
+    <logger id="tracelog" fileName="pbd_twin.log" logEvery="1000" model="@posterior" sanitiseHeaders="true" sort="smart">
+        <log idref="posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+        <log idref="treeLikelihood.pbd_twin"/>
+        <log id="TreeHeight.t:pbd_twin" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:pbd_twin"/>
+        <log idref="kappa.s:pbd_twin"/>
+        <log idref="freqParameter.s:pbd_twin"/>
+        <log idref="YuleModel.t:pbd_twin"/>
+        <log idref="birthRate.t:pbd_twin"/>
+        <log idref="auto_name_1.prior"/>
+        <log idref="clockRate.c:pbd_twin"/>
+    </logger>
+
+    <logger id="screenlog" logEvery="1000">
+        <log idref="posterior"/>
+        <log id="ESS.0" spec="util.ESS" arg="@posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+    </logger>
+
+    <logger id="treelog.t:pbd_twin" fileName="$(tree).trees" logEvery="1000" mode="tree">
+        <log id="TreeWithMetaDataLogger.t:pbd_twin" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:pbd_twin"/>
+    </logger>
+
+</run>
+
+</beast>

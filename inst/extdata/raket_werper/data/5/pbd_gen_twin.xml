@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beast beautitemplate='Standard' beautistatus='' namespace="beast.core:beast.evolution.alignment:beast.evolution.tree.coalescent:beast.core.util:beast.evolution.nuc:beast.evolution.operators:beast.evolution.sitemodel:beast.evolution.substitutionmodel:beast.evolution.likelihood" required="" version="2.4">
+
+
+    <data
+id="pbd_twin"
+name="alignment">
+                    <sequence id="seq_S1-1-49" taxon="S1-1-49" totalcount="4" value="ggtaaaagagttagacggcggcggcaaactac"/>
+                    <sequence id="seq_S10-10-10" taxon="S10-10-10" totalcount="4" value="caaatcgtacccgccaggcggatggccatatg"/>
+                    <sequence id="seq_S100-100-122" taxon="S100-100-122" totalcount="4" value="acaataatcctcggcaaacggaggacgtccgg"/>
+                    <sequence id="seq_S101-101-129" taxon="S101-101-129" totalcount="4" value="ataatagctccccagcgatggcgcatcgtctg"/>
+                    <sequence id="seq_S102-102-89" taxon="S102-102-89" totalcount="4" value="aaaaaggtaggttgcaggcagagaaccacacg"/>
+                    <sequence id="seq_S103-103-59" taxon="S103-103-59" totalcount="4" value="taaatcaccaatcgcaggcgcctgacctagtg"/>
+                    <sequence id="seq_S104-104-87" taxon="S104-104-87" totalcount="4" value="caaatggtaccggtcaggcagaggaccacatg"/>
+                    <sequence id="seq_S105-105-130" taxon="S105-105-130" totalcount="4" value="aaattgattccccgcaggctcacgagcgaatg"/>
+                    <sequence id="seq_S106-106-143" taxon="S106-106-143" totalcount="4" value="aaattaatcccccgcaggggtacgtcgaacta"/>
+                    <sequence id="seq_S107-107-74" taxon="S107-107-74" totalcount="4" value="attttgattctccataggtaagggcgcctgtt"/>
+                    <sequence id="seq_S108-108-123" taxon="S108-108-123" totalcount="4" value="tagatgggcctgcggaggccagcgccgttgtg"/>
+                    <sequence id="seq_S109-109-63" taxon="S109-109-63" totalcount="4" value="agcagggaacaccgcaagcggagcaccaaacg"/>
+                    <sequence id="seq_S11-11-90" taxon="S11-11-90" totalcount="4" value="aaaacaaccacgcgcctgatctcgacggtttg"/>
+                    <sequence id="seq_S110-110-126" taxon="S110-110-126" totalcount="4" value="tgaatggaaccccccaggcggaggaccctaac"/>
+                    <sequence id="seq_S111-111-163" taxon="S111-111-163" totalcount="4" value="aagcaataacgccagcgggccctaacacttat"/>
+                    <sequence id="seq_S112-112-164" taxon="S112-112-164" totalcount="4" value="gtgcaagaacgggagctgggccaaagagttat"/>
+                    <sequence id="seq_S113-113-165" taxon="S113-113-165" totalcount="4" value="aagaaatacccccagcgggcccacggacttag"/>
+                    <sequence id="seq_S114-114-212" taxon="S114-114-212" totalcount="4" value="aagcaataacgggagcaagtccgaagacttat"/>
+                    <sequence id="seq_S115-115-169" taxon="S115-115-169" totalcount="4" value="aagcaataatgggagcgtgcccaaagacttat"/>
+                    <sequence id="seq_S116-116-171" taxon="S116-116-171" totalcount="4" value="tatcaataacgggagctggcccaaagacttat"/>
+                    <sequence id="seq_S117-117-213" taxon="S117-117-213" totalcount="4" value="aagcaataacgggagcgtccccaaagacttat"/>
+                    <sequence id="seq_S118-118-167" taxon="S118-118-167" totalcount="4" value="aagctataccgggagcgggcgccaagacttat"/>
+                    <sequence id="seq_S119-119-172" taxon="S119-119-172" totalcount="4" value="aagcaataacgcgtgcgtgcccaaagacttat"/>
+                    <sequence id="seq_S12-12-9" taxon="S12-12-9" totalcount="4" value="aaaataatgccacaccggccaaggattgtctg"/>
+                    <sequence id="seq_S120-120-174" taxon="S120-120-174" totalcount="4" value="aagcaataacccctgcgggcccaatgtatttc"/>
+                    <sequence id="seq_S121-121-173" taxon="S121-121-173" totalcount="4" value="aagcaataacgcgagcgtgcccaaagacttat"/>
+                    <sequence id="seq_S122-122-178" taxon="S122-122-178" totalcount="4" value="aagcaataacgcgagcgtgcccaaagtcttat"/>
+                    <sequence id="seq_S123-123-180" taxon="S123-123-180" totalcount="4" value="aagcaataacgcgagcgtgcccatagacttat"/>
+                    <sequence id="seq_S124-124-175" taxon="S124-124-175" totalcount="4" value="aagctataaccggagcaggcccaaagacgtat"/>
+                    <sequence id="seq_S125-125-176" taxon="S125-125-176" totalcount="4" value="aagcaataacgcgagggtgcccaaagacttat"/>
+                    <sequence id="seq_S126-126-177" taxon="S126-126-177" totalcount="4" value="aagcaataacgggagctcgctcaaagacttat"/>
+                    <sequence id="seq_S127-127-184" taxon="S127-127-184" totalcount="4" value="aagcatttagccaagcgggcccgttgacttaa"/>
+                    <sequence id="seq_S128-128-186" taxon="S128-128-186" totalcount="4" value="aagcaacaacgggagccggcccaaagacttat"/>
+                    <sequence id="seq_S129-129-181" taxon="S129-129-181" totalcount="4" value="aagcaatggccccagcgggcccaaggtcttat"/>
+                    <sequence id="seq_S13-13-109" taxon="S13-13-109" totalcount="4" value="atcatatgaccccgcagacagaagataaatta"/>
+                    <sequence id="seq_S130-130-166" taxon="S130-130-166" totalcount="4" value="aagcaataacgggagcgtgcccaaagacttat"/>
+                    <sequence id="seq_S131-131-183" taxon="S131-131-183" totalcount="4" value="aagcaataacggtagcgggcccaaagactaag"/>
+                    <sequence id="seq_S132-132-192" taxon="S132-132-192" totalcount="4" value="aagaaataacgagagcgggcgccaagacttat"/>
+                    <sequence id="seq_S133-133-194" taxon="S133-133-194" totalcount="4" value="aagcaatagccccggcggggccgaggaattat"/>
+                    <sequence id="seq_S134-134-195" taxon="S134-134-195" totalcount="4" value="aagcaataacgcgagcgtgcccaaagacttat"/>
+                    <sequence id="seq_S135-135-182" taxon="S135-135-182" totalcount="4" value="aggcagtaacggcggcggtcccatatacttat"/>
+                    <sequence id="seq_S136-136-200" taxon="S136-136-200" totalcount="4" value="aagcaacgacgcgagcgggcccatcgacttat"/>
+                    <sequence id="seq_S137-137-198" taxon="S137-137-198" totalcount="4" value="aagcaataacgcgagcgtgcccaaagacgtat"/>
+                    <sequence id="seq_S138-138-197" taxon="S138-138-197" totalcount="4" value="acgcaataacgagagctggcccaaacattaat"/>
+                    <sequence id="seq_S139-139-179" taxon="S139-139-179" totalcount="4" value="aagcaataccgggagcgggcccaaagacttat"/>
+                    <sequence id="seq_S14-14-15" taxon="S14-14-15" totalcount="4" value="cctctagtgcctctcacgccgtggacgtgaga"/>
+                    <sequence id="seq_S140-140-202" taxon="S140-140-202" totalcount="4" value="aagcaagagccccagcgggcccaatgaattag"/>
+                    <sequence id="seq_S141-141-201" taxon="S141-141-201" totalcount="4" value="aagcaataacgcgagcgtgcccaaagacttat"/>
+                    <sequence id="seq_S142-142-199" taxon="S142-142-199" totalcount="4" value="aggcattaacgccagcgggcccaaaaattaat"/>
+                    <sequence id="seq_S143-143-204" taxon="S143-143-204" totalcount="4" value="aagcaataatgggagcgtgcccaaagacttat"/>
+                    <sequence id="seq_S144-144-203" taxon="S144-144-203" totalcount="4" value="aagcaatcacgcgagcggacccaaagacatat"/>
+                    <sequence id="seq_S145-145-188" taxon="S145-145-188" totalcount="4" value="aagcaatatcgggagcgggcccgaaggcttat"/>
+                    <sequence id="seq_S146-146-187" taxon="S146-146-187" totalcount="4" value="cagcaaaaacgggagcgtgcccaaagacttat"/>
+                    <sequence id="seq_S147-147-185" taxon="S147-147-185" totalcount="4" value="aagcaataacgggagcgtgcccaaagacttat"/>
+                    <sequence id="seq_S148-148-211" taxon="S148-148-211" totalcount="4" value="aagcaaaaacgggagcgtgcccaacgacttat"/>
+                    <sequence id="seq_S149-149-209" taxon="S149-149-209" totalcount="4" value="aagcaataacgggagcgggcccaagcacttat"/>
+                    <sequence id="seq_S15-15-158" taxon="S15-15-158" totalcount="4" value="tcagggtccagcttcaggtgaggagtctaata"/>
+                    <sequence id="seq_S150-150-189" taxon="S150-150-189" totalcount="4" value="aagaaataacgcgagctggaccagagatttat"/>
+                    <sequence id="seq_S151-151-218" taxon="S151-151-218" totalcount="4" value="aagcattaacgagagcgggcccaaagacttat"/>
+                    <sequence id="seq_S152-152-222" taxon="S152-152-222" totalcount="4" value="aagcaataacgggagcgggcgccaagacttat"/>
+                    <sequence id="seq_S153-153-190" taxon="S153-153-190" totalcount="4" value="aggcaataacgggagctggtccaaagagttat"/>
+                    <sequence id="seq_S154-154-207" taxon="S154-154-207" totalcount="4" value="aagcaattccgggagcgggcccaaggacttat"/>
+                    <sequence id="seq_S155-155-196" taxon="S155-155-196" totalcount="4" value="aagcaataacgggagcgggccgaacgacttat"/>
+                    <sequence id="seq_S156-156-214" taxon="S156-156-214" totalcount="4" value="aagccataaggggagcgtacccacagacttat"/>
+                    <sequence id="seq_S157-157-206" taxon="S157-157-206" totalcount="4" value="aagcaataacgggagcgggcgccaagacttat"/>
+                    <sequence id="seq_S158-158-191" taxon="S158-158-191" totalcount="4" value="aagcaataatgggagcgtgcccaaagacttat"/>
+                    <sequence id="seq_S16-16-20" taxon="S16-16-20" totalcount="4" value="aaactacttgtgcacatgcggttgacctaaag"/>
+                    <sequence id="seq_S17-17-105" taxon="S17-17-105" totalcount="4" value="cacactgggtgccccgtggcggattcaacgga"/>
+                    <sequence id="seq_S18-18-18" taxon="S18-18-18" totalcount="4" value="aacacaatcccccgcaggtggaggacagcaat"/>
+                    <sequence id="seq_S19-19-55" taxon="S19-19-55" totalcount="4" value="agaccggtactccgcgtgcagaggacccaata"/>
+                    <sequence id="seq_S2-2-141" taxon="S2-2-141" totalcount="4" value="gcgaaagtcatccgcacaccaggcaccctgtt"/>
+                    <sequence id="seq_S20-20-14" taxon="S20-20-14" totalcount="4" value="ataacggtctcccgcttgcgcgggacctagtg"/>
+                    <sequence id="seq_S21-21-17" taxon="S21-21-17" totalcount="4" value="caaatgacccccaggtgacataggccaaattg"/>
+                    <sequence id="seq_S22-22-29" taxon="S22-22-29" totalcount="4" value="aatacgttaccgcgtatgggggaccggaactt"/>
+                    <sequence id="seq_S23-23-27" taxon="S23-23-27" totalcount="4" value="acaatagtaacctgcgttcgccagtccgtatg"/>
+                    <sequence id="seq_S24-24-19" taxon="S24-24-19" totalcount="4" value="cacataatccgccggccgcgaaggtctctata"/>
+                    <sequence id="seq_S25-25-107" taxon="S25-25-107" totalcount="4" value="tcaaccccccccagcaggcggagtgcattata"/>
+                    <sequence id="seq_S26-26-32" taxon="S26-26-32" totalcount="4" value="aaacttggactcggcaggaacatgtacaaaga"/>
+                    <sequence id="seq_S27-27-24" taxon="S27-27-24" totalcount="4" value="aaaatggtccaccgcctgctgaggaccgaaag"/>
+                    <sequence id="seq_S28-28-23" taxon="S28-28-23" totalcount="4" value="aaaatggtcaccccatgtcgcaagaccatata"/>
+                    <sequence id="seq_S29-29-33" taxon="S29-29-33" totalcount="4" value="aatatggtcccccgcattcagagtaccgaaag"/>
+                    <sequence id="seq_S3-3-128" taxon="S3-3-128" totalcount="4" value="cgttgatctgaacaggggcagaggataggacg"/>
+                    <sequence id="seq_S30-30-82" taxon="S30-30-82" totalcount="4" value="gtcgagaccgcccgcccgcccagttatccctg"/>
+                    <sequence id="seq_S31-31-35" taxon="S31-31-35" totalcount="4" value="ctacaaaagtttcccaaatagccctattaata"/>
+                    <sequence id="seq_S32-32-40" taxon="S32-32-40" totalcount="4" value="aaagtggttccgtgctcggagagcatcaaatg"/>
+                    <sequence id="seq_S33-33-38" taxon="S33-33-38" totalcount="4" value="ttctcaattcacggcgggggccgacccctagt"/>
+                    <sequence id="seq_S34-34-150" taxon="S34-34-150" totalcount="4" value="caaaaggtactccgcaggcggaggaacaaatc"/>
+                    <sequence id="seq_S35-35-41" taxon="S35-35-41" totalcount="4" value="aaaatactacgccgcagtgggtatacttgatg"/>
+                    <sequence id="seq_S36-36-30" taxon="S36-36-30" totalcount="4" value="gaaatggtcccccgcaggcgtaggacaaaaac"/>
+                    <sequence id="seq_S37-37-44" taxon="S37-37-44" totalcount="4" value="aaagtggcaccccgcatgcgtaggaccgtaca"/>
+                    <sequence id="seq_S38-38-53" taxon="S38-38-53" totalcount="4" value="atattggtacgccgcaggcagtggactaaatg"/>
+                    <sequence id="seq_S39-39-21" taxon="S39-39-21" totalcount="4" value="aagatggcacccctctggcggagtatcaattc"/>
+                    <sequence id="seq_S4-4-4" taxon="S4-4-4" totalcount="4" value="aagatggtacccctaaggccggttcgcaagtg"/>
+                    <sequence id="seq_S40-40-47" taxon="S40-40-47" totalcount="4" value="caaaaatctctcagaaggcggcggggagagtc"/>
+                    <sequence id="seq_S41-41-157" taxon="S41-41-157" totalcount="4" value="aaaaaagttctccgcaaacagaggatcaaagg"/>
+                    <sequence id="seq_S42-42-56" taxon="S42-42-56" totalcount="4" value="aaaatgtcaacctgcattcccaggacggaatg"/>
+                    <sequence id="seq_S43-43-58" taxon="S43-43-58" totalcount="4" value="gagatggctccccgcgggcatatggcaaagta"/>
+                    <sequence id="seq_S44-44-39" taxon="S44-44-39" totalcount="4" value="aacatcgaacccctcatcctgaagcccaaatg"/>
+                    <sequence id="seq_S45-45-62" taxon="S45-45-62" totalcount="4" value="accatggtcccccgcaaacatatgccaaaatt"/>
+                    <sequence id="seq_S46-46-66" taxon="S46-46-66" totalcount="4" value="aaaattgcactccggacgcagagcaccaaatg"/>
+                    <sequence id="seq_S47-47-48" taxon="S47-47-48" totalcount="4" value="aaaagagtaccccggtctcgaaggaccgcagg"/>
+                    <sequence id="seq_S48-48-52" taxon="S48-48-52" totalcount="4" value="gataaggttccccacggacggacgagaaaatg"/>
+                    <sequence id="seq_S49-49-50" taxon="S49-49-50" totalcount="4" value="agagtacccgcctaaagacagtaaacctaatc"/>
+                    <sequence id="seq_S5-5-124" taxon="S5-5-124" totalcount="4" value="aaaatggtaccccgcaggcagaggcacaaatc"/>
+                    <sequence id="seq_S50-50-31" taxon="S50-50-31" totalcount="4" value="aaaatggtagcccgcattgagagcgctgaatg"/>
+                    <sequence id="seq_S51-51-68" taxon="S51-51-68" totalcount="4" value="gcaactcagacctaacggtcaatatcccccgg"/>
+                    <sequence id="seq_S52-52-57" taxon="S52-52-57" totalcount="4" value="gtcgacgacgtgctccgatcgcccttattcta"/>
+                    <sequence id="seq_S53-53-93" taxon="S53-53-93" totalcount="4" value="cggatatttcaccacaggcttaggatctacat"/>
+                    <sequence id="seq_S54-54-43" taxon="S54-54-43" totalcount="4" value="acggtaaaccccctccgtccgtcgagctaatg"/>
+                    <sequence id="seq_S55-55-46" taxon="S55-55-46" totalcount="4" value="aaaatggtactccgtatgctgagcaccgaacg"/>
+                    <sequence id="seq_S56-56-51" taxon="S56-56-51" totalcount="4" value="aaaatgctcccccgcaggaggagcacaaaatc"/>
+                    <sequence id="seq_S57-57-75" taxon="S57-57-75" totalcount="4" value="ataatgggaccccgcaggcaccaaccaaaatc"/>
+                    <sequence id="seq_S58-58-70" taxon="S58-58-70" totalcount="4" value="gaaataatcaacaggtcgcggaggacgctttg"/>
+                    <sequence id="seq_S59-59-85" taxon="S59-59-85" totalcount="4" value="ctcgaggtccccgttcgggtcgacatatataa"/>
+                    <sequence id="seq_S6-6-8" taxon="S6-6-8" totalcount="4" value="taagtcctgccaatatgccctggggtactgga"/>
+                    <sequence id="seq_S60-60-60" taxon="S60-60-60" totalcount="4" value="aaaatgataaaccgcgggccgtggtccaaatg"/>
+                    <sequence id="seq_S61-61-86" taxon="S61-61-86" totalcount="4" value="aaaattctgccgcgcaggccgagtcccaaatc"/>
+                    <sequence id="seq_S62-62-69" taxon="S62-62-69" totalcount="4" value="caaacagtggggcgtcctctaaacgctcccgc"/>
+                    <sequence id="seq_S63-63-77" taxon="S63-63-77" totalcount="4" value="atgcccgtacccttggggcggaggaccaaatg"/>
+                    <sequence id="seq_S64-64-61" taxon="S64-64-61" totalcount="4" value="tatggactacgcaccagctagtgaaaagttga"/>
+                    <sequence id="seq_S65-65-84" taxon="S65-65-84" totalcount="4" value="aaaatggtcgcccgcccccatacttcaaaatt"/>
+                    <sequence id="seq_S66-66-147" taxon="S66-66-147" totalcount="4" value="aagttggtccaccacagagataggacatagta"/>
+                    <sequence id="seq_S67-67-149" taxon="S67-67-149" totalcount="4" value="aaaatcgtaccccgcagtcataggacaaaata"/>
+                    <sequence id="seq_S68-68-80" taxon="S68-68-80" totalcount="4" value="aaaaaaattccacgcgggcggaggacctaaat"/>
+                    <sequence id="seq_S69-69-91" taxon="S69-69-91" totalcount="4" value="aggagggtaccccgaaggcggaagaacgtatg"/>
+                    <sequence id="seq_S7-7-12" taxon="S7-7-12" totalcount="4" value="agtacaatccatcgcatcccagaaacaccgtg"/>
+                    <sequence id="seq_S70-70-26" taxon="S70-70-26" totalcount="4" value="caatggatctccgtgcccgtgatgaacttata"/>
+                    <sequence id="seq_S71-71-42" taxon="S71-71-42" totalcount="4" value="ccaataagtaaccggaggccgaggatatcctc"/>
+                    <sequence id="seq_S72-72-99" taxon="S72-72-99" totalcount="4" value="aagatggtcccccgcaggtgtaggaccaaata"/>
+                    <sequence id="seq_S73-73-83" taxon="S73-73-83" totalcount="4" value="aggatagtactccggatgcgacatacgcagtc"/>
+                    <sequence id="seq_S74-74-92" taxon="S74-74-92" totalcount="4" value="aaaatgttactccgcatgaggaggaccatacg"/>
+                    <sequence id="seq_S75-75-118" taxon="S75-75-118" totalcount="4" value="aaaatgtgtccccacaggcaaaggactaagga"/>
+                    <sequence id="seq_S76-76-64" taxon="S76-76-64" totalcount="4" value="aaaatggtacccgcaaggcagaggaccagatg"/>
+                    <sequence id="seq_S77-77-97" taxon="S77-77-97" totalcount="4" value="aactcagtccaacgactgattgccgacaagtc"/>
+                    <sequence id="seq_S78-78-116" taxon="S78-78-116" totalcount="4" value="aacatgctcccccgcaggcataggttaaagtt"/>
+                    <sequence id="seq_S79-79-96" taxon="S79-79-96" totalcount="4" value="ctataattccttctcagctttcgctgttctta"/>
+                    <sequence id="seq_S8-8-7" taxon="S8-8-7" totalcount="4" value="cttcgtaacgctcatttgacactggtcctcgg"/>
+                    <sequence id="seq_S80-80-88" taxon="S80-80-88" totalcount="4" value="taaacggtacttctcatgcggagggcagaatg"/>
+                    <sequence id="seq_S81-81-54" taxon="S81-81-54" totalcount="4" value="gtaactaccgcctgccggggacggccgcttgt"/>
+                    <sequence id="seq_S82-82-104" taxon="S82-82-104" totalcount="4" value="tacgtaaacccccgtagactgataccctaatc"/>
+                    <sequence id="seq_S83-83-112" taxon="S83-83-112" totalcount="4" value="aaaatggcacggcgctttgagaagaccgaagc"/>
+                    <sequence id="seq_S84-84-72" taxon="S84-84-72" totalcount="4" value="aaaacggtaccccgcacgctgagtagttaatg"/>
+                    <sequence id="seq_S85-85-111" taxon="S85-85-111" totalcount="4" value="aaaatagttcccggcattcgtggggccgaatg"/>
+                    <sequence id="seq_S86-86-103" taxon="S86-86-103" totalcount="4" value="aaaatggtcccccgccggcataggacaatata"/>
+                    <sequence id="seq_S87-87-73" taxon="S87-87-73" totalcount="4" value="cacaagcaacagtcgcgtggtcccatcacgtt"/>
+                    <sequence id="seq_S88-88-155" taxon="S88-88-155" totalcount="4" value="aaaatggtacccggcaggcggagaatgaaatg"/>
+                    <sequence id="seq_S89-89-127" taxon="S89-89-127" totalcount="4" value="taaatggtatcccgctgtcggaatacaaagcg"/>
+                    <sequence id="seq_S9-9-144" taxon="S9-9-144" totalcount="4" value="atcttaggcacgcgcccgtcggagcattcaca"/>
+                    <sequence id="seq_S90-90-113" taxon="S90-90-113" totalcount="4" value="caaataatccctcgcatatggacgacaatttg"/>
+                    <sequence id="seq_S91-91-132" taxon="S91-91-132" totalcount="4" value="acaatgggacaccgcaggcataggacagacca"/>
+                    <sequence id="seq_S92-92-114" taxon="S92-92-114" totalcount="4" value="caattggtcccccggatgcgaaggtaaaaaaa"/>
+                    <sequence id="seq_S93-93-115" taxon="S93-93-115" totalcount="4" value="gacataaagcgacgaaggcggaggaatcaata"/>
+                    <sequence id="seq_S94-94-117" taxon="S94-94-117" totalcount="4" value="atcatggcactctgcaatcagaacacgcaatg"/>
+                    <sequence id="seq_S95-95-79" taxon="S95-95-79" totalcount="4" value="aaaacggtatcccatagtcggagtacctaatg"/>
+                    <sequence id="seq_S96-96-125" taxon="S96-96-125" totalcount="4" value="aaattgagacaccgcattcagaggtcaaagta"/>
+                    <sequence id="seq_S97-97-151" taxon="S97-97-151" totalcount="4" value="aaaatggtaccccggagtccgatgacgacttg"/>
+                    <sequence id="seq_S98-98-94" taxon="S98-98-94" totalcount="4" value="agggtgaaacccgccaagcaaaggggtccatt"/>
+                    <sequence id="seq_S99-99-121" taxon="S99-99-121" totalcount="4" value="tgctaagatctacactatcaacggggtttcat"/>
+                </data>
+
+
+    
+
+
+    
+
+
+    
+<map name="Uniform" >beast.math.distributions.Uniform</map>
+<map name="Exponential" >beast.math.distributions.Exponential</map>
+<map name="LogNormal" >beast.math.distributions.LogNormalDistributionModel</map>
+<map name="Normal" >beast.math.distributions.Normal</map>
+<map name="Beta" >beast.math.distributions.Beta</map>
+<map name="Gamma" >beast.math.distributions.Gamma</map>
+<map name="LaplaceDistribution" >beast.math.distributions.LaplaceDistribution</map>
+<map name="prior" >beast.math.distributions.Prior</map>
+<map name="InverseGamma" >beast.math.distributions.InverseGamma</map>
+<map name="OneOnX" >beast.math.distributions.OneOnX</map>
+
+
+<run id="mcmc" spec="MCMC" chainLength="2000" storeEvery="1000">
+    <state id="state" storeEvery="5000">
+        <tree id="Tree.t:pbd_twin" name="stateNode">
+            <taxonset id="TaxonSet.pbd_twin" spec="TaxonSet">
+                <alignment idref="pbd_twin"/>
+            </taxonset>
+        </tree>
+        <parameter id="birthRate.t:pbd_twin" name="stateNode">1.0</parameter>
+        <parameter id="clockRate.c:pbd_twin" name="stateNode">1.0</parameter>
+    </state>
+
+    <init id="RandomTree.t:pbd_twin" spec="beast.evolution.tree.RandomTree" estimate="false" initial="@Tree.t:pbd_twin" taxa="@pbd_twin">
+        <populationModel id="ConstantPopulation0.t:pbd_twin" spec="ConstantPopulation">
+            <parameter id="randomPopSize.t:pbd_twin" name="popSize">1.0</parameter>
+        </populationModel>
+    </init>
+
+    <distribution id="posterior" spec="util.CompoundDistribution">
+        <distribution id="prior" spec="util.CompoundDistribution">
+            <distribution id="YuleModel.t:pbd_twin" spec="beast.evolution.speciation.YuleModel" birthDiffRate="@birthRate.t:pbd_twin" tree="@Tree.t:pbd_twin"/>
+            <prior id="YuleBirthRatePrior.t:pbd_twin" name="distribution" x="@birthRate.t:pbd_twin">
+                <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+            </prior>
+            <prior id="ClockPrior.c:pbd_twin" name="distribution" x="@clockRate.c:pbd_twin">
+                <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
+            </prior>
+            <distribution id="auto_name_1.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:pbd_twin">
+                <taxonset id="auto_name_1" spec="TaxonSet">
+                    <taxon id="S99-99-121" spec="Taxon"/>
+                    <taxon id="S1-1-49" spec="Taxon"/>
+                    <taxon id="S8-8-7" spec="Taxon"/>
+                    <taxon id="S51-51-68" spec="Taxon"/>
+                    <taxon id="S62-62-69" spec="Taxon"/>
+                    <taxon id="S33-33-38" spec="Taxon"/>
+                    <taxon id="S81-81-54" spec="Taxon"/>
+                    <taxon id="S15-15-158" spec="Taxon"/>
+                    <taxon id="S59-59-85" spec="Taxon"/>
+                    <taxon id="S30-30-82" spec="Taxon"/>
+                    <taxon id="S31-31-35" spec="Taxon"/>
+                    <taxon id="S52-52-57" spec="Taxon"/>
+                    <taxon id="S17-17-105" spec="Taxon"/>
+                    <taxon id="S9-9-144" spec="Taxon"/>
+                    <taxon id="S64-64-61" spec="Taxon"/>
+                    <taxon id="S87-87-73" spec="Taxon"/>
+                    <taxon id="S79-79-96" spec="Taxon"/>
+                    <taxon id="S2-2-141" spec="Taxon"/>
+                    <taxon id="S73-73-83" spec="Taxon"/>
+                    <taxon id="S108-108-123" spec="Taxon"/>
+                    <taxon id="S107-107-74" spec="Taxon"/>
+                    <taxon id="S77-77-97" spec="Taxon"/>
+                    <taxon id="S11-11-90" spec="Taxon"/>
+                    <taxon id="S7-7-12" spec="Taxon"/>
+                    <taxon id="S6-6-8" spec="Taxon"/>
+                    <taxon id="S3-3-128" spec="Taxon"/>
+                    <taxon id="S14-14-15" spec="Taxon"/>
+                    <taxon id="S68-68-80" spec="Taxon"/>
+                    <taxon id="S98-98-94" spec="Taxon"/>
+                    <taxon id="S100-100-122" spec="Taxon"/>
+                    <taxon id="S58-58-70" spec="Taxon"/>
+                    <taxon id="S90-90-113" spec="Taxon"/>
+                    <taxon id="S54-54-43" spec="Taxon"/>
+                    <taxon id="S103-103-59" spec="Taxon"/>
+                    <taxon id="S35-35-41" spec="Taxon"/>
+                    <taxon id="S16-16-20" spec="Taxon"/>
+                    <taxon id="S49-49-50" spec="Taxon"/>
+                    <taxon id="S24-24-19" spec="Taxon"/>
+                    <taxon id="S70-70-26" spec="Taxon"/>
+                    <taxon id="S82-82-104" spec="Taxon"/>
+                    <taxon id="S71-71-42" spec="Taxon"/>
+                    <taxon id="S93-93-115" spec="Taxon"/>
+                    <taxon id="S40-40-47" spec="Taxon"/>
+                    <taxon id="S18-18-18" spec="Taxon"/>
+                    <taxon id="S53-53-93" spec="Taxon"/>
+                    <taxon id="S12-12-9" spec="Taxon"/>
+                    <taxon id="S101-101-129" spec="Taxon"/>
+                    <taxon id="S25-25-107" spec="Taxon"/>
+                    <taxon id="S4-4-4" spec="Taxon"/>
+                    <taxon id="S48-48-52" spec="Taxon"/>
+                    <taxon id="S44-44-39" spec="Taxon"/>
+                    <taxon id="S89-89-127" spec="Taxon"/>
+                    <taxon id="S28-28-23" spec="Taxon"/>
+                    <taxon id="S88-88-155" spec="Taxon"/>
+                    <taxon id="S39-39-21" spec="Taxon"/>
+                    <taxon id="S63-63-77" spec="Taxon"/>
+                    <taxon id="S20-20-14" spec="Taxon"/>
+                    <taxon id="S22-22-29" spec="Taxon"/>
+                    <taxon id="S27-27-24" spec="Taxon"/>
+                    <taxon id="S37-37-44" spec="Taxon"/>
+                    <taxon id="S23-23-27" spec="Taxon"/>
+                    <taxon id="S47-47-48" spec="Taxon"/>
+                    <taxon id="S80-80-88" spec="Taxon"/>
+                    <taxon id="S95-95-79" spec="Taxon"/>
+                    <taxon id="S85-85-111" spec="Taxon"/>
+                    <taxon id="S42-42-56" spec="Taxon"/>
+                    <taxon id="S50-50-31" spec="Taxon"/>
+                    <taxon id="S29-29-33" spec="Taxon"/>
+                    <taxon id="S83-83-112" spec="Taxon"/>
+                    <taxon id="S94-94-117" spec="Taxon"/>
+                    <taxon id="S34-34-150" spec="Taxon"/>
+                    <taxon id="S46-46-66" spec="Taxon"/>
+                    <taxon id="S109-109-63" spec="Taxon"/>
+                    <taxon id="S41-41-157" spec="Taxon"/>
+                    <taxon id="S74-74-92" spec="Taxon"/>
+                    <taxon id="S55-55-46" spec="Taxon"/>
+                    <taxon id="S19-19-55" spec="Taxon"/>
+                    <taxon id="S10-10-10" spec="Taxon"/>
+                    <taxon id="S69-69-91" spec="Taxon"/>
+                    <taxon id="S110-110-126" spec="Taxon"/>
+                    <taxon id="S61-61-86" spec="Taxon"/>
+                    <taxon id="S104-104-87" spec="Taxon"/>
+                    <taxon id="S5-5-124" spec="Taxon"/>
+                    <taxon id="S105-105-130" spec="Taxon"/>
+                    <taxon id="S84-84-72" spec="Taxon"/>
+                    <taxon id="S38-38-53" spec="Taxon"/>
+                    <taxon id="S60-60-60" spec="Taxon"/>
+                    <taxon id="S76-76-64" spec="Taxon"/>
+                    <taxon id="S102-102-89" spec="Taxon"/>
+                    <taxon id="S97-97-151" spec="Taxon"/>
+                    <taxon id="S32-32-40" spec="Taxon"/>
+                    <taxon id="S91-91-132" spec="Taxon"/>
+                    <taxon id="S13-13-109" spec="Taxon"/>
+                    <taxon id="S96-96-125" spec="Taxon"/>
+                    <taxon id="S75-75-118" spec="Taxon"/>
+                    <taxon id="S26-26-32" spec="Taxon"/>
+                    <taxon id="S57-57-75" spec="Taxon"/>
+                    <taxon id="S21-21-17" spec="Taxon"/>
+                    <taxon id="S43-43-58" spec="Taxon"/>
+                    <taxon id="S92-92-114" spec="Taxon"/>
+                    <taxon id="S66-66-147" spec="Taxon"/>
+                    <taxon id="S36-36-30" spec="Taxon"/>
+                    <taxon id="S106-106-143" spec="Taxon"/>
+                    <taxon id="S72-72-99" spec="Taxon"/>
+                    <taxon id="S65-65-84" spec="Taxon"/>
+                    <taxon id="S86-86-103" spec="Taxon"/>
+                    <taxon id="S67-67-149" spec="Taxon"/>
+                    <taxon id="S45-45-62" spec="Taxon"/>
+                    <taxon id="S78-78-116" spec="Taxon"/>
+                    <taxon id="S56-56-51" spec="Taxon"/>
+                    <taxon id="S111-111-163" spec="Taxon"/>
+                    <taxon id="S138-138-197" spec="Taxon"/>
+                    <taxon id="S150-150-189" spec="Taxon"/>
+                    <taxon id="S136-136-200" spec="Taxon"/>
+                    <taxon id="S144-144-203" spec="Taxon"/>
+                    <taxon id="S142-142-199" spec="Taxon"/>
+                    <taxon id="S113-113-165" spec="Taxon"/>
+                    <taxon id="S129-129-181" spec="Taxon"/>
+                    <taxon id="S140-140-202" spec="Taxon"/>
+                    <taxon id="S127-127-184" spec="Taxon"/>
+                    <taxon id="S133-133-194" spec="Taxon"/>
+                    <taxon id="S120-120-174" spec="Taxon"/>
+                    <taxon id="S112-112-164" spec="Taxon"/>
+                    <taxon id="S145-145-188" spec="Taxon"/>
+                    <taxon id="S135-135-182" spec="Taxon"/>
+                    <taxon id="S139-139-179" spec="Taxon"/>
+                    <taxon id="S155-155-196" spec="Taxon"/>
+                    <taxon id="S154-154-207" spec="Taxon"/>
+                    <taxon id="S151-151-218" spec="Taxon"/>
+                    <taxon id="S149-149-209" spec="Taxon"/>
+                    <taxon id="S124-124-175" spec="Taxon"/>
+                    <taxon id="S131-131-183" spec="Taxon"/>
+                    <taxon id="S114-114-212" spec="Taxon"/>
+                    <taxon id="S116-116-171" spec="Taxon"/>
+                    <taxon id="S128-128-186" spec="Taxon"/>
+                    <taxon id="S126-126-177" spec="Taxon"/>
+                    <taxon id="S153-153-190" spec="Taxon"/>
+                    <taxon id="S118-118-167" spec="Taxon"/>
+                    <taxon id="S152-152-222" spec="Taxon"/>
+                    <taxon id="S157-157-206" spec="Taxon"/>
+                    <taxon id="S132-132-192" spec="Taxon"/>
+                    <taxon id="S130-130-166" spec="Taxon"/>
+                    <taxon id="S146-146-187" spec="Taxon"/>
+                    <taxon id="S147-147-185" spec="Taxon"/>
+                    <taxon id="S156-156-214" spec="Taxon"/>
+                    <taxon id="S117-117-213" spec="Taxon"/>
+                    <taxon id="S148-148-211" spec="Taxon"/>
+                    <taxon id="S119-119-172" spec="Taxon"/>
+                    <taxon id="S125-125-176" spec="Taxon"/>
+                    <taxon id="S134-134-195" spec="Taxon"/>
+                    <taxon id="S123-123-180" spec="Taxon"/>
+                    <taxon id="S137-137-198" spec="Taxon"/>
+                    <taxon id="S122-122-178" spec="Taxon"/>
+                    <taxon id="S121-121-173" spec="Taxon"/>
+                    <taxon id="S141-141-201" spec="Taxon"/>
+                    <taxon id="S115-115-169" spec="Taxon"/>
+                    <taxon id="S143-143-204" spec="Taxon"/>
+                    <taxon id="S158-158-191" spec="Taxon"/>
+                </taxonset>
+                <Normal id="Normal.151" name="distr">
+                    <parameter id="RealParameter.300" estimate="false" name="mean">10</parameter>
+                    <parameter id="RealParameter.301" estimate="false" name="sigma">0.01</parameter>
+                </Normal>
+            </distribution>
+        </distribution>
+        <distribution id="likelihood" spec="util.CompoundDistribution" useThreads="true">
+            <distribution id="treeLikelihood.pbd_twin" spec="ThreadedTreeLikelihood" data="@pbd_twin" tree="@Tree.t:pbd_twin">
+                <siteModel id="SiteModel.s:pbd_twin" spec="SiteModel">
+                    <parameter id="mutationRate.s:pbd_twin" estimate="false" name="mutationRate">1.0</parameter>
+                    <parameter id="gammaShape.s:pbd_twin" estimate="false" name="shape">1.0</parameter>
+                    <parameter id="proportionInvariant.s:pbd_twin" estimate="false" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+                    <substModel id="JC69.s:pbd_twin" spec="JukesCantor"/>
+                </siteModel>
+                <branchRateModel id="StrictClock.c:pbd_twin" spec="beast.evolution.branchratemodel.StrictClockModel" clock.rate="@clockRate.c:pbd_twin"/>
+            </distribution>
+        </distribution>
+    </distribution>
+
+    <operator id="YuleBirthRateScaler.t:pbd_twin" spec="ScaleOperator" parameter="@birthRate.t:pbd_twin" scaleFactor="0.75" weight="3.0"/>
+
+    <operator id="YuleModelTreeScaler.t:pbd_twin" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:pbd_twin" weight="3.0"/>
+
+    <operator id="YuleModelTreeRootScaler.t:pbd_twin" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:pbd_twin" weight="3.0"/>
+
+    <operator id="YuleModelUniformOperator.t:pbd_twin" spec="Uniform" tree="@Tree.t:pbd_twin" weight="30.0"/>
+
+    <operator id="YuleModelSubtreeSlide.t:pbd_twin" spec="SubtreeSlide" tree="@Tree.t:pbd_twin" weight="15.0"/>
+
+    <operator id="YuleModelNarrow.t:pbd_twin" spec="Exchange" tree="@Tree.t:pbd_twin" weight="15.0"/>
+
+    <operator id="YuleModelWide.t:pbd_twin" spec="Exchange" isNarrow="false" tree="@Tree.t:pbd_twin" weight="3.0"/>
+
+    <operator id="YuleModelWilsonBalding.t:pbd_twin" spec="WilsonBalding" tree="@Tree.t:pbd_twin" weight="3.0"/>
+
+    <operator id="StrictClockRateScaler.c:pbd_twin" spec="ScaleOperator" parameter="@clockRate.c:pbd_twin" scaleFactor="0.75" weight="3.0"/>
+
+    <operator id="strictClockUpDownOperator.c:pbd_twin" spec="UpDownOperator" scaleFactor="0.75" weight="3.0">
+        <up idref="clockRate.c:pbd_twin"/>
+        <down idref="Tree.t:pbd_twin"/>
+    </operator>
+
+    <logger id="tracelog" fileName="pbd_twin.log" logEvery="1000" model="@posterior" sanitiseHeaders="true" sort="smart">
+        <log idref="posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+        <log idref="treeLikelihood.pbd_twin"/>
+        <log id="TreeHeight.t:pbd_twin" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:pbd_twin"/>
+        <log idref="YuleModel.t:pbd_twin"/>
+        <log idref="birthRate.t:pbd_twin"/>
+        <log idref="auto_name_1.prior"/>
+        <log idref="clockRate.c:pbd_twin"/>
+    </logger>
+
+    <logger id="screenlog" logEvery="1000">
+        <log idref="posterior"/>
+        <log id="ESS.0" spec="util.ESS" arg="@posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+    </logger>
+
+    <logger id="treelog.t:pbd_twin" fileName="$(tree).trees" logEvery="1000" mode="tree">
+        <log id="TreeWithMetaDataLogger.t:pbd_twin" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:pbd_twin"/>
+    </logger>
+
+</run>
+
+</beast>

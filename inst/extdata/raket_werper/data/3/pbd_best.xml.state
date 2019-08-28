@@ -1,0 +1,21 @@
+<itsabeastystatewerein version='2.0' sample='2000'>
+<statenode id='Tree.t:pbd'>(0:9.998339728493697,1:9.998339728493697)2:0.0</statenode>
+<statenode id='BDBirthRate.t:pbd'>BDBirthRate.t:pbd[1 1] (0.0,10000.0): 0.07997871892660971 </statenode>
+<statenode id='BDDeathRate.t:pbd'>BDDeathRate.t:pbd[1 1] (0.0,1.0): 0.43269634491328274 </statenode>
+<statenode id='clockRate.c:pbd'>clockRate.c:pbd[1 1] (0.0,Infinity): 5.4481717043531965 </statenode>
+</itsabeastystatewerein>
+<!--
+{"operators":[
+{"id":"BirthRateScaler.t:pbd","p":0.75,"accept":49,"reject":20,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"DeathRateScaler.t:pbd","p":0.75,"accept":52,"reject":11,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathTreeScaler.t:pbd","p":0.5,"accept":1,"reject":77,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathTreeRootScaler.t:pbd","p":0.5,"accept":2,"reject":53,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathUniformOperator.t:pbd","p":"NaN","accept":0,"reject":722,"acceptFC":0,"rejectFC":0,"rejectIv":722,"rejectOp":722},
+{"id":"BirthDeathSubtreeSlide.t:pbd","p":1,"accept":16,"reject":336,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathNarrow.t:pbd","p":"NaN","accept":0,"reject":362,"acceptFC":0,"rejectFC":0,"rejectIv":362,"rejectOp":362},
+{"id":"BirthDeathWide.t:pbd","p":"NaN","accept":0,"reject":78,"acceptFC":0,"rejectFC":0,"rejectIv":78,"rejectOp":78},
+{"id":"BirthDeathWilsonBalding.t:pbd","p":"NaN","accept":0,"reject":71,"acceptFC":0,"rejectFC":0,"rejectIv":71,"rejectOp":71},
+{"id":"StrictClockRateScaler.c:pbd","p":0.75,"accept":64,"reject":5,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"strictClockUpDownOperator.c:pbd","p":0.75,"accept":0,"reject":82,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0}
+]}
+-->

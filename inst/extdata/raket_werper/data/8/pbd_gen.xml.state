@@ -1,0 +1,19 @@
+<itsabeastystatewerein version='2.0' sample='2000'>
+<statenode id='Tree.t:pbd'>(((((0:2.912604068270782,4:2.912604068270782)18:1.413584207642364,9:4.326188275913146)23:3.0309822021773476,12:7.357170478090493)19:0.9206799526240808,(10:5.170931426683251,11:5.170931426683251)16:3.1069190040313233)14:1.6960810740515768,(((1:3.7848760363369527,2:3.7848760363369527)22:2.5668568340877984,(6:2.2917460554118194,(7:0.24993864031320143,8:0.24993864031320143)20:2.041807415098618)21:4.059986815012932)17:1.1864689713845795,(3:1.787321272677921,5:1.787321272677921)13:5.750880569131409)15:2.4357296629568204)24:0.0</statenode>
+<statenode id='birthRate.t:pbd'>birthRate.t:pbd[1 1] (-Infinity,Infinity): 0.171892930637296 </statenode>
+<statenode id='clockRate.c:pbd'>clockRate.c:pbd[1 1] (0.0,Infinity): 0.10288388801031598 </statenode>
+</itsabeastystatewerein>
+<!--
+{"operators":[
+{"id":"YuleBirthRateScaler.t:pbd","p":0.75,"accept":60,"reject":17,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelTreeScaler.t:pbd","p":0.5,"accept":2,"reject":72,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelTreeRootScaler.t:pbd","p":0.5,"accept":2,"reject":62,"acceptFC":0,"rejectFC":0,"rejectIv":9,"rejectOp":9},
+{"id":"YuleModelUniformOperator.t:pbd","p":"NaN","accept":391,"reject":338,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelSubtreeSlide.t:pbd","p":1,"accept":169,"reject":204,"acceptFC":0,"rejectFC":0,"rejectIv":63,"rejectOp":63},
+{"id":"YuleModelNarrow.t:pbd","p":"NaN","accept":173,"reject":208,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"YuleModelWide.t:pbd","p":"NaN","accept":4,"reject":64,"acceptFC":0,"rejectFC":0,"rejectIv":41,"rejectOp":41},
+{"id":"YuleModelWilsonBalding.t:pbd","p":"NaN","accept":10,"reject":57,"acceptFC":0,"rejectFC":0,"rejectIv":15,"rejectOp":15},
+{"id":"StrictClockRateScaler.c:pbd","p":0.75,"accept":34,"reject":40,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"strictClockUpDownOperator.c:pbd","p":0.75,"accept":5,"reject":89,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0}
+]}
+-->

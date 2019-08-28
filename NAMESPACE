@@ -3,6 +3,7 @@
 export(check_raket_params)
 export(check_raket_paramses)
 export(check_sampling_method)
+export(collect_pbd_params)
 export(create_fig_1)
 export(create_files_raket_paramses)
 export(create_general_params_set)
