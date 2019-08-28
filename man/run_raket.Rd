@@ -11,6 +11,9 @@ run_raket(raket_params)
 \item{raket_params}{\code{raket} parameters for one experiment,
 as can be created by \code{\link{create_raket_params}}}
 }
+\value{
+nothing
+}
 \description{
 Run one point of the experiment
 }

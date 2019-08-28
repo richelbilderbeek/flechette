@@ -11,6 +11,9 @@ rkt_run_from_file(parameters_filename)
 a \code{raket_params},
 as can be created by \link{create_raket_params}}
 }
+\value{
+nothing
+}
 \description{
 Run a 'raket' experiment from a filename
 }

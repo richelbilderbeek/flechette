@@ -4,7 +4,9 @@
 \alias{create_input_files_test}
 \title{Creates the parameter files in the article for the general exploration}
 \usage{
-create_input_files_test(raket_paramses = create_test_params_set())
+
+  create_input_files_test(raket_paramses = create_test_params_set(project_folder_name
+  = getwd()))
 }
 \arguments{
 \item{sampling_params_set}{the set of parameters,
