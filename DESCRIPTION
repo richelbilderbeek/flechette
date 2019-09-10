@@ -24,9 +24,9 @@ Requires:
     TreeSim
 Imports:
     beastier (>= 2.0.19),
-    beautier (>= 2.2.2),
+    beautier (>= 2.2.3),
     peregrine (>= 0.5),
-    pirouette (>= 1.5)
+    pirouette (>= 1.5.1)
 Suggests:
     ape,
     becosys,
