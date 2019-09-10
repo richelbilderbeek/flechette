@@ -12,17 +12,17 @@ r_github_packages:
   - Giappo/mbd
   - jimhester/covr
   - jimhester/lintr
-  - ropensci/beautier@develop
+  - ropensci/beautier
   - ropensci/tracerer
-  - ropensci/beastier@develop
+  - ropensci/beastier
   - ropensci/mauricer
   - ropensci/babette
   - richelbilderbeek/ribir
   - richelbilderbeek/becosys
   - richelbilderbeek/nLTT
   - rsetienne/PBD/PBD
-  - richelbilderbeek/mcbette@develop
-  - richelbilderbeek/pirouette@richel
+  - richelbilderbeek/mcbette
+  - richelbilderbeek/pirouette
   - richelbilderbeek/peregrine
   - richelbilderbeek/razzo@richel
   - MangoTheCat/goodpractice
