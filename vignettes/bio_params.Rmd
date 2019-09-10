@@ -157,7 +157,7 @@ for (row in seq_along(df_goal$sir)) {
   )
   df_goal$sir[row] <- uniroot(f, interval = c(0.1, 2.0))$root
 }
-write.csv(df_goal, "raket_parameters.csv")
+utils::write.csv(df_goal, "raket_parameters.csv")
 knitr::kable(df_goal)
 ```
 

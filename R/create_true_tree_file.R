@@ -1,3 +1,5 @@
+#' Create the file for the true tree
+#' @inheritParams default_params_doc
 #' @export
 create_true_tree_file <- function(raket_params) {
   check_raket_params(raket_params) # nolint raket function

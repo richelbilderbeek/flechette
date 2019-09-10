@@ -18,3 +18,6 @@ the name of the file created
 Collect all PBD parameters of a \code{raket_werper} run and put these
 in one \code{.csv} file called \code{results/pbd_params.csv}
 }
+\author{
+Richel J.C. Bilderbeek
+}

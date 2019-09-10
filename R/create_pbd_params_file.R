@@ -10,7 +10,7 @@ create_pbd_params_file <- function(
   df <- collect_pbd_params(project_folder_name) # nolint raket function
   filename <- file.path(project_folder_name, "results", "pbd_params.csv")
   dir.create(path = dirname(filename), showWarnings = FALSE, recursive = TRUE)
-  write.csv(
+  utils::write.csv(
     x = df,
     file = filename
   )
