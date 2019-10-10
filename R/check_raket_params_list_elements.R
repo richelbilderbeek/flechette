@@ -1,5 +1,5 @@
 #' Check if the \code{raket_params} is a list with all the required elements
-#' @noRd
+#' @export
 check_raket_params_list_elements <- function( # nolint indeed long function, which is fine for an internal function
   raket_params
 ) {

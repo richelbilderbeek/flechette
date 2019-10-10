@@ -4,7 +4,7 @@
 #' Else will do nothing.
 #' @return nothing
 #' @author Richel J.C. Bilderbeek
-#' @noRd
+#' @export
 check_project_folder_name <- function(project_folder_name) {
   if (basename(project_folder_name) != "raket_werper") {
     stop("'project_folder_name' must end with 'raket_werper'")

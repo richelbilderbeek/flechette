@@ -1,6 +1,6 @@
 #' Check is a \code{raket_params} hold Peregrine-friendly filenames
 #' that follow the \code{raket} naming convention.
-#' @noRd
+#' @export
 check_raket_params_filenames <- function(raket_params) { # nolint indeed a long function name, which is fine for an internal function
   if (!peregrine::is_pff(raket_params$true_tree_filename)) {
     stop(

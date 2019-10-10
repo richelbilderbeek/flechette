@@ -14,7 +14,6 @@ LazyData: TRUE
 Requires: 
     adephylo,
     ape,
-    assertive,
     dplyr,
     geiger,
     phangorn,
@@ -23,6 +22,7 @@ Requires:
     tools,
     TreeSim
 Imports:
+    assertive,
     beastier (>= 2.0.25),
     beautier (>= 2.2.3),
     peregrine (>= 0.5),
