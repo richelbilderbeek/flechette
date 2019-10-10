@@ -1,6 +1,8 @@
 #' Create a test \code{raket_params}
 #'
 #' @inheritParams default_params_doc
+#' @param folder_name destination folder the parameters
+#' will write to when run
 #' @return a test \code{raket_params},
 #'   as can be created by \link{create_raket_params}
 #' @export

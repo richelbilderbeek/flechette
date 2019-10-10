@@ -6,6 +6,10 @@
 \usage{
 create_test_raket_params(folder_name = peregrine::get_pff_tempdir())
 }
+\arguments{
+\item{folder_name}{destination folder the parameters
+will write to when run}
+}
 \value{
 a test \code{raket_params},
   as can be created by \link{create_raket_params}
