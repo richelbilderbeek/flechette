@@ -27,6 +27,6 @@ create_raket_params <- create_params_raket <- function(
     true_tree_filename = true_tree_filename,
     pbd_sim_out_filename = pbd_sim_out_filename
   )
-  check_raket_params(raket_params) # nolint raket function
+  raket::check_raket_params(raket_params)
   raket_params
 }

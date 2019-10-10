@@ -7,7 +7,7 @@
 run_raket <- rkt_run <- function(
   raket_params
 ) {
-  check_raket_params(raket_params) # nolint raket function
+  raket::check_raket_params(raket_params)
   testit::assert(beastier::is_beast2_installed())
 
   # Create a PBD sim output file

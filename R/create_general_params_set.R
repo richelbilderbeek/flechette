@@ -9,14 +9,14 @@ create_general_params_set <- function(
 ) {
   testit::assert(beautier::is_one_int(n_replicates))
   testit::assert(n_replicates >= 1)
-  pbd_paramses <- create_general_pbd_paramses() # nolint raket function
+  pbd_paramses <- raket::create_general_pbd_paramses()
 
   raket_paramses <- list()
   index <- 1
   for (pbd_params in pbd_paramses) {
     for (replicate in seq(1, n_replicates)) {
       folder_name <- file.path(project_folder_name, "data", index)
-      raket_params <- create_test_raket_params(folder_name) # nolint raket fucntion
+      raket_params <- raket::create_test_raket_params(folder_name)
       raket_params$sampling_method <- "random"
       raket_params$pbd_params <- pbd_params
       raket_paramses[[index]] <- raket_params

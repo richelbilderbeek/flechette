@@ -51,7 +51,7 @@ create_sampling_params_set <- function(
         }
       }
     }
-    check_raket_paramses(raket_paramses = sampling_params_set) # nolint raket function
+    raket::check_raket_paramses(raket_paramses = sampling_params_set)
     sampling_params_set
   }
   general_params_set

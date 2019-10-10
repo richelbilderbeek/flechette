@@ -3,7 +3,7 @@
 #' @inheritParams default_params_doc
 #' @export
 create_pbd_sim_out_file <- function(raket_params) {
-  check_raket_params(raket_params) # nolint raket function
+  raket::check_raket_params(raket_params)
 
   # Simulate incipient species tree
   # Note: if speciation rates are zero, PBD::pbd_sim will last forever

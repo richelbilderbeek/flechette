@@ -13,7 +13,7 @@
 create_input_files <- function(
   raket_paramses
 ) {
-  check_raket_paramses(raket_paramses) # nolint raket function
+  raket::check_raket_paramses(raket_paramses)
 
   n_files <- length(raket_paramses)
   filenames <- rep(NA, n_files)

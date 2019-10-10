@@ -2,7 +2,7 @@
 #' @inheritParams default_params_doc
 #' @export
 create_true_tree_file <- function(raket_params) {
-  check_raket_params(raket_params) # nolint raket function
+  raket::check_raket_params(raket_params)
 
   # Read the PBD sim output
   beautier::check_file_exists(raket_params$pbd_sim_out_filename)

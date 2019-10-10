@@ -10,7 +10,7 @@ create_test_raket_params <- function(
 ) {
   crown_age <- 10.0
   crown_age_sigma <- 0.01
-  pbd_params <- create_test_pbd_params() # nolint raket function
+  raket::pbd_params <- create_test_pbd_params()
   twinning_params <- pirouette::create_twinning_params(
     twin_tree_filename = file.path(folder_name, "pbd_twin.newick"),
     twin_alignment_filename = file.path(folder_name, "pbd_twin.fasta"),

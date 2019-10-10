@@ -17,17 +17,17 @@ create_params_set <- function(
     stop("'experiment_type' must be in 'rkt_get_experiment_types()'")
   }
   if (experiment_type == "general") {
-    create_general_params_set( # nolint raket function
+    raket::create_general_params_set(
       project_folder_name = project_folder_name,
       n_replicates = n_replicates
     )
   } else if (experiment_type == "sampling") {
-    create_sampling_params_set( # nolint raket function
+    raket::create_sampling_params_set(
       project_folder_name = project_folder_name,
       n_replicates = n_replicates
     )
   } else {
     testit::assert(experiment_type == "test")
-    create_test_params_set() # nolint raket function
+    raket::create_test_params_set()
   }
 }

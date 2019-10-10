@@ -15,7 +15,7 @@ run_raket_from_file <- function(
     )
   }
   raket_params <- readRDS(parameters_filename)
-  check_raket_params(raket_params) # nolint raket function
+  raket::check_raket_params(raket_params)
   run_raket(
     raket_params = raket_params
   )
