@@ -9,10 +9,9 @@
   = getwd()))
 }
 \arguments{
-\item{sampling_params_set}{the set of parameters,
-as created by \code{\link{create_sampling_params_set}}}
-
-\item{folder_name}{name of the folder where all files are created}
+\item{raket_paramses}{a list of \code{raket_params},
+as created by \code{\link{create_general_params_set}}
+or \code{\link{create_sampling_params_set}}}
 }
 \value{
 The filenames of all parameter files created

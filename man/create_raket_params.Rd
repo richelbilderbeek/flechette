@@ -21,6 +21,12 @@ as created by \link[pirouette]{create_pir_params}}
 
 \item{sampling_method}{method how the incipient species representing a
 species is picked. Must be in \link{rkt_get_sampling_methods}.}
+
+\item{true_tree_filename}{path to the file to store the true
+phylogentic tree to. Tree will be stored in Newick format.}
+
+\item{pbd_sim_out_filename}{path to file to save the PBD simulation's
+output to. Data will be stored as R Data (\code{.RDa}).}
 }
 \description{
 Create the parameters for one experiment.

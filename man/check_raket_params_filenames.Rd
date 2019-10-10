@@ -7,6 +7,10 @@ that follow the \code{raket} naming convention.}
 \usage{
 check_raket_params_filenames(raket_params)
 }
+\arguments{
+\item{raket_params}{\code{raket} parameters for one experiment,
+as can be created by \code{\link{create_raket_params}}}
+}
 \description{
 Check is a \code{raket_params} hold Peregrine-friendly filenames
 that follow the \code{raket} naming convention.

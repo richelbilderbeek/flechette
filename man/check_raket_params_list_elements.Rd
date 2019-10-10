@@ -6,6 +6,10 @@
 \usage{
 check_raket_params_list_elements(raket_params)
 }
+\arguments{
+\item{raket_params}{\code{raket} parameters for one experiment,
+as can be created by \code{\link{create_raket_params}}}
+}
 \description{
 Check if the \code{raket_params} is a list with all the required elements
 }

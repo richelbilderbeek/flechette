@@ -19,6 +19,8 @@
 #' @param n_replicates number of replicates per biological parameter set
 #' @param pbd_params a PBD parameter set,
 #'   as returned by \code{\link[becosys]{create_pbd_params}}
+#' @param pbd_sim_out_filename path to file to save the PBD simulation's
+#'   output to. Data will be stored as R Data (\code{.RDa}).
 #' @param pir_params \code{pirouette} parameter set,
 #'   as created by \link[pirouette]{create_pir_params}
 #' @param project_folder_name name of project folder
@@ -40,6 +42,8 @@
 #' @param siri speciation initiation rate of an incipient species
 #' @param siris speciation initiation rates of incipient species
 #' @param stem_age stem age. Set either the stem age or the crown age.
+#' @param true_tree_filename path to the file to store the true
+#'   phylogentic tree to. Tree will be stored in Newick format.
 #' @param twinning_params parameters for creating a twin tree,
 #'   as can be created by \code{\link[pirouette]{create_twinning_params}}
 #' @param verbose if TRUE, additional information is displayed, that
@@ -60,6 +64,7 @@ default_params_doc <- function(
   mcmc_chain_length,
   n_replicates,
   pbd_params,
+  pbd_sim_out_filename,
   pir_params,
   project_folder_name,
   quantile,
@@ -72,6 +77,7 @@ default_params_doc <- function(
   sirg, sirgs,
   siri, siris,
   stem_age,
+  true_tree_filename,
   twinning_params,
   verbose
 ) {

@@ -7,10 +7,10 @@ documentation.}
 \usage{
 default_params_doc(alignment_params, crown_age, erg, ergs, eri, eris,
   experiment_type, filename, max_n_params, mcmc, mcmc_chain_length,
-  n_replicates, pbd_params, pir_params, project_folder_name, quantile,
-  raket_params, raket_paramses, sampling_method, scr, scrs,
-  sequence_length, sir, sirg, sirgs, siri, siris, stem_age,
-  twinning_params, verbose)
+  n_replicates, pbd_params, pbd_sim_out_filename, pir_params,
+  project_folder_name, quantile, raket_params, raket_paramses,
+  sampling_method, scr, scrs, sequence_length, sir, sirg, sirgs, siri,
+  siris, stem_age, true_tree_filename, twinning_params, verbose)
 }
 \arguments{
 \item{alignment_params}{parameters for creating an alignment,
@@ -44,6 +44,9 @@ number of states}
 
 \item{pbd_params}{a PBD parameter set,
 as returned by \code{\link[becosys]{create_pbd_params}}}
+
+\item{pbd_sim_out_filename}{path to file to save the PBD simulation's
+output to. Data will be stored as R Data (\code{.RDa}).}
 
 \item{pir_params}{\code{pirouette} parameter set,
 as created by \link[pirouette]{create_pir_params}}
@@ -80,6 +83,9 @@ a good species and an incipient species}
 \item{siris}{speciation initiation rates of incipient species}
 
 \item{stem_age}{stem age. Set either the stem age or the crown age.}
+
+\item{true_tree_filename}{path to the file to store the true
+phylogentic tree to. Tree will be stored in Newick format.}
 
 \item{twinning_params}{parameters for creating a twin tree,
 as can be created by \code{\link[pirouette]{create_twinning_params}}}

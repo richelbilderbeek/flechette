@@ -8,6 +8,9 @@
   create_test_params_set(project_folder_name = file.path(peregrine::get_pff_tempdir(),
   "raket_werper"))
 }
+\arguments{
+\item{project_folder_name}{name of project folder}
+}
 \value{
 a list of which each element is a \code{raket_params}
 }

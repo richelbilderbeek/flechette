@@ -8,11 +8,9 @@
 create_input_files_general(raket_paramses = create_general_params_set())
 }
 \arguments{
-\item{general_params_set}{the set of parameters,
-as created by \code{\link{create_general_params_set}}}
-
-\item{project_folder_name}{name of the project folder.
-The name of this folder must be \code{raket_werper}.}
+\item{raket_paramses}{a list of \code{raket_params},
+as created by \code{\link{create_general_params_set}}
+or \code{\link{create_sampling_params_set}}}
 }
 \value{
 The filenames of all parameter files created

@@ -9,6 +9,9 @@ Else will do nothing.}
 \usage{
 check_project_folder_name(project_folder_name)
 }
+\arguments{
+\item{project_folder_name}{name of project folder}
+}
 \value{
 nothing
 }

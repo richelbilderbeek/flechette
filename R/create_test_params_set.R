@@ -1,4 +1,5 @@
 #' Create the parameter set used in testing
+#' @inheritParams default_params_doc
 #' @return a list of which each element is a \code{raket_params}
 #' @author Richel J.C. Bilderbeek
 #' @export
