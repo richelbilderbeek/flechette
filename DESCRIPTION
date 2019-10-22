@@ -24,7 +24,7 @@ Requires:
 Imports:
     assertive,
     beastier (>= 2.0.25),
-    beautier (>= 2.2.3),
+    beautier (>= 2.3),
     peregrine (>= 0.5),
     pirouette (>= 1.5.1)
 Suggests:
