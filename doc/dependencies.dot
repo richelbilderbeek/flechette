@@ -16,6 +16,7 @@ digraph G
   pirouette -> mcbette [style=dotted];
   pirouette -> mbd;
   pirouette -> nLTT;
+  pirouette -> nodeSub [style=dotted];
   razzo -> pirouette;
   peregrine -> pirouette;
   razzo -> peregrine;
