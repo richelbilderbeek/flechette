@@ -22,9 +22,10 @@ r_github_packages:
   - richelbilderbeek/nLTT
   - rsetienne/PBD/PBD
   - richelbilderbeek/mcbette
+  - thijsjanzen/nodeSub
   - richelbilderbeek/pirouette
   - richelbilderbeek/peregrine
-  - richelbilderbeek/razzo@richel
+  - richelbilderbeek/razzo
   - MangoTheCat/goodpractice
   - KlausVigo/phangorn
 
