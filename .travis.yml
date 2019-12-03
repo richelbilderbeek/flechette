@@ -2,12 +2,6 @@ language: r
 dist: bionic
 cache: packages
 
-r_packages:
-  - devtools
-  - functional
-  - ggplot2
-  - xml2
-
 r_github_packages:
   - Giappo/mbd
   - jimhester/covr
