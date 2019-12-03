@@ -22,7 +22,6 @@ r_github_packages:
   - richelbilderbeek/peregrine
   - richelbilderbeek/razzo
   - MangoTheCat/goodpractice
-  - KlausVigo/phangorn
 
 before_install:
   - echo $TRAVIS_R_VERSION_STRING
