@@ -19,7 +19,6 @@ r_github_packages:
   - ropensci/babette
   - richelbilderbeek/ribir
   - richelbilderbeek/becosys
-  - richelbilderbeek/nLTT
   - rsetienne/PBD/PBD
   - richelbilderbeek/mcbette
   - thijsjanzen/nodeSub
