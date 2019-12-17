@@ -2,32 +2,31 @@ language: r
 dist: bionic
 cache: packages
 
-r_packages:
-  - devtools
-  - functional
-  - ggplot2
-  - xml2
-
 r_github_packages:
   - Giappo/mbd
   - jimhester/covr
   - jimhester/lintr
+<<<<<<< HEAD
   - ropensci/beautier@develop
   - ropensci/tracerer
   - ropensci/beastier
   - ropensci/mauricer
+=======
+>>>>>>> master
   - ropensci/babette
   - richelbilderbeek/ribir
   - richelbilderbeek/becosys
-  - richelbilderbeek/nLTT
   - rsetienne/PBD/PBD
   - richelbilderbeek/mcbette
   - thijsjanzen/nodeSub
   - richelbilderbeek/pirouette
   - richelbilderbeek/peregrine
+<<<<<<< HEAD
+=======
+  - Giappo/mbd.SimTrees
+>>>>>>> master
   - richelbilderbeek/razzo
   - MangoTheCat/goodpractice
-  - KlausVigo/phangorn
 
 before_install:
   - echo $TRAVIS_R_VERSION_STRING
