@@ -21,7 +21,6 @@ create_test_raket_params <- function(
 
   alignment_params <- pirouette::create_alignment_params(
     root_sequence = pirouette::create_blocked_dna(length = 32),
-    mutation_rate = 0.12,
     fasta_filename = file.path(folder_name, "pbd.fasta")
   )
   ##############################################################################
