@@ -17,7 +17,7 @@ create_raket_params <- create_params_raket <- function(
 ) {
   becosys::check_pbd_params(pbd_params)
   pirouette::check_pir_params(pir_params)
-  check_sampling_method(sampling_method)
+  raket::check_sampling_method(sampling_method)
   assertive::assert_is_a_string(true_tree_filename)
 
   raket_params <- list(

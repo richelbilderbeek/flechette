@@ -1,7 +1,7 @@
 #' Check if the \code{raket_params} is a list with all the required elements
 #' @inheritParams default_params_doc
 #' @export
-check_raket_params_list_elements <- function( # nolint indeed long function, which is fine for an internal function
+check_raket_params_list_elements <- function(
   raket_params
 ) {
   argument_names <- c(
