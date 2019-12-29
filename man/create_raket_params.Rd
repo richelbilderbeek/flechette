@@ -6,11 +6,15 @@
 \title{Create the parameters for one experiment.
 Run one point of the experiment}
 \usage{
-create_raket_params(pbd_params, pir_params, sampling_method,
+create_raket_params(
+  pbd_params,
+  pir_params,
+  sampling_method,
   true_tree_filename = file.path(dirname(pir_params$alignment_params$fasta_filename),
-  "pbd.newick"),
+    "pbd.newick"),
   pbd_sim_out_filename = file.path(dirname(pir_params$alignment_params$fasta_filename),
-  "pbd_sim_out.RDa"))
+    "pbd_sim_out.RDa")
+)
 }
 \arguments{
 \item{pbd_params}{a PBD parameter set,

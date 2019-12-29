@@ -5,8 +5,7 @@
 \title{Collect all PBD parameters of a \code{raket_werper} run and put these
 in one \code{.csv} file called \code{results/pbd_params.csv}}
 \usage{
-
-  create_pbd_params_file(project_folder_name = get_raket_path("raket_werper"))
+create_pbd_params_file(project_folder_name = get_raket_path("raket_werper"))
 }
 \arguments{
 \item{project_folder_name}{name of project folder}

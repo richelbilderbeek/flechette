@@ -4,8 +4,7 @@
 \alias{rkt_are_viable}
 \title{Are these viable parameter combinations?}
 \usage{
-rkt_are_viable(crown_age, ergs, eris, scrs, sirgs, siris,
-  quantile = 0.95)
+rkt_are_viable(crown_age, ergs, eris, scrs, sirgs, siris, quantile = 0.95)
 }
 \arguments{
 \item{crown_age}{the crown age of the phylogeny}

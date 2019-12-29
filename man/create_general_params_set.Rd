@@ -4,9 +4,10 @@
 \alias{create_general_params_set}
 \title{Creates the parameter set for the general exploration}
 \usage{
-
-  create_general_params_set(project_folder_name = file.path(peregrine::get_pff_tempdir(),
-  "raket_werper"), n_replicates = 1)
+create_general_params_set(
+  project_folder_name = file.path(peregrine::get_pff_tempdir(), "raket_werper"),
+  n_replicates = 1
+)
 }
 \arguments{
 \item{project_folder_name}{name of project folder}

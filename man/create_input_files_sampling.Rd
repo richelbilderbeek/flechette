@@ -4,9 +4,9 @@
 \alias{create_input_files_sampling}
 \title{Creates the parameter files in the article for the general exploration}
 \usage{
-
-  create_input_files_sampling(raket_paramses = create_sampling_params_set(project_folder_name
-  = getwd()))
+create_input_files_sampling(
+  raket_paramses = create_sampling_params_set(project_folder_name = getwd())
+)
 }
 \arguments{
 \item{raket_paramses}{a list of \code{raket_params},

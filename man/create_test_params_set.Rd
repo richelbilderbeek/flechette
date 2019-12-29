@@ -4,9 +4,9 @@
 \alias{create_test_params_set}
 \title{Create the parameter set used in testing}
 \usage{
-
-  create_test_params_set(project_folder_name = file.path(peregrine::get_pff_tempdir(),
-  "raket_werper"))
+create_test_params_set(
+  project_folder_name = file.path(peregrine::get_pff_tempdir(), "raket_werper")
+)
 }
 \arguments{
 \item{project_folder_name}{name of project folder}

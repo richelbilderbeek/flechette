@@ -4,8 +4,12 @@
 \alias{rkt_create_data_frame}
 \title{Create a skeleton data frame for each data set}
 \usage{
-rkt_create_data_frame(n_replicates, n_nltts, experiment_type,
-  max_n_params = Inf)
+rkt_create_data_frame(
+  n_replicates,
+  n_nltts,
+  experiment_type,
+  max_n_params = Inf
+)
 }
 \arguments{
 \item{n_replicates}{number of replicates}

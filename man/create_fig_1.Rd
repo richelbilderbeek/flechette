@@ -4,8 +4,10 @@
 \alias{create_fig_1}
 \title{Plot violin plot}
 \usage{
-create_fig_1(df_long = utils::read.csv("result_long.csv"),
-  pdf_filename = tempfile(fileext = ".pdf"))
+create_fig_1(
+  df_long = utils::read.csv("result_long.csv"),
+  pdf_filename = tempfile(fileext = ".pdf")
+)
 }
 \arguments{
 \item{df_long}{data frame in the long form}

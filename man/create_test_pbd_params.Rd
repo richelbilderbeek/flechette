@@ -5,8 +5,13 @@
 \title{Creates testing PBD params, using \link[becosys]{create_pbd_params}
 with some parameters that are not that speciose}
 \usage{
-create_test_pbd_params(sirg = 0.1, siri = 0.15, scr = 0.2,
-  erg = 0.01, eri = 0.02)
+create_test_pbd_params(
+  sirg = 0.1,
+  siri = 0.15,
+  scr = 0.2,
+  erg = 0.01,
+  eri = 0.02
+)
 }
 \arguments{
 \item{sirg}{speciation initiation rate of a good species}

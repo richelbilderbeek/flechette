@@ -5,12 +5,40 @@
 \title{This function does nothing. It is intended to inherit is parameters'
 documentation.}
 \usage{
-default_params_doc(alignment_params, crown_age, erg, ergs, eri, eris,
-  experiment_type, filename, max_n_params, mcmc, mcmc_chain_length,
-  n_replicates, pbd_params, pbd_sim_out_filename, pir_params,
-  project_folder_name, quantile, raket_params, raket_paramses,
-  sampling_method, scr, scrs, sequence_length, sir, sirg, sirgs, siri,
-  siris, stem_age, true_tree_filename, twinning_params, verbose)
+default_params_doc(
+  alignment_params,
+  crown_age,
+  erg,
+  ergs,
+  eri,
+  eris,
+  experiment_type,
+  filename,
+  max_n_params,
+  mcmc,
+  mcmc_chain_length,
+  n_replicates,
+  pbd_params,
+  pbd_sim_out_filename,
+  pir_params,
+  project_folder_name,
+  quantile,
+  raket_params,
+  raket_paramses,
+  sampling_method,
+  scr,
+  scrs,
+  sequence_length,
+  sir,
+  sirg,
+  sirgs,
+  siri,
+  siris,
+  stem_age,
+  true_tree_filename,
+  twinning_params,
+  verbose
+)
 }
 \arguments{
 \item{alignment_params}{parameters for creating an alignment,

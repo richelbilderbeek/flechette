@@ -1,5 +1,4 @@
 #' Run a 'raket' experiment from a filename
-#' @inheritParams default_params_doc
 #' @param parameters_filename name of a file that contains
 #'   a \code{raket_params},
 #'   as can be created by \link{create_raket_params}

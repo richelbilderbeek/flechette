@@ -6,13 +6,10 @@ r_github_packages:
   - Giappo/mbd
   - jimhester/covr
   - jimhester/lintr
-<<<<<<< HEAD
   - ropensci/beautier@develop
   - ropensci/tracerer
   - ropensci/beastier
   - ropensci/mauricer
-=======
->>>>>>> master
   - ropensci/babette
   - richelbilderbeek/ribir
   - richelbilderbeek/becosys
@@ -21,10 +18,7 @@ r_github_packages:
   - thijsjanzen/nodeSub
   - richelbilderbeek/pirouette
   - richelbilderbeek/peregrine
-<<<<<<< HEAD
-=======
   - Giappo/mbd.SimTrees
->>>>>>> master
   - richelbilderbeek/razzo
   - MangoTheCat/goodpractice
 

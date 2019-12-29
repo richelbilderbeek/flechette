@@ -5,9 +5,10 @@
 \title{Create the set of parameters for the experiment
 to measure the effect of sampling}
 \usage{
-
-  create_sampling_params_set(project_folder_name = file.path(peregrine::get_pff_tempdir(),
-  "raket_werper"), n_replicates = 1)
+create_sampling_params_set(
+  project_folder_name = file.path(peregrine::get_pff_tempdir(), "raket_werper"),
+  n_replicates = 1
+)
 }
 \arguments{
 \item{project_folder_name}{name of project folder}
