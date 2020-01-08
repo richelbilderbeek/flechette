@@ -17,7 +17,7 @@ develop|[![Build Status](https://travis-ci.org/richelbilderbeek/raket.svg?branch
 
  * [PBD](https://github.com/rsetienne/PBD): to generate incipient species trees and sample a species tree 
  * [pirouette](https://github.com/richelbilderbeek/pirouette): to convert a species phylogeny to a posterior 
- * [nLTT](https://github.com/richelbilderbeek/nLTT): to compare a species tree to all species trees in the posterior
+ * [nLTT](https://github.com/thijsjanzen/nLTT): to compare a species tree to all species trees in the posterior
 
 
 ## Download raket locally
