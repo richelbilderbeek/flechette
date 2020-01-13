@@ -6,8 +6,8 @@ The experiment itself is the test
 ```
 
 Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![AppVeyor logo](pics/AppVeyor.png)](https://www.appveyor.com)|[![Codecov logo](pics/Codecov.png)](https://www.codecov.io)
----|---|---|---
-master|[![Build Status](https://travis-ci.org/richelbilderbeek/raket.svg?branch=master)](https://travis-ci.org/richelbilderbeek/raket)|[![Build status](https://ci.appveyor.com/api/projects/status/pm0injx1acgrj6gp/branch/master?svg=true)](https://ci.appveyor.com/project/richelbilderbeek/raket/branch/master)|[![codecov.io](https://codecov.io/github/richelbilderbeek/raket/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/raket/branch/master)
+-------|---|---|---
+master |[![Build Status](https://travis-ci.org/richelbilderbeek/raket.svg?branch=master)](https://travis-ci.org/richelbilderbeek/raket)|[![Build status](https://ci.appveyor.com/api/projects/status/pm0injx1acgrj6gp/branch/master?svg=true)](https://ci.appveyor.com/project/richelbilderbeek/raket/branch/master)|[![codecov.io](https://codecov.io/github/richelbilderbeek/raket/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/raket/branch/master)
 develop|[![Build Status](https://travis-ci.org/richelbilderbeek/raket.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/raket)|[![Build status](https://ci.appveyor.com/api/projects/status/pm0injx1acgrj6gp/branch/develop?svg=true)](https://ci.appveyor.com/project/richelbilderbeek/raket/branch/develop)|[![codecov.io](https://codecov.io/github/richelbilderbeek/raket/coverage.svg?branch=develop)](https://codecov.io/github/richelbilderbeek/raket/branch/develop)
 
  * [raket](https://github.com/richelbilderbeek/raket) provides the R code used by [1]
