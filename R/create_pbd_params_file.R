@@ -2,7 +2,7 @@
 #' in one \code{.csv} file called \code{results/pbd_params.csv}
 #' @inheritParams default_params_doc
 #' @return the name of the file created
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 create_pbd_params_file <- function(
   project_folder_name = get_raket_path("raket_werper")

@@ -1,7 +1,7 @@
 #' Run one point of the experiment
 #' @inheritParams default_params_doc
 #' @return nothing
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @aliases run_raket rkt_run
 #' @export run_raket rkt_run
 run_raket <- rkt_run <- function(

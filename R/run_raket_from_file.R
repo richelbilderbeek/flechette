@@ -2,7 +2,7 @@
 #' @param parameters_filename name of a file that contains
 #'   a \code{raket_params},
 #'   as can be created by \link{create_params_raket}
-#' @author Richel J.C. Bilderbee
+#' @author Richèl J.C. Bilderbee
 #' @export
 run_raket_from_file <- function(
   parameters_filename

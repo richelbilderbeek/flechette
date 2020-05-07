@@ -5,7 +5,7 @@
 #' @return a test \code{raket_params},
 #'   as can be created by \link{create_raket_params}
 #' @export
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 create_test_raket_params <- function(
   folder_name = peregrine::get_pff_tempdir()
 ) {

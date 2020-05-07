@@ -1,7 +1,7 @@
 #' Create the parameters for one experiment.
 #' Run one point of the experiment
 #' @inheritParams default_params_doc
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @aliases create_raket_params create_params_raket
 #' @export create_raket_params create_params_raket
 create_raket_params <- create_params_raket <- function(

@@ -3,7 +3,7 @@
 #' Will \link{stop} if the \code{raket_params} are invalid,
 #' else will do nothing
 #' @inheritParams default_params_doc
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 check_raket_params <- function(
   raket_params

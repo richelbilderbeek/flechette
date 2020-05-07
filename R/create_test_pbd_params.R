@@ -1,7 +1,7 @@
 #' Creates testing PBD params, using \link[becosys]{create_pbd_params}
 #' with some parameters that are not that speciose
 #' @inheritParams default_params_doc
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @examples
 #' library(testthat)
 #'

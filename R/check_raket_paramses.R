@@ -1,6 +1,6 @@
 #' Check if the argument is a list of \code{raket_params}
 #' @inheritParams default_params_doc
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 check_raket_paramses <- function(raket_paramses) {
   if (!is.list(raket_paramses)) {

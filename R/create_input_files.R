@@ -8,7 +8,7 @@
 #' for a general input set.
 #' Use \link{create_input_files_sampling} to create the parameters file
 #' for a sampling input set.
-#' @author Richel Bilderbeek
+#' @author Richèl Bilderbeek
 create_input_files <- function(
   raket_paramses
 ) {
@@ -32,7 +32,7 @@ create_input_files <- function(
 #' @return The filenames of all parameter files created
 #' @export create_input_files_general create_files_raket_paramses
 #' @aliases create_input_files_general create_files_raket_paramses
-#' @author Richel Bilderbeek
+#' @author Richèl Bilderbeek
 create_input_files_general <- create_files_raket_paramses <- function(
   raket_paramses = create_general_params_set()
 ) {
@@ -43,7 +43,7 @@ create_input_files_general <- create_files_raket_paramses <- function(
 #' @inheritParams default_params_doc
 #' @return The filenames of all parameter files created
 #' @export
-#' @author Richel Bilderbeek
+#' @author Richèl Bilderbeek
 create_input_files_sampling <- function(
   raket_paramses = create_sampling_params_set(
     project_folder_name = getwd()
@@ -56,7 +56,7 @@ create_input_files_sampling <- function(
 #' @inheritParams default_params_doc
 #' @return The filenames of all parameter files created
 #' @export
-#' @author Richel Bilderbeek
+#' @author Richèl Bilderbeek
 create_input_files_test <- function(
   raket_paramses = create_test_params_set(project_folder_name = getwd())
 ) {

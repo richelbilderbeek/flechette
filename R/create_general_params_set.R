@@ -1,7 +1,7 @@
 #' Creates the parameter set for the general exploration
 #' @inheritParams default_params_doc
 #' @return a list of which each element is a \code{raket_params}
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 create_general_params_set <- function(
   project_folder_name = file.path(peregrine::get_pff_tempdir(), "raket_werper"),

@@ -4,7 +4,7 @@
 #' Else will do nothing.
 #' @inheritParams default_params_doc
 #' @return nothing
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 check_project_folder_name <- function(project_folder_name) {
   if (basename(project_folder_name) != "raket_werper") {

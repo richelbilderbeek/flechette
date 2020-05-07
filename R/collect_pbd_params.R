@@ -1,7 +1,7 @@
 #' Collect the PBD parameters from a \code{raket} experiment
 #' @inheritParams default_params_doc
 #' @return a data frame the folder names and PBD parameters
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 collect_pbd_params <- function(
   project_folder_name

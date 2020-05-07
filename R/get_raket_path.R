@@ -2,7 +2,7 @@
 #' @inheritParams default_params_doc
 #' @return the full path of the filename, if and only if
 #'   the file is present. Will stop otherwise.
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @examples
 #' library(testthat)
 #'

@@ -3,7 +3,7 @@
 #'   as created by \code{create_nltt_file}
 #' @param csv_filename name of the .csv file to be created
 #' @export
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 nltt_files_to_csv <- function(
   nltt_filenames = Sys.glob("nltt_*.RDa"),
   csv_filename = "result.csv"
